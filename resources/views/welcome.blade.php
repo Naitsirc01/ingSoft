@@ -81,17 +81,17 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Larvanvel con el mejor ayudante rajardo
                 </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <div>
+                    <h1>Ingrese su rut</h1>
+                    <input type="numeric" name="fname"><br>
+                    <h1>Ingrese su contraseña</h1>
+                    <input type="password" name="fname"><br>
+                    <button type="submit" form="form1" value="Submit">Submit</button>
                 </div>
+
             </div>
         </div>
     </body>
