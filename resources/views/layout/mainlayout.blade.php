@@ -9,7 +9,8 @@
 <body>
 
 @include('layout.partials.nav')
-
+<br>
+<br>
 @yield('content')
 
 <script src={{asset("vendor/jquery/jquery.min.js")}}></script>
