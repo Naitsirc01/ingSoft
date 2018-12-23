@@ -5,7 +5,13 @@
 
     <h1>Titulo</h1>
 
-    <p>algo de texto</p>
+    <p>que pasa</p>
+    <ul>
+      <li><a href="default.asp">Home</a></li>
+      <li><a href="news.asp"></a></li>
+      <li><a href="contact.asp">Contact</a></li>
+      <li><a href="about.asp">About</a></li>
+    </ul>
 
   </div>
 

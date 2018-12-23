@@ -18,6 +18,9 @@ Route::get('/', function () {
 Route::get('/menu', function () {
     return view('menu');
 });
+Route::get('/registroCon', function () {
+    return view('registroconvenio');
+});
 
 Route::get('my-home', 'HomeController@myHome');
 Route::get('my-users', 'HomeController@myUsers');
