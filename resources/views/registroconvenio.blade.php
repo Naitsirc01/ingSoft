@@ -2,10 +2,7 @@
 @section('content')
 
   <div>
-
-    <h1>Titulo</h1>
-
-    <p>wena wena waton motorola</p>
+    
     <style>
       #playground-container {
         height: 500px;
