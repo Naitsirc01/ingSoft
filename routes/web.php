@@ -18,8 +18,19 @@ Route::get('/', function () {
 Route::get('/menu', function () {
     return view('menu');
 });
+
 Route::get('/registroCon', function () {
     return view('registroconvenio');
+});
+
+Route::get('/extension', function () {
+    return view('extension');
+});
+Route::get('/extension2', function () {
+    return view('extension2');
+});
+Route::get('/registroExt', function () {
+    return view('extension');
 });
 
 Route::get('my-home', 'HomeController@myHome');
