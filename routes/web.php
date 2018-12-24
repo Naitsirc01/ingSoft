@@ -23,6 +23,11 @@ Route::get('/registroCon', function () {
     return view('registroconvenio');
 });
 
+Route::get('/registroas', function () {
+    return view('registroAyS');
+});
+
+
 Route::get('/extension', function () {
     return view('extension');
 });
