@@ -28,14 +28,8 @@ Route::get('/registroas', function () {
 });
 
 
-Route::get('/extension', function () {
-    return view('extension');
-});
-Route::get('/extension2', function () {
-    return view('extension2');
-});
-Route::get('/registroExt', function () {
-    return view('extension');
+Route::get('/registroExtension', function () {
+    return view('registroExtension');
 });
 
 Route::get('my-home', 'HomeController@myHome');
