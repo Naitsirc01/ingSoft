@@ -29,8 +29,13 @@ Route::get('/registroas', function () {
 
 
 Route::get('/registroExtension', function () {
-    return view('registroExtension');
+    return view('extension');
 });
+
 
 Route::get('my-home', 'HomeController@myHome');
 Route::get('my-users', 'HomeController@myUsers');
+
+Route::post('actividad_extension', 'ActividadExtensionController@store');
+Route::post('actividad_convenio', 'ActividadConvenioController@store');
+Route::post('actividad_a+s','ActividadAprendizajeServicioController@store');

@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Larvanvel con el mejor ayudante rajardo
+                    Rajardo deja de pegarle a las mujeres
                 </div>
 
                 <div>

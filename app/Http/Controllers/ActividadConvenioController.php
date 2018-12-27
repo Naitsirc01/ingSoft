@@ -35,7 +35,9 @@ class ActividadConvenioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $archivo="archivo";
+        $registro =  \App\actividad_convenio::create($request->only('name','1', 'fecha','duracion', '1'));
+
     }
 
     /**

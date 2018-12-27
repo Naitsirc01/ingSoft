@@ -258,8 +258,8 @@
                 <h5>Registrar actividad de extensión:</h5>
             </div>
             <h5>Registro de actividad de extensión. </h5>-->
-            <form class="" method="post" action="#">
-
+            <form class="" method="post" action="actividad_extension">
+                @csrf-field()
                 <div class="form-group">
                     <label for="name" class="cols-sm-2 control-label">Seleccione la actividad a registrar</label>
                     <select class="form-control" id="Registrar" placeholder="Registrar cositos">
@@ -401,9 +401,9 @@
                 </div>
                 <!--FIN cargar cositos-->
 
-                 <div class="form-group ">
-                     <a href="https://deepak646.blogspot.com/" target="_blank" type="button" id="button" class="btn btn-primary btn-lg btn-block login-button">Registrar</a>
-                 </div>
+                <div class="form-group ">
+                    <button   id="button" class="btn btn-primary btn-lg btn-block login-button">Registrar</button>
+                </div>
 
              </form>
 

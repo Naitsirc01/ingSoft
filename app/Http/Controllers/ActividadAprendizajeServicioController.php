@@ -35,7 +35,8 @@ class ActividadAprendizajeServicioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $registro =  \App\actividad_a+s::create($request->only('asignatura','profesor','cestudiantes','sociocomunitario','semestreaño'));
+        return redirect()->action('ActividadAprendizajeServicioController@index');
     }
 
     /**

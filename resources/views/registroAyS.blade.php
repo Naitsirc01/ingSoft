@@ -252,8 +252,8 @@
     <div class="row main">
         <div class="main-login main-center">
             <h5>Registro de actividad de Aprendizaje + Servicio</h5>
-            <form class="" method="post" action="#">
-
+            <form class="" method="post" action="actividad_a+s">
+                @csrf-field()
                 <div class="form-group">
                     <label for="asignatura" class="cols-sm-2 control-label">Nombre asignatura</label>
                     <div class="cols-sm-10">
@@ -315,7 +315,7 @@
                 </div>
 
                 <div class="form-group ">
-                    <a href="https://deepak646.blogspot.com/" target="_blank" type="button" id="button" class="btn btn-primary btn-lg btn-block login-button">Register</a>
+                    <button  id="button" class="btn btn-primary btn-lg btn-block login-button">Register</button>
                 </div>
 
             </form>
