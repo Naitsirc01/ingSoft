@@ -36,8 +36,17 @@ class ActividadConvenioController extends Controller
     public function store(Request $request)
     {
         $archivo="archivo";
-        $registro =  \App\actividad_convenio::create($request->only('name','1', 'fecha','duracion', '1'));
 
+        //no funciona pq el request mete todos los parametros en orden y los guardan en los filleables , que deben estar en orden como sale abajo
+        //y el only request le pasa los valores a los filleables, lo que en la anterior no era pósible y no le pasaba nada
+        //$registro =  \App\actividad_convenio::create($request->only('empresa','tipo_convenio','fecha_comienzo','duracion','indicadorid'));
+
+        $registro = \App\actividad_convenio::create(
+            ['empresa'=>$request->name,
+                'tipo_convenio'=>1,
+                'fecha_comienzo'=>$request->fecha,
+                'duracion'=>$request->duracion,
+                'indicadorid'=>1]);
     }
 
     /**

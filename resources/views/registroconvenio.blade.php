@@ -1,15 +1,155 @@
 @extends('layout.mainlayout')
 @section('content')
 
-  <div>
-    
+
+  <!--
+ <!DOCTYPE html>
+ <html>
+ <head>
+   <title>Formulario</title>
+   <meta charset="utf-8">
+   <link type="text/css" href="./../css/style.css" rel="stylesheet" />
+ </head>
+
+ <body>
+ <div id="registrar">
+   <a href="../index.php"</a>Regresar</a>
+ </div>
+ <div id="envoltura">
+   <div id="contenedor">
+
+     <!div id="cabecera">
+       <!img src="./../css/images/logo.gif" >
+     <!/div>
+
+     <div id="cuerpo">
+
+       <form id="form-login" action="#" method="post" >
+         <p><label for="nombre">Nombre de la empresa o convenio :</label></p>
+         <input name="nombre" type="text" id="nombre" class="nombre" placeholder="ingrese nombre" autofocus=""/ ></p>
+
+         <!--=============================================================================================-->
+  <!--La sisguientes 2 líneas son para agregar campos al formulario con sus respectivos labels-->
+  <!--Puedes usar tantas como necesites-->
+  <!--
+  <p><label for="tipoCon">Tipo de convenio:</label></p>
+  <input name="tipoCon" type="text" id="tipoCon" class="tipoCon" placeholder="ingrese tipo" /></p>
+  <!--=============================================================================================-->
+  <!--
+          <p><label for="fecha">Fecha comienzo del convenio:</label></p>
+          <input name="fecha" type="date" id="fecha" class="fecha" placeholder="indique fecha" /></p>
+
+          <p><label for="duracion">Duracion del convenio:</label></p>
+          <input name="duracion" type="number" id="duracion" class="duracion" placeholder="duracion"/ ></p>
+
+          <p><label for="evidencia">Evidencia:</label></p>
+          <input name="evidencia" type="file" id="evidencia" class="evidencia" placeholder="ingrese evidencia" /></p>
+
+          <p id="bot"><input name="submit" type="submit" id="boton" value="Registrar" class="boton"/></p>
+
+        </form>
+      </div>
+
+      <div id="pie">Sistema de Login Y Registro</div>
+    </div><!-- fin contenedor -->
+  <!--
+    </div>
+
+    </body>
+
+    </html> -->
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- Website CSS style -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Website Font style -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+
+    <title>Admin</title>
+
     <style>
-      #playground-container {
-        height: 500px;
-        overflow: hidden !important;
-        -webkit-overflow-scrolling: touch;
+      .spinner input {
+        text-align: right;
       }
+
+      .input-group-btn-vertical {
+        position: relative;
+        white-space: nowrap;
+        width: 2%;
+        vertical-align: middle;
+        display: table-cell;
+      }
+
+      .input-group-btn-vertical > .btn {
+        display: block;
+        float: none;
+        width: 100%;
+        max-width: 100%;
+        padding: 8px;
+        margin-left: -1px;
+        position: relative;
+        border-radius: 0;
+      }
+
+      .input-group-btn-vertical > .btn:first-child {
+        border-top-right-radius: 4px;
+      }
+
+      .input-group-btn-vertical > .btn:last-child {
+        margin-top: -2px;
+        border-bottom-right-radius: 4px;
+      }
+
+      .input-group-btn-vertical i {
+        position: absolute;
+        top: 0;
+        left: 4px;
+      }
+
+
+
+      <!--subir pdf-->
+          .btn-file {
+            position: relative;
+            overflow: hidden;
+          }
+      .btn-file input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 100px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        outline: none;
+        background: white;
+        cursor: inherit;
+        display: block;
+      }
+
+      #img-upload{
+        width: 100%;
+      }
+      <!--Fin subir pdf-->
+          #playground-container {
+            height: 500px;
+            overflow: hidden !important;
+            -webkit-overflow-scrolling: touch;
+          }
       body, html{
+        margin-top:70px;
         height: 100%;
         background-repeat: no-repeat;
         background:url(https://i.ytimg.com/vi/4kfXjatgeEU/maxresdefault.jpg);
@@ -91,7 +231,7 @@
       .main-center{
         margin-top: 30px;
         margin: 0 auto;
-        max-width: 400px;
+        max-width: 600px;
         padding: 10px 40px;
         background:#009edf;
         color: #FFF;
@@ -99,6 +239,7 @@
         -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
         -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
         box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+
 
       }
       span.input-group-addon i {
@@ -114,92 +255,63 @@
         font-size: 11px;
         text-align: center;
       }
+
+      /* layout.css Style Cosito de subir Fotos*/
+      .upload-drop-zone {
+        height: 200px;
+        border-width: 2px;
+        margin-bottom: 20px;
+      }
+
+      /* skin.css Style*/
+      .upload-drop-zone {
+        color: #ccc;
+        border-style: dashed;
+        border-color: #ccc;
+        line-height: 200px;
+        text-align: center
+      }
+      .upload-drop-zone.drop {
+        color: #222;
+        border-color: #222;
+      }
+
+
+
+      .image-preview-input {
+        position: relative;
+        overflow: hidden;
+        margin: 0px;
+        color: #333;
+        background-color: #fff;
+        border-color: #ccc;
+      }
+      .image-preview-input input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+        cursor: pointer;
+        opacity: 0;
+        filter: alpha(opacity=0);
+      }
+      .image-preview-input-title {
+        margin-left:2px;
+      }
+
     </style>
-      <!--
-     <!DOCTYPE html>
-     <html>
-     <head>
-       <title>Formulario</title>
-       <meta charset="utf-8">
-       <link type="text/css" href="./../css/style.css" rel="stylesheet" />
-     </head>
-
-     <body>
-     <div id="registrar">
-       <a href="../index.php"</a>Regresar</a>
-     </div>
-     <div id="envoltura">
-       <div id="contenedor">
-
-         <!div id="cabecera">
-           <!img src="./../css/images/logo.gif" >
-         <!/div>
-
-         <div id="cuerpo">
-
-           <form id="form-login" action="#" method="post" >
-             <p><label for="nombre">Nombre de la empresa o convenio :</label></p>
-             <input name="nombre" type="text" id="nombre" class="nombre" placeholder="ingrese nombre" autofocus=""/ ></p>
-
-             <!--=============================================================================================-->
-            <!--La sisguientes 2 líneas son para agregar campos al formulario con sus respectivos labels-->
-            <!--Puedes usar tantas como necesites-->
-    <!--
-    <p><label for="tipoCon">Tipo de convenio:</label></p>
-    <input name="tipoCon" type="text" id="tipoCon" class="tipoCon" placeholder="ingrese tipo" /></p>
-    <!--=============================================================================================-->
-    <!--
-            <p><label for="fecha">Fecha comienzo del convenio:</label></p>
-            <input name="fecha" type="date" id="fecha" class="fecha" placeholder="indique fecha" /></p>
-
-            <p><label for="duracion">Duracion del convenio:</label></p>
-            <input name="duracion" type="number" id="duracion" class="duracion" placeholder="duracion"/ ></p>
-
-            <p><label for="evidencia">Evidencia:</label></p>
-            <input name="evidencia" type="file" id="evidencia" class="evidencia" placeholder="ingrese evidencia" /></p>
-
-            <p id="bot"><input name="submit" type="submit" id="boton" value="Registrar" class="boton"/></p>
-
-          </form>
-        </div>
-
-        <div id="pie">Sistema de Login Y Registro</div>
-      </div><!-- fin contenedor -->
-    <!--
-      </div>
-
-      </body>
-
-      </html> -->
-
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-      <!-- Website CSS style -->
-      <link href="css/bootstrap.min.css" rel="stylesheet">
-
-      <!-- Website Font style -->
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-      <link rel="stylesheet" href="style.css">
-      <!-- Google Fonts -->
-      <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
-      <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
-
-      <title>Admin</title>
-    </head>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <body>
+  </head>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <body>
     <div class="container">
       <div class="row main">
         <div class="main-login main-center">
           <h5>Registro de convenios de colaboración</h5>
           <form class="" method="post" action="actividad_convenio">
-              @csrf-field()
+            @csrf-field()
             <div class="form-group">
               <label for="name" class="cols-sm-2 control-label">Nombre de la empresa</label>
               <div class="cols-sm-10">
@@ -263,9 +375,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-    </body>
-    </html>
-
-  </div>
+  </body>
+  </html>
 
 @endsection

@@ -89,11 +89,10 @@
                 -webkit-overflow-scrolling: touch;
             }
         body, html{
-            margin-top: 0px;
+            margin-top:70px;
             height: 100%;
             background-repeat: no-repeat;
-            background-color: #ffffff;
-
+            background:url(https://i.ytimg.com/vi/4kfXjatgeEU/maxresdefault.jpg);
             font-family: 'Oxygen', sans-serif;
             background-size: cover;
         }
@@ -174,7 +173,7 @@
             margin: 0 auto;
             max-width: 600px;
             padding: 10px 40px;
-            background: #23415b;
+            background:#009edf;
             color: #FFF;
             text-shadow: none;
             -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
@@ -184,7 +183,7 @@
 
         }
         span.input-group-addon i {
-            color: #23415b;
+            color: #009edf;
             font-size: 17px;
         }
 
@@ -244,7 +243,7 @@
 
     </style>
 </head>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <body>

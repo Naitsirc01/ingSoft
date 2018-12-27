@@ -89,11 +89,10 @@
             -webkit-overflow-scrolling: touch;
         }
         body, html{
-            margin-top:0px;
+            margin-top:70px;
             height: 100%;
             background-repeat: no-repeat;
-            background-color: #ffffff;
-
+            background:url(https://i.ytimg.com/vi/4kfXjatgeEU/maxresdefault.jpg);
             font-family: 'Oxygen', sans-serif;
             background-size: cover;
         }
@@ -174,7 +173,7 @@
             margin: 0 auto;
             max-width: 600px;
             padding: 10px 40px;
-            background: #23415b;
+            background:#009edf;
             color: #FFF;
             text-shadow: none;
             -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
@@ -184,7 +183,7 @@
 
         }
         span.input-group-addon i {
-            color: #23415b;
+            color: #009edf;
             font-size: 17px;
         }
 
@@ -244,7 +243,6 @@
 
     </style>
 </head>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <body>
@@ -259,8 +257,8 @@
                 <h5>Registrar actividad de extensión:</h5>
             </div>
             <h5>Registro de actividad de extensión. </h5>-->
-            <form class="" method="post" action="#">
-
+            <form class="" method="post" action="actividad_extension">
+                @csrf-field()
                 <div class="form-group">
                     <label for="name" class="cols-sm-2 control-label">Seleccione la actividad a registrar</label>
                     <select class="form-control" id="Registrar" placeholder="Registrar cositos">
@@ -269,7 +267,10 @@
                         <option>Talleres</option>
                         <option>Seminario</option>
                     </select>
+                </div>
 
+
+                <div class="form-group">
                     <label for="name" class="cols-sm-2 control-label">Titulo</label>
                     <div class="cols-sm-10">
                         <div class="input-group">
@@ -277,7 +278,9 @@
                             <input type="text" class="form-control" name="name" id="name"  placeholder="Ingrese el titulo de la actividad"/>
                         </div>
                     </div>
+                </div>
 
+                <div class="form-group">
                     <label for="email" class="cols-sm-2 control-label">Nombre</label>
                     <div class="cols-sm-10">
                         <div class="input-group">
@@ -285,14 +288,14 @@
                             <input type="text" class="form-control" name="email" id="email"  placeholder="Ingrese el nombre del expositor o narrador"/>
                         </div>
                     </div>
+                </div>
 
-
-
+                <div class="form-group">
                     <label for="exampleInputdate">Fecha en que se realizó</label>
                     <input type="date" class="form-control" id="date" name="date">
+                </div>
 
-
-
+                <div class="form-group">
                     <label for="username" class="cols-sm-2 control-label">Lugar</label>
                     <div class="cols-sm-10">
                         <div class="input-group">
@@ -300,7 +303,9 @@
                             <input type="text" class="form-control" name="username" id="username"  placeholder="Ingrese el lugar de la actividad"/>
                         </div>
                     </div>
+                </div>
 
+                <div class="form-group">
                     <label for="password" class="cols-sm-2 control-label">Asistentes</label>
                     <div class="cols-sm-10">
                         <div class="input-group">
@@ -309,6 +314,17 @@
                         </div>
                     </div>
 
+
+
+                   <!-- <div class="cols-sm-10">
+                        <div class="input-group">
+
+                             <input type="password" class="form-control" name="password" id="password"  placeholder="Ingrese la cantidad de asistentes"/>
+                         </div>
+                     </div>-->
+                 </div>
+
+                 <div class="form-group">
                      <label for="confirm" class="cols-sm-2 control-label">Organizador de la actividad</label>
                      <div class="cols-sm-10">
                          <div class="input-group">
@@ -367,7 +383,7 @@
                                 <br />
 
                                 <!-- Drop Zone -->
-                                <div class="upload-drop-zone" id="drop-zone"> O arrastra los archivos aquí  </div>
+                                <div class="upload-drop-zone" id="drop-zone"> Or drag and drop files here </div>
                                 <br />
                                 <!-- Progress Bar -->
                                 <div class="progress">
@@ -384,9 +400,9 @@
                 </div>
                 <!--FIN cargar cositos-->
 
-                 <div class="form-group ">
-                     <a href="https://deepak646.blogspot.com/" target="_blank" type="button" id="button" class="btn btn-primary btn-lg btn-block login-button">Registrar</a>
-                 </div>
+                <div class="form-group ">
+                    <button   id="button" class="btn btn-primary btn-lg btn-block login-button">Registrar</button>
+                </div>
 
              </form>
 
@@ -404,4 +420,3 @@
 <script src="js/bootstrap.min.js"></script>
 </body>
 </html>
-@endsection

@@ -29,7 +29,7 @@ Route::get('/registroas', function () {
 
 
 Route::get('/registroExtension', function () {
-    return view('extension');
+    return view('registroextension');
 });
 
 
