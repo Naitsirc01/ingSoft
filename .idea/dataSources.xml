@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+<<<<<<< Updated upstream
     <data-source source="LOCAL" name="homestead@192.168.10.10" uuid="570a7280-9509-4cea-abaa-c9c68c282e0d">
+=======
+    <data-source source="LOCAL" name="homestead@192.168.10.10" uuid="94c4dfe5-d40b-4bb4-9b5f-3ff076a92425">
+>>>>>>> Stashed changes
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>

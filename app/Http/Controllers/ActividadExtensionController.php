@@ -35,7 +35,13 @@ class ActividadExtensionController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        $registro = \App\actividad_extension::create(
+            ['titulo'=>$request->title,
+                'expositor'=>$request->name,
+                'fecha'=>$request->date,
+                'ubicacion'=>'mi casa',
+                'cantidad_asistentes'=>12,
+                'indicadorid'=>2]);
     }
 
     /**

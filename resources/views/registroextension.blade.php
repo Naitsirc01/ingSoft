@@ -259,15 +259,6 @@
             <h5>Registro de actividad de extensión. </h5>-->
             <form class="" method="post" action="actividad_extension">
                 @csrf-field()
-                <div class="form-group">
-                    <label for="name" class="cols-sm-2 control-label">Seleccione la actividad a registrar</label>
-                    <select class="form-control" id="Registrar" placeholder="Registrar cositos">
-                        <option>Charla</option>
-                        <option>Curso</option>
-                        <option>Talleres</option>
-                        <option>Seminario</option>
-                    </select>
-                </div>
 
 
                 <div class="form-group">
@@ -281,13 +272,13 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="email" class="cols-sm-2 control-label">Nombre</label>
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                            <input type="text" class="form-control" name="email" id="email"  placeholder="Ingrese el nombre del expositor o narrador"/>
-                        </div>
-                    </div>
+                    <label for="name" class="cols-sm-2 control-label">Seleccione la actividad a registrar</label>
+                    <select name="title" id="title" class="form-control">
+                        <option value="Charla">Charla</option>
+                        <option value="Curso">Curso</option>
+                        <option value="Talleres">Talleres</option>
+                        <option value="Seminario">Seminario</option>
+                    </select>
                 </div>
 
                 <div class="form-group">

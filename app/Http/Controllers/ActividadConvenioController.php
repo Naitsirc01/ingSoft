@@ -46,7 +46,7 @@ class ActividadConvenioController extends Controller
                 'tipo_convenio'=>1,
                 'fecha_comienzo'=>$request->fecha,
                 'duracion'=>$request->duracion,
-                'indicadorid'=>1]);
+                'indicadorid'=>2]);
     }
 
     /**
