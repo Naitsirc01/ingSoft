@@ -301,7 +301,7 @@
                     <div class="cols-sm-10">
                         <div class="input-group">
 
-                            <input type="number" class="form-control" name="fecha" id="fecha"  placeholder="Ingrese la cantidad"/>
+                            <input type="number" class="form-control" name="cantAsis" id="cantAsis"  placeholder="Ingrese la cantidad"/>
                         </div>
                     </div>
 

@@ -40,8 +40,8 @@ class ActividadExtensionController extends Controller
                 'expositor'=>$request->name,
                 'fecha'=>$request->date,
                 'ubicacion'=>'mi casa',
-                'cantidad_asistentes'=>12,
-                'indicadorid'=>2]);
+                'cantidad_asistentes'=>$request->cantAsis,
+                'indicadorid'=>1]);
     }
 
     /**

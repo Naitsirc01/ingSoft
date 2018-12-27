@@ -15,7 +15,6 @@ class CreateActividadAprendizajeServiciosTable extends Migration
     {
         Schema::create('actividad_aprendizaje_servicios', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('asignatura');
             $table->string('nombre_profesor');
             $table->integer('cantidad_estudiantes');
             $table->string('nombre_socio');

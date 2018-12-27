@@ -253,15 +253,6 @@
             <h5>Registro de actividad de Aprendizaje + Servicio</h5>
             <form class="" method="post" action="actividad_a+s">
                 @csrf-field()
-                <div class="form-group">
-                    <label for="asignatura" class="cols-sm-2 control-label">Nombre asignatura</label>
-                    <div class="cols-sm-10">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-building fa" aria-hidden="true"></i></span>
-                            <input type="text" class="form-control" name="asignatura" id="asignatura"  placeholder="Ingrese asignatura"/>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="form-group">
                     <label for="profesor" class="cols-sm-2 control-label">Nombre profesor</label>
