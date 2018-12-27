@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Rajardo deja de pegarle a las mujeres
+                    Sistema de vinculacion con el medio
                 </div>
 
                 <div>
