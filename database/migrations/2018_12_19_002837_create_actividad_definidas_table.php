@@ -18,7 +18,7 @@ class CreateActividadDefinidasTable extends Migration
             $table->string('nombre');
             $table->string('ubicacion')->nullable();
             $table->date('fecha')->nullable();
-            $table->integer('cantidad_asistentes');
+            $table->integer('cant_asist');
             $table->string('expositor')->nullable();
             $table->string('tema')->nullable();
             $table->string('socio_comunitario')->nullable();

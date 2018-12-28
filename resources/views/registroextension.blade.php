@@ -6,21 +6,13 @@
             <div class="main-login main-center">
                 <div class="form-group" style="margin-top: 15px; font-size: 20px;">
                     <label>Registro de actividad de extensión.</label>
-
                 </div>
-                <!--<div class="col-xl" >
-                    <h5>Registrar actividad de extensión:</h5>
-                </div>
-                <h5>Registro de actividad de extensión. </h5>-->
                 <form class="" method="post" action="actividad_extension">
                     @csrf-field()
-
-
                     <div class="form-group">
                         <label for="name" class="cols-sm-2 control-label">Titulo</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <!--<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>-->
                                 <input type="text" class="form-control" name="name" id="name"  placeholder="Ingrese el titulo de la actividad"/>
                             </div>
                         </div>
@@ -45,37 +37,25 @@
                         <label for="username" class="cols-sm-2 control-label">Lugar</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <!--<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>   -->
-                                <input type="text" class="form-control" name="username" id="username"  placeholder="Ingrese el lugar de la actividad"/>
+                                <input type="text" class="form-control" name="ubicacion" id="ubicacion"  placeholder="Ingrese el lugar de la actividad"/>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="password" class="cols-sm-2 control-label">Asistentes</label>
+                        <label for="username" class="cols-sm-2 control-label">Asistentes</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-
                                 <input type="number" class="form-control" name="cantAsis" id="cantAsis"  placeholder="Ingrese la cantidad"/>
                             </div>
                         </div>
-
-
-
-                        <!-- <div class="cols-sm-10">
-                             <div class="input-group">
-
-                                  <input type="password" class="form-control" name="password" id="password"  placeholder="Ingrese la cantidad de asistentes"/>
-                              </div>
-                          </div>-->
                     </div>
 
                     <div class="form-group">
                         <label for="confirm" class="cols-sm-2 control-label">Organizador de la actividad</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <!--<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>-->
-                                <input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Ingrese el nombre del organizador"/>
+                                <input type="text" class="form-control" name="organizador" id="organizador"  placeholder="Ingrese el nombre del organizador"/>
                             </div>
                         </div>
                     </div>

@@ -38,4 +38,4 @@ Route::get('my-users', 'HomeController@myUsers');
 
 Route::post('actividad_extension', 'ActividadExtensionController@store');
 Route::post('actividad_convenio', 'ActividadConvenioController@store');
-Route::post('actividad_a+s','ActividadAprendizajeServicioController@store');
+Route::post('actividad_aprendizaje_servicio','ActividadAprendizajeServicioController@store');

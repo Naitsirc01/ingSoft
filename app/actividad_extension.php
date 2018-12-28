@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class actividad_extension extends Model
 {
     protected $fillable = [
-        'titulo','expositor','fecha','ubicacion', 'cantidad_asistentes','indicadorid'];
+        'titulo','expositor','fecha','ubicacion', 'cantidad_asistentes','organizador' ,'indicadorid'];
 
     public function indicador(){
         return $this->belongsTo('App\Indicador','indicadorid');

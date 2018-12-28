@@ -5,7 +5,7 @@
         <div class="row main">
             <div class="main-login main-center">
                 <h5>Registro de actividad de Aprendizaje + Servicio</h5>
-                <form class="" method="post" action="actividad_a+s">
+                <form class="" method="post" action="actividad_aprendizaje_servicio">
                     @csrf-field()
 
                     <div class="form-group">
