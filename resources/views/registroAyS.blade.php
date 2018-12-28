@@ -31,7 +31,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-building fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="cestudiantes" id="cestudiantes"  placeholder="Ingrese cantidad de estudiantes"/>
+                                <input type="number" class="form-control" name="cestudiantes" id="cestudiantes"  placeholder="Ingrese cantidad de estudiantes"/>
                             </div>
                         </div>
                     </div>
@@ -47,13 +47,20 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="semestreaño" class="cols-sm-2 control-label">Semestre/año</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-building fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="semestreaño" id="semestreaño"  placeholder="Ingrese semestre y año"/>
-                            </div>
-                        </div>
+                        <label for="semestreaño" class="cols-sm-2 control-label">Seleccionar un Periodo</label>
+                        <select name="semestreaño" id="semestreaño" class="form-control">
+                            <OPTION VALUE="2018-2" SELECTED>Segundo semestre año 2018</OPTION>
+                            <OPTION VALUE="2018-1">Primer semestre año 2018</OPTION>
+                            <OPTION VALUE="2017-2">Segundo semestre año 2017</OPTION>
+                            <OPTION VALUE="2017-1">Primer semestre año 2017</OPTION>
+                            <OPTION VALUE="2016-2">Segundo semestre año 2016</OPTION>
+                            <OPTION VALUE="2016-1">Primer semestre año 2016</OPTION>
+                            <OPTION VALUE="2015-2">Segundo semestre año 2015</OPTION>
+                            <OPTION VALUE="2015-1">Primer semestre año 2015</OPTION>
+                            <OPTION VALUE="2014-2">Segundo semestre año 2014</OPTION>
+                            <OPTION VALUE="2014-1">Primer semestre año 2014</OPTION>
+                         </SELECT>
+
                     </div>
 
                     <div class="form-group">
