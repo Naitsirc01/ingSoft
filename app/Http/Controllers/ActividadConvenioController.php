@@ -43,7 +43,7 @@ class ActividadConvenioController extends Controller
 
         $registro = \App\actividad_convenio::create(
             ['empresa'=>$request->name,
-                'convenioid'=>1,
+                'convenioid'=>$request->convenio,
                 'fecha_comienzo'=>$request->fecha,
                 'duracion'=>$request->duracion,
                 'indicadorid'=>1,]);

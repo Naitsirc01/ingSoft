@@ -21,10 +21,10 @@
                     <div class="form-group">
                         <label for="name" class="cols-sm-2 control-label">Seleccione la actividad a registrar</label>
                         <select name="title" id="title" class="form-control">
-                            <option value="Charla">Charla</option>
-                            <option value="Curso">Curso</option>
-                            <option value="Talleres">Talleres</option>
-                            <option value="Seminario">Seminario</option>
+                            <option value="1">Charla</option>
+                            <option value="2">Curso</option>
+                            <option value="3">Talleres</option>
+                            <option value="4">Seminario</option>
                         </select>
                     </div>
 

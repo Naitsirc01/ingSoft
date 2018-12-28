@@ -19,12 +19,12 @@
 
           <div class="form-group">
             <label for="convenio" class="cols-sm-2 control-label">Tipo de convenio</label>
-            <div class="cols-sm-10">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-gamepad fa" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="convenio" id="convenio"  placeholder="Ingrese el convenio"/>
-              </div>
-            </div>
+            <select name="convenio" id="convenio" class="form-control">
+              <option value="">Capstone</option>
+              <option value="2">Marco</option>
+              <option value="3">Especifico</option>
+              <option value="4">A+S</option>
+            </select>
           </div>
 
           <div class="form-group">
