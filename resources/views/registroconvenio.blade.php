@@ -20,7 +20,7 @@
           <div class="form-group">
             <label for="convenio" class="cols-sm-2 control-label">Tipo de convenio</label>
             <select name="convenio" id="convenio" class="form-control">
-              <option value="">Capstone</option>
+              <option value="1">Capstone</option>
               <option value="2">Marco</option>
               <option value="3">Especifico</option>
               <option value="4">A+S</option>

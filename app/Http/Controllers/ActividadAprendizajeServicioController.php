@@ -40,7 +40,6 @@ class ActividadAprendizajeServicioController extends Controller
                 'cantidad_estudiantes'=>$request->cestudiantes,
                 'nombre_socio'=>$request->sociocomunitario,
                 'semestre/año'=>$request->semestreaño,
-                'evidencia'=>'archivo',
                 'asignaturaid'=>1,
                 'indicadorid'=>1]);
         //return redirect()->action('ActividadAprendizajeServicioController@index');

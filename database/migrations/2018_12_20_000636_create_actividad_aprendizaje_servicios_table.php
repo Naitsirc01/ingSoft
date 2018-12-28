@@ -19,7 +19,6 @@ class CreateActividadAprendizajeServiciosTable extends Migration
             $table->integer('cantidad_estudiantes');
             $table->string('nombre_socio');
             $table->string('semestre/año');
-            $table->integer('evidenciaid');
             $table->integer('asignaturaid')->unsigned()->nullable();
             $table->integer('indicadorid')->unsigned()->nullable();
             $table->foreign('asignaturaid')->references('id')
