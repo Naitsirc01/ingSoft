@@ -7,7 +7,15 @@
                 <h5>Registro de actividad de Aprendizaje + Servicio</h5>
                 <form class="" method="post" action="actividad_aprendizaje_servicio">
                     @csrf-field()
-
+                    <div class="form-group">
+                        <label for="asignatura" class="cols-sm-2 control-label">Seleccionar asignatura</label>
+                        <select name="asignatura" id="asignatura" class="form-control">
+                            <option value="1">Programación</option>
+                            <option value="2">Lenguaje de programación</option>
+                            <option value="3">Base de datos</option>
+                            <option value="4">Ing software</option>
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label for="profesor" class="cols-sm-2 control-label">Nombre profesor</label>
                         <div class="cols-sm-10">
