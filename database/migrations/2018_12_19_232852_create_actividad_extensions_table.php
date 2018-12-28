@@ -21,6 +21,7 @@ class CreateActividadExtensionsTable extends Migration
             $table->string('ubicacion');
             $table->integer('cantidad_asistentes');
             $table->string('organizador');
+            $table->integer('tipo_extension');
             $table->integer('indicadorid')->unsigned()->nullable();
             $table->foreign('indicadorid')->references('id')
                 ->on('indicadores')->onDelete('cascade');

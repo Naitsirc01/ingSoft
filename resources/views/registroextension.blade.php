@@ -13,14 +13,14 @@
                         <label for="name" class="cols-sm-2 control-label">Titulo</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="name" id="name"  placeholder="Ingrese el titulo de la actividad"/>
+                                <input type="title" class="form-control" name="title" id="title"  placeholder="Ingrese el titulo de la actividad"/>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="name" class="cols-sm-2 control-label">Seleccione la actividad a registrar</label>
-                        <select name="title" id="title" class="form-control">
+                        <select name="tipo_extension" id="tipo_extension" class="form-control">
                             <option value="1">Charla</option>
                             <option value="2">Curso</option>
                             <option value="3">Talleres</option>
@@ -31,6 +31,15 @@
                     <div class="form-group">
                         <label for="exampleInputdate">Fecha en que se realizó</label>
                         <input type="date" class="form-control" id="date" name="date">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="username" class="cols-sm-2 control-label">Expositor</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <input type="text" class="form-control" name="expositor" id="expositor"  placeholder="Ingrese el nombre del expositor"/>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="form-group">

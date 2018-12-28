@@ -66,6 +66,8 @@
                         </div>
                     </div>
 
+
+
                     <div class="form-group ">
                         <button  id="button" class="btn btn-primary btn-lg btn-block login-button">Register</button>
                     </div>

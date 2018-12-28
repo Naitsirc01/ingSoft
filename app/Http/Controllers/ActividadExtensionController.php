@@ -37,11 +37,12 @@ class ActividadExtensionController extends Controller
     {
         $registro = \App\actividad_extension::create(
             ['titulo'=>$request->title,
-                'expositor'=>$request->name,
+                'expositor'=>$request->expositor,
                 'fecha'=>$request->date,
                 'ubicacion'=>$request->ubicacion,
                 'cantidad_asistentes'=>$request->cantAsis,
                 'organizador'=>$request->organizador,
+                'tipo_extension'=>$request->tipo_extension,
                 'indicadorid'=>1]);
     }
 
