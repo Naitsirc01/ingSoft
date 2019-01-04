@@ -5,8 +5,8 @@
         <div class="row main">
             <div class="main-login main-center">
                 <h5>Registro de actividad de Aprendizaje + Servicio</h5>
-                <form class="" method="post" action="actividad_aprendizaje_servicio">
-                    @csrf-field()
+                <form class="" method="post" action="actividad_aprendizaje_servicio" enctype="multipart/form-data">
+                    {{csrf_field()}}
                     <div class="form-group">
                         <label for="asignatura" class="cols-sm-2 control-label">Seleccionar asignatura</label>
                         <select name="asignatura" id="asignatura" class="form-control">
@@ -68,7 +68,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-upload fa" aria-hidden="true"></i></span>
-                                <input type="file" class="form-control" name="evidencia" id="evidencia"  placeholder="Confirm your Password"/>
+                                <input type="file" class="form-control" name="evidencia" id="evidencia" >
                             </div>
                         </div>
                     </div>

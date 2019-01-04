@@ -1,19 +1,19 @@
 @extends('layout.formlayout')
 @section('content')
-    @csrf-field()
+
 
     <div class="container">
         <div class="row main">
             <div class="main-login main-center">
                 <h5>Registro de Titulados</h5>
                 <form class="" method="post" action="registro_titulados">
-
+                    {{csrf_field()}}
                     <div class="form-group">
-                        <label for="name" class="cols-sm-2 control-label">Nombre</label>
+                        <label for="titulado" class="cols-sm-2 control-label">Nombre</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-building fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="name" id="name"  placeholder="Ingrese nombre del titulado"/>
+                                <input type="text" class="form-control" name="titulado" id="titulado"  placeholder="Ingrese nombre del titulado"/>
                             </div>
                         </div>
                     </div>
@@ -59,11 +59,11 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="año" class="cols-sm-2 control-label">Año titulado</label>
+                        <label for="añoTitulacion" class="cols-sm-2 control-label">Año titulacion</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-calendar fa" aria-hidden="true"></i></span>
-                                <input type="date" class="form-control" name="año" id="año"  placeholder="Ingrese año de titulacion"/>
+                                <input type="date" class="form-control" name="añoTitulacion" id="añoTitulacion"  placeholder="Ingrese año de titulacion"/>
                             </div>
                         </div>
                     </div>
@@ -78,19 +78,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
-                    <div class="form-group">
-                        <label for="evidencia" class="cols-sm-2 control-label">Evidencia</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-upload fa" aria-hidden="true"></i></span>
-                                <input type="file" class="form-control" name="evidencia" id="evidencia"  placeholder="Confirm your Password"/>
-                            </div>
-                        </div>
-                    </div>
-
 
 
                     <div class="form-group ">

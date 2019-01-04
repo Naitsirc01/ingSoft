@@ -35,6 +35,9 @@ Route::get('/registroExtension', function () {
 Route::get('/registroTit', function () {
     return view('registroTitulacion');
 });
+Route::get('/registrotitulados', function(){
+    return view('registrotitulados');
+});
 
 Route::get('my-home', 'HomeController@myHome');
 Route::get('my-users', 'HomeController@myUsers');
