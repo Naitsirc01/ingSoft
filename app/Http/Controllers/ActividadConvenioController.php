@@ -47,6 +47,11 @@ class ActividadConvenioController extends Controller
                 'fecha_comienzo'=>$request->fecha,
                 'duracion'=>$request->duracion,
                 'indicadorid'=>1,]);
+
+        $registro2 = \App\evidencia::create(
+            ['archivo'=>$request->evidencia,
+                'actividad_convenioid'=>$registro->id]);
+
     }
 
     /**

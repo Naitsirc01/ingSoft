@@ -7,8 +7,8 @@
                 <div class="form-group" style="margin-top: 15px; font-size: 20px;">
                     <label>Registro de actividad de extensión.</label>
                 </div>
-                <form class="" method="post" action="actividad_extension">
-                    @csrf-field()
+                <form class="" method="post" action="actividad_extension" enctype="multipart/form-data">
+                    {{csrf_field()}}
                     <div class="form-group">
                         <label for="name" class="cols-sm-2 control-label">Titulo</label>
                         <div class="cols-sm-10">
