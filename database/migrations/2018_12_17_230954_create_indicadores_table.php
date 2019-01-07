@@ -16,7 +16,11 @@ class CreateIndicadoresTable extends Migration
         Schema::create('indicadores', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->string('tipo_indicador');
+            $table->string('objetivo');
+            $table->string('meta_descripcion')->nullable();
+            $table->integer('meta1');
+            $table->integer('meta2')->unsigned()->nullable();
+            $table->date('año_meta');
             $table->integer('usuario_id')->unsigned()->nullable();
             $table->foreign('usuario_id')->references('id')
                 ->on('usuarios')->onDelete('cascade');

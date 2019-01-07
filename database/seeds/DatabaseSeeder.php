@@ -26,7 +26,9 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('indicadores')->insert([
             'nombre' => 'indicador1',
-            'tipo_indicador'=>'tipoPrueba',
+            'objetivo'=>'objetivo',
+            'meta1' =>30,
+            'año_meta'=>'2010-01-01',
             'usuario_id'=>1,
         ]);
 
