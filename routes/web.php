@@ -27,7 +27,6 @@ Route::get('/registroas', function () {
     return view('registroAyS');
 });
 
-
 Route::get('/registroExtension', function () {
     return view('registroextension');
 });
