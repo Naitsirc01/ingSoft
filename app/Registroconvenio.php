@@ -14,6 +14,10 @@ class Registroconvenio extends Model
         return $this->belongsTo('App\Indicador','indicadorid');
     }
 
+    public function convenio(){
+        return $this->belongsTo('App\convenio','convenioid');
+    }
+
     /*UN COSITO
     public function indicador(){
         return $this->belongsTo('App\Indicador','tipo_convenio');

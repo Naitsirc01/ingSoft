@@ -1,11 +1,12 @@
-<!DOCTYPE html>
+@extends('layout.formlayout')
+@section('content')
+
+        <!DOCTYPE html>
 <html lang="en">
 <head>
-
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
 </head>
-
 <body>
 <br><br>
 <!-- Agregar modal -->
@@ -13,7 +14,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Registrar Actividad Convenio</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Registrar titulados</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -22,57 +23,50 @@
       {{csrf_field()}}
       <!-- aca se pegaria el formulario agregar -->
         <div class="modal-body">
-          <h5>Registro de convenios de colaboración</h5>
-          {{csrf_field()}}
           <div class="form-group">
-            <label for="name" class="cols-sm-2 control-label">Nombre de la empresa</label>
+            <label for="titulado" class="cols-sm-2 control-label">Empresa</label>
             <div class="cols-sm-10">
               <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-building fa" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="empresa"  pattern="[A-Za-z\s]+" title="Ingrese solo letras" placeholder="Ingrese el nombre"/>
+
+                <input type="text" class="form-control" name="nombre" placeholder="Ingrese nombre de la empresa"/>
               </div>
             </div>
           </div>
 
           <div class="form-group">
-            <label for="convenio" class="cols-sm-2 control-label">Tipo de convenio</label>
-            <select name="convenioid" class="form-control">
-              <option value="1">Capstone</option>
-              <option value="2">Marco</option>
-              <option value="3">Especifico</option>
-              <option value="4">A+S</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="fecha" class="cols-sm-2 control-label">Fecha comienzo del convenio</label>
+            <label for="rut" class="cols-sm-2 control-label">Tipo de convenio</label>
             <div class="cols-sm-10">
               <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-calendar fa" aria-hidden="true"></i></span>
-                <input type="date" class="form-control" name="fecha_comienzo"   placeholder="Enter your Username"/>
+
+                <select id="tipoCon" name="tipoCon">
+                  @foreach($tipoCon as $t)
+                    <option value={{$t->id}}>{{$t->nombre}}</option>
+                  @endforeach
+                </select>
               </div>
             </div>
           </div>
 
           <div class="form-group">
-            <label for="duracion" class="cols-sm-2 control-label">Fecha termino del convenio</label>
+            <label for="telefono" class="cols-sm-2 control-label">Fecha de comienzo</label>
             <div class="cols-sm-10">
               <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-calendar fa" aria-hidden="true"></i></span>
-                <input type="date" class="form-control" name="duracion"  placeholder="Enter your Password"/>
+
+                <input type="date" class="form-control" name="fecha" placeholder="Ingrse fecha de comienzo"/>
               </div>
             </div>
           </div>
 
           <div class="form-group">
-            <label for="evidencia" class="cols-sm-2 control-label">Evidencia</label>
+            <label for="email" class="cols-sm-2 control-label">Duracion</label>
             <div class="cols-sm-10">
               <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-upload fa" aria-hidden="true"></i></span>
-                <input type="file" class="form-control" name="evidencia" id="evidencia" >
+
+                <input type="date" class="form-control" name="duracion" placeholder="Ingrese la fecha de termino?"/>
               </div>
             </div>
           </div>
+
 
         </div>
         <!-- termina formulario agregar -->
@@ -92,7 +86,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Registrar Actividad Convenio</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Editar convenio</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -103,51 +97,44 @@
       <!-- aca se pegaria el formulario agregar -->
         <div class="modal-body">
           <div class="form-group">
-            <label for="name" class="cols-sm-2 control-label">Nombre de la empresa</label>
+            <label for="titulado" class="cols-sm-2 control-label">Empresa</label>
             <div class="cols-sm-10">
               <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-building fa" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" name="empresa" id="empresa" pattern="[A-Za-z\s]+" title="Ingrese solo letras" placeholder="Ingrese el nombre"/>
+
+                <input type="text" class="form-control" name="nombre" placeholder="Ingrese nombre de la empresa"/>
               </div>
             </div>
           </div>
 
           <div class="form-group">
-            <label for="convenio" class="cols-sm-2 control-label">Tipo de convenio</label>
-            <select name="convenioid" id="convenioid" class="form-control">
-              <option value="1">Capstone</option>
-              <option value="2">Marco</option>
-              <option value="3">Especifico</option>
-              <option value="4">A+S</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="fecha" class="cols-sm-2 control-label">Fecha comienzo del convenio</label>
+            <label for="rut" class="cols-sm-2 control-label">Tipo de convenio</label>
             <div class="cols-sm-10">
               <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-calendar fa" aria-hidden="true"></i></span>
-                <input type="date" class="form-control" name="fecha_comienzo" id="fecha_comienzo"  placeholder="Enter your Username"/>
+
+                <select id="tipoCon" name="tipoCon">
+                  @foreach($tipoCon as $t)
+                    <option value={{$t->id}}>{{$t->nombre}}</option>
+                  @endforeach
+                </select>
               </div>
             </div>
           </div>
 
           <div class="form-group">
-            <label for="duracion" class="cols-sm-2 control-label">Fecha termino del convenio</label>
+            <label for="telefono" class="cols-sm-2 control-label">Fecha de comienzo</label>
             <div class="cols-sm-10">
               <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-calendar fa" aria-hidden="true"></i></span>
-                <input type="date" class="form-control" name="duracion" id="duracion"  placeholder="Enter your Password"/>
+                <input type="date" class="form-control" name="fecha" placeholder="Ingrse fecha de comienzo"/>
               </div>
             </div>
           </div>
 
           <div class="form-group">
-            <label for="evidencia" class="cols-sm-2 control-label">Evidencia</label>
+            <label for="email" class="cols-sm-2 control-label">duracion</label>
             <div class="cols-sm-10">
               <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-upload fa" aria-hidden="true"></i></span>
-                <input type="file" class="form-control" name="evidencia" id="evidencia" >
+
+                <input type="date" class="form-control" name="duracion" placeholder="Ingrese la fecha de termino?"/>
               </div>
             </div>
           </div>
@@ -169,7 +156,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Registrar Actividad Convenio</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Registrar titulados</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -216,30 +203,28 @@
     Registrar
   </button>
 
-  
-
   <br><br>
 
 
-  <table id="datatable2" class="table table-striped table-dark">
+  <table id="datatable" class="table table-striped table-dark">
     <thead>
     <tr>
       <th scope="col">ID</th>
-      <th scope="col">Nombre Empresa</th>
-      <th scope="col">Tipo Convenio</th>
-      <th scope="col">Fecha Inicio</th>
-      <th scope="col">Duracion</th>
-      <th scope="col">Accion</th>
+      <th scope="col">EMPRESA</th>
+      <th scope="col">CONVENIO</th>
+      <th scope="col">FECHA DE COMIENZO</th>
+      <th scope="col">DURACION</th>
+      <th scope="col">ACCION</th>
     </tr>
     </thead>
     <tbody>
-    @foreach($conv as $convdata)
+    @foreach($conv as $c)
       <tr>
-        <th>{{$convdata->id}}</th>
-        <td>{{$convdata->empresa}}</td>
-        <td>{{$convdata->convenioid}}</td>
-        <td>{{$convdata->fecha_comienzo}}</td>
-        <td>{{$convdata->duracion}}</td>
+        <th>{{$c->id}}</th>
+        <th>{{$c->empresa}}</th>
+        <td>{{$c->convenioid}}</td>
+        <td>{{$c->fecha_comienzo}}</td>
+        <td>{{$c->duracion}}</td>
         <td>
           <a href="#" class="btn btn-success edit">ACTUALIZAR</a>
           <a href="#" class="btn btn-danger delete">ELIMINAR</a>
@@ -249,7 +234,6 @@
     @endforeach
     </tbody>
   </table>
-
 
 
 </div>
@@ -266,7 +250,7 @@
 
 <script type="text/javascript">
   $(document).ready(function(){
-    var table = $('#datatable2').DataTable();
+    var table = $('#datatable').DataTable();
     //start edit
     table.on('click','.edit',function(){
       $tr = $(this).closest('tr');
@@ -276,11 +260,10 @@
       var data = table.row($tr).data();
       console.log(data);
 
-      $('#empresa').val(data[1]);
-      $('#convenioid').val(data[2]);
-      $('#fecha_comienzo').val(data[3]);
+      $('#nombre').val(data[1]);
+      $('#tipoCon').val(data[2]);
+      $('#fecha').val(data[3]);
       $('#duracion').val(data[4]);
-
 
       $('#editForm').attr('action','/registroconvenio/'+data[0]);
       $('#editModal').modal('show');
@@ -303,7 +286,7 @@
   });
 </script>
 
-
 </body>
-
 </html>
+
+@endsection

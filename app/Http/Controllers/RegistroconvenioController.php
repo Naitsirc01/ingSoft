@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\convenio;
 use Illuminate\Http\Request;
 use App\Registroconvenio;
 
@@ -15,7 +16,8 @@ class RegistroconvenioController extends Controller
     public function index()
     {
         $conv = Registroconvenio::all();
-        return view('registroconvenio')->with('conv',$conv);
+        $tipoCon= convenio::all();
+        return view('registroconvenio',compact('conv','tipoCon'));
     }
 
     /**
@@ -37,15 +39,15 @@ class RegistroconvenioController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-           'empresa'=>'required',
-            'convenioid'=>'required',
-            'fecha_comienzo'=>'required',
+           'nombre'=>'required',
+            'tipoCon'=>'required',
+            'fecha'=>'required',
             'duracion'=>'required'
         ]);
         $registro=new Registroconvenio;
-        $registro->empresa=$request->input('empresa');
-        $registro->convenioid=$request->input('convenioid');
-        $registro->fecha_comienzo=$request->input('fecha_comienzo');
+        $registro->empresa=$request->input('nombre');
+        $registro->convenioid=$request->input('tipoCon');
+        $registro->fecha_comienzo=$request->input('fecha');
         $registro->duracion=$request->input('duracion');
         $registro->indicadorid=1;
         $registro->save();
@@ -93,15 +95,15 @@ class RegistroconvenioController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'empresa'=>'required',
-            'convenioid'=>'required',
-            'fecha_comienzo'=>'required',
+            'nombre'=>'required',
+            'tipoCon'=>'required',
+            'fecha'=>'required',
             'duracion'=>'required'
         ]);
         $registro=Registroconvenio::find($id);
-        $registro->empresa=$request->input('empresa');
-        $registro->convenioid=$request->input('convenioid');
-        $registro->fecha_comienzo=$request->input('fecha_comienzo');
+        $registro->empresa=$request->input('nombre');
+        $registro->convenioid=$request->input('tipoCon');
+        $registro->fecha_comienzo=$request->input('fecha');
         $registro->duracion=$request->input('duracion');
         $registro->indicadorid=1;
         $registro->save();
