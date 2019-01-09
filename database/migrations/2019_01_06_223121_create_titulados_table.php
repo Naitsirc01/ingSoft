@@ -17,11 +17,15 @@ class CreateTituladosTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('rut');
-            $table->integer('telefono')->unsigned()->nullable();
-            $table->string('correo')->nullable();
-            $table->string('empresa')->nullable();
-            $table->date('año_titulacion');
+            $table->integer('telefono');
+            $table->string('correo');
+            $table->string('empresa');
+            $table->string('lugar_trabajo');
+            $table->string('anio_titulacion');
             $table->string('carrera');
+                        $table->integer('indicadorid')->unsigned()->nullable();
+            $table->foreign('indicadorid')->references('id')
+                ->on('indicadores')->onDelete('cascade');
             $table->timestamps();
         });
     }

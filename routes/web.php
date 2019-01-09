@@ -19,9 +19,7 @@ Route::get('/menu', function () {
     return view('menu');
 });
 
-Route::get('/registroCon', function () {
-    return view('registroconvenio');
-});
+
 
 Route::get('/registroas', function () {
     return view('registroAyS');
@@ -45,3 +43,14 @@ Route::get('my-users', 'HomeController@myUsers');
 Route::post('actividad_extension', 'ActividadExtensionController@store');
 Route::post('actividad_convenio', 'ActividadConvenioController@store');
 Route::post('actividad_aprendizaje_servicio','ActividadAprendizajeServicioController@store');
+
+///Esto para no asignar a cada una de las rutas
+Route::resource('/extension', 'ExtensionesController');
+
+Route::resource('/titulacion', 'TitulacionsController');
+
+Route::resource('/titulados', 'TituladoController');
+
+Route::resource('/registroCon', 'ActividadConvenioController');/*esto*/
+
+
