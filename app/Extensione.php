@@ -4,10 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Titulado extends Model
+class Extensione extends Model
 {
     protected $fillable = [
-        'nombre','rut','telefono','correo','empresa','lugar_trabajo','anio_titulacion','carrera'];
+        'titulo','expositor','fecha','ubicacion', 'cantidad_asistentes','organizador' , 'tipo_extension','indicadorid'];
+
     public function indicador(){
         return $this->belongsTo('App\Indicador','indicadorid');
     }

@@ -8,10 +8,11 @@
     <h1>MENÚ</h1>
 
     <ul>
-      <li><a href="/registroCon" style="color:white;">Registro Convenio</a></li>
-      <li><a href="/registroas" style="color:white;">Registro Aprendizaje y Servicios</a></li>
-      <li><a href="/registroExtension" style="color:white;">Registro Extension</a></li>
-      <li><a href="/registroTit" style="color:white;">Registro Titulación</a></li>
+      <li><a href="/registroconvenio" style="color:white;">Registrar Convenios de Colaboración </a></li>
+      <li><a href="/aprendizajes" style="color:white;">Registrar actividad de Aprendizaje + Servicio (A+S)</a></li>
+      <li><a href="/extension" style="color:white;">Registrar actividad de extensión</a></li>
+      <li><a href="/titulacion" style="color:white;">Registrar actividad de titulación por convenio</a></li>
+      <li><a href="/titulados" style="color:white;">Registro Titulados</a></li>
       <li><a href="http://ing.net/" style="color:white;">Cerrar Sesión</a></li>
     </ul>
         </div>

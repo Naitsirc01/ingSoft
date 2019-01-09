@@ -20,7 +20,7 @@ Route::get('/menu', function () {
 });
 
 
-
+/*
 Route::get('/registroas', function () {
     return view('registroAyS');
 });
@@ -44,12 +44,16 @@ Route::post('actividad_convenio', 'ActividadConvenioController@store');
 Route::post('actividad_aprendizaje_servicio','ActividadAprendizajeServicioController@store');
 
 ///Esto para no asignar a cada una de las rutas
+
+*/
 Route::resource('/extension', 'ExtensionesController');
 
 Route::resource('/titulacion', 'TitulacionsController');
 
 Route::resource('/titulados', 'TituladoController');
 
-Route::resource('/registroCon', 'ActividadConvenioController');/*esto*/
+Route::resource('/aprendizajes', 'AprendizajeController');
+
+Route::resource('/registroconvenio', 'RegistroconvenioController');
 
 
