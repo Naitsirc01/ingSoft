@@ -46,14 +46,14 @@ Route::post('actividad_aprendizaje_servicio','ActividadAprendizajeServicioContro
 ///Esto para no asignar a cada una de las rutas
 
 */
-Route::resource('/extension', 'ExtensionesController');
+Route::resource('/act_regitro_extension', 'ActRegistroExtensionesController');
 
-Route::resource('/titulacion', 'TitulacionsController');
+Route::resource('/act_titulacion_con', 'ActTitulacionConvenioController');
 
-Route::resource('/titulados', 'TituladoController');
+Route::resource('/regitro_titulados', 'RegistroTituladosController');
 
-Route::resource('/aprendizajes', 'AprendizajeController');
+Route::resource('/act_aprendizaje_servicio', 'ActAprendizajeServicioController');
 
-Route::resource('/registroconvenio', 'RegistroconvenioController');
+Route::resource('/act_registro_convenio', 'ActRegistroConvenioController');
 
 

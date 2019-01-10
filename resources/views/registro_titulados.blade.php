@@ -21,7 +21,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{action('TituladoController@store')}}" method="POST">
+            <form action="{{action('RegistroTituladosController@store')}}" method="POST">
             {{csrf_field()}}
             <!-- aca se pegaria el formulario agregar -->
                 <div class="modal-body">
@@ -128,7 +128,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="/titulados" method="POST" id="editForm">
+            <form action="/regitro_titulados" method="POST" id="editForm">
             {{csrf_field()}}
             {{method_field('PUT')}}
             <!-- aca se pegaria el formulario agregar -->
@@ -236,7 +236,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="/titulados" method="POST" id="deleteForm">
+            <form action="/regitro_titulados" method="POST" id="deleteForm">
             {{csrf_field()}}
             {{method_field('DELETE')}}
             <!-- aca se pegaria el formulario agregar -->
@@ -352,7 +352,7 @@
             $('#anio_titulacion').val(data[7]);
             $('#carrera').val(data[8]);
 
-            $('#editForm').attr('action','/titulados/'+data[0]);
+            $('#editForm').attr('action','/regitro_titulados/'+data[0]);
             $('#editModal').modal('show');
         });
         //END edit
@@ -366,7 +366,7 @@
             console.log(data);
 
             $('#id').val(data[0]);
-            $('#deleteForm').attr('action','/titulados/'+data[0]);
+            $('#deleteForm').attr('action','/regitro_titulados/'+data[0]);
             $('#deleteModal').modal('show');
         });
         //END delte

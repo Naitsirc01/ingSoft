@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Aprendizaje;
-class AprendizajeController extends Controller
+class ActAprendizajeServicioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class AprendizajeController extends Controller
     public function index()
     {
         $aprendizajes=Aprendizaje::all();
-        return view("/aprendizaje", compact("aprendizajes"));
+        return view("/act_aprendizaje_servicio", compact("aprendizajes"));
     }
 
     /**
@@ -51,7 +51,7 @@ class AprendizajeController extends Controller
         $aprendizaje->indicadorid=1;
         $aprendizaje->save();
 
-        return redirect('/aprendizajes')->with('success','Registrado');
+        return redirect('/act_aprendizaje_servicio')->with('success','Registrado');
     }
 
     /**
@@ -101,7 +101,7 @@ class AprendizajeController extends Controller
         $aprendizaje->indicadorid=1;
         $aprendizaje->save();
 
-        return redirect('/aprendizajes')->with('success','Actualizado');
+        return redirect('/act_aprendizaje_servicio')->with('success','Actualizado');
     }
 
     /**
@@ -114,6 +114,6 @@ class AprendizajeController extends Controller
     {
         $aprendizaje=Aprendizaje::find($id);
         $aprendizaje->delete();
-        return redirect('/aprendizajes')->with('success','Eliminado');
+        return redirect('/act_aprendizaje_servicio')->with('success','Eliminado');
     }
 }

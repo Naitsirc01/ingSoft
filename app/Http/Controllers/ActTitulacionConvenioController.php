@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Titulacion;
 
-class TitulacionsController extends Controller
+class ActTitulacionConvenioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class TitulacionsController extends Controller
     public function index()
     {
         $titulacions=Titulacion::all();
-        return view("/titulacion", compact("titulacions"));
+        return view("/act_titulacion_con", compact("titulacions"));
 
         /*$titulados=Titulado::all();
         return view('titulado')->with('titulados',$titulados);*/
@@ -28,7 +28,7 @@ class TitulacionsController extends Controller
      */
     public function create()
     {
-        return view("titulacions.create");
+        return view("act_titulacion_con.create");
     }
 
     /**
@@ -62,7 +62,7 @@ class TitulacionsController extends Controller
         $titulacion->indicadorid=1;
         $titulacion->save();
 
-        return redirect('/titulacion')->with('success','Registrado');
+        return redirect('/act_titulacion_con')->with('success','Registrado');
     }
 
     /**
@@ -74,7 +74,7 @@ class TitulacionsController extends Controller
     public function show($id)
     {
         /*$titulacions=Titulacion::findOrFail($id);
-        return view("titulacions.show", compact("titulacions"));*/
+        return view("act_titulacion_con.show", compact("act_titulacion_con"));*/
     }
 
     /**
@@ -86,7 +86,7 @@ class TitulacionsController extends Controller
     public function edit($id)
     {
        /* $titulacions=Titulacion::findOrFail($id);
-        return view("titulacions.edit", compact("titulacions"));*/
+        return view("act_titulacion_con.edit", compact("act_titulacion_con"));*/
     }
 
     /**
@@ -122,8 +122,8 @@ class TitulacionsController extends Controller
         $titulacion->save();
 
 
-        /*return redirect("/titulacions");*/
-        return redirect('/titulacion')->with('success','Actualizado');
+        /*return redirect("/act_titulacion_con");*/
+        return redirect('/act_titulacion_con')->with('success','Actualizado');
 
     }
 
@@ -137,6 +137,6 @@ class TitulacionsController extends Controller
     {
         $titulacion=Titulacion::find($id);
         $titulacion->delete();
-        return redirect('/titulacion')->with('success','Eliminado');
+        return redirect('/act_titulacion_con')->with('success','Eliminado');
     }
 }

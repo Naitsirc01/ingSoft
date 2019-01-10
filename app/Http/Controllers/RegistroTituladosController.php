@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Titulado;
-class TituladoController extends Controller
+class RegistroTituladosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class TituladoController extends Controller
     public function index()
     {
         $titulados=Titulado::all();
-        return view('titulado')->with('titulados',$titulados);
+        return view('registro_titulados',compact('titulados'));
     }
 
     /**
@@ -57,7 +57,7 @@ class TituladoController extends Controller
         $titulado->indicadorid=1;
         $titulado->save();
 
-        return redirect('/titulados')->with('success','Registrado');
+        return redirect('/regitro_titulados')->with('success','Registrado');
     }
 
     /**
@@ -113,7 +113,7 @@ class TituladoController extends Controller
         $titulado->indicadorid=1;
         $titulado->save();
 
-        return redirect('/titulados')->with('success','Actualizado');
+        return redirect('/regitro_titulados')->with('success','Actualizado');
     }
 
     /**
@@ -126,6 +126,6 @@ class TituladoController extends Controller
     {
         $titulado=Titulado::find($id);
         $titulado->delete();
-        return redirect('/titulados')->with('success','Eliminado');
+        return redirect('/regitro_titulados')->with('success','Eliminado');
     }
 }

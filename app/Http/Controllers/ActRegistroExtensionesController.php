@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Extensione;
 
-class ExtensionesController extends Controller
+class ActRegistroExtensionesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class ExtensionesController extends Controller
     public function index()
     {
         $extensiones=Extensione::all();
-        return view("/extension", compact("extensiones"));
+        return view("/act_registro_extension", compact("extensiones"));
     }
 
     /**
@@ -27,7 +27,7 @@ class ExtensionesController extends Controller
     public function create()
     {
         //
-        return view("extensiones.create");
+        return view("act_regitro_extension.create");
     }
 
     /**
@@ -73,7 +73,7 @@ class ExtensionesController extends Controller
         $titulacion->indicadorid=1;
         $titulacion->save();
 */
-        return redirect('/extension')->with('success','Registrado');
+        return redirect('/act_regitro_extension')->with('success','Registrado');
     }
 
     /**
@@ -85,7 +85,7 @@ class ExtensionesController extends Controller
     public function show($id)
     {
         $extensiones=Extensione::findOrFail($id);
-        return view("extensiones.show", compact("extensiones"));
+        return view("act_regitro_extension.show", compact("act_regitro_extension"));
     }
 
     /**
@@ -97,7 +97,7 @@ class ExtensionesController extends Controller
     public function edit($id)
     {
         $extensiones=Extensione::findOrFail($id);
-        return view("extensiones.edit", compact("extensiones"));
+        return view("act_regitro_extension.edit", compact("act_regitro_extension"));
 
     }
 
@@ -131,7 +131,7 @@ class ExtensionesController extends Controller
         $extension->indicadorid=1;
         $extension->save();
 
-        return redirect('/extension')->with('success','Actualizado');
+        return redirect('/act_regitro_extension')->with('success','Actualizado');
 
     }
 
@@ -145,6 +145,6 @@ class ExtensionesController extends Controller
     {
         $extension=Extensione::find($id);
         $extension->delete();
-        return redirect('/extension')->with('success','Eliminado');
+        return redirect('/act_regitro_extension')->with('success','Eliminado');
     }
 }
