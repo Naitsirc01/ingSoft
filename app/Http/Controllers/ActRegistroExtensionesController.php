@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Extensione;
+use App\Extension;
 
 class ActRegistroExtensionesController extends Controller
 {
@@ -15,7 +15,7 @@ class ActRegistroExtensionesController extends Controller
      */
     public function index()
     {
-        $extensiones=Extensione::all();
+        $extensiones=Extension::all();
         return view("/act_registro_extension", compact("extensiones"));
     }
 
@@ -48,7 +48,7 @@ class ActRegistroExtensionesController extends Controller
             'tipo_extension'=>'required'
         ]);
 
-        $extension=new Extensione;
+        $extension=new Extension;
         $extension->titulo=$request->titulo;
         $extension->expositor=$request->expositor;
         $extension->fecha=$request->fecha;
@@ -84,7 +84,7 @@ class ActRegistroExtensionesController extends Controller
      */
     public function show($id)
     {
-        $extensiones=Extensione::findOrFail($id);
+        $extensiones=Extension::findOrFail($id);
         return view("act_regitro_extension.show", compact("act_regitro_extension"));
     }
 
@@ -96,7 +96,7 @@ class ActRegistroExtensionesController extends Controller
      */
     public function edit($id)
     {
-        $extensiones=Extensione::findOrFail($id);
+        $extensiones=Extension::findOrFail($id);
         return view("act_regitro_extension.edit", compact("act_regitro_extension"));
 
     }
@@ -119,8 +119,8 @@ class ActRegistroExtensionesController extends Controller
             'organizador'=>'required',
             'tipo_extension'=>'required'
         ]);
-        /*$extensiones=Extensione::findOrFail($id);*/
-        $extension=Extensione::find($id);
+        /*$extensiones=Extension::findOrFail($id);*/
+        $extension=Extension::find($id);
         $extension->titulo=$request->titulo;
         $extension->expositor=$request->expositor;
         $extension->fecha=$request->fecha;
@@ -143,7 +143,7 @@ class ActRegistroExtensionesController extends Controller
      */
     public function destroy($id)
     {
-        $extension=Extensione::find($id);
+        $extension=Extension::find($id);
         $extension->delete();
         return redirect('/act_regitro_extension')->with('success','Eliminado');
     }

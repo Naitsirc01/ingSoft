@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\evidencia;
 use Illuminate\Http\Request;
 use App\Aprendizaje;
 class ActAprendizajeServicioController extends Controller
@@ -40,22 +41,27 @@ class ActAprendizajeServicioController extends Controller
             'cantidad_estudiantes'=>'required',
             'nombre_socio'=>'required',
             'semestreaño'=>'required',
-            'asignaturaid'=>'required'
+            'asignaturaid'=>'required',
         ]);
+
 
         $aprendizaje=new Aprendizaje;
         $aprendizaje->nombre_profesor=$request->input('nombre_profesor');
         $aprendizaje->cantidad_estudiantes=$request->input('cantidad_estudiantes');
         $aprendizaje->nombre_socio=$request->input('nombre_socio');
         $aprendizaje->semestreaño=$request->input('semestreaño');
-        $aprendizaje->asignaturaid=$request->input('asignaturaid');
+        $aprendizaje->asignaturaid=$request->input('asignaturaid');;
         $aprendizaje->indicadorid=1;
-
-        $registro2 = \App\evidencia::create(
-            [   'archivo'=>$request->evidencia,
-                'actividad_aysid'=>$aprendizaje->id]);
-
         $aprendizaje->save();
+
+
+        $registro2 = new \App\evidencia(['archivo'=>$request->evidencia]);
+//        $registro2=new evidencia;
+//        $registro2->archivo=$request->input('evidencia');
+
+        $aprendizaje->evidencia()->save($registro2);
+
+
 
 
         return redirect('/act_aprendizaje_servicio')->with('success','Registrado');

@@ -316,6 +316,7 @@
             $('#nombre_socio').val(data[3]);
             $('#semestreaño').val(data[4]);
             $('#asignaturaid').val(data[5]);
+            $('#evidencia').val(data[5]);
 
             $('#editForm').attr('action','/act_aprendizaje_servicio/'+data[0]);
             $('#editModal').modal('show');

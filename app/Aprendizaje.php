@@ -13,8 +13,9 @@ class Aprendizaje extends Model
     public function indicador(){
         return $this->belongsTo('App\Indicador','indicadorid');
     }
+
     public function evidencia(){
-        return $this->belongsTo('App\evidencia','actividad_aysid');
+        return $this->hasOne('App\evidencia');
     }
 
 /*
