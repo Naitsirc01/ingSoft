@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\actividad_titulados_convenio;
+use App\estudiante;
 use Illuminate\Http\Request;
 
-class ActividadTituladosConvenioController extends Controller
+class EstudianteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class ActividadTituladosConvenioController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\actividad_titulados_convenio  $actividad_titulados_convenio
+     * @param  \App\estudiante  $edtudiante
      * @return \Illuminate\Http\Response
      */
-    public function show(actividad_titulados_convenio $actividad_titulados_convenio)
+    public function show(estudiante $edtudiante)
     {
         //
     }
@@ -52,10 +52,10 @@ class ActividadTituladosConvenioController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\actividad_titulados_convenio  $actividad_titulados_convenio
+     * @param  \App\estudiante  $edtudiante
      * @return \Illuminate\Http\Response
      */
-    public function edit(actividad_titulados_convenio $actividad_titulados_convenio)
+    public function edit(estudiante $edtudiante)
     {
         //
     }
@@ -64,10 +64,10 @@ class ActividadTituladosConvenioController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\actividad_titulados_convenio  $actividad_titulados_convenio
+     * @param  \App\estudiante  $edtudiante
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, actividad_titulados_convenio $actividad_titulados_convenio)
+    public function update(Request $request, estudiante $edtudiante)
     {
         //
     }
@@ -75,10 +75,10 @@ class ActividadTituladosConvenioController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\actividad_titulados_convenio  $actividad_titulados_convenio
+     * @param  \App\estudiante  $edtudiante
      * @return \Illuminate\Http\Response
      */
-    public function destroy(actividad_titulados_convenio $actividad_titulados_convenio)
+    public function destroy(estudiante $edtudiante)
     {
         //
     }
