@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Extension;
 use App\Indicadores;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 
 class IndicadoresController extends Controller
 {
@@ -14,7 +16,11 @@ class IndicadoresController extends Controller
      */
     public function index()
     {
-        //
+        $columnasExtension=Schema::getColumnListing('extensiones');
+        $columnasRegConvenio=Schema::getColumnListing('registroconvenios');
+        $columnasAprendizajeServicio=Schema::getColumnListing('aprendizajes');
+        $indicadores=Indicadores::all();
+        return view("/indicadores",compact('indicadores','columnasExtension'));
     }
 
     /**

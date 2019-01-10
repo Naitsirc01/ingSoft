@@ -20,7 +20,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{action('ActAprendizajeServicioController@store')}}" method="POST">
+            <form action="{{action('AtcAprendizajeMasServController@store')}}" method="POST">
             {{csrf_field()}}
             <!-- aca se pegaria el formulario agregar -->
                 <div class="modal-body">

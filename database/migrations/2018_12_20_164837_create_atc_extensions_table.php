@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateActividadConveniosTable extends Migration
+class CreateAtcExtensionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,16 @@ class CreateActividadConveniosTable extends Migration
      */
     public function up()
     {
-        Schema::create('actividad_convenios', function (Blueprint $table) {
+        Schema::create('atc_extensions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('empresa');
-            $table->integer('convenioid')->unsigned()->nullable();
-            $table->date('fecha_comienzo');
-            $table->date('duracion');
+            $table->string('titulo');
+            $table->string('expositor');
+            $table->date('fecha');
+            $table->string('ubicacion');
+            $table->integer('cantidad_asistentes');
+            $table->string('organizador');
+            $table->integer('tipo_extension');
             $table->integer('indicadorid')->unsigned()->nullable();
-            $table->foreign('convenioid')->references('id')
-                ->on('convenios')->onDelete('cascade');
             $table->foreign('indicadorid')->references('id')
                 ->on('indicadores')->onDelete('cascade');
             $table->timestamps();
@@ -35,6 +36,6 @@ class CreateActividadConveniosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('actividad_convenios');
+        Schema::dropIfExists('atc_extensions');
     }
 }

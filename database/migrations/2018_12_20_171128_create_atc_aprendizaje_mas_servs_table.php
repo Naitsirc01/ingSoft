@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateActividadExtensionsTable extends Migration
+class CreateAtcAprendizajeMasServsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class CreateActividadExtensionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('actividad_extensions', function (Blueprint $table) {
+        Schema::create('atc_aprendizaje_mas_servs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('titulo');
-            $table->string('expositor');
-            $table->date('fecha');
-            $table->string('ubicacion');
-            $table->integer('cantidad_asistentes');
-            $table->string('organizador');
-            $table->integer('tipo_extension');
+            $table->string('nombre_profesor');
+            $table->integer('cantidad_estudiantes');
+            $table->string('nombre_socio');
+            $table->string('semestreaño');
+            $table->integer('asignaturaid');
             $table->integer('indicadorid')->unsigned()->nullable();
             $table->foreign('indicadorid')->references('id')
                 ->on('indicadores')->onDelete('cascade');
@@ -36,6 +34,6 @@ class CreateActividadExtensionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('actividad_extensions');
+        Schema::dropIfExists('atc_aprendizaje_mas_servs');
     }
 }

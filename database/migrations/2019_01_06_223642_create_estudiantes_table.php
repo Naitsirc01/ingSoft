@@ -20,7 +20,7 @@ class CreateEstudiantesTable extends Migration
             $table->string('carrera');
             $table->integer('actividad_tit_conid')->unsigned()->nullable();
             $table->foreign('actividad_tit_conid')->references('id')
-                ->on('actividad_titulados_convenios')->onDelete('cascade');
+                ->on('atc_titulacion_cons')->onDelete('cascade');
             $table->timestamps();
         });
     }

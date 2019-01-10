@@ -19,7 +19,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="{{action('ActRegistroConvenioController@store')}}" method="POST">
+      <form action="{{action('RegistroConvenioController@store')}}" method="POST">
       {{csrf_field()}}
       <!-- aca se pegaria el formulario agregar -->
         <div class="modal-body">

@@ -8,7 +8,7 @@
     <h1>MENÚ</h1>
 
     <ul>
-      <li><a href="/act_registro_convenio" style="color:white;">Registrar Convenios de Colaboración </a></li>
+      <li><a href="/reg_registro_convenio" style="color:white;">Registrar Convenios de Colaboración </a></li>
       <li><a href="/act_aprendizaje_servicio" style="color:white;">Registrar actividad de Aprendizaje + Servicio (A+S)</a></li>
       <li><a href="/act_regitro_extension" style="color:white;">Registrar actividad de extensión</a></li>
       <li><a href="/act_titulacion_con" style="color:white;">Registrar actividad de titulación por convenio</a></li>

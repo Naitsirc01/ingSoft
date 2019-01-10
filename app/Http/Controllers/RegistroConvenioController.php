@@ -6,7 +6,7 @@ use App\convenio;
 use Illuminate\Http\Request;
 use App\Registroconvenio;
 
-class ActRegistroConvenioController extends Controller
+class RegistroConvenioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class ActRegistroConvenioController extends Controller
     {
         $conv = Registroconvenio::all();
         $tipoCon= convenio::all();
-        return view('/act_registro_convenio',compact('conv','tipoCon'));
+        return view('/reg_registro_convenio',compact('conv','tipoCon'));
     }
 
     /**
@@ -65,7 +65,7 @@ class ActRegistroConvenioController extends Controller
         $registro2->actividadConvenio()->save($registro);
         */
 
-        return redirect('/act_registro_convenio')->with('success','Registrado');
+        return redirect('/reg_registro_convenio')->with('success','Registrado');
     }
 
     /**
@@ -119,7 +119,7 @@ class ActRegistroConvenioController extends Controller
             ['archivo'=>$request->evidencia,
                 'actividad_convenioid'=>$registro->id]);
         */
-        return redirect('/act_registro_convenio')->with('success','Actualizado');
+        return redirect('/reg_registro_convenio')->with('success','Actualizado');
     }
 
     /**
@@ -132,6 +132,6 @@ class ActRegistroConvenioController extends Controller
     {
         $registro=Registroconvenio::find($id);
         $registro->delete();
-        return redirect('/act_registro_convenio')->with('success','Eliminado');
+        return redirect('/reg_registro_convenio')->with('success','Eliminado');
     }
 }
