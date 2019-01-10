@@ -16,11 +16,16 @@ class IndicadoresController extends Controller
      */
     public function index()
     {
-        $columnasExtension=Schema::getColumnListing('extensiones');
+        $columnasExtension=Schema::getColumnListing('atc_extensions');
         $columnasRegConvenio=Schema::getColumnListing('registroconvenios');
-        $columnasAprendizajeServicio=Schema::getColumnListing('aprendizajes');
+        $columnasAprendizajeServicio=Schema::getColumnListing('atc_aprendizaje_mas_servs');
+        $columnasTitulacionCon=Schema::getColumnListing('atc_titulacion_cons');
         $indicadores=Indicadores::all();
-        return view("/indicadores",compact('indicadores','columnasExtension'));
+        return view("/indicadores",compact('indicadores',
+            'columnasExtension',
+            'columnasRegConvenio',
+            'columnasAprendizajeServicio',
+            'columnasTitulacionCon'));
     }
 
     /**
@@ -41,7 +46,31 @@ class IndicadoresController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'nombre'=>'required',
+            'objetivo'=>'required',
+            'mdes'=>'required',
+            'tipoCal'=>'required',
+            'param1'=>'required',
+            'param2'=>'required',
+            'meta1'=>'required',
+            'meta'=>'required',
+        ]);
+
+        $indicador=new Indicadores;
+        $indicador->nombre=$request->input('nombre');
+        $indicador->objetivo=$request->input('objetivo');
+        $indicador->meta_descripcion=$request->input('mdes');
+        $indicador->tipo_de_calculo=$request->input('tipoCal');
+        $indicador->parametro1=$request->input('param1');
+        $indicador->parametro2=$request->input('param2');
+        $indicador->meta1=$request->input('meta1');
+        $indicador->meta2=$request->input('meta2');
+        $indicador->año_meta=$request->input('meta');
+        $indicador->usuario_id=1;
+        $indicador->save();
+
+        return redirect('/indicadores')->with('success','Registrado');
     }
 
     /**
@@ -73,9 +102,32 @@ class IndicadoresController extends Controller
      * @param  \App\Indicadores  $indicadores
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Indicadores $indicadores)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'nombre'=>'required',
+            'objetivo'=>'required',
+            'mdes'=>'required',
+            'tipoCal'=>'required',
+            'param1'=>'required',
+            'param2'=>'required',
+            'meta1'=>'required',
+            'meta'=>'required',
+        ]);
+        $indicador=Indicadores::find($id);
+        $indicador->nombre=$request->input('nombre');
+        $indicador->objetivo=$request->input('objetivo');
+        $indicador->meta_descripcion=$request->input('mdes');
+        $indicador->tipo_de_calculo=$request->input('tipoCal');
+        $indicador->parametro1=$request->input('param1');
+        $indicador->parametro2=$request->input('param2');
+        $indicador->meta1=$request->input('meta1');
+        $indicador->meta2=$request->input('meta2');
+        $indicador->año_meta=$request->input('meta');
+        $indicador->usuario_id=1;
+        $indicador->save();
+
+        return redirect('/indicadores')->with('success','Actualizado');
     }
 
     /**
@@ -84,8 +136,10 @@ class IndicadoresController extends Controller
      * @param  \App\Indicadores  $indicadores
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Indicadores $indicadores)
+    public function destroy($id)
     {
-        //
+        $indicador=Indicadores::find($id);
+        $indicador->delete();
+        return redirect('/indicadores')->with('success','Eliminado');
     }
 }

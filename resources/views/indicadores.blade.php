@@ -20,6 +20,21 @@
         padding: 10px;
         /*height: 300px; !* Should be removed. Only for demonstration *!*/
     }
+    #inMeta2 {
+        display: none;
+    }
+
+    #inMeta2.show {
+        display: block;
+    }
+
+    #inMeta2ed {
+        display: none;
+    }
+
+    #inMeta2ed.show {
+        display: block;
+    }
 </style>
 <body>
 <br><br>
@@ -67,7 +82,8 @@
                             <label for="rut" class="cols-sm-2 control-label">Tipo de calculo</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <select id="calculo">
+                                    <select name="tipoCal" id="calculo">
+                                        <option disabled selected value> -- Selecione actividad -- </option>
                                         <option value=1>Porcentual</option>
                                         <option value=2>Cantidad/Cantidad</option>
                                     </select>
@@ -79,9 +95,10 @@
                             <label for="rut" class="cols-sm-2 control-label">Actividad</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <select id="act" onchange="addColumnsParam1()">
+                                    <select id="act" onchange="addParams(this.value)">
+                                        <option disabled selected value> -- Selecione actividad -- </option>
                                         <option value=1>Titulados convenio</option>
-                                        <option value=2>Convenio</option>
+                                        <option value=2>Registro de Convenio</option>
                                         <option value=3>Aprendizaje mas servicio</option>
                                         <option value=4>Extension</option>
                                     </select>
@@ -89,29 +106,13 @@
                             </div>
                         </div>
 
-                        <script>
-                            var ext = {!! json_encode($columnasExtension) !!}
-                            function addColumnsParam1() {
-                                var x = document.getElementById("param1");
-                                var option = document.createElement("option");
-                                var i;
-
-                                for (i = 1; i < window.ext.length; i++) {
-                                    option.text = ext[i];
-                                    option.value= i;
-                                    x.add(option);
-                                    option = document.createElement("option");
-                                }
-                            }
-                        </script>
-
                         <div class="form-group">
                             <label for="rut" class="cols-sm-2 control-label">parametros</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <div class="column">
                                         <label for="rut" class="cols-sm-2 control-label">parametro1</label>
-                                        <select id="param1">
+                                        <select name="param1" id="param1">
                                             <option value=0>Total de actividades</option>
                                         </select>
                                     </div>
@@ -119,9 +120,9 @@
                                         <br>
                                         /
                                     </div>
-                                    <div class="column" id="param2">
+                                    <div class="column">
                                         <label for="rut" class="cols-sm-2 control-label">parametro2</label>
-                                        <select>
+                                        <select name="param2" id="param2">
                                             <option value=0>Total de actividades</option>
                                         </select>
                                     </div>
@@ -133,26 +134,28 @@
 
 
 
-
                         <div class="form-group">
-                            <label for="cestudiantes" class="cols-sm-2 control-label">Cantidad estudiantes</label>
+                            <label for="cestudiantes" class="cols-sm-2 control-label">Meta o porcentaje para el parametro 1</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-building fa" aria-hidden="true"></i></span>
-                                    <input type="number" class="form-control" name="cantidad_estudiantes"   placeholder="Ingrese cantidad de estudiantes"/>
+                                    <input type="number" class="form-control" name="meta1"   placeholder="Ingrese cantidad de estudiantes"/>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="cestudiantes" class="cols-sm-2 control-label">Cantidad estudiantes</label>
-                            <div class="cols-sm-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-building fa" aria-hidden="true"></i></span>
-                                    <input type="number" class="form-control" name="cantidad_estudiantes"   placeholder="Ingrese cantidad de estudiantes"/>
+                        <div id="inMeta2">
+                            <div class="form-group">
+                                <label for="cestudiantes" class="cols-sm-2 control-label">Meta para el parametro 2</label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-building fa" aria-hidden="true"></i></span>
+                                        <input type="number" class="form-control" name="meta2"   placeholder="Ingrese cantidad de estudiantes"/>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
 
                         <label for="exampleInputdate">Año de la meta</label>
                         <input type="date" class="form-control"  name="meta">
@@ -169,6 +172,8 @@
         </div>
     </div>
 </div>
+
+
 <!-- Fin agregar modal -->
 
 <!-- ACUALIZAR modal -->
@@ -188,7 +193,7 @@
                 <div class="modal-body">
                     <div class="form-group">
 
-                        <label for="email" class="cols-sm-2 control-label">Nombre</label>
+                        <label class="cols-sm-2 control-label">Nombre</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
@@ -196,7 +201,7 @@
                             </div>
                         </div>
 
-                        <label for="email" class="cols-sm-2 control-label">Objetivo</label>
+                        <label class="cols-sm-2 control-label">Objetivo</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
@@ -204,13 +209,94 @@
                             </div>
                         </div>
 
-                        <label for="email" class="cols-sm-2 control-label">descripcion de la meta</label>
+                        <label class="cols-sm-2 control-label">descripcion de la meta</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
                                 <input type="text" class="form-control" name="mdes" placeholder="describa la meta del indicador"/>
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <label for="rut" class="cols-sm-2 control-label">Tipo de calculo</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <select name="tipoCal" id="calculoed" onchange="hide()">
+                                        <option disabled selected value> -- Selecione actividad -- </option>
+                                        <option value=1>Porcentual</option>
+                                        <option value=2>Cantidad/Cantidad</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rut" class="cols-sm-2 control-label">Actividad</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <select id="act" onchange="addParamsed(this.value)">
+                                        <option disabled selected value> -- Selecione actividad -- </option>
+                                        <option value=1>Titulados convenio</option>
+                                        <option value=2>Registro de Convenio</option>
+                                        <option value=3>Aprendizaje mas servicio</option>
+                                        <option value=4>Extension</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="rut" class="cols-sm-2 control-label">parametros</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <div class="column">
+                                        <label for="rut" class="cols-sm-2 control-label">parametro1</label>
+                                        <select name="param1" id="param3">
+                                            <option value=0>Total de actividades</option>
+                                        </select>
+                                    </div>
+                                    <div class="columnOP">
+                                        <br>
+                                        /
+                                    </div>
+                                    <div class="column">
+                                        <label for="rut" class="cols-sm-2 control-label">parametro2</label>
+                                        <select name="param2" id="param4">
+                                            <option value=0>Total de actividades</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="form-group">
+                            <label for="cestudiantes" class="cols-sm-2 control-label">Meta o porcentaje para el parametro 1</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-building fa" aria-hidden="true"></i></span>
+                                    <input type="number" class="form-control" name="meta1"  placeholder="Ingrese cantidad de estudiantes"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="inMeta2ed">
+                            <div class="form-group">
+                                <label for="cestudiantes" class="cols-sm-2 control-label">Meta para el parametro 2</label>
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-building fa" aria-hidden="true"></i></span>
+                                        <input type="number" class="form-control" name="meta2"   placeholder="Ingrese cantidad de estudiantes"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
 
                         <label for="exampleInputdate">Año de la meta</label>
                         <input type="date" class="form-control"  name="meta">
@@ -292,8 +378,10 @@
             <th scope="col">NOMBRE</th>
             <th scope="col">OBJETIVO</th>
             <th scope="col">DESCRIPCION DE LA META</th>
-            <th scope="col">INDICADOR1</th>
-            <th scope="col">INDICADOR2</th>
+            <th scope="col">PARAMETRO 1</th>
+            <th scope="col">PARAMETRO 2</th>
+            <th scope="col">META 1</th>
+            <th scope="col">META 2</th>
             <th scope="col">META DEL AÑO</th>
             <th scope="col">ACCION</th>
         </tr>
@@ -305,6 +393,8 @@
                 <th>{{$i->nombre}}</th>
                 <th>{{$i->objetivo}}</th>
                 <th>{{$i->meta_descripcion}}</th>
+                <td>{{$i->parametro1}}</td>
+                <td>{{$i->parametro2}}</td>
                 <td>{{$i->meta1}}</td>
                 <td>{{$i->meta2}}</td>
                 <td>{{$i->año_meta}}</td>
@@ -345,9 +435,14 @@
             $('#nombre').val(data[1]);
             $('#objetivo').val(data[2]);
             $('#mdes').val(data[3]);
-            $('#meta').val(data[4]);
+            $('#tipoCal').val(data[4]);
+            $('#param1').val(data[5]);
+            $('#param2').val(data[6]);
+            $('#meta1').val(data[7]);
+            $('#meta2').val(data[8]);
+            $('#meta').val(data[9]);
 
-            $('#editForm').attr('action','/act_titulacion_con/'+data[0]);
+            $('#editForm').attr('action','/indicadores/'+data[0]);
             $('#editModal').modal('show');
         });
         //END edit
@@ -361,11 +456,99 @@
             console.log(data);
 
             $('#id').val(data[0]);
-            $('#deleteForm').attr('action','/act_titulacion_con/'+data[0]);
+            $('#deleteForm').attr('action','/indicadores/'+data[0]);
             $('#deleteModal').modal('show');
         });
         //END delete
     });
+</script>
+
+<script>
+    var ext = {!! json_encode($columnasExtension) !!}
+    var apr = {!! json_encode($columnasAprendizajeServicio) !!}
+    var reg = {!! json_encode($columnasRegConvenio) !!}
+    var ticon = {!! json_encode($columnasTitulacionCon) !!}
+
+        function addParams($id) {
+            debugger;
+            addColumnsParam($id,"param1")
+            addColumnsParam($id,"param2")
+        }
+
+    function addParamsed($id) {
+        debugger;
+        addColumnsParam($id,"param3")
+        addColumnsParam($id,"param4")
+    }
+
+    function addColumnsParam($id,$name) {
+        var x = document.getElementById($name);
+        var option = document.createElement("option");
+        var i;
+        var columnas;
+        var op=$id;
+
+        switch (op) {
+            case '1':
+                columnas=ticon;
+                break;
+            case '2':
+                columnas=reg;
+                break;
+            case '3':
+                columnas=apr;
+                break;
+            case '4':
+                columnas=ext;
+                break;
+        }
+        clearSelect($name);
+        option.text = 'Total de actividades';
+        option.value= 'Total de actividades';
+        x.add(option);
+        option = document.createElement("option");
+        for (i = 1; i < columnas.length; i++) {
+            option.text = columnas[i];
+            option.value= columnas[i];
+            x.add(option);
+            option = document.createElement("option");
+        }
+
+    }
+
+    function clearSelect($list) {
+        var select = document.getElementById($list);
+        var length = select.options.length;
+        for (i = 0; i < length; i++) {
+            select.options[i] = null;
+        }
+    }
+</script>
+
+<script>
+    function hide(){
+        debugger;
+        if(document.getElementById('calculoed').value == "2") {
+            document.getElementById("inMeta2ed").classList.add("show");
+        }else{
+            document.getElementById("inMeta2ed").classList.remove("show");
+        }
+    }
+
+    const source = document.querySelector("#calculo");
+    const target = document.querySelector("#inMeta2");
+
+    const displayWhenSelected = (source, value, target) => {
+        const selectedIndex = source.selectedIndex;
+        const isSelected = source[selectedIndex].value === value;
+        target.classList[isSelected
+            ? "add"
+            : "remove"
+            ]("show");
+    };
+    source.addEventListener("change", (evt) =>
+        displayWhenSelected(source, "2", target)
+    );
 </script>
 </body>
 </html>

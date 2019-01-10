@@ -25,10 +25,16 @@ class DatabaseSeeder extends Seeder
             'tipo_usuarioid'=>'2',
         ]);
         DB::table('indicadores')->insert([
-            'nombre' => 'indicador1',
-            'objetivo'=>'objetivo',
-            'meta1' =>30,
-            'año_meta'=>'2010-01-01',
+            'nombre' => 'Extension',
+            'objetivo'=>'no definido',
+            'meta_descripcion' =>'N° de actividades de extension -artisticas, culturales y otras - oranizadas por 
+            cada unidad y el numero total de participantes en las actividades de extension',
+            'tipo_de_calculo'=>'2010-01-01',
+            'parametro1'=>'Total de actividades',
+            'parametro2'=>'cantidad_asistentes',
+            'meta1'=>115,
+            'meta2'=>1377,
+            'año_meta'=>'2020-11-30',
             'usuario_id'=>1,
         ]);
 
