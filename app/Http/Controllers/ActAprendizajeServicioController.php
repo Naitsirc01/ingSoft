@@ -42,6 +42,7 @@ class ActAprendizajeServicioController extends Controller
             'semestreaño'=>'required',
             'asignaturaid'=>'required'
         ]);
+
         $aprendizaje=new Aprendizaje;
         $aprendizaje->nombre_profesor=$request->input('nombre_profesor');
         $aprendizaje->cantidad_estudiantes=$request->input('cantidad_estudiantes');
@@ -49,7 +50,13 @@ class ActAprendizajeServicioController extends Controller
         $aprendizaje->semestreaño=$request->input('semestreaño');
         $aprendizaje->asignaturaid=$request->input('asignaturaid');
         $aprendizaje->indicadorid=1;
+
+        $registro2 = \App\evidencia::create(
+            [   'archivo'=>$request->evidencia,
+                'actividad_aysid'=>$aprendizaje->id]);
+
         $aprendizaje->save();
+
 
         return redirect('/act_aprendizaje_servicio')->with('success','Registrado');
     }

@@ -15,7 +15,6 @@ class CreateEvidenciasTable extends Migration
     {
         Schema::create('evidencias', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre');
             $table->string('archivo');
             $table->integer('actividad_convenioid')->unsigned()->nullable();
             $table->integer('actividad_extensionid')->unsigned()->nullable();

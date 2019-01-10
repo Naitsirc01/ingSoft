@@ -50,6 +50,11 @@ class ActRegistroConvenioController extends Controller
         $registro->fecha_comienzo=$request->input('fecha');
         $registro->duracion=$request->input('duracion');
         $registro->indicadorid=1;
+
+
+        $registro2 = \App\evidencia::create(
+            [   'archivo'=>$request->evidencia,
+                'actividad_convenioid'=>$registro->id]);
         $registro->save();
 
         /*

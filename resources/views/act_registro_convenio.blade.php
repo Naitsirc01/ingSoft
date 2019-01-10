@@ -14,7 +14,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Registrar titulados</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Registrar convenios</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -67,6 +67,15 @@
             </div>
           </div>
 
+          <div class="form-group">
+            <label for="evidencia" class="cols-sm-2 control-label">Evidencia</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-upload fa" aria-hidden="true"></i></span>
+                <input type="file" class="form-control" name="evidencia" id="evidencia" >
+              </div>
+            </div>
+          </div>
 
         </div>
         <!-- termina formulario agregar -->
