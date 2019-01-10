@@ -1,4 +1,5 @@
-
+@extends('layout.formlayout')
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +20,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{action('ExtensionesController@store')}}" method="POST">
+            <form action="{{action('ActRegistroExtensionesController@store')}}" method="POST">
             {{csrf_field()}}
             <!-- aca se pegaria el formulario agregar -->
                 <div class="modal-body">
@@ -170,7 +171,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="/extension" method="POST" id="editForm">
+            <form action="/act_regitro_extension" method="POST" id="editForm">
             {{csrf_field()}}
             {{method_field('PUT')}}
             <!-- aca se pegaria el formulario agregar -->
@@ -322,7 +323,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="/extension" method="POST" id="deleteForm">
+            <form action="/act_regitro_extension" method="POST" id="deleteForm">
             {{csrf_field()}}
             {{method_field('DELETE')}}
             <!-- aca se pegaria el formulario agregar -->
@@ -436,7 +437,7 @@
             $('#anio_titulacion').val(data[7]);
             $('#carrera').val(data[8]);
 
-            $('#editForm').attr('action','/extension/'+data[0]);
+            $('#editForm').attr('action','/act_regitro_extension/'+data[0]);
             $('#editModal').modal('show');
         });
         //END edit
@@ -450,7 +451,7 @@
             console.log(data);
 
             $('#id').val(data[0]);
-            $('#deleteForm').attr('action','/extension/'+data[0]);
+            $('#deleteForm').attr('action','/act_regitro_extension/'+data[0]);
             $('#deleteModal').modal('show');
         });
         //END delte
@@ -458,5 +459,5 @@
 </script>
 </body>
 </html>
-
+@endsection
 

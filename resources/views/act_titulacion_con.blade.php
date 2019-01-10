@@ -1,4 +1,5 @@
-
+@extends('layout.formlayout')
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +20,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{action('TitulacionsController@store')}}" method="POST">
+            <form action="{{action('ActTitulacionConvenioController@store')}}" method="POST">
             {{csrf_field()}}
             <!-- aca se pegaria el formulario agregar -->
                 <div class="modal-body">
@@ -108,7 +109,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="/titulacion" method="POST" id="editForm">
+            <form action="/act_titulacion_con" method="POST" id="editForm">
             {{csrf_field()}}
             {{method_field('PUT')}}
             <!-- aca se pegaria el formulario agregar -->
@@ -198,7 +199,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="/titulacion" method="POST" id="deleteForm">
+            <form action="/act_titulacion_con" method="POST" id="deleteForm">
             {{csrf_field()}}
             {{method_field('DELETE')}}
             <!-- aca se pegaria el formulario agregar -->
@@ -313,7 +314,7 @@
             $('#profesor').val(data[7]);
             $('#empresa').val(data[8]);
 
-            $('#editForm').attr('action','/titulacion/'+data[0]);
+            $('#editForm').attr('action','/act_titulacion_con/'+data[0]);
             $('#editModal').modal('show');
         });
         //END edit
@@ -327,7 +328,7 @@
             console.log(data);
 
             $('#id').val(data[0]);
-            $('#deleteForm').attr('action','/titulacion/'+data[0]);
+            $('#deleteForm').attr('action','/act_titulacion_con/'+data[0]);
             $('#deleteModal').modal('show');
         });
         //END delete
@@ -336,4 +337,4 @@
 </body>
 </html>
 
-
+@endsection

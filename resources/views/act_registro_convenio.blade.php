@@ -19,7 +19,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="{{action('RegistroconvenioController@store')}}" method="POST">
+      <form action="{{action('ActRegistroConvenioController@store')}}" method="POST">
       {{csrf_field()}}
       <!-- aca se pegaria el formulario agregar -->
         <div class="modal-body">
@@ -91,7 +91,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="/registroconvenio" method="POST" id="editForm">
+      <form action="/act_registro_convenio" method="POST" id="editForm">
       {{csrf_field()}}
       {{method_field('PUT')}}
       <!-- aca se pegaria el formulario agregar -->
@@ -161,7 +161,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="/registroconvenio" method="POST" id="deleteForm">
+      <form action="/act_registro_convenio" method="POST" id="deleteForm">
       {{csrf_field()}}
       {{method_field('DELETE')}}
       <!-- aca se pegaria el formulario agregar -->
@@ -265,7 +265,7 @@
       $('#fecha').val(data[3]);
       $('#duracion').val(data[4]);
 
-      $('#editForm').attr('action','/registroconvenio/'+data[0]);
+      $('#editForm').attr('action','/act_registro_convenio/'+data[0]);
       $('#editModal').modal('show');
     });
     //END edit
@@ -279,7 +279,7 @@
       console.log(data);
 
       $('#id').val(data[0]);
-      $('#deleteForm').attr('action','/registroconvenio/'+data[0]);
+      $('#deleteForm').attr('action','/act_registro_convenio/'+data[0]);
       $('#deleteModal').modal('show');
     });
     //END delte
