@@ -83,7 +83,12 @@ class AtcExtensionController extends Controller
 
         $totalIndicador=$total+$indicador->parametro2;
         $indicador->parametro2=$totalIndicador;
+        $indicador->parametro1=atc_extension::all()->count();
         $indicador->save();
+
+
+
+
 
         return redirect('/act_regitro_extension')->with('success','Registrado');
     }
@@ -139,7 +144,7 @@ class AtcExtensionController extends Controller
         $extension->cantidad_asistentes=$request->cantidad_asistentes;
         $extension->organizador=$request->organizador;
         $extension->tipo_extension=$request->tipo_extension;
-        $extension->indicadorid=1;
+        $extension->Indicadores_id=1;
         $extension->save();
 
 
