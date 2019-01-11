@@ -21,4 +21,8 @@ class Indicadores extends Model
     public function atc_extensiones(){
         return $this->hasMany('App\atc_extension');
     }
+
+    public function atc_titulacion_con(){
+        return $this->hasMany('App\atc_titulacion_con');
+    }
 }
