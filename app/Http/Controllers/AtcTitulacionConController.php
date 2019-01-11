@@ -66,12 +66,18 @@ class AtcTitulacionConController extends Controller
             $profesor1= $valor1. ',' .$profesor1;
         }
         unset($valor1);
+        $arreglo2=$request->rut;
+        $rut1="";
+        foreach ($arreglo2 as $valor2){
+            $rut1 = $valor2. ',' .$rut1;
+        }
+        unset($valor2);
         //$nombre1 =$nombre1+ $request->nombre[i].',';
         //$nombre1 = $request->nombre[0].','.$request->nombre[1].','.$request->nombre[2].','.$request->nombre[3];
         $titulacion=new atc_titulacion_con;
         $titulacion->titulo=$request->titulo;
         $titulacion->nombre=$nombre1;
-        $titulacion->rut=$request->input('rut');
+        $titulacion->rut=$rut1;
         $titulacion->carrera=$request->input('carrera');
         $titulacion->fecha_inicio=$request->input('fecha_inicio');
         $titulacion->fecha_termino=$request->input('fecha_termino');
@@ -148,12 +154,18 @@ class AtcTitulacionConController extends Controller
             $profesor1= $valor1. ',' .$profesor1;
         }
         unset($valor1);
+        $arreglo2=$request->rut;
+        $rut1="";
+        foreach ($arreglo2 as $valor2){
+            $rut1 = $valor2. ',' .$rut1;
+        }
+        unset($valor2);
         $path=$request->file('evidencia')->store('upload');
         /*$titulacion=Titulacion::findOrFail($id);*/
         $titulacion=atc_titulacion_con::find($id);
         $titulacion->titulo=$request->titulo;
         $titulacion->nombre=$nombre1;
-        $titulacion->rut=$request->input('rut');
+        $titulacion->rut=$rut1;
         $titulacion->carrera=$request->input('carrera');
         $titulacion->fecha_inicio=$request->input('fecha_inicio');
         $titulacion->fecha_termino=$request->input('fecha_termino');

@@ -49,10 +49,13 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" name="rut" pattern="^\d{1,2}\.\d{3}\.\d{3}[-][0-9kK]{1}$" title="Ingrese rut válido" placeholder="Ingrese el rut del estudiante"/>
+                                <input type="text" class="form-control" name="rut[]" pattern="^\d{1,2}\.\d{3}\.\d{3}[-][0-9kK]{1}$" title="Ingrese rut válido" placeholder="Ingrese el rut del estudiante"/>
                             </div>
                         </div>
-
+                        <div id="aumentar2">
+                        </div>
+                        <button type="button" onclick="agregar2()"> agregar </button>
+                        <br>
                         <label for="name" class="cols-sm-2 control-label">Seleccione la Carrera</label>
                         <select class="form-control" name="carrera"  placeholder="Registrar cositos">
                             <option>ICCI</option>
@@ -154,10 +157,13 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" name="rut" id="rut" pattern="^\d{1,2}\.\d{3}\.\d{3}[-][0-9kK]{1}$" title="Ingrese rut válido" placeholder="Ingrese el rut del estudiante"/>
+                                <input type="text" class="form-control" name="rut[]" id="rut" pattern="^\d{1,2}\.\d{3}\.\d{3}[-][0-9kK]{1}$" title="Ingrese rut válido" placeholder="Ingrese el rut del estudiante"/>
                             </div>
                         </div>
-
+                        <div id="aumentar2">
+                        </div>
+                        <button type="button" onclick="agregar2()"> agregar </button>
+                        <br>
                         <label for="name" class="cols-sm-2 control-label">Seleccione la Carrera</label>
                         <select class="form-control" name="carrera" id="carrera" placeholder="Registrar cositos">
                             <option>ICCI</option>
@@ -392,6 +398,21 @@
                 '                            </div>\n' +
                 '                        </div>');
             j++;
+        }
+    };
+</script>
+<script>
+    var k = 0;
+    function agregar2() {
+        if (k<i) {
+            $("#aumentar2").append(' <label for="email" class="cols-sm-2 control-label">Ingrese rut</label>\n' +
+                '                        <div class="cols-sm-10">\n' +
+                '                            <div class="input-group">\n' +
+                '                                <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->\n' +
+                '                              <input type="text" class="form-control" name="rut[]" pattern="^\\d{1,2}\\.\\d{3}\\.\\d{3}[-][0-9kK]{1}$" title="Ingrese rut válido" placeholder="Ingrese el rut del estudiante"/>\n' +
+                '                            </div>\n' +
+                '                        </div>');
+            k++;
         }
     };
 </script>
