@@ -19,18 +19,7 @@ class Registroconvenio extends Model
     }
 
     public function evidencia(){
-        return $this->belongsTo('App\evidencia','actividad_convenioid');
+        return $this->hasOne('App\evidencia');
     }
 
-    /*UN COSITO
-    public function indicador(){
-        return $this->belongsTo('App\Indicador','tipo_convenio');
-    }
-
-
-
-     public function convenios(){
-        return $this->belongsTo('App\Convenio','indicadorid');
-    }
-    */
 }

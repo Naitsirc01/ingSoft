@@ -84,7 +84,11 @@ class AtcExtensionController extends Controller
         $totalIndicador=$total+$indicador->parametro2;
         $indicador->parametro2=$totalIndicador;
         $indicador->parametro1=atc_extension::all()->count();
-        $indicador->save();
+
+
+        $registro2 = new \App\evidencia(['archivo'=>$request->evidencia]);
+
+        $extension->evidencia()->save($registro2);
 
 
 

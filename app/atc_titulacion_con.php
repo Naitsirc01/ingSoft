@@ -12,4 +12,8 @@ class atc_titulacion_con extends Model
     public function indicador(){
         return $this->belongsTo('App\Indicador','indicadorid');
     }
+
+    public function evidencia(){
+        return $this->hasOne('App\evidencia');
+    }
 }

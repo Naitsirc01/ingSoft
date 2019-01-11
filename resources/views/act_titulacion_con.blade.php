@@ -84,9 +84,19 @@
                             </div>
                         </div>
 
-
+                        <div class="form-group">
+                            <label for="evidencia" class="cols-sm-2 control-label">Evidencia</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-upload fa" aria-hidden="true"></i></span>
+                                    <input type="file" class="form-control" name="evidencia" id="evidencia" >
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+
                 <!-- termina formulario agregar -->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -174,6 +184,15 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label for="evidencia" class="cols-sm-2 control-label">Evidencia</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-upload fa" aria-hidden="true"></i></span>
+                                    <input type="file" class="form-control" name="evidencia" id="evidencia" >
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
@@ -313,6 +332,8 @@
             $('#fecha_termino').val(data[6]);
             $('#profesor').val(data[7]);
             $('#empresa').val(data[8]);
+            $('#evidencia').val(data[5]);
+
 
             $('#editForm').attr('action','/act_titulacion_con/'+data[0]);
             $('#editModal').modal('show');

@@ -62,6 +62,9 @@ class AtcTitulacionConController extends Controller
         $titulacion->indicadorid=1;
         $titulacion->save();
 
+        $registro2 = new \App\evidencia(['archivo'=>$request->evidencia]);
+        $titulacion->evidencia()->save($registro2);
+
         return redirect('/act_titulacion_con')->with('success','Registrado');
     }
 

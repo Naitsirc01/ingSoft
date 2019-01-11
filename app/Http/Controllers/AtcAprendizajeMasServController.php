@@ -56,9 +56,6 @@ class AtcAprendizajeMasServController extends Controller
 
 
         $registro2 = new \App\evidencia(['archivo'=>$request->evidencia]);
-//        $registro2=new evidencia;
-//        $registro2->archivo=$request->input('evidencia');
-
         $aprendizaje->evidencia()->save($registro2);
 
 

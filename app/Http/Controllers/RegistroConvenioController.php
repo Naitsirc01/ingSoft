@@ -50,20 +50,11 @@ class RegistroConvenioController extends Controller
         $registro->fecha_comienzo=$request->input('fecha');
         $registro->duracion=$request->input('duracion');
         $registro->indicadorid=1;
-
-
-        $registro2 = \App\evidencia::create(
-            [   'archivo'=>$request->evidencia,
-                'actividad_convenioid'=>$registro->id]);
         $registro->save();
 
-        /*
-         * $registro2 = \App\evidencia::create(
-            ['archivo'=>$request->evidencia,
-                'actividad_convenioid'=>$registro->id]);
+        $registro2 = new \App\evidencia(['archivo'=>$request->evidencia]);
+        $registro->evidencia()->save($registro2);
 
-        $registro2->actividadConvenio()->save($registro);
-        */
 
         return redirect('/reg_registro_convenio')->with('success','Registrado');
     }

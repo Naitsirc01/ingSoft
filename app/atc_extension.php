@@ -12,4 +12,8 @@ class atc_extension extends Model
     public function indicador(){
         return $this->belongsTo('App\Indicador','Indicadores_id');
     }
+
+    public function evidencia(){
+        return $this->hasOne('App\evidencia');
+    }
 }
