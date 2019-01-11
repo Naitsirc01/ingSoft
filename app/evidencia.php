@@ -14,15 +14,15 @@ class evidencia extends Model
         return $this->belongsTo('App\atc_aprendizaje_mas_serv','atc_aprendizaje');
     }
     public function acttitulacioncon(){
-        return $this->belongsTo('App\titulacions','atc_titulacion_con_id');
+        return $this->belongsTo('App\atc_titulacion_con','atc_titulacion_con_id');
     }
 
     public function actextension(){
-        return $this->belongsTo('App/extensiones','atc_extension_id');
+        return $this->belongsTo('App/atc_extension','atc_extension_id');
 
     }
     public function actconvenio(){
-        return $this->belongsTo('App/extensiones','Registroconvenio_id');
+        return $this->belongsTo('App/Registroconvenio','Registroconvenio_id');
 
     }
 }
