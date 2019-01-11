@@ -38,9 +38,6 @@ class RegistroTituladosController extends Controller
         $this->validate($request,[
             'nombre'=>'required',
             'rut'=>'required',
-            'telefono'=>'required',
-            'correo'=>'required',
-            'empresa'=>'required',
             'lugar_trabajo'=>'required',
             'anio_titulacion'=>'required',
             'carrera'=>'required'
@@ -94,9 +91,6 @@ class RegistroTituladosController extends Controller
         $this->validate($request,[
             'nombre'=>'required',
             'rut'=>'required',
-            'telefono'=>'required',
-            'correo'=>'required',
-            'empresa'=>'required',
             'lugar_trabajo'=>'required',
             'anio_titulacion'=>'required',
             'carrera'=>'required'

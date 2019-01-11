@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\atc_titulacion_con;
+use App\Indicadores;
 use Illuminate\Http\Request;
 
 class AtcTitulacionConController extends Controller
@@ -39,28 +40,44 @@ class AtcTitulacionConController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request);
         $this->validate($request,[
             'titulo'=>'required',
             'nombre'=>'required',
             'rut'=>'required',
             'carrera'=>'required',
             'fecha_inicio'=>'required',
-            'fecha_termino'=>'required',
             'profesor'=>'required',
             'empresa'=>'required'
         ]);
-
+        $indicador = Indicadores::find(1);
+        $i=0;
+        $arreglo=$request->nombre;
+        $nombre1="";
+        foreach ($arreglo as $valor) {
+            $nombre1 = $valor . ',' . $nombre1;
+        }
+        unset($valor);
+        $arreglo1=$request->profesor;
+        $profesor1="";
+        foreach ($arreglo1 as $valor1){
+            $profesor1= $valor1. ',' .$profesor1;
+        }
+        unset($valor1);
+        //$nombre1 =$nombre1+ $request->nombre[i].',';
+        //$nombre1 = $request->nombre[0].','.$request->nombre[1].','.$request->nombre[2].','.$request->nombre[3];
         $titulacion=new atc_titulacion_con;
         $titulacion->titulo=$request->titulo;
-        $titulacion->nombre=$request->input('nombre');
+        $titulacion->nombre=$nombre1;
         $titulacion->rut=$request->input('rut');
         $titulacion->carrera=$request->input('carrera');
         $titulacion->fecha_inicio=$request->input('fecha_inicio');
         $titulacion->fecha_termino=$request->input('fecha_termino');
-        $titulacion->profesor=$request->input('profesor');
+        $titulacion->profesor=$profesor1;
         $titulacion->empresa=$request->input('empresa');
-        $titulacion->indicadorid=1;
-        $titulacion->save();
+
+        $indicador->atc_titulacion_con()->save($titulacion);
+
 
         $registro2 = new \App\evidencia(['archivo'=>$request->evidencia]);
         $titulacion->evidencia()->save($registro2);
@@ -107,7 +124,6 @@ class AtcTitulacionConController extends Controller
             'rut'=>'required',
             'carrera'=>'required',
             'fecha_inicio'=>'required',
-            'fecha_termino'=>'required',
             'profesor'=>'required',
             'empresa'=>'required'
         ]);
@@ -121,7 +137,7 @@ class AtcTitulacionConController extends Controller
         $titulacion->fecha_termino=$request->input('fecha_termino');
         $titulacion->profesor=$request->input('profesor');
         $titulacion->empresa=$request->input('empresa');
-        $titulacion->indicadorid=1;
+        $titulacion->indicadores=1;
         $titulacion->save();
 
 

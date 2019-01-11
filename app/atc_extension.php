@@ -10,7 +10,7 @@ class atc_extension extends Model
         'titulo','expositor','fecha','ubicacion', 'cantidad_asistentes','organizador' , 'tipo_extension','Indicadores_id'];
 
     public function indicador(){
-        return $this->belongsTo('App\Indicador','Indicadores_id');
+        return $this->belongsTo('App\Indicadores','Indicadores_id');
     }
 
     public function evidencia(){

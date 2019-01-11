@@ -38,10 +38,13 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" name="nombre" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del estudiante"/>
+                                <input type="text" class="form-control" name="nombre[]" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del estudiante"/>
                             </div>
                         </div>
-
+                        <div id="aumentar">
+                        </div>
+                            <button type="button" onclick="agregar()"> agregar </button>
+                        <br>
                         <label for="email" class="cols-sm-2 control-label">Rut</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
@@ -72,10 +75,13 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" name="profesor" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del profesor"/>
+                                <input type="text" class="form-control" name="profesor[]" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del profesor"/>
                             </div>
                         </div>
-
+                        <div id="aumentar1">
+                        </div>
+                        <button type="button" onclick="agregar1()"> agregar </button>
+                        <br>
                         <label for="email" class="cols-sm-2 control-label">Nombre empresa</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
@@ -138,10 +144,12 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" name="nombre" id="nombre" pattern="[A-Za-z]+" title="Ingrese nombre válido"  placeholder="Ingrese el nombre del estudiante"/>
+                                <input type="text" class="form-control" name="nombre[]" id="nombre" pattern="[A-Za-z]+" title="Ingrese nombre válido"  placeholder="Ingrese el nombre del estudiante"/>
                             </div>
                         </div>
-
+                        <div id="aumentar">
+                        </div>
+                        <button type="button" onclick="agregar()"> agregar </button>
                         <label for="email" class="cols-sm-2 control-label">Rut</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
@@ -172,10 +180,12 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" name="profesor" id="profesor" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del profesor"/>
+                                <input type="text" class="form-control" name="profesor[]" id="profesor" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del profesor"/>
                             </div>
                         </div>
-
+                        <div id="aumentar1">
+                        </div>
+                        <button type="button" onclick="agregar1()"> agregar </button>
                         <label for="email" class="cols-sm-2 control-label">Nombre empresa</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
@@ -354,6 +364,37 @@
         });
         //END delete
     });
+</script>
+
+<script>
+    var i = 0;
+    function agregar() {
+        if (i<3) {
+            $("#aumentar").append(' <label for="email" class="cols-sm-2 control-label">Nombre</label>\n' +
+                '                        <div class="cols-sm-10">\n' +
+                '                            <div class="input-group">\n' +
+                '                                <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->\n' +
+                '                                <input type="text" class="form-control" name="nombre[]" id="nombre" pattern="[A-Za-z]+" title="Ingrese nombre válido"  placeholder="Ingrese el nombre del estudiante"/>\n' +
+                '                            </div>\n' +
+                '                        </div>');
+            i++;
+        }
+    };
+</script>
+<script>
+    var j = 0;
+    function agregar1() {
+        if (j<1) {
+            $("#aumentar1").append(' <label for="email" class="cols-sm-2 control-label">Nombre profesor guia</label>\n' +
+                '                        <div class="cols-sm-10">\n' +
+                '                            <div class="input-group">\n' +
+                '                                <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->\n' +
+                '                               <input type="text" class="form-control" name="profesor[]" id="profesor" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del profesor"/>\n' +
+                '                            </div>\n' +
+                '                        </div>');
+            j++;
+        }
+    };
 </script>
 </body>
 </html>
