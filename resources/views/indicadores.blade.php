@@ -58,7 +58,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" name="nombre"  placeholder="Ingrese el nombre del indicador"/>
+                                <input type="text" class="form-control" name="nombre" pattern="[A-Za-z]+[0-9]*" title="Ingrese nombre válido" placeholder="Ingrese el nombre del indicador"/>
                             </div>
                         </div>
 
@@ -197,7 +197,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" id="nombre" name="nombre"  placeholder="Ingrese el nombre del indicador"/>
+                                <input type="text" class="form-control" id="nombre" name="nombre" pattern="[A-Za-z]+[0-9]*" title="Ingrese nombre válido"  placeholder="Ingrese el nombre del indicador"/>
                             </div>
                         </div>
 
