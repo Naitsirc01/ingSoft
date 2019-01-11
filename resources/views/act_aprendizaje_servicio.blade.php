@@ -39,7 +39,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-building fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="nombre_profesor"  placeholder="Ingrese profesor"/>
+                                <input type="text" class="form-control" name="nombre_profesor" pattern="[A-Za-z]+" title="Ingrese nombre válido"  placeholder="Ingrese profesor"/>
                             </div>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-building fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="nombre_socio"  placeholder="Ingrese nombre socio comunitario"/>
+                                <input type="text" class="form-control" name="nombre_socio" pattern="[A-Za-z]+" title="Ingrese nombre válido"  placeholder="Ingrese nombre socio comunitario"/>
                             </div>
                         </div>
                     </div>
@@ -135,7 +135,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-building fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="nombre_profesor" id="nombre_profesor"  placeholder="Ingrese profesor"/>
+                                <input type="text" class="form-control" name="nombre_profesor" id="nombre_profesor" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese profesor"/>
                             </div>
                         </div>
                     </div>
@@ -155,7 +155,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-building fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="nombre_socio" id="nombre_socio"  placeholder="Ingrese nombre socio comunitario"/>
+                                <input type="text" class="form-control" name="nombre_socio" id="nombre_socio" pattern="[A-Za-z]+" title="Ingrese nombre válido"  placeholder="Ingrese nombre socio comunitario"/>
                             </div>
                         </div>
                     </div>

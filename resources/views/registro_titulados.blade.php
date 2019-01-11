@@ -30,7 +30,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
 
-                                <input type="text" class="form-control" name="nombre" placeholder="Ingrese nombre del titulado"/>
+                                <input type="text" class="form-control" name="nombre" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese nombre del titulado"/>
                             </div>
                         </div>
                     </div>
@@ -40,7 +40,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
 
-                                <input type="text" class="form-control" name="rut" placeholder="Ingrese rut del titulado"/>
+                                <input type="text" class="form-control" name="rut" pattern="^\d{1,2}\.\d{3}\.\d{3}[-][0-9kK]{1}$" title="Ingrese rut válido" placeholder="Ingrese rut del titulado"/>
                             </div>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
 
-                                <input type="text" class="form-control" name="correo" placeholder="Ingrese email de contacto"/>
+                                <input type="text" class="form-control" name="correo" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" title="Ingrese correo válido" placeholder="Ingrese email de contacto"/>
                             </div>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
 
-                                <input type="text" class="form-control" name="empresa" placeholder="Ingrese el nombre de empresa"/>
+                                <input type="text" class="form-control" name="empresa" pattern="[A-Za-z]+[0-9]*" title="Ingrese nombre válido" placeholder="Ingrese el nombre de empresa"/>
                             </div>
                         </div>
                     </div>
@@ -80,7 +80,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
 
-                                <input type="text" class="form-control" name="lugar_trabajo" placeholder="Ingrese lugar donde trabaja"/>
+                                <input type="text" class="form-control" name="lugar_trabajo"  placeholder="Ingrese lugar donde trabaja"/>
                             </div>
                         </div>
                     </div>
@@ -101,7 +101,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
 
-                                <input type="text" class="form-control" name="carrera" placeholder="Ingrese el nombre de la carrera"/>
+                                <input type="text" class="form-control" name="carrera" pattern="[A-Za-z]+[0-9]*" title="Ingrese nombre válido" placeholder="Ingrese el nombre de la carrera"/>
                             </div>
                         </div>
                     </div>
@@ -138,7 +138,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
 
-                                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingrese nombre del titulado"/>
+                                <input type="text" class="form-control" name="nombre" id="nombre" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese nombre del titulado"/>
                             </div>
                         </div>
                     </div>
@@ -148,7 +148,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
 
-                                <input type="text" class="form-control" name="rut" id="rut" placeholder="Ingrese rut del titulado"/>
+                                <input type="text" class="form-control" name="rut" id="rut" pattern="^\d{1,2}\.\d{3}\.\d{3}[-][0-9kK]{1}$" title="Ingrese rut válido" placeholder="Ingrese rut del titulado"/>
                             </div>
                         </div>
                     </div>
@@ -168,7 +168,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
 
-                                <input type="text" class="form-control" name="correo" id="correo" placeholder="Ingrese email de contacto"/>
+                                <input type="text" class="form-control" name="correo" id="correo" pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}" title="Ingrese rut válido" placeholder="Ingrese email de contacto"/>
                             </div>
                         </div>
                     </div>
@@ -178,7 +178,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
 
-                                <input type="text" class="form-control" name="empresa" id="empresa" placeholder="Ingrese el nombre de empresa"/>
+                                <input type="text" class="form-control" name="empresa" id="empresa" pattern="[A-Za-z]+[0-9]*" title="Ingrese nombre válido" placeholder="Ingrese el nombre de empresa"/>
                             </div>
                         </div>
                     </div>
@@ -209,7 +209,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
 
-                                <input type="text" class="form-control" name="carrera" id="carrera" placeholder="Ingrese el nombre de la carrera"/>
+                                <input type="text" class="form-control" name="carrera" id="carrera" pattern="[A-Za-z]+[0-9]*" title="Ingrese nombre válido" placeholder="Ingrese el nombre de la carrera"/>
                             </div>
                         </div>
                     </div>

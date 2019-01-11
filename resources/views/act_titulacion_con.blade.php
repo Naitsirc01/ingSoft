@@ -30,7 +30,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <!--<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" name="titulo"  placeholder="Ingrese el titulo de la actividad"/>
+                                <input type="text" class="form-control" name="titulo" pattern="[A-Za-z]+[0-9]*" title="Ingrese nombre válido"  placeholder="Ingrese el titulo de la actividad"/>
                             </div>
                         </div>
 
@@ -38,7 +38,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" name="nombre"  placeholder="Ingrese el nombre del estudiante"/>
+                                <input type="text" class="form-control" name="nombre" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del estudiante"/>
                             </div>
                         </div>
 
@@ -46,7 +46,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" name="rut" placeholder="Ingrese el rut del estudiante"/>
+                                <input type="text" class="form-control" name="rut" pattern="^\d{1,2}\.\d{3}\.\d{3}[-][0-9kK]{1}$" title="Ingrese rut válido" placeholder="Ingrese el rut del estudiante"/>
                             </div>
                         </div>
 
@@ -72,7 +72,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" name="profesor" placeholder="Ingrese el nombre del profesor"/>
+                                <input type="text" class="form-control" name="profesor" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del profesor"/>
                             </div>
                         </div>
 
@@ -80,7 +80,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" name="empresa"  placeholder="Ingrese el nombre de la empresa donde se realiza"/>
+                                <input type="text" class="form-control" name="empresa" pattern="[A-Za-z]+[0-9]*" title="Ingrese nombre válido"  placeholder="Ingrese el nombre de la empresa donde se realiza"/>
                             </div>
                         </div>
 
@@ -120,7 +120,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <!--<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" name="titulo" id="titulo"  placeholder="Ingrese el titulo de la actividad"/>
+                                <input type="text" class="form-control" name="titulo" id="titulo" pattern="[A-Za-z]+[0-9]*" title="Ingrese nombre válido" placeholder="Ingrese el titulo de la actividad"/>
                             </div>
                         </div>
 
@@ -128,7 +128,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" name="nombre" id="nombre"  placeholder="Ingrese el nombre del estudiante"/>
+                                <input type="text" class="form-control" name="nombre" id="nombre" pattern="[A-Za-z]+" title="Ingrese nombre válido"  placeholder="Ingrese el nombre del estudiante"/>
                             </div>
                         </div>
 
@@ -136,7 +136,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" name="rut" id="rut"  placeholder="Ingrese el rut del estudiante"/>
+                                <input type="text" class="form-control" name="rut" id="rut" pattern="^\d{1,2}\.\d{3}\.\d{3}[-][0-9kK]{1}$" title="Ingrese rut válido" placeholder="Ingrese el rut del estudiante"/>
                             </div>
                         </div>
 
@@ -162,7 +162,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" name="profesor" id="profesor"  placeholder="Ingrese el nombre del profesor"/>
+                                <input type="text" class="form-control" name="profesor" id="profesor" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del profesor"/>
                             </div>
                         </div>
 
@@ -170,7 +170,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" name="empresa" id="empresa"  placeholder="Ingrese el nombre de la empresa donde se realiza"/>
+                                <input type="text" class="form-control" name="empresa" id="empresa" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese el nombre de la empresa donde se realiza"/>
                             </div>
                         </div>
 

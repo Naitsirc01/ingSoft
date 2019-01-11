@@ -28,7 +28,7 @@
                         <label for="name" class="cols-sm-2 control-label">Titulo</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <input type="title" class="form-control" name="titulo"  placeholder="Ingrese el titulo de la actividad"/>
+                                <input type="title" class="form-control" name="titulo" pattern="[A-Za-z]+[0-9]*" title="Ingrese nombre válido" placeholder="Ingrese el titulo de la actividad"/>
                             </div>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                         <label for="username" class="cols-sm-2 control-label">Expositor</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="expositor" placeholder="Ingrese el nombre del expositor"/>
+                                <input type="text" class="form-control" name="expositor" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del expositor"/>
                             </div>
                         </div>
                     </div>
@@ -79,7 +79,7 @@
                         <label for="confirm" class="cols-sm-2 control-label">Organizador de la actividad</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="organizador" placeholder="Ingrese el nombre del organizador"/>
+                                <input type="text" class="form-control" name="organizador" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del organizador"/>
                             </div>
                         </div>
                     </div>
@@ -180,7 +180,7 @@
                         <label for="name" class="cols-sm-2 control-label">Titulo</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <input type="title" class="form-control" name="titulo" id="titulo"  placeholder="Ingrese el titulo de la actividad"/>
+                                <input type="title" class="form-control" name="titulo" id="titulo" pattern="[A-Za-z]+[0-9]*" title="Ingrese nombre válido" placeholder="Ingrese el titulo de la actividad"/>
                             </div>
                         </div>
                     </div>
@@ -204,7 +204,7 @@
                         <label for="username" class="cols-sm-2 control-label">Expositor</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="expositor" id="expositor"  placeholder="Ingrese el nombre del expositor"/>
+                                <input type="text" class="form-control" name="expositor" id="expositor" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del expositor"/>
                             </div>
                         </div>
                     </div>
@@ -231,7 +231,7 @@
                         <label for="confirm" class="cols-sm-2 control-label">Organizador de la actividad</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="organizador" id="organizador"  placeholder="Ingrese el nombre del organizador"/>
+                                <input type="text" class="form-control" name="organizador" id="organizador" pattern="[A-Za-z]+" title="Ingrese nombre válido"  placeholder="Ingrese el nombre del organizador"/>
                             </div>
                         </div>
                     </div>
