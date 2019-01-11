@@ -19,8 +19,8 @@ class CreateRegistrosTable extends Migration
             $table->date('año');
             $table->integer('cantidad_alcanzada1');
             $table->integer('cantidad_alcanzada2');
-            $table->integer('indicadorid')->unsigned()->nullable();
-            $table->foreign('indicadorid')->references('id')
+            $table->integer('Indicadores_id')->unsigned()->nullable();
+            $table->foreign('Indicadores_id')->references('id')
                 ->on('indicadores')->onDelete('cascade');
             $table->timestamps();
         });

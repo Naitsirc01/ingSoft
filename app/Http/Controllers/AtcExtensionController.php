@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\atc_extension;
+use App\Indicadores;
+use App\Registro;
 use Illuminate\Http\Request;
 
 class AtcExtensionController extends Controller
@@ -15,6 +17,7 @@ class AtcExtensionController extends Controller
     public function index()
     {
         $extensiones=atc_extension::all();
+        $count=$extensiones->count();
         return view("/act_registro_extension", compact("extensiones"));
     }
 
@@ -46,6 +49,19 @@ class AtcExtensionController extends Controller
             'tipo_extension'=>'required'
         ]);
 
+//        $extension = new \App\atc_extension(['titulo'=>$request->titulo,
+//            'expositor'=>$request->expositor,
+//            'fecha'=>$request->fecha,
+//            'ubicacion'=>$request->ubicacion,
+//            'cantidad_asistentes'=>$request->cantidad_asistentes,
+//            'organizador'=>$request->organizador,
+//            'tipo_extension'=>$request->tipo_extension,
+//            'Indicadores_id'=>1]);
+//        $extension->save();
+
+        $indicador = Indicadores::find(1);
+
+
         $extension=new atc_extension;
         $extension->titulo=$request->titulo;
         $extension->expositor=$request->expositor;
@@ -54,8 +70,21 @@ class AtcExtensionController extends Controller
         $extension->cantidad_asistentes=$request->cantidad_asistentes;
         $extension->organizador=$request->organizador;
         $extension->tipo_extension=$request->tipo_extension;
-        $extension->indicadorid=1;
-        $extension->save();
+
+        $indicador->atc_extensiones()->save($extension);
+
+
+        $registro=Registro::find(1);
+        $total=$registro->cantidad_alcanzada2+$request->cantidad_asistentes;
+        $registro->cantidad_alcanzada1=atc_extension::all()->count();
+        $registro->cantidad_alcanzada2=$total;
+        $registro->save();
+
+
+        $totalIndicador=$total+$indicador->parametro2;
+        $indicador->parametro2=$totalIndicador;
+        $indicador->save();
+
         return redirect('/act_regitro_extension')->with('success','Registrado');
     }
 
@@ -112,6 +141,7 @@ class AtcExtensionController extends Controller
         $extension->tipo_extension=$request->tipo_extension;
         $extension->indicadorid=1;
         $extension->save();
+
 
         return redirect('/act_regitro_extension')->with('success','Actualizado');
     }

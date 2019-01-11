@@ -30,12 +30,22 @@ class DatabaseSeeder extends Seeder
             'meta_descripcion' =>'N° de actividades de extension -artisticas, culturales y otras - oranizadas por 
             cada unidad y el numero total de participantes en las actividades de extension',
             'tipo_de_calculo'=>'2010-01-01',
-            'parametro1'=>'Total de actividades',
-            'parametro2'=>'cantidad_asistentes',
+            'parametro1'=>0,
+            'parametro2'=>0,
+            'tipo1'=>'Total de actividades',
+            'tipo2'=>'cantidad_asistentes',
             'meta1'=>115,
             'meta2'=>1377,
             'año_meta'=>'2020-11-30',
             'usuario_id'=>1,
+        ]);
+
+        DB::table('registros')->insert([
+            'departamento' => 'no definido',
+            'año'=>'2019-01-10',
+            'cantidad_alcanzada1' =>0,
+            'cantidad_alcanzada2' =>0,
+            'Indicadores_id'=>1,
         ]);
 
 

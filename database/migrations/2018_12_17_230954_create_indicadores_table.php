@@ -19,8 +19,10 @@ class CreateIndicadoresTable extends Migration
             $table->string('objetivo');
             $table->string('meta_descripcion')->nullable();
             $table->string('tipo_de_calculo')->nullable();
-            $table->string('parametro1')->nullable();
-            $table->string('parametro2')->nullable();
+            $table->integer('parametro1')->nullable();
+            $table->integer('parametro2')->nullable();
+            $table->string('tipo1')->nullable();
+            $table->string('tipo2')->nullable();
             $table->integer('meta1');
             $table->integer('meta2')->unsigned()->nullable();
             $table->date('año_meta');

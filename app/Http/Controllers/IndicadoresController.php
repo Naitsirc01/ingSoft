@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\atc_extension;
 use App\Extension;
+use App\Registro;
 use App\Indicadores;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 
@@ -21,6 +24,17 @@ class IndicadoresController extends Controller
         $columnasAprendizajeServicio=Schema::getColumnListing('atc_aprendizaje_mas_servs');
         $columnasTitulacionCon=Schema::getColumnListing('atc_titulacion_cons');
         $indicadores=Indicadores::all();
+
+        $data = Indicadores::find(1);
+        if ($data != null) {
+            if(!empty(atc_extension::all())){
+                $data->parametro1=atc_extension::all()->count();
+                $data->save();
+            }
+        }
+
+
+
         return view("/indicadores",compact('indicadores',
             'columnasExtension',
             'columnasRegConvenio',
@@ -62,13 +76,25 @@ class IndicadoresController extends Controller
         $indicador->objetivo=$request->input('objetivo');
         $indicador->meta_descripcion=$request->input('mdes');
         $indicador->tipo_de_calculo=$request->input('tipoCal');
-        $indicador->parametro1=$request->input('param1');
-        $indicador->parametro2=$request->input('param2');
+        $indicador->parametro1=0;
+        $indicador->parametro2=0;
+        $indicador->tipo1=$request->input('param1');
+        $indicador->tipo2=$request->input('param2');
         $indicador->meta1=$request->input('meta1');
         $indicador->meta2=$request->input('meta2');
         $indicador->año_meta=$request->input('meta');
         $indicador->usuario_id=1;
         $indicador->save();
+
+
+
+        $registro=new Registro;
+        $registro->departamento='no definido';
+        $registro->año=Carbon::now();
+        $registro->cantidad_alcanzada1=0;
+        $registro->cantidad_alcanzada2=0;
+        $registro->indicadores_id=1;
+        $indicador->registros()->save($registro);
 
         return redirect('/indicadores')->with('success','Registrado');
     }

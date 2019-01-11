@@ -197,7 +197,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" name="nombre"  placeholder="Ingrese el nombre del indicador"/>
+                                <input type="text" class="form-control" id="nombre" name="nombre"  placeholder="Ingrese el nombre del indicador"/>
                             </div>
                         </div>
 
@@ -205,7 +205,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" name="objetivo" placeholder="describa el objetivo"/>
+                                <input id="obj" type="text" class="form-control" name="objetivo" placeholder="describa el objetivo"/>
                             </div>
                         </div>
 
@@ -213,7 +213,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" name="mdes" placeholder="describa la meta del indicador"/>
+                                <input id="des" type="text" class="form-control" name="mdes" placeholder="describa la meta del indicador"/>
                             </div>
                         </div>
 
@@ -280,7 +280,7 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-building fa" aria-hidden="true"></i></span>
-                                    <input type="number" class="form-control" name="meta1"  placeholder="Ingrese cantidad de estudiantes"/>
+                                    <input id="meta1ed" type="number" class="form-control" name="meta1"  placeholder="Ingrese cantidad de estudiantes"/>
                                 </div>
                             </div>
                         </div>
@@ -291,7 +291,7 @@
                                 <div class="cols-sm-10">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-building fa" aria-hidden="true"></i></span>
-                                        <input type="number" class="form-control" name="meta2"   placeholder="Ingrese cantidad de estudiantes"/>
+                                        <input id="meta2ed" type="number" class="form-control" name="meta2"   placeholder="Ingrese cantidad de estudiantes"/>
                                     </div>
                                 </div>
                             </div>
@@ -299,7 +299,7 @@
 
 
                         <label for="exampleInputdate">Año de la meta</label>
-                        <input type="date" class="form-control"  name="meta">
+                        <input id="metaed" type="date" class="form-control"  name="meta">
 
 
                     </div>
@@ -378,6 +378,7 @@
             <th scope="col">NOMBRE</th>
             <th scope="col">OBJETIVO</th>
             <th scope="col">DESCRIPCION DE LA META</th>
+            {{--<th scope="col">TIPO DE CALCULO</th>--}}
             <th scope="col">PARAMETRO 1</th>
             <th scope="col">PARAMETRO 2</th>
             <th scope="col">META 1</th>
@@ -393,6 +394,7 @@
                 <th>{{$i->nombre}}</th>
                 <th>{{$i->objetivo}}</th>
                 <th>{{$i->meta_descripcion}}</th>
+                {{--<th class="hidden">{{$i->tipo_de_calculo}}</th>--}}
                 <td>{{$i->parametro1}}</td>
                 <td>{{$i->parametro2}}</td>
                 <td>{{$i->meta1}}</td>
@@ -426,6 +428,21 @@
         var table = $('#datatable').DataTable();
         //start edit
         table.on('click','.edit',function(){
+
+            // var edName=$(table).parents('tr').find('td:nth-child(2)').html();
+            // var edObj=$(table).parents('tr').find('td:nth-child(3)').html();
+            // var edDes=$(table).parents('tr').find('td:nth-child(4)').html();
+            // var meta1=$(table).parents('tr').find('td:nth-child(7)').html();
+            // var meta2=$(table).parents('tr').find('td:nth-child(8)').html();
+            // var meta=$(table).parents('tr').find('td:nth-child(9)').html();
+            //
+            // $('#editModal').val($('#nombre').val(edName));
+            // $('#editModal').val($('#obj').val(edObj));
+            // $('#editModal').val($('#des').val(edDes));
+            // $('#editModal').val($('#meta1ed').val(meta1));
+            // $('#editModal').val($('#meta2ed').val(meta2));
+            // $('#editModal').val($('#metaed').val(meta));
+
             $tr = $(this).closest('tr');
             if ($($tr).hasClass('child')){
                 $tr=$tr.prev('.parent');
@@ -527,7 +544,6 @@
 
 <script>
     function hide(){
-        debugger;
         if(document.getElementById('calculoed').value == "2") {
             document.getElementById("inMeta2ed").classList.add("show");
         }else{
