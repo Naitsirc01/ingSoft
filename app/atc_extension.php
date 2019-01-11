@@ -14,6 +14,6 @@ class atc_extension extends Model
     }
 
     public function evidencia(){
-        return $this->hasOne('App\evidencia');
+        return $this->hasMany('App\evidencia');
     }
 }

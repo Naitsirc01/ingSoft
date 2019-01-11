@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Registroconvenio extends Model
 {
     protected $fillable = [
-        'empresa','convenioid', 'fecha_comienzo','duracion', 'indicadorid'];
+        'empresa','convenioid', 'fecha_comienzo','duracion', 'Indicadores_id'];
 
 
     public function indicador(){
-        return $this->belongsTo('App\Indicador','indicadorid');
+        return $this->belongsTo('App\Indicador','Indicadores_id');
     }
 
     public function convenio(){

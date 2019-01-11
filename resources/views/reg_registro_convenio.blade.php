@@ -19,7 +19,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="{{action('RegistroConvenioController@store')}}" method="POST">
+      <form action="{{action('RegistroConvenioController@store')}}" method="POST" enctype="multipart/form-data">
       {{csrf_field()}}
       <!-- aca se pegaria el formulario agregar -->
         <div class="modal-body">
@@ -67,12 +67,14 @@
             </div>
           </div>
 
+
           <div class="form-group">
             <label for="evidencia" class="cols-sm-2 control-label">Evidencia</label>
             <div class="cols-sm-10">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-upload fa" aria-hidden="true"></i></span>
-                <input type="file" class="form-control" name="evidencia" id="evidencia" >
+                <input type="file" class="form-control" name="evidencia" id="evidencia" value="">
+                {{--<input type="text" name="_token" value="{{csrf_token()}}" >--}}
               </div>
             </div>
           </div>
@@ -100,7 +102,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="/act_registro_convenio" method="POST" id="editForm">
+      <form action="/act_registro_convenio" method="POST" id="editForm" enctype="multipart/form-data">
       {{csrf_field()}}
       {{method_field('PUT')}}
       <!-- aca se pegaria el formulario agregar -->
@@ -148,6 +150,18 @@
             </div>
           </div>
         </div>
+
+        <div class="form-group">
+          <label for="evidencia" class="cols-sm-2 control-label">Evidencia</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-upload fa" aria-hidden="true"></i></span>
+              <input type="file" class="form-control" name="evidencia" id="evidencia" value="">
+              {{--<input type="text" name="_token" value="{{csrf_token()}}" >--}}
+            </div>
+          </div>
+        </div>
+
         <!-- termina formulario agregar -->
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -274,7 +288,7 @@
       $('#fecha').val(data[3]);
       $('#duracion').val(data[4]);
 
-      $('#editForm').attr('action','/act_registro_convenio/'+data[0]);
+      $('#editForm').attr('action','/reg_registro_convenio/'+data[0]);
       $('#editModal').modal('show');
     });
     //END edit
@@ -288,7 +302,7 @@
       console.log(data);
 
       $('#id').val(data[0]);
-      $('#deleteForm').attr('action','/act_registro_convenio/'+data[0]);
+      $('#deleteForm').attr('action','/reg_registro_convenio/'+data[0]);
       $('#deleteModal').modal('show');
     });
     //END delte

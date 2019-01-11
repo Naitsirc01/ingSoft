@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Indicadores extends Model
 {
     protected $fillable = [
-        'nombre','objetivo','meta_descripcion','tipo_de_calculo', 'parametro1',
+        'nombre','meta_descripcion','tipo_de_calculo', 'parametro1',
         'parametro2','tipo1','tipo2' , 'meta1','meta2','año_meta','usuario_id'];
 
     public function usuario(){
@@ -22,7 +22,16 @@ class Indicadores extends Model
         return $this->hasMany('App\atc_extension');
     }
 
-    public function atc_titulacion_con(){
+    public function atc_aprendizajeServ(){
+        return $this->hasMany('App\atc_aprendizaje_mas_serv');
+    }
+
+    public function atc_titulacionCon(){
         return $this->hasMany('App\atc_titulacion_con');
     }
+
+    public function atc_registroCon(){
+        return $this->hasMany('App\Registroconvenio');
+    }
+
 }

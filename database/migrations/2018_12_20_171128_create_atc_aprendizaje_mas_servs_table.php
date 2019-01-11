@@ -20,8 +20,8 @@ class CreateAtcAprendizajeMasServsTable extends Migration
             $table->string('nombre_socio');
             $table->string('semestreaño');
             $table->integer('asignaturaid');
-            $table->integer('indicadorid')->unsigned()->nullable();
-            $table->foreign('indicadorid')->references('id')
+            $table->integer('Indicadores_id')->unsigned()->nullable();
+            $table->foreign('Indicadores_id')->references('id')
                 ->on('indicadores')->onDelete('cascade');
             $table->timestamps();
         });

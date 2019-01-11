@@ -376,7 +376,6 @@
         <tr>
             <th scope="col">ID</th>
             <th scope="col">NOMBRE</th>
-            <th scope="col">OBJETIVO</th>
             <th scope="col">DESCRIPCION DE LA META</th>
             {{--<th scope="col">TIPO DE CALCULO</th>--}}
             <th scope="col">PARAMETRO 1</th>
@@ -392,8 +391,10 @@
             <tr>
                 <th>{{$i->id}}</th>
                 <th>{{$i->nombre}}</th>
-                <th>{{$i->objetivo}}</th>
-                <th>{{$i->meta_descripcion}}</th>
+                <th><div style="height:80px;width:110%;border:1px solid #fbfffd;font:14px/26px Georgia, Garamond, Serif;overflow:auto;">
+                        {{$i->meta_descripcion}}
+                    </div>
+                </th>
                 {{--<th class="hidden">{{$i->tipo_de_calculo}}</th>--}}
                 <td>{{$i->parametro1}}</td>
                 <td>{{$i->parametro2}}</td>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\atc_extension;
 use App\Indicadores;
 use App\Registro;
+use App\evidencia;
 use Illuminate\Http\Request;
 
 class AtcExtensionController extends Controller
@@ -17,7 +18,6 @@ class AtcExtensionController extends Controller
     public function index()
     {
         $extensiones=atc_extension::all();
-        $count=$extensiones->count();
         return view("/act_registro_extension", compact("extensiones"));
     }
 
@@ -49,6 +49,7 @@ class AtcExtensionController extends Controller
             'tipo_extension'=>'required'
         ]);
 
+        $path=$request->file('evidencia')->store('upload');
 //        $extension = new \App\atc_extension(['titulo'=>$request->titulo,
 //            'expositor'=>$request->expositor,
 //            'fecha'=>$request->fecha,
@@ -60,7 +61,6 @@ class AtcExtensionController extends Controller
 //        $extension->save();
 
         $indicador = Indicadores::find(1);
-
 
         $extension=new atc_extension;
         $extension->titulo=$request->titulo;
@@ -86,7 +86,7 @@ class AtcExtensionController extends Controller
         $indicador->parametro1=atc_extension::all()->count();
 
 
-        $registro2 = new \App\evidencia(['archivo'=>$request->evidencia]);
+        $registro2 = new \App\evidencia(['archivo'=>$path]);
 
         $extension->evidencia()->save($registro2);
 
@@ -140,6 +140,7 @@ class AtcExtensionController extends Controller
             'tipo_extension'=>'required'
         ]);
         /*$extensiones=Extension::findOrFail($id);*/
+        $path=$request->file('evidencia')->store('upload');
         $extension=atc_extension::find($id);
         $extension->titulo=$request->titulo;
         $extension->expositor=$request->expositor;
@@ -148,9 +149,11 @@ class AtcExtensionController extends Controller
         $extension->cantidad_asistentes=$request->cantidad_asistentes;
         $extension->organizador=$request->organizador;
         $extension->tipo_extension=$request->tipo_extension;
-        $extension->Indicadores_id=1;
         $extension->save();
 
+        $archivo = evidencia::find($id);
+        $archivo->archivo=$path;
+        $archivo->save();
 
         return redirect('/act_regitro_extension')->with('success','Actualizado');
     }

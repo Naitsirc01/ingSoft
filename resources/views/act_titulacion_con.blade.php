@@ -20,7 +20,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{action('AtcTitulacionConController@store')}}" method="POST">
+            <form action="{{action('AtcTitulacionConController@store')}}" method="POST" enctype="multipart/form-data">
             {{csrf_field()}}
             <!-- aca se pegaria el formulario agregar -->
                 <div class="modal-body">
@@ -125,7 +125,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="/act_titulacion_con" method="POST" id="editForm">
+            <form action="/act_titulacion_con" method="POST" id="editForm" enctype="multipart/form-data">
             {{csrf_field()}}
             {{method_field('PUT')}}
             <!-- aca se pegaria el formulario agregar -->
@@ -342,7 +342,6 @@
             $('#fecha_termino').val(data[6]);
             $('#profesor').val(data[7]);
             $('#empresa').val(data[8]);
-            $('#evidencia').val(data[5]);
 
 
             $('#editForm').attr('action','/act_titulacion_con/'+data[0]);

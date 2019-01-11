@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\atc_aprendizaje_mas_serv;
+use App\Indicadores;
+use App\Registro;
 use Illuminate\Http\Request;
 
 class AtcAprendizajeMasServController extends Controller
@@ -43,7 +45,8 @@ class AtcAprendizajeMasServController extends Controller
             'semestreaño'=>'required',
             'asignaturaid'=>'required',
         ]);
-
+        $path=$request->file('evidencia')->store('upload');
+        $indicador = Indicadores::find(2);
 
         $aprendizaje=new atc_aprendizaje_mas_serv;
         $aprendizaje->nombre_profesor=$request->input('nombre_profesor');
@@ -51,14 +54,25 @@ class AtcAprendizajeMasServController extends Controller
         $aprendizaje->nombre_socio=$request->input('nombre_socio');
         $aprendizaje->semestreaño=$request->input('semestreaño');
         $aprendizaje->asignaturaid=$request->input('asignaturaid');;
-        $aprendizaje->indicadorid=1;
-        $aprendizaje->save();
 
+        $indicador->atc_aprendizajeServ()->save($aprendizaje);
 
-        $registro2 = new \App\evidencia(['archivo'=>$request->evidencia]);
-        $aprendizaje->evidencia()->save($registro2);
+        $registro=Registro::find(2);
+        $total=$registro->cantidad_alcanzada2+$request->cantidad_estudiantes;
+        $registro->cantidad_alcanzada1=atc_aprendizaje_mas_serv::all()->count();
+        $registro->cantidad_alcanzada2=$total;
+        $registro->save();
 
+        $archivo = new \App\evidencia(['archivo'=>$path]);
+//        $registro2=new evidencia;
+//        $registro2->archivo=$request->input('evidencia');
 
+        $aprendizaje->evidencia()->save($archivo);
+
+        $totalIndicador=$total+$indicador->parametro2;
+        $indicador->parametro2=$totalIndicador;
+        $indicador->parametro1=atc_aprendizaje_mas_serv::all()->count();
+        $indicador->save();
 
 
         return redirect('/act_aprendizaje_servicio')->with('success','Registrado');
@@ -102,14 +116,18 @@ class AtcAprendizajeMasServController extends Controller
             'semestreaño'=>'required',
             'asignaturaid'=>'required'
         ]);
+        $path=$request->file('evidencia')->store('upload');
         $aprendizaje=atc_aprendizaje_mas_serv::find($id);
         $aprendizaje->nombre_profesor=$request->input('nombre_profesor');
         $aprendizaje->cantidad_estudiantes=$request->input('cantidad_estudiantes');
         $aprendizaje->nombre_socio=$request->input('nombre_socio');
         $aprendizaje->semestreaño=$request->input('semestreaño');
         $aprendizaje->asignaturaid=$request->input('asignaturaid');
-        $aprendizaje->indicadorid=1;
         $aprendizaje->save();
+
+        $archivo = evidencia::find($id);
+        $archivo->archivo=$path;
+        $archivo->save();
 
         return redirect('/act_aprendizaje_servicio')->with('success','Actualizado');
     }

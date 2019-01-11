@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\atc_extension;
+use App\atc_titulacion_con;
 use App\Extension;
 use App\Registro;
 use App\Indicadores;
+use App\atc_aprendizaje_mas_serv;
+use App\Registroconvenio;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
@@ -25,10 +28,36 @@ class IndicadoresController extends Controller
         $columnasTitulacionCon=Schema::getColumnListing('atc_titulacion_cons');
         $indicadores=Indicadores::all();
 
+        $totalAtc=0;
         $data = Indicadores::find(1);
         if ($data != null) {
             if(!empty(atc_extension::all())){
                 $data->parametro1=atc_extension::all()->count();
+                $totalAtc+=atc_extension::all()->count();
+                $data->save();
+            }
+        }
+        $data = Indicadores::find(2);
+        if ($data != null) {
+            if(!empty(atc_aprendizaje_mas_serv::all())){
+                $data->parametro1=atc_aprendizaje_mas_serv::all()->count();
+                $totalAtc+=atc_aprendizaje_mas_serv::all()->count();
+                $data->save();
+            }
+        }
+        $data = Indicadores::find(3);
+        if ($data != null) {
+            if(!empty(atc_titulacion_con::all())){
+                $data->parametro1=atc_titulacion_con::all()->count();
+                $totalAtc+=atc_titulacion_con::all()->count();
+                $data->save();
+            }
+        }
+        $data = Indicadores::find(4);
+        if ($data != null) {
+            if(!empty(Registroconvenio::all())){
+                $data->parametro1=Registroconvenio::all()->count();
+                $data->parametro2=$totalAtc;
                 $data->save();
             }
         }
@@ -62,7 +91,6 @@ class IndicadoresController extends Controller
     {
         $this->validate($request,[
             'nombre'=>'required',
-            'objetivo'=>'required',
             'mdes'=>'required',
             'tipoCal'=>'required',
             'param1'=>'required',
@@ -73,7 +101,6 @@ class IndicadoresController extends Controller
 
         $indicador=new Indicadores;
         $indicador->nombre=$request->input('nombre');
-        $indicador->objetivo=$request->input('objetivo');
         $indicador->meta_descripcion=$request->input('mdes');
         $indicador->tipo_de_calculo=$request->input('tipoCal');
         $indicador->parametro1=0;
@@ -93,7 +120,6 @@ class IndicadoresController extends Controller
         $registro->año=Carbon::now();
         $registro->cantidad_alcanzada1=0;
         $registro->cantidad_alcanzada2=0;
-        $registro->indicadores_id=1;
         $indicador->registros()->save($registro);
 
         return redirect('/indicadores')->with('success','Registrado');
@@ -132,7 +158,6 @@ class IndicadoresController extends Controller
     {
         $this->validate($request,[
             'nombre'=>'required',
-            'objetivo'=>'required',
             'mdes'=>'required',
             'tipoCal'=>'required',
             'param1'=>'required',
@@ -142,7 +167,6 @@ class IndicadoresController extends Controller
         ]);
         $indicador=Indicadores::find($id);
         $indicador->nombre=$request->input('nombre');
-        $indicador->objetivo=$request->input('objetivo');
         $indicador->meta_descripcion=$request->input('mdes');
         $indicador->tipo_de_calculo=$request->input('tipoCal');
         $indicador->parametro1=$request->input('param1');

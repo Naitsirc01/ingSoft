@@ -19,10 +19,10 @@ class CreateRegistroconveniosTable extends Migration
             $table->integer('convenioid')->unsigned()->nullable();
             $table->date('fecha_comienzo');
             $table->date('duracion');
-            $table->integer('indicadorid')->unsigned()->nullable();
+            $table->integer('Indicadores_id')->unsigned()->nullable();
             $table->foreign('convenioid')->references('id')
                 ->on('convenios')->onDelete('cascade');
-            $table->foreign('indicadorid')->references('id')
+            $table->foreign('Indicadores_id')->references('id')
                 ->on('indicadores')->onDelete('cascade');
             $table->timestamps();
         });

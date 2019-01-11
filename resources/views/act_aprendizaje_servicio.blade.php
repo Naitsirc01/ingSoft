@@ -20,7 +20,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{action('AtcAprendizajeMasServController@store')}}" method="POST">
+            <form action="{{action('AtcAprendizajeMasServController@store')}}" method="POST" enctype="multipart/form-data">
             {{csrf_field()}}
             <!-- aca se pegaria el formulario agregar -->
                 <div class="modal-body">
@@ -113,7 +113,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="/act_aprendizaje_servicio" method="POST" id="editForm">
+            <form action="/act_aprendizaje_servicio" method="POST" id="editForm" enctype="multipart/form-data">
             {{csrf_field()}}
             {{method_field('PUT')}}
             <!-- aca se pegaria el formulario agregar -->
@@ -316,7 +316,6 @@
             $('#nombre_socio').val(data[3]);
             $('#semestreaño').val(data[4]);
             $('#asignaturaid').val(data[5]);
-            $('#evidencia').val(data[5]);
 
             $('#editForm').attr('action','/act_aprendizaje_servicio/'+data[0]);
             $('#editModal').modal('show');

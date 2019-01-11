@@ -11,7 +11,7 @@ class evidencia extends Model
 
 
     public function actividadays(){
-        return $this->belongsTo('App\Aprendizaje','aprendizaje_id');
+        return $this->belongsTo('App\atc_aprendizaje_mas_serv','atc_aprendizaje');
     }
     public function acttitulacioncon(){
         return $this->belongsTo('App\titulacions','atc_titulacion_con_id');

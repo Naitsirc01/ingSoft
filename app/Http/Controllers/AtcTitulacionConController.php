@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\atc_titulacion_con;
 use App\Indicadores;
+use App\Registro;
+use App\evidencia;
 use Illuminate\Http\Request;
 
 class AtcTitulacionConController extends Controller
@@ -41,6 +43,7 @@ class AtcTitulacionConController extends Controller
     public function store(Request $request)
     {
         //dd($request);
+        $path=$request->file('evidencia')->store('upload');
         $this->validate($request,[
             'titulo'=>'required',
             'nombre'=>'required',
@@ -50,8 +53,7 @@ class AtcTitulacionConController extends Controller
             'profesor'=>'required',
             'empresa'=>'required'
         ]);
-        $indicador = Indicadores::find(1);
-        $i=0;
+        $indicador = Indicadores::find(3);
         $arreglo=$request->nombre;
         $nombre1="";
         foreach ($arreglo as $valor) {
@@ -76,10 +78,17 @@ class AtcTitulacionConController extends Controller
         $titulacion->profesor=$profesor1;
         $titulacion->empresa=$request->input('empresa');
 
-        $indicador->atc_titulacion_con()->save($titulacion);
+        $indicador->atc_titulacionCon()->save($titulacion);
 
+        $registro=Registro::find(3);
 
-        $registro2 = new \App\evidencia(['archivo'=>$request->evidencia]);
+        //cuando se pueda implementar total de actividades de titulacion
+        $registro->cantidad_alcanzada1=atc_titulacion_con::all()->count();
+        $registro->save();
+
+        $indicador->parametro1=atc_titulacion_con::all()->count();
+
+        $registro2 = new \App\evidencia(['archivo'=>$path]);
         $titulacion->evidencia()->save($registro2);
 
         return redirect('/act_titulacion_con')->with('success','Registrado');
@@ -127,18 +136,34 @@ class AtcTitulacionConController extends Controller
             'profesor'=>'required',
             'empresa'=>'required'
         ]);
+        $arreglo=$request->nombre;
+        $nombre1="";
+        foreach ($arreglo as $valor) {
+            $nombre1 = $valor . ',' . $nombre1;
+        }
+        unset($valor);
+        $arreglo1=$request->profesor;
+        $profesor1="";
+        foreach ($arreglo1 as $valor1){
+            $profesor1= $valor1. ',' .$profesor1;
+        }
+        unset($valor1);
+        $path=$request->file('evidencia')->store('upload');
         /*$titulacion=Titulacion::findOrFail($id);*/
         $titulacion=atc_titulacion_con::find($id);
         $titulacion->titulo=$request->titulo;
-        $titulacion->nombre=$request->input('nombre');
+        $titulacion->nombre=$nombre1;
         $titulacion->rut=$request->input('rut');
         $titulacion->carrera=$request->input('carrera');
         $titulacion->fecha_inicio=$request->input('fecha_inicio');
         $titulacion->fecha_termino=$request->input('fecha_termino');
-        $titulacion->profesor=$request->input('profesor');
+        $titulacion->profesor=$profesor1;
         $titulacion->empresa=$request->input('empresa');
-        $titulacion->indicadores=1;
         $titulacion->save();
+
+        $archivo = evidencia::find($id);
+        $archivo->archivo=$path;
+        $archivo->save();
 
 
         /*return redirect("/act_titulacion_con");*/
