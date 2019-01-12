@@ -28,7 +28,7 @@
             <div class="cols-sm-10">
               <div class="input-group">
 
-                <input type="text" class="form-control" name="nombre" pattern="[A-Za-z]+[0-9]*" title="Ingrese nombre válido" placeholder="Ingrese nombre de la empresa"/>
+                <input type="text" class="form-control" name="nombre" pattern="[[A-Za-z-ñÑáéíóúÁÉÍÓÚüÜ]+[0-9]*]+" title="Ingrese nombre válido" placeholder="Ingrese nombre de la empresa"/>
               </div>
             </div>
           </div>
@@ -58,11 +58,11 @@
           </div>
 
           <div class="form-group">
-            <label for="email" class="cols-sm-2 control-label">Duracion</label>
+            <label for="email" class="cols-sm-2 control-label">Años de duración</label>
             <div class="cols-sm-10">
               <div class="input-group">
 
-                <input type="date" class="form-control" name="duracion" placeholder="Ingrese la fecha de termino?"/>
+                <input type="number" class="form-control" name="duracion" placeholder="Ingrese los años de duración del convenio"/>
               </div>
             </div>
           </div>
@@ -72,9 +72,9 @@
             <label for="evidencia" class="cols-sm-2 control-label">Evidencia</label>
             <div class="cols-sm-10">
               <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-upload fa" aria-hidden="true"></i></span>
+
                 <input type="file" class="form-control" name="evidencia" id="evidencia" value="">
-                {{--<input type="text" name="_token" value="{{csrf_token()}}" >--}}
+
               </div>
             </div>
           </div>
@@ -112,7 +112,7 @@
             <div class="cols-sm-10">
               <div class="input-group">
 
-                <input type="text" class="form-control" name="nombre" pattern="[A-Za-z]+[0-9]*" title="Ingrese nombre válido" placeholder="Ingrese nombre de la empresa"/>
+                <input type="text" class="form-control" name="nombre" id="nombre" pattern="[A-Za-z]+[0-9]*" title="Ingrese nombre válido" placeholder="Ingrese nombre de la empresa"/>
               </div>
             </div>
           </div>
@@ -135,32 +135,33 @@
             <label for="telefono" class="cols-sm-2 control-label">Fecha de comienzo</label>
             <div class="cols-sm-10">
               <div class="input-group">
-                <input type="date" class="form-control" name="fecha" placeholder="Ingrse fecha de comienzo"/>
+                <input type="date" class="form-control" name="fecha" id="fecha"  placeholder="Ingrse fecha de comienzo"/>
               </div>
             </div>
           </div>
 
           <div class="form-group">
-            <label for="email" class="cols-sm-2 control-label">duracion</label>
+            <label for="email" class="cols-sm-2 control-label">Años de duración</label>
             <div class="cols-sm-10">
               <div class="input-group">
 
-                <input type="date" class="form-control" name="duracion" placeholder="Ingrese la fecha de termino?"/>
+                <input type="number" class="form-control" name="duracion" id="duracion" placeholder="Ingrese los años de duración del convenio"/>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="evidencia" class="cols-sm-2 control-label">Evidencia</label>
+            <div class="cols-sm-10">
+              <div class="input-group">
+
+                <input type="file" class="form-control" name="evidencia" id="evidencia" value="">
+
               </div>
             </div>
           </div>
         </div>
 
-        <div class="form-group">
-          <label for="evidencia" class="cols-sm-2 control-label">Evidencia</label>
-          <div class="cols-sm-10">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-upload fa" aria-hidden="true"></i></span>
-              <input type="file" class="form-control" name="evidencia" id="evidencia" value="">
-              {{--<input type="text" name="_token" value="{{csrf_token()}}" >--}}
-            </div>
-          </div>
-        </div>
+
 
         <!-- termina formulario agregar -->
         <div class="modal-footer">
@@ -187,7 +188,7 @@
       <form action="/act_registro_convenio" method="POST" id="deleteForm">
       {{csrf_field()}}
       {{method_field('DELETE')}}
-      <!-- aca se pegaria el formulario agregar -->
+      <!-- aca se pegaria el formulario agregar (kappita) -->
         <div class="modal-body">
           <input type="hidden" name="_method" value="DELETE">
           <p>¿Está seguro de que desea eliminar los datos?</p>

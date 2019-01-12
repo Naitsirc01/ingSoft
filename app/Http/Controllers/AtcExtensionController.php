@@ -47,6 +47,7 @@ class AtcExtensionController extends Controller
             'cantidad_asistentes'=>'required',
             'organizador'=>'required',
             'tipo_extension'=>'required'
+
         ]);
 
         $path=$request->file('evidencia')->store('upload');
@@ -139,7 +140,7 @@ class AtcExtensionController extends Controller
             'organizador'=>'required',
             'tipo_extension'=>'required'
         ]);
-        /*$extensiones=Extension::findOrFail($id);*/
+
         $path=$request->file('evidencia')->store('upload');
         $extension=atc_extension::find($id);
         $extension->titulo=$request->titulo;
@@ -154,6 +155,65 @@ class AtcExtensionController extends Controller
         $archivo = evidencia::find($id);
         $archivo->archivo=$path;
         $archivo->save();
+
+
+
+       /*---de aca pa alla
+        $this->validate($request,[
+            'titulo'=>'required',
+            'expositor'=>'required',
+            'fecha'=>'required',
+            'ubicacion'=>'required',
+            'cantidad_asistentes'=>'required',
+            'organizador'=>'required',
+            'tipo_extension'=>'required'
+
+        ]);
+
+        $path=$request->file('evidencia')->store('upload');
+//        $extension = new \App\atc_extension(['titulo'=>$request->titulo,
+//            'expositor'=>$request->expositor,
+//            'fecha'=>$request->fecha,
+//            'ubicacion'=>$request->ubicacion,
+//            'cantidad_asistentes'=>$request->cantidad_asistentes,
+//            'organizador'=>$request->organizador,
+//            'tipo_extension'=>$request->tipo_extension,
+//            'Indicadores_id'=>1]);
+//        $extension->save();
+
+        $indicador = Indicadores::find($id);
+
+        $extension=atc_extension::find($id);
+        $extension->titulo=$request->titulo;
+        $extension->expositor=$request->expositor;
+        $extension->fecha=$request->fecha;
+        $extension->ubicacion=$request->ubicacion;
+        $extension->cantidad_asistentes=$request->cantidad_asistentes;
+        $extension->organizador=$request->organizador;
+        $extension->tipo_extension=$request->tipo_extension;
+
+        $indicador->atc_extensiones()->save($extension);
+
+
+        $registro=Registro::find($id);
+        $total=$registro->cantidad_alcanzada2+$request->cantidad_asistentes;
+        $registro->cantidad_alcanzada1=atc_extension::all()->count();
+        $registro->cantidad_alcanzada2=$total;
+        $registro->save();
+
+
+        $totalIndicador=$total+$indicador->parametro2;
+        $indicador->parametro2=$totalIndicador;
+        $indicador->parametro1=atc_extension::all()->count();
+
+
+        $registro2 = new \App\evidencia(['archivo'=>$path]);
+
+        $extension->evidencia()->save($registro2);
+
+
+       de alla pa aca
+        */
 
         return redirect('/act_regitro_extension')->with('success','Actualizado');
     }

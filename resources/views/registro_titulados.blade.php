@@ -30,7 +30,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
 
-                                <input type="text" class="form-control" name="nombre" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese nombre del titulado"/>
+                                <input type="text" class="form-control" name="nombre" pattern="([A-ZÁÉÍÓÚ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido" placeholder="Ingrese nombre del titulado"/>
                             </div>
                         </div>
                     </div>
@@ -96,15 +96,17 @@
                     </div>
 
 
-                    <div class="form-group">
-                        <label for="carrera" class="cols-sm-2 control-label">Carrera</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-
-                                <input type="text" class="form-control" name="carrera" pattern="[A-Za-z]+[0-9]*" title="Ingrese nombre válido" placeholder="Ingrese el nombre de la carrera"/>
-                            </div>
-                        </div>
-                    </div>
+                    <label for="name" class="cols-sm-2 control-label">Seleccione la Carrera</label>
+                    <select class="form-control" name="carrera"  placeholder="Registrar cositos">
+                        <option>ICCI</option>
+                        <option>ICI</option>
+                        <option>ICA</option>
+                        <option>ICdM</option>
+                        <option>ICM</option>
+                        <option>ICPC</option>
+                        <option>ICQ</option>
+                        <option>IC</option>
+                    </select>
                 </div>
                 <!-- termina formulario agregar -->
                 <div class="modal-footer">
@@ -138,7 +140,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
 
-                                <input type="text" class="form-control" name="nombre" id="nombre" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese nombre del titulado"/>
+                                <input type="text" class="form-control" name="nombre" id="nombre" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido" placeholder="Ingrese nombre del titulado"/>
                             </div>
                         </div>
                     </div>
@@ -204,15 +206,17 @@
                     </div>
 
 
-                    <div class="form-group">
-                        <label for="carrera" class="cols-sm-2 control-label">Carrera</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-
-                                <input type="text" class="form-control" name="carrera" id="carrera" pattern="[A-Za-z]+[0-9]*" title="Ingrese nombre válido" placeholder="Ingrese el nombre de la carrera"/>
-                            </div>
-                        </div>
-                    </div>
+                    <label for="name" class="cols-sm-2 control-label">Seleccione la Carrera</label>
+                    <select class="form-control" name="carrera" id="carrera" placeholder="Registrar cositos">
+                        <option>ICCI</option>
+                        <option>ICI</option>
+                        <option>ICA</option>
+                        <option>ICdM</option>
+                        <option>ICM</option>
+                        <option>ICPC</option>
+                        <option>ICQ</option>
+                        <option>IC</option>
+                    </select>
                 </div>
                 <!-- termina formulario agregar -->
                 <div class="modal-footer">

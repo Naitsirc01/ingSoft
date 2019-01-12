@@ -35,7 +35,7 @@
 
                     <div class="form-group">
                         <label for="name" class="cols-sm-2 control-label">Seleccione la actividad a registrar</label>
-                        <select name="tipo_extension" id="tipo_extension" class="form-control">
+                        <select name="tipo_extension"  class="form-control">
                             <option value="1">Charla</option>
                             <option value="2">Curso</option>
                             <option value="3">Talleres</option>
@@ -89,8 +89,8 @@
                         <label for="evidencia" class="cols-sm-2 control-label">Subir lista asistencia</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-upload fa" aria-hidden="true"></i></span>
-                                <input type="file" class="form-control" name="evidencia" id="evidencia" >
+
+                                <input type="file" class="form-control" name="evidencia"  >
                             </div>
                         </div>
                     </div>
@@ -192,7 +192,7 @@
                         <label for="evidencia" class="cols-sm-2 control-label">Subir lista asistencia</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-upload fa" aria-hidden="true"></i></span>
+
                                 <input type="file" class="form-control" name="evidencia" id="evidencia" >
                             </div>
                         </div>

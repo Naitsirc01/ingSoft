@@ -38,7 +38,7 @@
                         <label for="profesor" class="cols-sm-2 control-label">Nombre profesor</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-building fa" aria-hidden="true"></i></span>
+
                                 <input type="text" class="form-control" name="nombre_profesor" pattern="[A-Za-z]+" title="Ingrese nombre válido"  placeholder="Ingrese profesor"/>
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                         <label for="cestudiantes" class="cols-sm-2 control-label">Cantidad estudiantes</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-building fa" aria-hidden="true"></i></span>
+
                                 <input type="number" class="form-control" name="cantidad_estudiantes"   placeholder="Ingrese cantidad de estudiantes"/>
                             </div>
                         </div>
@@ -58,7 +58,7 @@
                         <label for="sociocomunitario" class="cols-sm-2 control-label">Nombre socio comunitario</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-building fa" aria-hidden="true"></i></span>
+
                                 <input type="text" class="form-control" name="nombre_socio" pattern="[A-Za-z]+" title="Ingrese nombre válido"  placeholder="Ingrese nombre socio comunitario"/>
                             </div>
                         </div>
@@ -85,7 +85,7 @@
                         <label for="evidencia" class="cols-sm-2 control-label">Evidencia</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-upload fa" aria-hidden="true"></i></span>
+
                                 <input type="file" class="form-control" name="evidencia" id="evidencia" >
                             </div>
                         </div>
@@ -134,7 +134,7 @@
                         <label for="profesor" class="cols-sm-2 control-label">Nombre profesor</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-building fa" aria-hidden="true"></i></span>
+
                                 <input type="text" class="form-control" name="nombre_profesor" id="nombre_profesor" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese profesor"/>
                             </div>
                         </div>
@@ -144,7 +144,7 @@
                         <label for="cestudiantes" class="cols-sm-2 control-label">Cantidad estudiantes</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-building fa" aria-hidden="true"></i></span>
+
                                 <input type="number" class="form-control" name="cantidad_estudiantes" id="cantidad_estudiantes"  placeholder="Ingrese cantidad de estudiantes"/>
                             </div>
                         </div>
@@ -154,7 +154,7 @@
                         <label for="sociocomunitario" class="cols-sm-2 control-label">Nombre socio comunitario</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-building fa" aria-hidden="true"></i></span>
+
                                 <input type="text" class="form-control" name="nombre_socio" id="nombre_socio" pattern="[A-Za-z]+" title="Ingrese nombre válido"  placeholder="Ingrese nombre socio comunitario"/>
                             </div>
                         </div>
@@ -181,7 +181,7 @@
                         <label for="evidencia" class="cols-sm-2 control-label">Evidencia</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-upload fa" aria-hidden="true"></i></span>
+
                                 <input type="file" class="form-control" name="evidencia" id="evidencia" >
                             </div>
                         </div>

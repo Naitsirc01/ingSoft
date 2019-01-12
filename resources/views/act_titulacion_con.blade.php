@@ -97,7 +97,7 @@
                             <label for="evidencia" class="cols-sm-2 control-label">Evidencia</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-upload fa" aria-hidden="true"></i></span>
+
                                     <input type="file" class="form-control" name="evidencia" id="evidencia" >
                                 </div>
                             </div>
@@ -204,7 +204,7 @@
                             <label for="evidencia" class="cols-sm-2 control-label">Evidencia</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-upload fa" aria-hidden="true"></i></span>
+
                                     <input type="file" class="form-control" name="evidencia" id="evidencia" >
                                 </div>
                             </div>
