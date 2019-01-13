@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\atc_aprendizaje_mas_serv;
 use App\Indicadores;
 use App\Registro;
+use App\evidencia;
 use Illuminate\Http\Request;
 
 class AtcAprendizajeMasServController extends Controller
@@ -125,7 +126,7 @@ class AtcAprendizajeMasServController extends Controller
         $aprendizaje->asignaturaid=$request->input('asignaturaid');
         $aprendizaje->save();
 
-        $archivo = evidencia::find($id);
+        $archivo = evidencia::where('atc_aprendizaje_mas_serv_id','=',$id)->first();
         $archivo->archivo=$path;
         $archivo->save();
 

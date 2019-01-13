@@ -94,6 +94,7 @@ class AtcTitulacionConController extends Controller
 
         $indicador->parametro1=atc_titulacion_con::all()->count();
 
+
         $registro2 = new \App\evidencia(['archivo'=>$path]);
         $titulacion->evidencia()->save($registro2);
 
@@ -173,6 +174,7 @@ class AtcTitulacionConController extends Controller
         $titulacion->empresa=$request->input('empresa');
         $titulacion->save();
 
+        $archivo = evidencia::where('atc_titulacion_con_id','=',$id)->first();
         $archivo = evidencia::find($id);
         $archivo->archivo=$path;
         $archivo->save();

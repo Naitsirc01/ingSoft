@@ -135,7 +135,7 @@ class RegistroConvenioController extends Controller
         $registro->duracion=$request->input('duracion');
         $registro->save();
 
-        $archivo = evidencia::find($id);
+        $archivo = evidencia::where('Registroconvenio_id','=',$id)->first();
         $archivo->archivo=$path;
         $archivo->save();
 

@@ -1,7 +1,7 @@
 <!---<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">-->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #23415b;">
     <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/menu">
             <img src={{asset("logoUcn.png")}} width="70" height="70" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">

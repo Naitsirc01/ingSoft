@@ -30,9 +30,11 @@ class IndicadoresController extends Controller
 
         $totalAtc=0;
         $data = Indicadores::find(1);
+        $reg = Registro::find(1);
         if ($data != null) {
             if(!empty(atc_extension::all())){
                 $data->parametro1=atc_extension::all()->count();
+                $data->parametro2=$reg->cantidad_alcanzada2;
                 $totalAtc+=atc_extension::all()->count();
                 $data->save();
             }
