@@ -90,7 +90,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
 
-                                <input type="date" class="form-control" name="anio_titulacion" placeholder="Ingrese año de titulacion"/>
+                                <input type="number" class="form-control" name="anio_titulacion" placeholder="Ingrese año de titulacion"/>
                             </div>
                         </div>
                     </div>
@@ -200,7 +200,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
 
-                                <input type="date" class="form-control" name="anio_titulacion" id="anio_titulacion" placeholder="Ingrese año de titulacion"/>
+                                <input type="number" class="form-control" name="anio_titulacion" id="anio_titulacion" placeholder="Ingrese año de titulacion"/>
                             </div>
                         </div>
                     </div>
