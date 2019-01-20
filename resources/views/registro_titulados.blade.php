@@ -16,7 +16,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Registrar titulados</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Registrar titulado</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -125,7 +125,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Registrar titulados</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Actualizar titulado</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -219,9 +219,16 @@
                     </select>
                 </div>
                 <!-- termina formulario agregar -->
+
+
+                <div class="modal-body">
+                    <p>¿Está seguro de que desea actualizar los datos?</p>
+                </div>
+
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Actualizar datos</button>
+
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No, cancelar</button>
+                    <button type="submit" class="btn btn-primary">Si, actualizar</button>
                 </div>
 
             </form>
@@ -235,7 +242,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Registrar titulados</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Eliminar titulado</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -295,7 +302,7 @@
                 <th scope="col">CORREO</th>
                 <th scope="col">EMPRESA</th>
                 <th scope="col">TRABAJO</th>
-                <th scope="col">AÑODETIT</th>
+                <th scope="col">AÑO</th>
                 <th scope="col">CARRERA</th>
                 <th scope="col">ACCION</th>
             </tr>

@@ -15,7 +15,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Registrar Aprendizaje </h5>
+                <h5 class="modal-title" id="exampleModalLabel">Registrar actividad de Aprendizaje + Servicio (A+S) </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -108,7 +108,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Registrar aprendizaje</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Actualizar actividad de Aprendizaje + Servicio (A+S)</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -188,9 +188,14 @@
                     </div>
                 </div>
                 <!-- termina formulario agregar -->
+                <div class="modal-body">
+                    <p>¿Está seguro de que desea actualizar los datos?</p>
+                </div>
+
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Actualizar datos</button>
+
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No, cancelar</button>
+                    <button type="submit" class="btn btn-primary">Si, actualizar</button>
                 </div>
 
             </form>
@@ -204,7 +209,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Registrar aprendizaje</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Eliminar actividad de Aprendizaje + Servicio (A+S)</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -219,8 +224,8 @@
                 </div>
                 <!-- termina formulario agregar -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Eliminar datos</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No, cancelar</button>
+                    <button type="submit" class="btn btn-primary">Si, eliminar</button>
                 </div>
 
             </form>

@@ -54,7 +54,7 @@ class RegistroTituladosController extends Controller
         $titulado->indicadorid=1;
         $titulado->save();
 
-        return redirect('/regitro_titulados')->with('success','Registrado');
+        return redirect('/regitro_titulados')->with('success','Se ha registrado correctamente.');
     }
 
     /**
@@ -107,7 +107,7 @@ class RegistroTituladosController extends Controller
         $titulado->indicadorid=1;
         $titulado->save();
 
-        return redirect('/regitro_titulados')->with('success','Actualizado');
+        return redirect('/regitro_titulados')->with('success','Se ha actualizado correctamente.');
     }
 
     /**
@@ -120,6 +120,6 @@ class RegistroTituladosController extends Controller
     {
         $titulado=Titulado::find($id);
         $titulado->delete();
-        return redirect('/regitro_titulados')->with('success','Eliminado');
+        return redirect('/regitro_titulados')->with('success','Se ha eliminado correctamente.');
     }
 }

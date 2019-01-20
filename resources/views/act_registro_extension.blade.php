@@ -201,9 +201,14 @@
 
                 </div>
                 <!-- termina formulario agregar -->
+                <div class="modal-body">
+                    <p>¿Está seguro de que desea actualizar los datos?</p>
+                </div>
+
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Actualizar datos</button>
+
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No, cancelar</button>
+                    <button type="submit" class="btn btn-primary">Si, actualizar</button>
                 </div>
 
             </form>
@@ -217,7 +222,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Eliminar</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Eliminar actividad de extensión</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -232,8 +237,8 @@
                 </div>
                 <!-- termina formulario agregar -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Eliminar datos</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No, cancelar</button>
+                    <button type="submit" class="btn btn-primary">Si, eliminar</button>
                 </div>
 
             </form>
@@ -327,15 +332,13 @@
             var data = table.row($tr).data();
             console.log(data);
 
-            $('#nombre').val(data[1]);
-            $('#rut').val(data[2]);
-            $('#telefono').val(data[3]);
-            $('#correo').val(data[4]);
-            $('#empresa').val(data[5]);
-            $('#lugar_trabajo').val(data[6]);
-            $('#anio_titulacion').val(data[7]);
-            $('#carrera').val(data[8]);
-
+            $('#titulo').val(data[1]);
+            $('#expositor').val(data[2]);
+            $('#fecha').val(data[3]);
+            $('#ubicacion').val(data[4]);
+            $('#cantidad_asistentes').val(data[5]);
+            $('#organizador').val(data[6]);
+            $('#tipo_extension').val(data[7]);
             $('#editForm').attr('action','/act_regitro_extension/'+data[0]);
             $('#editModal').modal('show');
         });

@@ -14,7 +14,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Registrar convenios</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Registrar Convenio de Colaboración</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -73,7 +73,7 @@
             <div class="cols-sm-10">
               <div class="input-group">
 
-                <input type="file" class="form-control" name="evidencia" id="evidencia" value="">
+                <input type="file" class="form-control" name="evidencia"  value="">
 
               </div>
             </div>
@@ -97,7 +97,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Editar convenio</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Actualizar Convenio de Colaboración</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -135,7 +135,7 @@
             <label for="telefono" class="cols-sm-2 control-label">Fecha de comienzo</label>
             <div class="cols-sm-10">
               <div class="input-group">
-                <input type="date" class="form-control" name="fecha" id="fecha"  placeholder="Ingrse fecha de comienzo"/>
+                <input type="date" class="form-control" name="fecha" id="fecha"  placeholder="Ingrese fecha de comienzo"/>
               </div>
             </div>
           </div>
@@ -164,9 +164,13 @@
 
 
         <!-- termina formulario agregar -->
+        <div class="modal-body">
+          <p>¿Está seguro de que desea actualizar los datos?</p>
+        </div>
+
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="submit" class="btn btn-primary">Actualizar datos</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No, cancelar</button>
+          <button type="submit" class="btn btn-primary">Si, actualizar</button>
         </div>
 
       </form>
@@ -180,7 +184,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Registrar titulados</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Eliminar Convenio de Colaboración</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -195,8 +199,8 @@
         </div>
         <!-- termina formulario agregar -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="submit" class="btn btn-primary">Eliminar datos</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No, cancelar</button>
+          <button type="submit" class="btn btn-primary">Si, eliminar</button>
         </div>
 
       </form>

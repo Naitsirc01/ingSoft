@@ -81,7 +81,7 @@ class AtcAprendizajeMasServController extends Controller
         $indicador->save();
 
 
-        return redirect('/act_aprendizaje_servicio')->with('success','Registrado');
+        return redirect('/act_aprendizaje_servicio')->with('success','Se ha registrado correctamente.');
     }
 
     /**
@@ -135,7 +135,7 @@ class AtcAprendizajeMasServController extends Controller
         $archivo->archivo=$path;
         $archivo->save();
 
-        return redirect('/act_aprendizaje_servicio')->with('success','Actualizado');
+        return redirect('/act_aprendizaje_servicio')->with('success','Se ha actualizado correctamente.');
     }
 
     /**
@@ -148,6 +148,6 @@ class AtcAprendizajeMasServController extends Controller
     {
         $aprendizaje=atc_aprendizaje_mas_serv::find($id);
         $aprendizaje->delete();
-        return redirect('/act_aprendizaje_servicio')->with('success','Eliminado');
+        return redirect('/act_aprendizaje_servicio')->with('success','Se ha eliminado correctamente.');
     }
 }
