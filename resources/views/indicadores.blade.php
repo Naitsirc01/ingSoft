@@ -48,7 +48,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{action('IndicadoresController@store')}}" method="POST">
+            <form action="{{action('IndicadoresController@store')}}" method="POST" onsubmit="return confirm('¿Esta seguro que desea agregar este nuevo indicador?');">
             {{csrf_field()}}
             <!-- aca se pegaria el formulario agregar -->
                 <div class="modal-body">
@@ -186,7 +186,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="/indicadores" method="POST" id="editForm">
+            <form action="/indicadores" method="POST" id="editForm" onsubmit="return confirm('¿Esta seguro que desea confirmar los cambios?');">
             {{csrf_field()}}
             {{method_field('PUT')}}
             <!-- aca se pegaria el formulario agregar -->
@@ -391,7 +391,7 @@
             <tr>
                 <th>{{$i->id}}</th>
                 <th>{{$i->nombre}}</th>
-                <th><div style="height:80px;width:110%;border:1px solid #fbfffd;font:14px/26px Georgia, Garamond, Serif;overflow:auto;">
+                <th><div style="height:80px;width:100%;border:1px solid #fbfffd;font:14px/26px Georgia, Garamond, Serif;overflow:auto;">
                         {{$i->meta_descripcion}}
                     </div>
                 </th>
@@ -405,7 +405,6 @@
                     <a href="#" class="btn btn-success edit">ACTUALIZAR</a>
                     <a href="#" class="btn btn-danger delete">ELIMINAR</a>
                 </td>
-
             </tr>
         @endforeach
         </tbody>

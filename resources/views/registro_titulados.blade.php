@@ -21,7 +21,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{action('RegistroTituladosController@store')}}" method="POST">
+            <form action="{{action('RegistroTituladosController@store')}}" method="POST" onsubmit="return confirm('¿Esta seguro que deseas agregar este nuevo titulado?');">
             {{csrf_field()}}
             <!-- aca se pegaria el formulario agregar -->
                 <div class="modal-body">
@@ -130,7 +130,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="/regitro_titulados" method="POST" id="editForm">
+            <form action="/regitro_titulados" method="POST" id="editForm" onsubmit="return confirm('¿Esta seguro que desea confirmar los cambios?');">
             {{csrf_field()}}
             {{method_field('PUT')}}
             <!-- aca se pegaria el formulario agregar -->
