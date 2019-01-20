@@ -21,11 +21,13 @@ class CreateAtcTitulacionConsTable extends Migration
             $table->string('carrera');
             $table->date('fecha_inicio');
             $table->date('fecha_termino');
-            $table->string('profesor');
+            $table->integer('Profesor_id')->unsigned()->nullable();
             $table->string('empresa');
             $table->integer('Indicadores_id')->unsigned()->nullable();
             $table->foreign('Indicadores_id')->references('id')
                 ->on('indicadores')->onDelete('cascade');
+            $table->foreign('Profesor_id')->references('id')
+                ->on('profesores')->onDelete('cascade');
             $table->timestamps();
         });
     }
