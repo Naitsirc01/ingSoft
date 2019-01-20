@@ -96,7 +96,7 @@ class AtcExtensionController extends Controller
 
 
 
-        return redirect('/act_regitro_extension')->with('success','Registrado');
+        return redirect('/act_regitro_extension')->with('success','Se ha registrado correctamente.');
     }
 
     /**
@@ -170,7 +170,7 @@ class AtcExtensionController extends Controller
         $indicador->parametro2=$totalIndicador;
         $indicador->parametro1=atc_extension::all()->count();
 
-        return redirect('/act_regitro_extension')->with('success','Actualizado');
+        return redirect('/act_regitro_extension')->with('success','Se ha actualizado correctamente.');
     }
 
     /**
@@ -183,6 +183,6 @@ class AtcExtensionController extends Controller
     {
         $extension=atc_extension::find($id);
         $extension->delete();
-        return redirect('/act_regitro_extension')->with('success','Eliminado');
+        return redirect('/act_regitro_extension')->with('success','Se ha eliminado correctamente.');
     }
 }

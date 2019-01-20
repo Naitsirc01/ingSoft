@@ -78,7 +78,7 @@ class RegistroConvenioController extends Controller
         $indicador->parametro1 = Registroconvenio::all()->count();
         $indicador->save();
 
-        return redirect('/reg_registro_convenio')->with('success','Registrado'.$path);
+        return redirect('/reg_registro_convenio')->with('success','Se ha registrado correctamente.');
     }
 
         /*
@@ -145,7 +145,7 @@ class RegistroConvenioController extends Controller
             ['archivo'=>$request->evidencia,
                 'actividad_convenioid'=>$registro->id]);
         */
-        return redirect('/reg_registro_convenio')->with('success','Actualizado');
+        return redirect('/reg_registro_convenio')->with('success','Se ha actualizado correctamente.');
     }
 
     /**
@@ -158,6 +158,6 @@ class RegistroConvenioController extends Controller
     {
         $registro=Registroconvenio::find($id);
         $registro->delete();
-        return redirect('/reg_registro_convenio')->with('success','Eliminado');
+        return redirect('/reg_registro_convenio')->with('success','Se ha eliminado correctamente.');
     }
 }

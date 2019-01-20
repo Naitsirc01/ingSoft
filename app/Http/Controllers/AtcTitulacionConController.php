@@ -98,7 +98,7 @@ class AtcTitulacionConController extends Controller
         $registro2 = new \App\evidencia(['archivo'=>$path]);
         $titulacion->evidencia()->save($registro2);
 
-        return redirect('/act_titulacion_con')->with('success','Registrado');
+        return redirect('/act_titulacion_con')->with('success','Se ha registrado correctamente.');
     }
 
     /**
@@ -181,7 +181,7 @@ class AtcTitulacionConController extends Controller
 
 
         /*return redirect("/act_titulacion_con");*/
-        return redirect('/act_titulacion_con')->with('success','Actualizado');
+        return redirect('/act_titulacion_con')->with('success','Se ha actualizado correctamente.');
 
     }
 
@@ -195,6 +195,6 @@ class AtcTitulacionConController extends Controller
     {
         $titulacion=atc_titulacion_con::find($id);
         $titulacion->delete();
-        return redirect('/act_titulacion_con')->with('success','Eliminado');
+        return redirect('/act_titulacion_con')->with('success','Se ha eliminado correctamente.');
     }
 }
