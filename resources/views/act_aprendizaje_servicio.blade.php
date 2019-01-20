@@ -59,7 +59,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
 
-                                <input type="text" class="form-control" name="nombre_socio" pattern="[A-Za-z]+" title="Ingrese nombre válido"  placeholder="Ingrese nombre socio comunitario"/>
+                                <input type="text" class="form-control" name="nombre_socio" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido"  placeholder="Ingrese nombre socio comunitario"/>
                             </div>
                         </div>
                     </div>
@@ -155,7 +155,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
 
-                                <input type="text" class="form-control" name="nombre_socio" id="nombre_socio" pattern="[A-Za-z]+" title="Ingrese nombre válido"  placeholder="Ingrese nombre socio comunitario"/>
+                                <input type="text" class="form-control" name="nombre_socio" id="nombre_socio" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido"  placeholder="Ingrese nombre socio comunitario"/>
                             </div>
                         </div>
                     </div>

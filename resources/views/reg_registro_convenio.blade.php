@@ -112,7 +112,7 @@
             <div class="cols-sm-10">
               <div class="input-group">
 
-                <input type="text" class="form-control" name="nombre" id="nombre" pattern="[A-Za-z]+[0-9]*" title="Ingrese nombre válido" placeholder="Ingrese nombre de la empresa"/>
+                <input type="text" class="form-control" name="nombre" id="nombre" pattern="[[A-Za-z-ñÑáéíóúÁÉÍÓÚüÜ]+[0-9]*]+" title="Ingrese nombre válido" placeholder="Ingrese nombre de la empresa"/>
               </div>
             </div>
           </div>

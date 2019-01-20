@@ -52,7 +52,7 @@
                         <label for="username" class="cols-sm-2 control-label">Expositor</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="expositor" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del expositor"/>
+                                <input type="text" class="form-control" name="expositor" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del expositor"/>
                             </div>
                         </div>
                     </div>
@@ -79,7 +79,7 @@
                         <label for="confirm" class="cols-sm-2 control-label">Organizador de la actividad</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="organizador" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del organizador"/>
+                                <input type="text" class="form-control" name="organizador" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del organizador"/>
                             </div>
                         </div>
                     </div>
@@ -156,7 +156,7 @@
                         <label for="username" class="cols-sm-2 control-label">Expositor</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="expositor" id="expositor" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del expositor"/>
+                                <input type="text" class="form-control" name="expositor" id="expositor" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del expositor"/>
                             </div>
                         </div>
                     </div>
@@ -183,7 +183,7 @@
                         <label for="confirm" class="cols-sm-2 control-label">Organizador de la actividad</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="organizador" id="organizador" pattern="[A-Za-z]+" title="Ingrese nombre válido"  placeholder="Ingrese el nombre del organizador"/>
+                                <input type="text" class="form-control" name="organizador" id="organizador" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido"  placeholder="Ingrese el nombre del organizador"/>
                             </div>
                         </div>
                     </div>
