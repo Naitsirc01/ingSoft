@@ -27,7 +27,7 @@ class CreateIndicadoresTable extends Migration
             $table->date('año_meta');
             $table->integer('usuario_id')->unsigned()->nullable();
             $table->foreign('usuario_id')->references('id')
-                ->on('usuarios')->onDelete('cascade');
+                ->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

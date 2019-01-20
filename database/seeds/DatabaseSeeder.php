@@ -19,10 +19,11 @@ class DatabaseSeeder extends Seeder
             'nombre' => 'Usuario',
         ]);
 
-        DB::table('usuarios')->insert([
+        DB::table('users')->insert([
             'nombre' => 'testerUser',
+            'email' => 'test@hotmail.com',
             'rut'=>'0000000-0',
-            'contraseña'=>'159357',
+            'password'=>'159357',
             'tipo_usuarioid'=>'2',
         ]);
         DB::table('indicadores')->insert([

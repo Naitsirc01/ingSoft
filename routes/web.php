@@ -59,3 +59,7 @@ Route::resource('/reg_registro_convenio', 'RegistroConvenioController');
 Route::resource('/indicadores', 'IndicadoresController');
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
