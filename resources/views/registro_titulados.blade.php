@@ -221,14 +221,11 @@
                 <!-- termina formulario agregar -->
 
 
-                <div class="modal-body">
-                    <p>¿Está seguro de que desea actualizar los datos?</p>
-                </div>
 
                 <div class="modal-footer">
 
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No, cancelar</button>
-                    <button type="submit" class="btn btn-primary">Si, actualizar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
                 </div>
 
             </form>
