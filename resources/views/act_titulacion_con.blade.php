@@ -38,12 +38,12 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" name="nombre[]" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del estudiante"/>
+                                <input type="text" class="form-control" name="nombre[]" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del estudiante"/>
                             </div>
                         </div>
                         <div id="aumentar">
                         </div>
-                            <button type="button" onclick="agregar()"> agregar </button>
+
                         <br>
                         <label for="email" class="cols-sm-2 control-label">Rut</label>
                         <div class="cols-sm-10">
@@ -54,7 +54,7 @@
                         </div>
                         <div id="aumentar2">
                         </div>
-                        <button type="button" onclick="agregar2()"> agregar </button>
+                        <button type="button" onclick="agregar()"> agregar </button>
                         <br>
                         <label for="name" class="cols-sm-2 control-label">Seleccione la Carrera</label>
                         <select class="form-control" name="carrera"  placeholder="Registrar cositos">
@@ -78,7 +78,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" name="profesor[]" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del profesor"/>
+                                <input type="text" class="form-control" name="profesor[]" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del profesor"/>
                             </div>
                         </div>
                         <div id="aumentar1">
@@ -147,12 +147,13 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" name="nombre[]" id="nombre" pattern="[A-Za-z]+" title="Ingrese nombre válido"  placeholder="Ingrese el nombre del estudiante"/>
+                                <input type="text" class="form-control" name="nombre[]" id="nombre" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido"  placeholder="Ingrese el nombre del estudiante"/>
                             </div>
                         </div>
-                        <div id="aumentar">
+                        <div id="aumentar3">
                         </div>
-                        <button type="button" onclick="agregar()"> agregar </button>
+                        <button type="button" onclick="agregar3()"> agregar </button>
+                        <br>
                         <label for="email" class="cols-sm-2 control-label">Rut</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
@@ -160,9 +161,9 @@
                                 <input type="text" class="form-control" name="rut[]" id="rut" pattern="^\d{1,2}\.\d{3}\.\d{3}[-][0-9kK]{1}$" title="Ingrese rut válido" placeholder="Ingrese el rut del estudiante"/>
                             </div>
                         </div>
-                        <div id="aumentar2">
+                        <div id="aumentar4">
                         </div>
-                        <button type="button" onclick="agregar2()"> agregar </button>
+                        <!--button type="button" onclick="agregar2()"> agregar </button-->
                         <br>
                         <label for="name" class="cols-sm-2 control-label">Seleccione la Carrera</label>
                         <select class="form-control" name="carrera" id="carrera" placeholder="Registrar cositos">
@@ -186,12 +187,13 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" name="profesor[]" id="profesor" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del profesor"/>
+                                <input type="text" class="form-control" name="profesor[]" id="profesor" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del profesor"/>
                             </div>
                         </div>
-                        <div id="aumentar1">
+                        <div id="aumentar5">
                         </div>
-                        <button type="button" onclick="agregar1()"> agregar </button>
+                        <button type="button" onclick="agregar5()"> agregar </button>
+                        <br>
                         <label for="email" class="cols-sm-2 control-label">Nombre empresa</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
@@ -382,8 +384,16 @@
                 '                                <input type="text" class="form-control" name="nombre[]" id="nombre" pattern="[A-Za-z]+" title="Ingrese nombre válido"  placeholder="Ingrese el nombre del estudiante"/>\n' +
                 '                            </div>\n' +
                 '                        </div>');
+            $("#aumentar2").append(' <label for="email" class="cols-sm-2 control-label">Ingrese rut</label>\n' +
+                '                        <div class="cols-sm-10">\n' +
+                '                            <div class="input-group">\n' +
+                '                                <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->\n' +
+                '                              <input type="text" class="form-control" name="rut[]" pattern="^\\d{1,2}\\.\\d{3}\\.\\d{3}[-][0-9kK]{1}$" title="Ingrese rut válido" placeholder="Ingrese el rut del estudiante"/>\n' +
+                '                            </div>\n' +
+                '                        </div>');
             i++;
         }
+
     };
 </script>
 <script>
@@ -403,18 +413,40 @@
 </script>
 <script>
     var k = 0;
-    function agregar2() {
-        if (k<i) {
-            $("#aumentar2").append(' <label for="email" class="cols-sm-2 control-label">Ingrese rut</label>\n' +
+    function agregar3() {
+        if (k<3) {
+            $("#aumentar3").append('<label for="email" class="cols-sm-2 control-label">Nombre</label>\n' +
                 '                        <div class="cols-sm-10">\n' +
                 '                            <div class="input-group">\n' +
                 '                                <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->\n' +
-                '                              <input type="text" class="form-control" name="rut[]" pattern="^\\d{1,2}\\.\\d{3}\\.\\d{3}[-][0-9kK]{1}$" title="Ingrese rut válido" placeholder="Ingrese el rut del estudiante"/>\n' +
+                '                                <input type="text" class="form-control" name="nombre[]" id="nombre" pattern="[A-Za-z]+" title="Ingrese nombre válido"  placeholder="Ingrese el nombre del estudiante"/>\n' +
+                '                            </div>\n' +
+                '                        </div>');
+            $("#aumentar4").append('<label for="email" class="cols-sm-2 control-label">Rut</label>\n' +
+                '                        <div class="cols-sm-10">\n' +
+                '                            <div class="input-group">\n' +
+                '                                <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->\n' +
+                '                                <input type="text" class="form-control" name="rut[]" id="rut" pattern="^\\d{1,2}\\.\\d{3}\\.\\d{3}[-][0-9kK]{1}$" title="Ingrese rut válido" placeholder="Ingrese el rut del estudiante"/>\n' +
                 '                            </div>\n' +
                 '                        </div>');
             k++;
         }
     };
+</script>
+<script>
+    var j1 = 0;
+    function agregar5() {
+        if (j1<1) {
+            $("#aumentar5").append('<label for="email" class="cols-sm-2 control-label">Nombre profesor guia</label>\n' +
+                '                        <div class="cols-sm-10">\n' +
+                '                            <div class="input-group">\n' +
+                '                                <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->\n' +
+                '                                <input type="text" class="form-control" name="profesor[]" id="profesor" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del profesor"/>\n' +
+                '                            </div>\n' +
+                '                        </div>');
+            j1++;
+        }
+    }
 </script>
 </body>
 </html>
