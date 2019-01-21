@@ -20,7 +20,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{action('AtcTitulacionConController@store')}}" method="POST" enctype="multipart/form-data">
+            <form action="{{action('AtcTitulacionConController@store')}}" method="POST" enctype="multipart/form-data" onsubmit="return confirm('¿Esta seguro que desea agregar este nuevo registro?');">
             {{csrf_field()}}
             <!-- aca se pegaria el formulario agregar -->
                 <div class="modal-body">
@@ -128,7 +128,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="/act_titulacion_con" method="POST" id="editForm" enctype="multipart/form-data">
+            <form action="/act_titulacion_con" method="POST" id="editForm" enctype="multipart/form-data" onsubmit="return confirm('¿Esta seguro que desea confirmar los cambios?');">
             {{csrf_field()}}
             {{method_field('PUT')}}
             <!-- aca se pegaria el formulario agregar -->
@@ -215,14 +215,12 @@
                     </div>
                 </div>
              <!-- termina formulario agregar -->
-                <div class="modal-body">
-                    <p>¿Está seguro de que desea actualizar los datos?</p>
-                </div>
+
 
                 <div class="modal-footer">
 
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No, cancelar</button>
-                    <button type="submit" class="btn btn-primary">Si, actualizar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
                 </div>
 
             </form>
