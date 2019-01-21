@@ -21,7 +21,7 @@ class CreateAtcExtensionsTable extends Migration
             $table->string('ubicacion');
             $table->integer('cantidad_asistentes');
             $table->string('organizador');
-            $table->integer('tipo_extension');
+            $table->string('tipo_extension');
             $table->integer('Indicadores_id')->unsigned()->nullable();
             $table->foreign('Indicadores_id')->references('id')
                 ->on('indicadores')->onDelete('cascade');

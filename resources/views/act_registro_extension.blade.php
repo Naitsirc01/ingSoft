@@ -36,10 +36,10 @@
                     <div class="form-group">
                         <label for="name" class="cols-sm-2 control-label">Seleccione la actividad a registrar</label>
                         <select name="tipo_extension"  class="form-control">
-                            <option value="1">Charla</option>
-                            <option value="2">Curso</option>
-                            <option value="3">Talleres</option>
-                            <option value="4">Seminario</option>
+                            <option value="Charla">Charla</option>
+                            <option value="Curso">Curso</option>
+                            <option value="Talleres">Talleres</option>
+                            <option value="Seminario">Seminario</option>
                         </select>
                     </div>
 
@@ -52,11 +52,14 @@
                         <label for="username" class="cols-sm-2 control-label">Expositor</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="expositor" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del expositor"/>
+                                <input type="text" class="form-control" name="expositor[]" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del expositor"/>
                             </div>
                         </div>
                     </div>
-
+                    <div id="aumentar">
+                    </div>
+                    <button type="button" onclick="agregar()"> agregar </button>
+                    <br>
                     <div class="form-group">
                         <label for="username" class="cols-sm-2 control-label">Lugar</label>
                         <div class="cols-sm-10">
@@ -79,11 +82,14 @@
                         <label for="confirm" class="cols-sm-2 control-label">Organizador de la actividad</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="organizador" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del organizador"/>
+                                <input type="text" class="form-control" name="organizador[]" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del organizador"/>
                             </div>
                         </div>
                     </div>
-
+                    <div id="aumentar1">
+                    </div>
+                    <button type="button" onclick="agregar1()"> agregar </button>
+                    <br>
                     <!--Subir pdf-->
                     <div class="form-group">
                         <label for="evidencia" class="cols-sm-2 control-label">Subir lista asistencia</label>
@@ -140,10 +146,10 @@
                     <div class="form-group">
                         <label for="name" class="cols-sm-2 control-label">Seleccione la actividad a registrar</label>
                         <select name="tipo_extension" id="tipo_extension" class="form-control">
-                            <option value="1">Charla</option>
-                            <option value="2">Curso</option>
-                            <option value="3">Talleres</option>
-                            <option value="4">Seminario</option>
+                            <option value="Charla">Charla</option>
+                            <option value="Curso">Curso</option>
+                            <option value="Talleres">Talleres</option>
+                            <option value="Seminario">Seminario</option>
                         </select>
                     </div>
 
@@ -156,11 +162,14 @@
                         <label for="username" class="cols-sm-2 control-label">Expositor</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="expositor" id="expositor" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del expositor"/>
+                                <input type="text" class="form-control" name="expositor[]" id="expositor" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del expositor"/>
                             </div>
                         </div>
                     </div>
-
+                    <div id="aumentar2">
+                    </div>
+                    <button type="button" onclick="agregar2()"> agregar </button>
+                    <br>
                     <div class="form-group">
                         <label for="username" class="cols-sm-2 control-label">Lugar</label>
                         <div class="cols-sm-10">
@@ -183,9 +192,22 @@
                         <label for="confirm" class="cols-sm-2 control-label">Organizador de la actividad</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="organizador" id="organizador" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido"  placeholder="Ingrese el nombre del organizador"/>
+                                <input type="text" class="form-control" name="organizador[]" id="organizador" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido"  placeholder="Ingrese el nombre del organizador"/>
                             </div>
                         </div>
+                    </div>
+                    <div id="aumentar3">
+                    </div>
+                    <button type="button" onclick="agregar3()"> agregar </button>
+                    <br>
+                    <div class="form-group">
+                        <label for="idIndicador" class="cols-sm-2 control-label">Seleccionar un Indicador</label>
+                        <select name="idIndicador"  class="form-control">
+                            <option disabled selected value> -- Selecione actividad -- </option>
+                            @foreach($indicadores as $in)
+                                <option value={{$in->id}}>{{$in->nombre}}</option>
+                            @endforeach
+                        </SELECT>
                     </div>
 
                     <div class="form-group">
@@ -355,6 +377,62 @@
         });
         //END delte
     });
+</script>
+<script>
+    var l = 0;
+    function agregar() {
+        if (l<1) {
+            $("#aumentar").append('<label for="username" class="cols-sm-2 control-label">Expositor</label>\n' +
+                '                        <div class="cols-sm-10">\n' +
+                '                            <div class="input-group">\n' +
+                '                                <input type="text" class="form-control" name="expositor[]" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\\s]*)+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del expositor"/>\n' +
+                '                            </div>\n' +
+                '                        </div>');
+            l++;
+        }
+    }
+</script>
+<script>
+    var i = 0;
+    function agregar1() {
+        if (i<1) {
+            $("#aumentar1").append(' <label for="confirm" class="cols-sm-2 control-label">Organizador de la actividad</label>\n' +
+                '                        <div class="cols-sm-10">\n' +
+                '                            <div class="input-group">\n' +
+                '                                <input type="text" class="form-control" name="organizador[]" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\\s]*)+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del organizador"/>\n' +
+                '                            </div>\n' +
+                '                        </div>');
+            i++;
+        }
+    }
+</script>
+<script>
+    var j = 0;
+    function agregar2() {
+        if (j<1) {
+            $("#aumentar2").append('<label for="username" class="cols-sm-2 control-label">Expositor</label>\n' +
+                '                        <div class="cols-sm-10">\n' +
+                '                            <div class="input-group">\n' +
+                '                                <input type="text" class="form-control" name="expositor[]" id="expositor" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\\s]*)+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del expositor"/>\n' +
+                '                            </div>\n' +
+                '                        </div>');
+            j++;
+        }
+    }
+</script>
+<script>
+    var k = 0;
+    function agregar3() {
+        if (k<1) {
+            $("#aumentar3").append('<label for="confirm" class="cols-sm-2 control-label">Organizador de la actividad</label>\n' +
+                '                        <div class="cols-sm-10">\n' +
+                '                            <div class="input-group">\n' +
+                '                                <input type="text" class="form-control" name="organizador[]" id="organizador" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\\s]*)+" title="Ingrese nombre válido"  placeholder="Ingrese el nombre del organizador"/>\n' +
+                '                            </div>\n' +
+                '                        </div>');
+            k++;
+        }
+    }
 </script>
 </body>
 </html>

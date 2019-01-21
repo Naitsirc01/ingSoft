@@ -13,6 +13,9 @@ class atc_aprendizaje_mas_serv extends Model
     public function indicador(){
         return $this->belongsTo('App\Indicadores','Indicadores_id');
     }
+    public function asignatura(){
+        return $this->belongsTo('App\asignatura','asignaturaid');
+    }
 
     public function evidencia(){
         return $this->hasOne('App\evidencia');

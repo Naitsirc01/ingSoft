@@ -54,15 +54,27 @@ class AtcAprendizajeMasServController extends Controller
 //            'asignaturaid'=>'required',
 //            'idIndicador'=>'requiered',
 //        ]);
+        $arreglo=$request->nombre_profesor;
+        $nombreProfe="";
+        foreach ($arreglo as $valor) {
+            $nombreProfe = $valor . ',' . $nombreProfe;
+        }
+        unset($valor);
+        $arreglo1=$request->nombre_socio;
+        $nombreSocio="";
+        foreach ($arreglo1 as $valor1) {
+            $nombreSocio = $valor1 . ',' . $nombreSocio;
+        }
+        unset($valor1);
         $path=$request->file('evidencia')->store('upload');
         //se busca el indicador asociado
         $idindicador=$request->input('idIndicador');
         $indicador = Indicadores::find($idindicador);
 
         $aprendizaje=new atc_aprendizaje_mas_serv;
-        $aprendizaje->nombre_profesor=$request->input('nombre_profesor');
+        $aprendizaje->nombre_profesor=$nombreProfe;
         $aprendizaje->cantidad_estudiantes=$request->input('cantidad_estudiantes');
-        $aprendizaje->nombre_socio=$request->input('nombre_socio');
+        $aprendizaje->nombre_socio=$nombreSocio;
         $aprendizaje->semestreaño=$request->input('semestreaño');
         $aprendizaje->asignaturaid=$request->input('asignaturaid');;
 
@@ -70,6 +82,7 @@ class AtcAprendizajeMasServController extends Controller
 
         //actualizacion de registros
         $registro=Registro::find($idindicador);
+        $total=0;
         switch ($request->tipo1){
             case 'cantidad_estudiante':
                 $total=$registro->cantidad_alcanzada1+$request->cantidad_estudiantes;
@@ -143,11 +156,23 @@ class AtcAprendizajeMasServController extends Controller
             'semestreaño'=>'required',
             'asignaturaid'=>'required'
         ]);
+        $arreglo=$request->nombre_profesor;
+        $nombreProfe="";
+        foreach ($arreglo as $valor) {
+            $nombreProfe = $valor . ',' . $nombreProfe;
+        }
+        unset($valor);
+        $arreglo1=$request->nombre_socio;
+        $nombreSocio="";
+        foreach ($arreglo1 as $valor1) {
+            $nombreSocio = $valor1 . ',' . $nombreSocio;
+        }
+        unset($valor1);
         $path=$request->file('evidencia')->store('upload');
         $aprendizaje=atc_aprendizaje_mas_serv::find($id);
-        $aprendizaje->nombre_profesor=$request->input('nombre_profesor');
+        $aprendizaje->nombre_profesor=$nombreProfe;
         $aprendizaje->cantidad_estudiantes=$request->input('cantidad_estudiantes');
-        $aprendizaje->nombre_socio=$request->input('nombre_socio');
+        $aprendizaje->nombre_socio=$nombreSocio;
         $aprendizaje->semestreaño=$request->input('semestreaño');
         $aprendizaje->asignaturaid=$request->input('asignaturaid');
         $aprendizaje->save();

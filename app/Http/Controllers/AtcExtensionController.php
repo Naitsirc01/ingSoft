@@ -17,8 +17,9 @@ class AtcExtensionController extends Controller
      */
     public function index()
     {
+        $indicadores=Indicadores::all();
         $extensiones=atc_extension::all();
-        return view("/act_registro_extension", compact("extensiones"));
+        return view("/act_registro_extension", compact("extensiones","indicadores"));
     }
 
     /**
@@ -50,6 +51,7 @@ class AtcExtensionController extends Controller
 
         ]);
 
+        $idindicador=$request->input('idIndicador');
         $path=$request->file('evidencia')->store('upload');
 //        $extension = new \App\atc_extension(['titulo'=>$request->titulo,
 //            'expositor'=>$request->expositor,
@@ -60,27 +62,59 @@ class AtcExtensionController extends Controller
 //            'tipo_extension'=>$request->tipo_extension,
 //            'Indicadores_id'=>1]);
 //        $extension->save();
+        $arreglo=$request->expositor;
+        $expositor1="";
+        foreach ($arreglo as $valor) {
+            $expositor1 = $valor . ',' . $expositor1;
+        }
+        unset($valor);
+        $arreglo1=$request->organizador;
+        $organizador1="";
+        foreach ($arreglo1 as $valor1) {
+            $organizador1 = $valor1 . ',' . $organizador1;
+        }
+        unset($valor1);
 
-        $indicador = Indicadores::find(1);
+        $indicador = Indicadores::find($idindicador);
 
         $extension=new atc_extension;
         $extension->titulo=$request->titulo;
-        $extension->expositor=$request->expositor;
+        $extension->expositor=$expositor1;
         $extension->fecha=$request->fecha;
         $extension->ubicacion=$request->ubicacion;
         $extension->cantidad_asistentes=$request->cantidad_asistentes;
-        $extension->organizador=$request->organizador;
+        $extension->organizador=$organizador1;
         $extension->tipo_extension=$request->tipo_extension;
 
         $indicador->atc_extensiones()->save($extension);
 
 
-        $registro=Registro::find(1);
-        $total=$registro->cantidad_alcanzada2+$request->cantidad_asistentes;
-        $registro->cantidad_alcanzada1=atc_extension::all()->count();
-        $registro->cantidad_alcanzada2=$total;
-        $registro->save();
+        $registro=Registro::find($idindicador);
 
+        $total=0;
+        switch ($request->tipo1){
+            case 'atc_extension':
+                $total=atc_extension::all()->count();
+                $registro->cantidad_alcanzada1=$total;
+                break;
+            case 'Total de actividades':
+                $registro->cantidad_alcanzada1=atc_extension::all()->count();
+                break;
+        }
+        switch ($request->tipo2){
+            case 'cantidad_asistentes':
+                $total=$registro->cantidad_alcanzada2+$request->cantidad_asistentes;
+                $registro->cantidad_alcanzada2=$total;
+                break;
+            case 'Total de actividades':
+                $registro->cantidad_alcanzada2=atc_extension::all()->count();
+                break;
+        }
+
+//        $total=$registro->cantidad_alcanzada2+$request->cantidad_asistentes;
+//        $registro->cantidad_alcanzada1=atc_extension::all()->count();
+//        $registro->cantidad_alcanzada2=$total;
+        $registro->save();
 
         //$totalIndicador=$total+$indicador->parametro2;
         $indicador->parametro2=$total;
@@ -141,15 +175,26 @@ class AtcExtensionController extends Controller
             'organizador'=>'required',
             'tipo_extension'=>'required'
         ]);
-
+        $arreglo=$request->expositor;
+        $expositor1="";
+        foreach ($arreglo as $valor) {
+            $expositor1 = $valor . ',' . $expositor1;
+        }
+        unset($valor);
+        $arreglo1=$request->organizador;
+        $organizador1="";
+        foreach ($arreglo1 as $valor1) {
+            $organizador1 = $valor1 . ',' . $organizador1;
+        }
+        unset($valor1);
         $path=$request->file('evidencia')->store('upload');
         $extension=atc_extension::find($id);
         $extension->titulo=$request->titulo;
-        $extension->expositor=$request->expositor;
+        $extension->expositor=$expositor1;
         $extension->fecha=$request->fecha;
         $extension->ubicacion=$request->ubicacion;
         $extension->cantidad_asistentes=$request->cantidad_asistentes;
-        $extension->organizador=$request->organizador;
+        $extension->organizador=$organizador1;
         $extension->tipo_extension=$request->tipo_extension;
         $extension->save();
 

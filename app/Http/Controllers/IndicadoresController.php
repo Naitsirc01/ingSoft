@@ -25,12 +25,13 @@ class IndicadoresController extends Controller
     {
 
         //parar retornar columnas
-        $columnasExtension=Schema::getColumnListing('atc_extensions');
-        $columnasRegConvenio=Schema::getColumnListing('registroconvenios');
+//        $columnasExtension=Schema::getColumnListing('atc_extensions');
+//        $columnasRegConvenio=Schema::getColumnListing('registroconvenios');
         //descartado por tener pocas opciones
 //        $columnasAprendizajeServicio=Schema::getColumnListing('atc_aprendizaje_mas_servs');
+//        $columnasTitulacionCon=Schema::getColumnListing('atc_titulacion_cons');
         $columnasAprendizajeServicio=['cantidad_estudiante'];
-        $columnasTitulacionCon=Schema::getColumnListing('atc_titulacion_cons');
+        $columnasExtension=['cantidad_asistentes'];
         $indicadores=Indicadores::all();
 
         $totalAtc=0;
@@ -39,7 +40,7 @@ class IndicadoresController extends Controller
             atc_titulacion_con::all(),
             Registroconvenio::all()];
         $tablas=[Titulado::all()];
-        $tablasn=[Titulado::all()[0]->getTable()];
+        $tablasn=[Titulado::all()];
 
         //calculo de los indicadores
         //agregar el atributo para identificar las tablas
@@ -68,9 +69,7 @@ class IndicadoresController extends Controller
 
         return view("/indicadores",compact('indicadores',
             'columnasExtension',
-            'columnasRegConvenio',
             'columnasAprendizajeServicio',
-            'columnasTitulacionCon',
             'tablasn'));
     }
 

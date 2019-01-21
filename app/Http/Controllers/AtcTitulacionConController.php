@@ -17,8 +17,9 @@ class AtcTitulacionConController extends Controller
      */
     public function index()
     {
+        $indicadores=Indicadores::all();
         $titulacions=atc_titulacion_con::all();
-        return view("/act_titulacion_con", compact("titulacions"));
+        return view("/act_titulacion_con", compact("titulacions","indicadores"));
 
         /*$titulados=Titulado::all();
         return view('titulado')->with('titulados',$titulados);*/
@@ -43,6 +44,7 @@ class AtcTitulacionConController extends Controller
     public function store(Request $request)
     {
         //dd($request);
+        $idindicador=$request->input('idIndicador');
         $path=$request->file('evidencia')->store('upload');
         $this->validate($request,[
             'titulo'=>'required',
@@ -53,7 +55,7 @@ class AtcTitulacionConController extends Controller
             'profesor'=>'required',
             'empresa'=>'required'
         ]);
-        $indicador = Indicadores::find(3);
+        $indicador = Indicadores::find($idindicador);
         $arreglo=$request->nombre;
         $nombre1="";
         foreach ($arreglo as $valor) {
@@ -86,7 +88,7 @@ class AtcTitulacionConController extends Controller
 
         $indicador->atc_titulacionCon()->save($titulacion);
 
-        $registro=Registro::find(3);
+        $registro=Registro::find($idindicador);
 
         //cuando se pueda implementar total de actividades de titulacion
         $registro->cantidad_alcanzada1=atc_titulacion_con::all()->count();
