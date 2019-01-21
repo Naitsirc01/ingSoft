@@ -94,6 +94,16 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="idIndicador" class="cols-sm-2 control-label">Seleccionar un Indicador</label>
+                            <select name="idIndicador"  class="form-control">
+                                <option disabled selected value> -- Selecione actividad -- </option>
+                                @foreach($indicadores as $in)
+                                    <option value={{$in->id}}>{{$in->nombre}}</option>
+                                @endforeach
+                            </SELECT>
+                        </div>
+
+                        <div class="form-group">
                             <label for="evidencia" class="cols-sm-2 control-label">Evidencia</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
@@ -200,6 +210,16 @@
                                 <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
                                 <input type="text" class="form-control" name="empresa" id="empresa" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese el nombre de la empresa donde se realiza"/>
                             </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="idIndicador" class="cols-sm-2 control-label">Seleccionar un Indicador</label>
+                            <select name="idIndicador"  class="form-control">
+                                <option disabled selected value> -- Selecione actividad -- </option>
+                                @foreach($indicadores as $in)
+                                    <option value={{$in->id}}>{{$in->nombre}}</option>
+                                @endforeach
+                            </SELECT>
                         </div>
 
                         <div class="form-group">

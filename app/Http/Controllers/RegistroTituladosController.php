@@ -13,8 +13,9 @@ class RegistroTituladosController extends Controller
      */
     public function index()
     {
+        $indicadores=Indicadores::all();
         $titulados=Titulado::all();
-        return view('registro_titulados',compact('titulados'));
+        return view('registro_titulados',compact('titulados','indicadores'));
     }
 
     /**
@@ -35,6 +36,7 @@ class RegistroTituladosController extends Controller
      */
     public function store(Request $request)
     {
+        $idindicador=$request->input('idIndicador');
         $this->validate($request,[
             'nombre'=>'required',
             'rut'=>'required',

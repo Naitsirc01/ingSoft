@@ -43,7 +43,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Registrar actividad de titulación por convenio</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Crear nuevo indicador</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -113,7 +113,11 @@
                                     <div class="column">
                                         <label for="rut" class="cols-sm-2 control-label">parametro1</label>
                                         <select name="param1" id="param1">
-                                            <option value=0>Total de actividades</option>
+                                            <option value="Total_de_actividades">Total de actividades</option>
+                                            <option value="atc_aprendizaje_mas_serv">actividades A+S</option>
+                                            <option value="atc_extension">actividades de extencion</option>
+                                            <option value="atc_titulacion_con">titualcion por convenio</option>
+                                            <option value="Registroconvenio">registro de convenios</option>
                                         </select>
                                     </div>
                                     <div class="columnOP">
@@ -123,7 +127,11 @@
                                     <div class="column">
                                         <label for="rut" class="cols-sm-2 control-label">parametro2</label>
                                         <select name="param2" id="param2">
-                                            <option value=0>Total de actividades</option>
+                                            <option value="Total_de_actividades">Total de actividades</option>
+                                            <option value="atc_aprendizaje_mas_serv">actividades A+S</option>
+                                            <option value="atc_extension">actividades de extencion</option>
+                                            <option value="atc_titulacion_con">titualcion por convenio</option>
+                                            <option value="Registroconvenio">registro de convenios</option>
                                         </select>
                                     </div>
 
@@ -181,7 +189,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Actualizar actividad de titulación por convenio</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Actualizar indicador</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -254,7 +262,11 @@
                                     <div class="column">
                                         <label for="rut" class="cols-sm-2 control-label">parametro1</label>
                                         <select name="param1" id="param3">
-                                            <option value=0>Total de actividades</option>
+                                            <option value="Total_de_actividades">Total de actividades</option>
+                                            <option value="atc_aprendizaje_mas_serv">actividades A+S</option>
+                                            <option value="atc_extension">actividades de extencion</option>
+                                            <option value="atc_titulacion_con">titualcion por convenio</option>
+                                            <option value="Registroconvenio">registro de convenios</option>
                                         </select>
                                     </div>
                                     <div class="columnOP">
@@ -264,7 +276,11 @@
                                     <div class="column">
                                         <label for="rut" class="cols-sm-2 control-label">parametro2</label>
                                         <select name="param2" id="param4">
-                                            <option value=0>Total de actividades</option>
+                                            <option value="Total_de_actividades">Total de actividades</option>
+                                            <option value="atc_aprendizaje_mas_serv">actividades A+S</option>
+                                            <option value="atc_extension">actividades de extencion</option>
+                                            <option value="atc_titulacion_con">titualcion por convenio</option>
+                                            <option value="Registroconvenio">registro de convenios</option>
                                         </select>
                                     </div>
 
@@ -483,8 +499,8 @@
 <script>
     var ext = {!! json_encode($columnasExtension) !!}
     var apr = {!! json_encode($columnasAprendizajeServicio) !!}
-    var reg = {!! json_encode($columnasRegConvenio) !!}
-    var ticon = {!! json_encode($columnasTitulacionCon) !!}
+    {{--var reg = {!! json_encode($columnasRegConvenio) !!}--}}
+    {{--var ticon = {!! json_encode($columnasTitulacionCon) !!}--}}
     var tablas= {!! json_encode($tablasn) !!}
 
         function addParams($id) {
@@ -507,30 +523,45 @@
         var op=$id;
 
         switch (op) {
-            case '1':
-                columnas=ticon;
-                break;
-            case '2':
-                columnas=reg;
-                break;
             case '3':
                 columnas=apr;
                 break;
             case '4':
                 columnas=ext;
                 break;
+            default:
+                columnas=[];
+                break;
         }
         clearSelect($name);
         option.text = 'Total de actividades';
-        option.value= 'Total de actividades';
+        option.value= 'Total_de_actividades';
+        x.add(option);
+        option = document.createElement("option");
+        option.text = 'actividades A+S';
+        option.value= 'atc_aprendizaje_mas_serv';
+        x.add(option);
+        option = document.createElement("option");
+        option.text = 'actividades de extencion';
+        option.value= 'atc_extension';
+        x.add(option);
+        option = document.createElement("option");
+        option.text = 'titualcion por convenio';
+        option.value= 'atc_titulacion_con';
+        x.add(option);
+        option = document.createElement("option");
+        option.text = 'registro de convenios';
+        option.value= 'Registroconvenio';
         x.add(option);
         option = document.createElement("option");
 
-        for (i = 0; i < columnas.length; i++) {
-            option.text = columnas[i];
-            option.value= columnas[i];
-            x.add(option);
-            option = document.createElement("option");
+        if(columnas.length!=0){
+            for (i = 0; i < columnas.length; i++) {
+                option.text = columnas[i];
+                option.value= columnas[i];
+                x.add(option);
+                option = document.createElement("option");
+            }
         }
         for (i = 0; i < tablas.length; i++) {
             option.text = tablas[i];
@@ -545,7 +576,8 @@
         var select = document.getElementById($list);
         var length = select.options.length;
         for (i = 0; i < length; i++) {
-            select.options[i] = null;
+            select.remove(i);
+            // select.options[i] = null;
         }
     }
 </script>

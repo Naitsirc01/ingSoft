@@ -21,9 +21,10 @@ class RegistroConvenioController extends Controller
      */
     public function index()
     {
+        $indicadores=Indicadores::all();
         $conv = Registroconvenio::all();
         $tipoCon= convenio::all();
-        return view('/reg_registro_convenio',compact('conv','tipoCon'));
+        return view('/reg_registro_convenio',compact('conv','tipoCon','indicadores'));
     }
 
     /**
@@ -44,6 +45,7 @@ class RegistroConvenioController extends Controller
      */
     public function store(Request $request)
     {
+        $idindicador=$request->input('idIndicador');
         $this->validate($request, [
             'nombre' => 'required',
             'tipoCon' => 'required',
@@ -51,7 +53,7 @@ class RegistroConvenioController extends Controller
             'duracion' => 'required'
         ]);
         $path=$request->file('evidencia')->store('upload');
-        $indicador = Indicadores::find(4);
+        $indicador = Indicadores::find($idindicador);
         $registroCon = new Registroconvenio;
         $registroCon->empresa = $request->input('nombre');
         $registroCon->convenioid = $request->input('tipoCon');
@@ -60,7 +62,7 @@ class RegistroConvenioController extends Controller
 
         $indicador->atc_registroCon()->save($registroCon);
 
-        $registro = Registro::find(4);
+        $registro = Registro::find($idindicador);
         $totalActAprendizaje = atc_aprendizaje_mas_serv::all()->count();
         $totalActExtencion = atc_extension::all()->count();
         $totalActTitulacionCon = atc_titulacion_con::all()->count();
