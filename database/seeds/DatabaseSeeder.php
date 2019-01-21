@@ -63,7 +63,7 @@ class DatabaseSeeder extends Seeder
             'tipo_de_calculo'=>'1',
             'parametro1'=>0,
             'parametro2'=>0,
-            'tipo1'=>'Total de actividades',
+            'tipo1'=>'titulados',
             'tipo2'=>'Total de actividades',
             'meta1'=>15,
             'meta2'=>0,

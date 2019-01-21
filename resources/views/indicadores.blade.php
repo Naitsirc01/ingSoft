@@ -485,6 +485,7 @@
     var apr = {!! json_encode($columnasAprendizajeServicio) !!}
     var reg = {!! json_encode($columnasRegConvenio) !!}
     var ticon = {!! json_encode($columnasTitulacionCon) !!}
+    var tablas= {!! json_encode($tablasn) !!}
 
         function addParams($id) {
             debugger;
@@ -524,9 +525,16 @@
         option.value= 'Total de actividades';
         x.add(option);
         option = document.createElement("option");
-        for (i = 1; i < columnas.length; i++) {
+
+        for (i = 0; i < columnas.length; i++) {
             option.text = columnas[i];
             option.value= columnas[i];
+            x.add(option);
+            option = document.createElement("option");
+        }
+        for (i = 0; i < tablas.length; i++) {
+            option.text = tablas[i];
+            option.value= tablas[i];
             x.add(option);
             option = document.createElement("option");
         }

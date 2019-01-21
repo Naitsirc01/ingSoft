@@ -9,6 +9,7 @@ use App\Registro;
 use App\Indicadores;
 use App\atc_aprendizaje_mas_serv;
 use App\Registroconvenio;
+use App\Titulado;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
@@ -22,45 +23,44 @@ class IndicadoresController extends Controller
      */
     public function index()
     {
+
+        //parar retornar columnas
         $columnasExtension=Schema::getColumnListing('atc_extensions');
         $columnasRegConvenio=Schema::getColumnListing('registroconvenios');
-        $columnasAprendizajeServicio=Schema::getColumnListing('atc_aprendizaje_mas_servs');
+        //descartado por tener pocas opciones
+//        $columnasAprendizajeServicio=Schema::getColumnListing('atc_aprendizaje_mas_servs');
+        $columnasAprendizajeServicio=['cantidad_estudiante'];
         $columnasTitulacionCon=Schema::getColumnListing('atc_titulacion_cons');
         $indicadores=Indicadores::all();
 
         $totalAtc=0;
-        $data = Indicadores::find(1);
-        $reg = Registro::find(1);
-        if ($data != null) {
-            if(!empty(atc_extension::all())){
-                $data->parametro1=atc_extension::all()->count();
-                $data->parametro2=$reg->cantidad_alcanzada2;
-                $totalAtc+=atc_extension::all()->count();
-                $data->save();
-            }
-        }
-        $data = Indicadores::find(2);
-        if ($data != null) {
-            if(!empty(atc_aprendizaje_mas_serv::all())){
-                $data->parametro1=atc_aprendizaje_mas_serv::all()->count();
-                $totalAtc+=atc_aprendizaje_mas_serv::all()->count();
-                $data->save();
-            }
-        }
-        $data = Indicadores::find(3);
-        if ($data != null) {
-            if(!empty(atc_titulacion_con::all())){
-                $data->parametro1=atc_titulacion_con::all()->count();
-                $totalAtc+=atc_titulacion_con::all()->count();
-                $data->save();
-            }
-        }
-        $data = Indicadores::find(4);
-        if ($data != null) {
-            if(!empty(Registroconvenio::all())){
-                $data->parametro1=Registroconvenio::all()->count();
-                $data->parametro2=$totalAtc;
-                $data->save();
+        $actividades=[atc_extension::all(),
+            atc_aprendizaje_mas_serv::all(),
+            atc_titulacion_con::all(),
+            Registroconvenio::all()];
+        $tablas=[Titulado::all()];
+        $tablasn=[Titulado::all()[0]->getTable()];
+
+        //calculo de los indicadores
+        //agregar el atributo para identificar las tablas
+        for ($i = 1; $i <= count($indicadores); $i++) {
+            $data = Indicadores::find($i);
+            $reg = Registro::find($i);
+
+            if ($data != null) {
+                if(!empty($actividades[$i-1])){
+                    if($data->meta2!=0){
+                        $data->parametro1=$actividades[$i-1]->count();
+                        $data->parametro2=$reg->cantidad_alcanzada2;
+                    }else{
+                        $t=$actividades[$i-1]->count();
+                        if($t!=0){
+                            $data->parametro1=count($tablas[0])/$actividades[$i-1]->count();
+                        }
+                    }
+                    $totalAtc+=$actividades[$i-1]->count();
+                    $data->save();
+                }
             }
         }
 
@@ -70,7 +70,8 @@ class IndicadoresController extends Controller
             'columnasExtension',
             'columnasRegConvenio',
             'columnasAprendizajeServicio',
-            'columnasTitulacionCon'));
+            'columnasTitulacionCon',
+            'tablasn'));
     }
 
     /**
