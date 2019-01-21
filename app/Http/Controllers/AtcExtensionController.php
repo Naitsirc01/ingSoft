@@ -60,16 +60,27 @@ class AtcExtensionController extends Controller
 //            'tipo_extension'=>$request->tipo_extension,
 //            'Indicadores_id'=>1]);
 //        $extension->save();
-
+        $arreglo=$request->expositor;
+        $expositor1="";
+        foreach ($arreglo as $valor) {
+            $expositor1 = $valor . ',' . $expositor1;
+        }
+        unset($valor);
+        $arreglo1=$request->organizador;
+        $organizador1="";
+        foreach ($arreglo1 as $valor1) {
+            $organizador1 = $valor1 . ',' . $organizador1;
+        }
+        unset($valor1);
         $indicador = Indicadores::find(1);
 
         $extension=new atc_extension;
         $extension->titulo=$request->titulo;
-        $extension->expositor=$request->expositor;
+        $extension->expositor=$expositor1;
         $extension->fecha=$request->fecha;
         $extension->ubicacion=$request->ubicacion;
         $extension->cantidad_asistentes=$request->cantidad_asistentes;
-        $extension->organizador=$request->organizador;
+        $extension->organizador=$organizador1;
         $extension->tipo_extension=$request->tipo_extension;
 
         $indicador->atc_extensiones()->save($extension);
@@ -141,15 +152,26 @@ class AtcExtensionController extends Controller
             'organizador'=>'required',
             'tipo_extension'=>'required'
         ]);
-
+        $arreglo=$request->expositor;
+        $expositor1="";
+        foreach ($arreglo as $valor) {
+            $expositor1 = $valor . ',' . $expositor1;
+        }
+        unset($valor);
+        $arreglo1=$request->organizador;
+        $organizador1="";
+        foreach ($arreglo1 as $valor1) {
+            $organizador1 = $valor1 . ',' . $organizador1;
+        }
+        unset($valor1);
         $path=$request->file('evidencia')->store('upload');
         $extension=atc_extension::find($id);
         $extension->titulo=$request->titulo;
-        $extension->expositor=$request->expositor;
+        $extension->expositor=$expositor1;
         $extension->fecha=$request->fecha;
         $extension->ubicacion=$request->ubicacion;
         $extension->cantidad_asistentes=$request->cantidad_asistentes;
-        $extension->organizador=$request->organizador;
+        $extension->organizador=$organizador1;
         $extension->tipo_extension=$request->tipo_extension;
         $extension->save();
 

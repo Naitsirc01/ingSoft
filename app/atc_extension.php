@@ -12,7 +12,9 @@ class atc_extension extends Model
     public function indicador(){
         return $this->belongsTo('App\Indicadores','Indicadores_id');
     }
-
+    public function actividad(){
+        return $this->belongsTo('App\actividad_definida','tipo_extension');
+    }
     public function evidencia(){
         return $this->hasMany('App\evidencia');
     }

@@ -39,11 +39,14 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
 
-                                <input type="text" class="form-control" name="nombre_profesor" pattern="[A-Za-z]+" title="Ingrese nombre válido"  placeholder="Ingrese profesor"/>
+                                <input type="text" class="form-control" name="nombre_profesor[]" pattern="[A-Za-z]+" title="Ingrese nombre válido"  placeholder="Ingrese profesor"/>
                             </div>
                         </div>
                     </div>
-
+                    <div id="aumentar">
+                    </div>
+                    <button type="button" onclick="agregar()"> agregar </button>
+                    <br>
                     <div class="form-group">
                         <label for="cestudiantes" class="cols-sm-2 control-label">Cantidad estudiantes</label>
                         <div class="cols-sm-10">
@@ -59,11 +62,14 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
 
-                                <input type="text" class="form-control" name="nombre_socio" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido"  placeholder="Ingrese nombre socio comunitario"/>
+                                <input type="text" class="form-control" name="nombre_socio[]" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido"  placeholder="Ingrese nombre socio comunitario"/>
                             </div>
                         </div>
                     </div>
-
+                    <div id="aumentar1">
+                    </div>
+                    <button type="button" onclick="agregar1()"> agregar </button>
+                    <br>
                     <div class="form-group">
                         <label for="semestreaño" class="cols-sm-2 control-label">Seleccionar un Periodo</label>
                         <select name="semestreaño"  class="form-control">
@@ -145,11 +151,14 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
 
-                                <input type="text" class="form-control" name="nombre_profesor" id="nombre_profesor" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese profesor"/>
+                                <input type="text" class="form-control" name="nombre_profesor[]" id="nombre_profesor" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese profesor"/>
                             </div>
                         </div>
                     </div>
-
+                    <div id="aumentar2">
+                    </div>
+                    <button type="button" onclick="agregar2()"> agregar </button>
+                    <br>
                     <div class="form-group">
                         <label for="cestudiantes" class="cols-sm-2 control-label">Cantidad estudiantes</label>
                         <div class="cols-sm-10">
@@ -165,11 +174,14 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
 
-                                <input type="text" class="form-control" name="nombre_socio" id="nombre_socio" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido"  placeholder="Ingrese nombre socio comunitario"/>
+                                <input type="text" class="form-control" name="nombre_socio[]" id="nombre_socio" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido"  placeholder="Ingrese nombre socio comunitario"/>
                             </div>
                         </div>
                     </div>
-
+                    <div id="aumentar3">
+                    </div>
+                    <button type="button" onclick="agregar3()"> agregar </button>
+                    <br>
                     <div class="form-group">
                         <label for="semestreaño" class="cols-sm-2 control-label">Seleccionar un Periodo</label>
                         <select name="semestreaño" id="semestreaño" class="form-control">
@@ -298,7 +310,7 @@
                         <td>{{$tdata->cantidad_estudiantes}}</td>
                         <td>{{$tdata->nombre_socio}}</td>
                         <td>{{$tdata->semestreaño}}</td>
-                        <td>{{$tdata->asignaturaid}}</td>
+                        <td>{{$tdata->asignatura->nombre}}</td>
                         <td>
                             <a href="#" class="btn btn-success edit">ACTUALIZAR</a>
                             <a href="#" class="btn btn-danger delete">ELIMINAR</a>
@@ -360,7 +372,66 @@
         //END delete
     });
 </script>
-
+<script>
+    var i = 0;
+    function agregar() {
+        if (i<1) {
+            $("#aumentar").append('<label for="profesor" class="cols-sm-2 control-label">Nombre profesor</label>\n' +
+                '                        <div class="cols-sm-10">\n' +
+                '                            <div class="input-group">\n' +
+                '\n' +
+                '                                <input type="text" class="form-control" name="nombre_profesor[]" pattern="[A-Za-z]+" title="Ingrese nombre válido"  placeholder="Ingrese profesor"/>\n' +
+                '                            </div>\n' +
+                '                        </div>');
+            i++;
+        }
+    }
+</script>
+<script>
+    var j = 0;
+    function agregar1() {
+        if (j<1) {
+            $("#aumentar1").append('<label for="sociocomunitario" class="cols-sm-2 control-label">Nombre socio comunitario</label>\n' +
+                '                        <div class="cols-sm-10">\n' +
+                '                            <div class="input-group">\n' +
+                '\n' +
+                '                                <input type="text" class="form-control" name="nombre_socio[]" id="nombre_socio" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\\s]*)+" title="Ingrese nombre válido"  placeholder="Ingrese nombre socio comunitario"/>\n' +
+                '                            </div>\n' +
+                '                        </div>');
+            j++;
+        }
+    }
+</script>
+<script>
+    var k = 0;
+    function agregar2() {
+        if (k<1) {
+            $("#aumentar2").append('<label for="profesor" class="cols-sm-2 control-label">Nombre profesor</label>\n' +
+                '                        <div class="cols-sm-10">\n' +
+                '                            <div class="input-group">\n' +
+                '\n' +
+                '                                <input type="text" class="form-control" name="nombre_profesor[]" id="nombre_profesor" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese profesor"/>\n' +
+                '                            </div>\n' +
+                '                        </div>');
+            k++;
+        }
+    }
+</script>
+<script>
+    var j1 = 0;
+    function agregar3() {
+        if (j1<1) {
+            $("#aumentar3").append('<label for="sociocomunitario" class="cols-sm-2 control-label">Nombre socio comunitario</label>\n' +
+                '                        <div class="cols-sm-10">\n' +
+                '                            <div class="input-group">\n' +
+                '\n' +
+                '                                <input type="text" class="form-control" name="nombre_socio[]" id="nombre_socio" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\\s]*)+" title="Ingrese nombre válido"  placeholder="Ingrese nombre socio comunitario"/>\n' +
+                '                            </div>\n' +
+                '                        </div>');
+            j1++;
+        }
+    }
+</script>
 </body>
 </html>
 
