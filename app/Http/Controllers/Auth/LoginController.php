@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/menu';
 
     /**
      * Create a new controller instance.
@@ -35,5 +35,19 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+//    public function rut($request)
+//    {
+//        $rut = $request->rut;
+//        $pass = $request->password;
+//        if (Auth::attempt(['rut' => $rut, 'password' => $pass])) {
+//            // Authentication passed...
+//            return redirect()->intended('menu');
+//        }
+//    }
+
+    public function username(){
+        return 'rut';
     }
 }

@@ -19,7 +19,11 @@
       <li><a href="/act_regitro_extension" style="color:white;">Registrar actividad de extensión</a></li>
       <li><a href="/act_titulacion_con" style="color:white;">Registrar actividad de titulación por convenio</a></li>
       <li><a href="/regitro_titulados" style="color:white;">Registro Titulados</a></li>
-      <li><a href="http://ing.net/" style="color:white;">Cerrar Sesión</a></li>
+      <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+          {{ __('Logout') }} style="color:white;">Cerrar Sesión</a></li>
+      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+      </form>
     </ul>
         </div>
       </div>

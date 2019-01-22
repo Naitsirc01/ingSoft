@@ -2,7 +2,8 @@
 
 <head>
 
-    @include('layout.partials.head')
+ @include('layout.form.head')
+ @include('layout.form.style')
 
 </head>
 
