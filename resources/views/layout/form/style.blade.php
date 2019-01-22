@@ -73,7 +73,7 @@
         margin-top:70px;
         height: 100%;
         background-repeat: no-repeat;
-        background:url(https://i.ytimg.com/vi/4kfXjatgeEU/maxresdefault.jpg);
+        background:#FFFFFF;
         font-family: 'Oxygen', sans-serif;
         background-size: cover;
     }
@@ -90,7 +90,7 @@
 
     hr{
         width: 10%;
-        color: #fff;
+        color: #FFFFFF;
     }
 
     .form-group{
@@ -154,8 +154,8 @@
         margin: 0 auto;
         max-width: 600px;
         padding: 10px 40px;
-        background:#009edf;
-        color: #FFF;
+        background:#24445c;
+        color: #FFFFFF;
         text-shadow: none;
         -webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
         -moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
@@ -164,7 +164,7 @@
 
     }
     span.input-group-addon i {
-        color: #009edf;
+        color: #FFFFFF;
         font-size: 17px;
     }
 
