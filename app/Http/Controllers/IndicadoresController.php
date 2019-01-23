@@ -30,7 +30,6 @@ class IndicadoresController extends Controller
             'cantidad de registro de convenios',
             'cantidad de estudiantes A+S',
             'cantidad de asistentes extension',
-            'cantidad de asistentes extension',
             'cantidad de titulados'];
         $indicadores=Indicadores::all();
 
