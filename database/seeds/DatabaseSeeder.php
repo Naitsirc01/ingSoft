@@ -64,7 +64,7 @@ class DatabaseSeeder extends Seeder
             'parametro1'=>0,
             'parametro2'=>0,
             'tipo1'=>7,
-            'tipo2'=>0,
+            'tipo2'=>3,
             'meta1'=>15,
             'meta2'=>0,
             'año_meta'=>'2020-11-30',

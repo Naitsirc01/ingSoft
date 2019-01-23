@@ -6,8 +6,12 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <style>
+    .margentabla {
+        margin: 3%;
+    }
     .column {
         float: left;
         width: 45%;
@@ -368,7 +372,7 @@
 </div>
 <!-- Fin ELIMINAR modal -->
 
-<div class="container">
+<div class="margentabla">
 
     @if(count($errors)>0)
         <div class="alert alert-danger">
@@ -393,19 +397,19 @@
     <br><br>
 
 
-    <table id="datatable" class="table table-striped table-dark">
+    <table id="datatable" class="table table-hover table-bordered">
         <thead>
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">NOMBRE</th>
-            <th scope="col">DESCRIPCION DE LA META</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripcion de la meta</th>
             {{--<th scope="col">TIPO DE CALCULO</th>--}}
-            <th scope="col">PARAMETRO 1</th>
-            <th scope="col">PARAMETRO 2</th>
-            <th scope="col">META 1</th>
-            <th scope="col">META 2</th>
-            <th scope="col">META DEL AÑO</th>
-            <th scope="col">ACCION</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col">Meta 1</th>
+            <th scope="col">Meta 2</th>
+            <th scope="col">Meta del año</th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
@@ -418,14 +422,15 @@
                     </div>
                 </th>
                 {{--<th class="hidden">{{$i->tipo_de_calculo}}</th>--}}
-                <td>{{$i->parametro1}}</td>
-                <td>{{$i->parametro2}}</td>
+                <td>{{$parametros[$i->tipo1]}}: {{$i->parametro1}}</td>
+                <td>{{$parametros[$i->tipo2]}}: {{$i->parametro2}}</td>
                 <td>{{$i->meta1}}</td>
                 <td>{{$i->meta2}}</td>
                 <td>{{$i->año_meta}}</td>
                 <td>
-                    <a href="#" class="btn btn-success edit">ACTUALIZAR</a>
-                    <a href="#" class="btn btn-danger delete">ELIMINAR</a>
+
+                    <a href="#" class="btn btn-default edit"><i class="fa fa-edit" style="font-size:24px"></i></a>
+                    <a href="#" class="btn btn-default delete"><i class="fa fa-times" style="font-size:24px"></i></a>
                 </td>
             </tr>
         @endforeach
