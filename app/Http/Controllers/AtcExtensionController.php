@@ -7,9 +7,11 @@ use App\Indicadores;
 use App\Registro;
 use App\evidencia;
 use Illuminate\Http\Request;
+use App\Traits\preload;
 
 class AtcExtensionController extends Controller
 {
+    use preload;
     /**
      * Display a listing of the resource.
      *
@@ -75,7 +77,7 @@ class AtcExtensionController extends Controller
         }
         unset($valor1);
 
-        $indicador = Indicadores::find($idindicador);
+        $indicador = Indicadores::find(1);
 
         $extension=new atc_extension;
         $extension->titulo=$request->titulo;
@@ -89,32 +91,15 @@ class AtcExtensionController extends Controller
         $indicador->atc_extensiones()->save($extension);
 
 
-        $registro=Registro::find($idindicador);
+        $registro=Registro::find(1);
 
         $total=0;
-        switch ($request->tipo1){
-            case 'atc_extension':
-                $total=atc_extension::all()->count();
-                $registro->cantidad_alcanzada1=$total;
-                break;
-            case 'Total de actividades':
-                $registro->cantidad_alcanzada1=atc_extension::all()->count();
-                break;
-        }
-        switch ($request->tipo2){
-            case 'cantidad_asistentes':
-                $total=$registro->cantidad_alcanzada2+$request->cantidad_asistentes;
-                $registro->cantidad_alcanzada2=$total;
-                break;
-            case 'Total de actividades':
-                $registro->cantidad_alcanzada2=atc_extension::all()->count();
-                break;
-        }
 
-//        $total=$registro->cantidad_alcanzada2+$request->cantidad_asistentes;
-//        $registro->cantidad_alcanzada1=atc_extension::all()->count();
-//        $registro->cantidad_alcanzada2=$total;
-        $registro->save();
+
+       $registro->cantidad_de_atc_extension=atc_extension::all()->count();
+       $total=$registro->cantidad_de_asistentes+$request->cantidad_asistentes;
+       $registro->cantidad_de_asistentes=$total;
+       $registro->save();
 
         //$totalIndicador=$total+$indicador->parametro2;
         $indicador->parametro2=$total;
@@ -129,7 +114,7 @@ class AtcExtensionController extends Controller
 
 
 
-
+        $this->loadData(1,1);
         return redirect('/act_regitro_extension')->with('success','Se ha registrado correctamente.');
     }
 

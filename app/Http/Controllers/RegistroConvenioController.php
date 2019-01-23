@@ -11,9 +11,11 @@ use Illuminate\Http\Request;
 use App\Registroconvenio;
 use App\Indicadores;
 use App\Registro;
+use App\Traits\preload;
 
 class RegistroConvenioController extends Controller
 {
+    use preload;
     /**
      * Display a listing of the resource.
      *
@@ -53,7 +55,7 @@ class RegistroConvenioController extends Controller
             'duracion' => 'required'
         ]);
         $path=$request->file('evidencia')->store('upload');
-        $indicador = Indicadores::find($idindicador);
+        $indicador = Indicadores::find(4);
         $registroCon = new Registroconvenio;
         $registroCon->empresa = $request->input('nombre');
         $registroCon->convenioid = $request->input('tipoCon');
@@ -62,24 +64,18 @@ class RegistroConvenioController extends Controller
 
         $indicador->atc_registroCon()->save($registroCon);
 
-        $registro = Registro::find($idindicador);
-        $totalActAprendizaje = atc_aprendizaje_mas_serv::all()->count();
-        $totalActExtencion = atc_extension::all()->count();
-        $totalActTitulacionCon = atc_titulacion_con::all()->count();
-        $total = $totalActAprendizaje + $totalActExtencion + $totalActTitulacionCon;
-        $registro->cantidad_alcanzada1 = Registroconvenio::all()->count();
-        $registro->cantidad_alcanzada2 = $total;
-        $registro->save();
+        $registro = Registro::find(1);
+
 
         $archivo = \App\evidencia::create(
             ['archivo' => $path,
                 'actividad_convenioid' => $registro->id]);
         $registroCon->evidencia()->save($archivo);
 
-        $indicador->parametro2 = $total;
-        $indicador->parametro1 = Registroconvenio::all()->count();
-        $indicador->save();
+        $registro->cantidad_de_atc_registroCon=Registroconvenio::all()->count();
+        $registro->save();
 
+        $this->loadData(4,1);
         return redirect('/reg_registro_convenio')->with('success','Se ha registrado correctamente.');
     }
 
