@@ -81,6 +81,7 @@
                                 <input type="text" class="form-control" name="profesor[]" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del profesor"/>
                             </div>
                         </div>
+
                         <div id="aumentar1">
                         </div>
                         <button type="button" onclick="agregar1()"> agregar </button>
@@ -93,15 +94,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="idIndicador" class="cols-sm-2 control-label">Seleccionar un Indicador</label>
-                            <select name="idIndicador"  class="form-control">
-                                <option disabled selected value> -- Selecione actividad -- </option>
-                                @foreach($indicadores as $in)
-                                    <option value={{$in->id}}>{{$in->nombre}}</option>
-                                @endforeach
-                            </SELECT>
-                        </div>
+
 
                         <div class="form-group">
                             <label for="evidencia" class="cols-sm-2 control-label">Evidencia</label>
@@ -160,6 +153,7 @@
                                 <input type="text" class="form-control" name="nombre[]" id="nombre" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido"  placeholder="Ingrese el nombre del estudiante"/>
                             </div>
                         </div>
+
                         <div id="aumentar3">
                         </div>
                         <button type="button" onclick="agregar3()"> agregar </button>
@@ -212,15 +206,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="idIndicador" class="cols-sm-2 control-label">Seleccionar un Indicador</label>
-                            <select name="idIndicador"  class="form-control">
-                                <option disabled selected value> -- Selecione actividad -- </option>
-                                @foreach($indicadores as $in)
-                                    <option value={{$in->id}}>{{$in->nombre}}</option>
-                                @endforeach
-                            </SELECT>
-                        </div>
 
                         <div class="form-group">
                             <label for="evidencia" class="cols-sm-2 control-label">Evidencia</label>

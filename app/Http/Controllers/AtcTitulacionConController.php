@@ -7,9 +7,11 @@ use App\Indicadores;
 use App\Registro;
 use App\evidencia;
 use Illuminate\Http\Request;
+use App\Traits\preload;
 
 class AtcTitulacionConController extends Controller
 {
+    use preload;
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +19,7 @@ class AtcTitulacionConController extends Controller
      */
     public function index()
     {
-        $indicadores=Indicadores::all();
+
         $titulacions=atc_titulacion_con::all();
         return view("/act_titulacion_con", compact("titulacions","indicadores"));
 
@@ -54,17 +56,17 @@ class AtcTitulacionConController extends Controller
             'profesor'=>'required',
             'empresa'=>'required'
         ]);
-        $indicador = Indicadores::find(3);
+        $indicador = Indicadores::find(1);
         $arreglo=$request->nombre;
         $nombre1="";
         foreach ($arreglo as $valor) {
             $nombre1 = $valor . ',' . $nombre1;
         }
         unset($valor);
-        $arreglo1=$request->profesor;
-        $profesor1="";
-        foreach ($arreglo1 as $valor1){
-            $profesor1= $valor1. ',' .$profesor1;
+        $arreglo=$request->nombre_profesor;
+        $nombreProfe="";
+        foreach ($arreglo as $valor) {
+            $nombreProfe = $valor . ',' . $nombreProfe;
         }
         unset($valor1);
         $arreglo2=$request->rut;
@@ -82,21 +84,24 @@ class AtcTitulacionConController extends Controller
         $titulacion->carrera=$request->input('carrera');
         $titulacion->fecha_inicio=$request->input('fecha_inicio');
         $titulacion->fecha_termino=$request->input('fecha_termino');
-        $titulacion->profesor=$profesor1;
+        $titulacion->nombre_profesor=$nombreProfe;
         $titulacion->empresa=$request->input('empresa');
 
         $indicador->atc_titulacionCon()->save($titulacion);
+        //actualizacion de registros
 
         $registro=Registro::find(1);
 
-        //cuando se pueda implementar total de actividades de titulacion
-        $registro->cantidad_de_atc_titulacionCon=atc_titulacion_con::all()->count();
+        $registro->cantidad_de_atc_titulacion_con=atc_titulacion_con::all()->count();
+
         $registro->save();
 
 
-        $registro2 = new \App\evidencia(['archivo'=>$path]);
-        $titulacion->evidencia()->save($registro2);
+        $archivo = new \App\evidencia(['archivo'=>$path]);
 
+        $titulacion->evidencia()->save($archivo);
+
+        $this->loadData(3,1);
         return redirect('/act_titulacion_con')->with('success','Se ha registrado correctamente.');
     }
 
@@ -148,10 +153,10 @@ class AtcTitulacionConController extends Controller
             $nombre1 = $valor . ',' . $nombre1;
         }
         unset($valor);
-        $arreglo1=$request->profesor;
-        $profesor1="";
-        foreach ($arreglo1 as $valor1){
-            $profesor1= $valor1. ',' .$profesor1;
+        $arreglo=$request->nombre_profesor;
+        $nombreProfe="";
+        foreach ($arreglo as $valor) {
+            $nombreProfe = $valor . ',' . $nombreProfe;
         }
         unset($valor1);
         $arreglo2=$request->rut;
@@ -169,7 +174,7 @@ class AtcTitulacionConController extends Controller
         $titulacion->carrera=$request->input('carrera');
         $titulacion->fecha_inicio=$request->input('fecha_inicio');
         $titulacion->fecha_termino=$request->input('fecha_termino');
-        $titulacion->profesor=$profesor1;
+        $titulacion->nombre_profesor=$nombreProfe;
         $titulacion->empresa=$request->input('empresa');
         $titulacion->save();
 
