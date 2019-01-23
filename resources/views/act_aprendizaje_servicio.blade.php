@@ -88,16 +88,6 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="idIndicador" class="cols-sm-2 control-label">Seleccionar un Indicador</label>
-                        <select name="idIndicador"  class="form-control">
-                            <option disabled selected value> -- Selecione actividad -- </option>
-                            @foreach($indicadores as $in)
-                                <option value={{$in->id}}>{{$in->nombre}}</option>
-                            @endforeach
-                        </SELECT>
-                    </div>
-
-                    <div class="form-group">
                         <label for="evidencia" class="cols-sm-2 control-label">Evidencia</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
@@ -197,16 +187,6 @@
                             <OPTION VALUE="2014-1">Primer semestre año 2014</OPTION>
                         </SELECT>
 
-                    </div>
-
-                    <div class="form-group">
-                        <label for="idIndicador" class="cols-sm-2 control-label">Seleccionar un Indicador</label>
-                        <select name="idIndicador"  class="form-control">
-                            <option disabled selected value> -- Selecione actividad -- </option>
-                            @foreach($indicadores as $in)
-                                <option value={{$in->id}}>{{$in->nombre}}</option>
-                            @endforeach
-                        </SELECT>
                     </div>
 
                     <div class="form-group">

@@ -17,11 +17,14 @@ class CreateRegistrosTable extends Migration
             $table->increments('id');
             $table->string('departamento');
             $table->date('año');
-            $table->integer('cantidad_alcanzada1');
-            $table->integer('cantidad_alcanzada2');
-            $table->integer('Indicadores_id')->unsigned()->nullable();
-            $table->foreign('Indicadores_id')->references('id')
-                ->on('indicadores')->onDelete('cascade');
+            $table->integer('total_de_actividades');
+            $table->integer('cantidad_de_titulados');
+            $table->integer('cantidad_de_asistentes');
+            $table->integer('cantidad_de_estudiantes');
+            $table->integer('cantidad_de_atc_AprServ');
+            $table->integer('cantidad_de_atc_extension');
+            $table->integer('cantidad_de_atc_registroCon');
+            $table->integer('cantidad_de_atc_titulacionCon');
             $table->timestamps();
         });
     }

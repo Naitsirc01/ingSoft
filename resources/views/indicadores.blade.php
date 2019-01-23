@@ -92,49 +92,54 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="rut" class="cols-sm-2 control-label">Actividad</label>
+                            <label for="rut" class="cols-sm-2 control-label">parametros</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <select id="act" onchange="addParams(this.value)">
-                                        <option disabled selected value> -- Selecione actividad -- </option>
-                                        <option value=1>Titulados convenio</option>
-                                        <option value=2>Registro de Convenio</option>
-                                        <option value=3>Aprendizaje mas servicio</option>
-                                        <option value=4>Extension</option>
+                                    <div class="column">
+                                        <p id="parametro1">Parametro 1</p>
+                                    </div>
+                                    <div class="columnOP">
+                                        /
+                                    </div>
+                                    <div class="column">
+                                        <p id="parametro2">Parametro 2</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rut" class="cols-sm-2 control-label">Parametro 1</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <select onclick="swap('parametro1',this.options[this.selectedIndex].innerHTML)">
+                                        <option value="0">Total de actividades</option>
+                                        <option value="1">Total de actividades A+S</option>
+                                        <option value="2">Total de actividades de extencion</option>
+                                        <option value="3">Total de titualcion por convenio</option>
+                                        <option value="4">Total de registro de convenios</option>
+                                        <option value="5">cantidad de estudiantes A+S</option>
+                                        <option value="6">cantidad de asistentes extension</option>
+                                        <option value="7">cantidad de titulados registrados</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="rut" class="cols-sm-2 control-label">parametros</label>
+                            <label for="rut" class="cols-sm-2 control-label">Parametro 2</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <div class="column">
-                                        <label for="rut" class="cols-sm-2 control-label">parametro1</label>
-                                        <select name="param1" id="param1">
-                                            <option value="Total_de_actividades">Total de actividades</option>
-                                            <option value="atc_aprendizaje_mas_serv">actividades A+S</option>
-                                            <option value="atc_extension">actividades de extencion</option>
-                                            <option value="atc_titulacion_con">titualcion por convenio</option>
-                                            <option value="Registroconvenio">registro de convenios</option>
-                                        </select>
-                                    </div>
-                                    <div class="columnOP">
-                                        <br>
-                                        /
-                                    </div>
-                                    <div class="column">
-                                        <label for="rut" class="cols-sm-2 control-label">parametro2</label>
-                                        <select name="param2" id="param2">
-                                            <option value="Total_de_actividades">Total de actividades</option>
-                                            <option value="atc_aprendizaje_mas_serv">actividades A+S</option>
-                                            <option value="atc_extension">actividades de extencion</option>
-                                            <option value="atc_titulacion_con">titualcion por convenio</option>
-                                            <option value="Registroconvenio">registro de convenios</option>
-                                        </select>
-                                    </div>
-
+                                    <select onclick="swap('parametro2',this.options[this.selectedIndex].innerHTML)">
+                                        <option value="0">Total de actividades</option>
+                                        <option value="1">Total de actividades A+S</option>
+                                        <option value="2">Total de actividades de extencion</option>
+                                        <option value="3">Total de titualcion por convenio</option>
+                                        <option value="4">Total de registro de convenios</option>
+                                        <option value="5">cantidad de estudiantes A+S</option>
+                                        <option value="6">cantidad de asistentes extension</option>
+                                        <option value="7">cantidad de titulados registrados</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -239,56 +244,57 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="rut" class="cols-sm-2 control-label">Actividad</label>
+                            <label for="rut" class="cols-sm-2 control-label">parametros</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <select id="act" onchange="addParamsed(this.value)">
-                                        <option disabled selected value> -- Selecione actividad -- </option>
-                                        <option value=1>Titulados convenio</option>
-                                        <option value=2>Registro de Convenio</option>
-                                        <option value=3>Aprendizaje mas servicio</option>
-                                        <option value=4>Extension</option>
+                                    <div class="column">
+                                        <p id="parametro3">Parametro 1</p>
+                                    </div>
+                                    <div class="columnOP">
+                                        /
+                                    </div>
+                                    <div class="column">
+                                        <p id="parametro4">Parametro 2</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rut" class="cols-sm-2 control-label">Parametro 1</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <select onclick="swap('parametro3',this.options[this.selectedIndex].innerHTML)">
+                                        <option value="0">Total de actividades</option>
+                                        <option value="1">Total de actividades A+S</option>
+                                        <option value="2">Total de actividades de extencion</option>
+                                        <option value="3">Total de titualcion por convenio</option>
+                                        <option value="4">Total de registro de convenios</option>
+                                        <option value="5">cantidad de estudiantes A+S</option>
+                                        <option value="6">cantidad de asistentes extension</option>
+                                        <option value="7">cantidad de titulados registrados</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
 
-
-
                         <div class="form-group">
-                            <label for="rut" class="cols-sm-2 control-label">parametros</label>
+                            <label for="rut" class="cols-sm-2 control-label">Parametro 1</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <div class="column">
-                                        <label for="rut" class="cols-sm-2 control-label">parametro1</label>
-                                        <select name="param1" id="param3">
-                                            <option value="Total_de_actividades">Total de actividades</option>
-                                            <option value="atc_aprendizaje_mas_serv">actividades A+S</option>
-                                            <option value="atc_extension">actividades de extencion</option>
-                                            <option value="atc_titulacion_con">titualcion por convenio</option>
-                                            <option value="Registroconvenio">registro de convenios</option>
-                                        </select>
-                                    </div>
-                                    <div class="columnOP">
-                                        <br>
-                                        /
-                                    </div>
-                                    <div class="column">
-                                        <label for="rut" class="cols-sm-2 control-label">parametro2</label>
-                                        <select name="param2" id="param4">
-                                            <option value="Total_de_actividades">Total de actividades</option>
-                                            <option value="atc_aprendizaje_mas_serv">actividades A+S</option>
-                                            <option value="atc_extension">actividades de extencion</option>
-                                            <option value="atc_titulacion_con">titualcion por convenio</option>
-                                            <option value="Registroconvenio">registro de convenios</option>
-                                        </select>
-                                    </div>
-
+                                    <select onclick="swap('parametro4',this.options[this.selectedIndex].innerHTML)">
+                                        <option value="0">Total de actividades</option>
+                                        <option value="1">Total de actividades A+S</option>
+                                        <option value="2">Total de actividades de extencion</option>
+                                        <option value="3">Total de titualcion por convenio</option>
+                                        <option value="4">Total de registro de convenios</option>
+                                        <option value="5">cantidad de estudiantes A+S</option>
+                                        <option value="6">cantidad de asistentes extension</option>
+                                        <option value="7">cantidad de titulados registrados</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
-
-
 
 
                         <div class="form-group">
@@ -497,88 +503,8 @@
 </script>
 
 <script>
-    var ext = {!! json_encode($columnasExtension) !!}
-    var apr = {!! json_encode($columnasAprendizajeServicio) !!}
-    {{--var reg = {!! json_encode($columnasRegConvenio) !!}--}}
-    {{--var ticon = {!! json_encode($columnasTitulacionCon) !!}--}}
-    var tablas= {!! json_encode($tablasn) !!}
-
-        function addParams($id) {
-            debugger;
-            addColumnsParam($id,"param1")
-            addColumnsParam($id,"param2")
-        }
-
-    function addParamsed($id) {
-        debugger;
-        addColumnsParam($id,"param3")
-        addColumnsParam($id,"param4")
-    }
-
-    function addColumnsParam($id,$name) {
-        var x = document.getElementById($name);
-        var option = document.createElement("option");
-        var i;
-        var columnas;
-        var op=$id;
-
-        switch (op) {
-            case '3':
-                columnas=apr;
-                break;
-            case '4':
-                columnas=ext;
-                break;
-            default:
-                columnas=[];
-                break;
-        }
-        clearSelect($name);
-        option.text = 'Total de actividades';
-        option.value= 'Total_de_actividades';
-        x.add(option);
-        option = document.createElement("option");
-        option.text = 'actividades A+S';
-        option.value= 'atc_aprendizaje_mas_serv';
-        x.add(option);
-        option = document.createElement("option");
-        option.text = 'actividades de extencion';
-        option.value= 'atc_extension';
-        x.add(option);
-        option = document.createElement("option");
-        option.text = 'titualcion por convenio';
-        option.value= 'atc_titulacion_con';
-        x.add(option);
-        option = document.createElement("option");
-        option.text = 'registro de convenios';
-        option.value= 'Registroconvenio';
-        x.add(option);
-        option = document.createElement("option");
-
-        if(columnas.length!=0){
-            for (i = 0; i < columnas.length; i++) {
-                option.text = columnas[i];
-                option.value= columnas[i];
-                x.add(option);
-                option = document.createElement("option");
-            }
-        }
-        for (i = 0; i < tablas.length; i++) {
-            option.text = tablas[i];
-            option.value= tablas[i];
-            x.add(option);
-            option = document.createElement("option");
-        }
-
-    }
-
-    function clearSelect($list) {
-        var select = document.getElementById($list);
-        var length = select.options.length;
-        for (i = 0; i < length; i++) {
-            select.remove(i);
-            // select.options[i] = null;
-        }
+    function swap($id,$value) {
+        document.getElementById($id).innerHTML=$value;
     }
 </script>
 

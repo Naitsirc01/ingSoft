@@ -7,9 +7,11 @@ use App\Indicadores;
 use App\Registro;
 use App\evidencia;
 use Illuminate\Http\Request;
+use App\Traits\preload;
 
 class AtcAprendizajeMasServController extends Controller
 {
+    use preload;
 
 //    public function __construct()
 //    {
@@ -22,9 +24,8 @@ class AtcAprendizajeMasServController extends Controller
      */
     public function index()
     {
-        $indicadores=Indicadores::all();
         $aprendizajes=atc_aprendizaje_mas_serv::all();
-        return view("/act_aprendizaje_servicio", compact("aprendizajes",'indicadores'));
+        return view("/act_aprendizaje_servicio", compact("aprendizajes"));
     }
 
     /**
@@ -67,10 +68,11 @@ class AtcAprendizajeMasServController extends Controller
         }
         unset($valor1);
         $path=$request->file('evidencia')->store('upload');
-        //se busca el indicador asociado
-        $idindicador=$request->input('idIndicador');
-        $indicador = Indicadores::find($idindicador);
 
+        //se busca el indicador asociado
+        $indicador = Indicadores::find(2);
+
+        //creacion de la actividad
         $aprendizaje=new atc_aprendizaje_mas_serv;
         $aprendizaje->nombre_profesor=$nombreProfe;
         $aprendizaje->cantidad_estudiantes=$request->input('cantidad_estudiantes');
@@ -81,26 +83,11 @@ class AtcAprendizajeMasServController extends Controller
         $indicador->atc_aprendizajeServ()->save($aprendizaje);
 
         //actualizacion de registros
-        $registro=Registro::find($idindicador);
-        $total=0;
-        switch ($request->tipo1){
-            case 'cantidad_estudiante':
-                $total=$registro->cantidad_alcanzada1+$request->cantidad_estudiantes;
-                $registro->cantidad_alcanzada1=$total;
-                break;
-            case 'Total de actividades':
-                $registro->cantidad_alcanzada1=atc_aprendizaje_mas_serv::all()->count();
-                break;
-        }
-        switch ($request->tipo2){
-            case 'cantidad_estudiante':
-                $total=$registro->cantidad_alcanzada2+$request->cantidad_estudiantes;
-                $registro->cantidad_alcanzada2=$total;
-                break;
-            case 'Total de actividades':
-                $registro->cantidad_alcanzada2=atc_aprendizaje_mas_serv::all()->count();
-                break;
-        }
+        $registro=Registro::find(1);
+
+        $registro->cantidad_de_atc_AprServ=atc_aprendizaje_mas_serv::all()->count();
+        $total=$registro->cantidad_de_estudiantes+$request->cantidad_estudiantes;
+        $registro->cantidad_de_estudiantes=$total;
         $registro->save();
 
         $archivo = new \App\evidencia(['archivo'=>$path]);
@@ -109,14 +96,15 @@ class AtcAprendizajeMasServController extends Controller
 
         $aprendizaje->evidencia()->save($archivo);
 
-        $totalIndicador=$total+$indicador->parametro2;
-        $indicador->parametro2=$totalIndicador;
-        $indicador->parametro1=atc_aprendizaje_mas_serv::all()->count();
-        $indicador->save();
+//        $totalIndicador=$total+$indicador->parametro2;
+//        $indicador->parametro2=$totalIndicador;
+//        $indicador->parametro1=atc_aprendizaje_mas_serv::all()->count();
+//        $indicador->save();
 
-
+        $this->loadData(2,1);
         return redirect('/act_aprendizaje_servicio')->with('success','Se ha registrado correctamente.');
     }
+
 
     /**
      * Display the specified resource.

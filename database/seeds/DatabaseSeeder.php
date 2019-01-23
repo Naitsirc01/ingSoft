@@ -33,8 +33,8 @@ class DatabaseSeeder extends Seeder
             'tipo_de_calculo'=>'2',
             'parametro1'=>0,
             'parametro2'=>0,
-            'tipo1'=>'atc_extension',
-            'tipo2'=>'cantidad_asistentes',
+            'tipo1'=>2,
+            'tipo2'=>6,
             'meta1'=>115,
             'meta2'=>1377,
             'año_meta'=>'2020-11-30',
@@ -48,8 +48,8 @@ class DatabaseSeeder extends Seeder
             'tipo_de_calculo'=>'2',
             'parametro1'=>0,
             'parametro2'=>0,
-            'tipo1'=>'atc_aprendizaje_mas_serv',
-            'tipo2'=>'cantidad_estudiantes',
+            'tipo1'=>1,
+            'tipo2'=>5,
             'meta1'=>63,
             'meta2'=>870,
             'año_meta'=>'2020-11-30',
@@ -63,8 +63,8 @@ class DatabaseSeeder extends Seeder
             'tipo_de_calculo'=>'1',
             'parametro1'=>0,
             'parametro2'=>0,
-            'tipo1'=>'titulados',
-            'tipo2'=>'Total de actividades',
+            'tipo1'=>7,
+            'tipo2'=>0,
             'meta1'=>15,
             'meta2'=>0,
             'año_meta'=>'2020-11-30',
@@ -77,8 +77,8 @@ class DatabaseSeeder extends Seeder
             'tipo_de_calculo'=>'1',
             'parametro1'=>0,
             'parametro2'=>0,
-            'tipo1'=>'Registroconvenio',
-            'tipo2'=>'Total_de_actividades',
+            'tipo1'=>4,
+            'tipo2'=>0,
             'meta1'=>208,
             'meta2'=>271,
             'año_meta'=>'2020-11-30',
@@ -88,33 +88,14 @@ class DatabaseSeeder extends Seeder
         DB::table('registros')->insert([
             'departamento' => 'Ingenieria Sistemas y Computación',
             'año'=>Carbon::now(),
-            'cantidad_alcanzada1' =>0,
-            'cantidad_alcanzada2' =>0,
-            'Indicadores_id'=>1,
-        ]);
-
-        DB::table('registros')->insert([
-            'departamento' => 'Ingenieria Sistemas y Computación',
-            'año'=>Carbon::now(),
-            'cantidad_alcanzada1' =>0,
-            'cantidad_alcanzada2' =>0,
-            'Indicadores_id'=>2,
-        ]);
-
-        DB::table('registros')->insert([
-            'departamento' => 'Ingenieria Sistemas y Computación',
-            'año'=>Carbon::now(),
-            'cantidad_alcanzada1' =>0,
-            'cantidad_alcanzada2' =>0,
-            'Indicadores_id'=>3,
-        ]);
-
-        DB::table('registros')->insert([
-            'departamento' => 'Ingenieria Sistemas y Computación',
-            'año'=>Carbon::now(),
-            'cantidad_alcanzada1' =>0,
-            'cantidad_alcanzada2' =>0,
-            'Indicadores_id'=>4,
+            'total_de_actividades' =>0,
+            'cantidad_de_titulados' =>0,
+            'cantidad_de_asistentes' =>0,
+            'cantidad_de_estudiantes' =>0,
+            'cantidad_de_atc_AprServ' =>0,
+            'cantidad_de_atc_extension' =>0,
+            'cantidad_de_atc_registroCon' =>0,
+            'cantidad_de_atc_titulacionCon' =>0,
         ]);
 
 

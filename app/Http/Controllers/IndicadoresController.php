@@ -30,47 +30,72 @@ class IndicadoresController extends Controller
         //descartado por tener pocas opciones
 //        $columnasAprendizajeServicio=Schema::getColumnListing('atc_aprendizaje_mas_servs');
 //        $columnasTitulacionCon=Schema::getColumnListing('atc_titulacion_cons');
-        $columnasAprendizajeServicio=['cantidad_estudiante'];
-        $columnasExtension=['cantidad_asistentes'];
+//        $columnasAprendizajeServicio=['cantidad_estudiante'];
+//        $columnasExtension=['cantidad_asistentes'];
+
         $indicadores=Indicadores::all();
+        //consulta de los indicadores
+//        $reg = Registro::find(1);
+//        for ($i = 1; $i <= count($indicadores); $i++) {
+//            $data = Indicadores::find($i);
+//            switch ($data->tipo1){
+//                case 0:
+//                    $data->parametro1=$reg->total_de_actividades;
+//                    break;
+//                case 1:
+//                    $data->parametro1=$reg->cantidad_de_atc_AprServ;
+//                    break;
+//                case 2:
+//                    $data->parametro1=$reg->cantidad_de_atc_extension;
+//                    break;
+//                case 3:
+//                    $data->parametro1=$reg->cantidad_de_atc_titulacionCon;
+//                    break;
+//                case 4:
+//                    $data->parametro1=$reg->cantidad_de_atc_registroCon;
+//                    break;
+//                case 5:
+//                    $data->parametro1=$reg->cantidad_de_estudiantes;
+//                    break;
+//                case 6:
+//                    $data->parametro1=$reg->cantidad_de_asistentes;
+//                    break;
+//                case 7:
+//                    $data->parametro1=$reg->cantidad_de_titulados;
+//                    break;
+//            }
+//            if($data->tipo_de_calculo==2){
+//                switch ($data->tipo2){
+//                    case 0:
+//                        $data->parametro2=$reg->total_de_actividades;
+//                        break;
+//                    case 1:
+//                        $data->parametro2=$reg->cantidad_de_atc_AprServ;
+//                        break;
+//                    case 2:
+//                        $data->parametro2=$reg->cantidad_de_atc_extension;
+//                        break;
+//                    case 3:
+//                        $data->parametro2=$reg->cantidad_de_atc_titulacionCon;
+//                        break;
+//                    case 4:
+//                        $data->parametro2=$reg->cantidad_de_atc_registroCon;
+//                        break;
+//                    case 5:
+//                        $data->parametro2=$reg->cantidad_de_estudiantes;
+//                        break;
+//                    case 6:
+//                        $data->parametro2=$reg->cantidad_de_asistentes;
+//                        break;
+//                    case 7:
+//                        $data->parametro2=$reg->cantidad_de_titulados;
+//                        break;
+//                }
+//            }
+//            $data->save();
+//        }
 
-        $totalAtc=0;
-        $actividades=[atc_extension::all(),
-            atc_aprendizaje_mas_serv::all(),
-            atc_titulacion_con::all(),
-            Registroconvenio::all()];
-        $tablas=[Titulado::all()];
-        $tablasn=[Titulado::all()];
-
-        //calculo de los indicadores
-        //agregar el atributo para identificar las tablas
-        for ($i = 1; $i <= count($indicadores); $i++) {
-            $data = Indicadores::find($i);
-            $reg = Registro::find($i);
-
-            if ($data != null) {
-                if(!empty($actividades[$i-1])){
-                    if($data->meta2!=0){
-                        $data->parametro1=$actividades[$i-1]->count();
-                        $data->parametro2=$reg->cantidad_alcanzada2;
-                    }else{
-                        $t=$actividades[$i-1]->count();
-                        if($t!=0){
-                            $data->parametro1=count($tablas[0])/$actividades[$i-1]->count();
-                        }
-                    }
-                    $totalAtc+=$actividades[$i-1]->count();
-                    $data->save();
-                }
-            }
-        }
-
-
-
-        return view("/indicadores",compact('indicadores',
-            'columnasExtension',
-            'columnasAprendizajeServicio',
-            'tablasn'));
+        return view("/indicadores",compact('indicadores'));
     }
 
     /**
