@@ -200,15 +200,6 @@
                     </div>
                     <button type="button" onclick="agregar3()"> agregar </button>
                     <br>
-                    <div class="form-group">
-                        <label for="idIndicador" class="cols-sm-2 control-label">Seleccionar un Indicador</label>
-                        <select name="idIndicador"  class="form-control">
-                            <option disabled selected value> -- Selecione actividad -- </option>
-                            @foreach($indicadores as $in)
-                                <option value={{$in->id}}>{{$in->nombre}}</option>
-                            @endforeach
-                        </SELECT>
-                    </div>
 
                     <div class="form-group">
                         <label for="evidencia" class="cols-sm-2 control-label">Subir lista asistencia</label>

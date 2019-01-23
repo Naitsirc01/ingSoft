@@ -160,7 +160,7 @@ class AtcAprendizajeMasServController extends Controller
         $aprendizaje=atc_aprendizaje_mas_serv::find($id);
 
         //resta de cantidad anterior
-        $registro=Registro::find('1');
+        $registro=Registro::find(1);
         $registro->cantidad_de_atc_AprServ=atc_aprendizaje_mas_serv::all()->count();
         if($registro->cantidad_de_estudiantes!=$request->input('cantidad_estudiantes')){
             //cantidad actual-cantidad del editado antes+cantidad nueva

@@ -47,7 +47,6 @@ class RegistroConvenioController extends Controller
      */
     public function store(Request $request)
     {
-        $idindicador=$request->input('idIndicador');
         $this->validate($request, [
             'nombre' => 'required',
             'tipoCon' => 'required',
@@ -154,8 +153,12 @@ class RegistroConvenioController extends Controller
      */
     public function destroy($id)
     {
-        $registro=Registroconvenio::find($id);
-        $registro->delete();
+        $registro=Registro::find(1);
+        $registroCon=Registroconvenio::find($id);
+        $registroCon->delete();
+        $registro->cantidad_de_atc_registroCon=Registroconvenio::all()->count();
+        $registro->save();
+        $this->loadData(4,1);
         return redirect('/reg_registro_convenio')->with('success','Se ha eliminado correctamente.');
     }
 }

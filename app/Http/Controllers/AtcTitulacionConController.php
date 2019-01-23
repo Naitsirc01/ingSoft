@@ -184,7 +184,7 @@ class AtcTitulacionConController extends Controller
         $titulacion->save();
 
         $archivo = evidencia::where('atc_titulacion_con_id','=',$id)->first();
-        $archivo = evidencia::find($id);
+//        $archivo = evidencia::find($id);
         $archivo->archivo=$path;
         $archivo->save();
 

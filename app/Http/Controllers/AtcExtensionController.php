@@ -93,19 +93,11 @@ class AtcExtensionController extends Controller
 
         $registro=Registro::find(1);
 
-        $total=0;
-
 
        $registro->cantidad_de_atc_extension=atc_extension::all()->count();
        $total=$registro->cantidad_de_asistentes+$request->cantidad_asistentes;
        $registro->cantidad_de_asistentes=$total;
        $registro->save();
-
-        //$totalIndicador=$total+$indicador->parametro2;
-        $indicador->parametro2=$total;
-        $indicador->parametro1=atc_extension::all()->count();
-
-
 
         $registro2 = new \App\evidencia(['archivo'=>$path]);
 
@@ -187,19 +179,15 @@ class AtcExtensionController extends Controller
         $archivo->archivo=$path;
         $archivo->save();
 
-
-        $indicador=Indicadores::find(1);
         $registro=Registro::find(1);
-        $total=$registro->cantidad_alcanzada2+$request->cantidad_asistentes;
-        $registro->cantidad_alcanzada1=atc_extension::all()->count();
-        $registro->cantidad_alcanzada2=$total;
-        $registro->save();
-
-
-        $totalIndicador=$total+$indicador->parametro2;
-        $indicador->parametro2=$totalIndicador;
-        $indicador->parametro1=atc_extension::all()->count();
-
+        $registro->cantidad_de_atc_extension=atc_extension::all()->count();
+        if($registro->cantidad_de_estudiantes!=$request->input('cantidad_asistentes')){
+            //cantidad actual-cantidad del editado antes+cantidad nueva
+            $total=$registro->cantidad_de_asistentes-$registro->cantidad_de_asistentes+$request->input('cantidad_asistentes');
+            $registro->cantidad_de_asistentes=$total;
+            $registro->save();
+        }
+        $this->loadData(1,1);
         return redirect('/act_regitro_extension')->with('success','Se ha actualizado correctamente.');
     }
 
@@ -211,8 +199,16 @@ class AtcExtensionController extends Controller
      */
     public function destroy($id)
     {
+        $registro=Registro::find(1);
         $extension=atc_extension::find($id);
+
+        $total=$registro->cantidad_de_asistentes-$extension->cantidad_asistentes;
+        $registro->cantidad_de_asistentes=$total;
+
         $extension->delete();
+        $registro->cantidad_de_atc_extension=atc_extension::all()->count();
+        $registro->save();
+        $this->loadData(1,1);
         return redirect('/act_regitro_extension')->with('success','Se ha eliminado correctamente.');
     }
 }
