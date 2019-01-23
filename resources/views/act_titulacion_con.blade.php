@@ -34,26 +34,27 @@
                             </div>
                         </div>
 
-                        <label for="email" class="cols-sm-2 control-label">Nombre</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" name="nombre[]" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del estudiante"/>
-                            </div>
-                        </div>
+                        <br>
+                        <h5>Estudiantes</h5>
+
                         <div id="aumentar">
+                            <label for="nombre" class="cols-sm-2 control-label">Nombre</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
+                                    <input type="text" class="form-control" name="nombre[]" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del estudiante"/>
+                                </div>
+                            </div>
+
+                            <label for="rut" class="cols-sm-2 control-label">Rut</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
+                                    <input type="text" class="form-control" name="rut[]" pattern="^\d{1,2}\.\d{3}\.\d{3}[-][0-9kK]{1}$" title="Ingrese rut válido" placeholder="Ingrese el rut del estudiante"/>
+                                </div>
+                            </div>
                         </div>
 
-                        <br>
-                        <label for="email" class="cols-sm-2 control-label">Rut</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" name="rut[]" pattern="^\d{1,2}\.\d{3}\.\d{3}[-][0-9kK]{1}$" title="Ingrese rut válido" placeholder="Ingrese el rut del estudiante"/>
-                            </div>
-                        </div>
-                        <div id="aumentar2">
-                        </div>
                         <button type="button" onclick="agregar()"> agregar </button>
                         <br>
                         <label for="name" class="cols-sm-2 control-label">Seleccione la Carrera</label>
@@ -74,15 +75,18 @@
                         <label for="exampleInputdate">Fecha de termino</label>
                         <input type="date" class="form-control"  name="fecha_termino">
 
-                        <label for="email" class="cols-sm-2 control-label">Nombre profesor guia</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" name="profesor[]" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del profesor"/>
-                            </div>
+
+                        <div id="aumentar1" class="cols-sm-10">
+                            <label for="email" class="cols-sm-2 control-label">Nombre profesor guia</label>
+                            <select class="form-control" name="profesor[]"  placeholder="Registrar profesor">
+                                <option disabled selected value> -- Selecione un profesor -- </option>
+                                @foreach($profesores as $p)
+                                    <option value={{$p->id}}>{{$p->nombre}}</option>
+                                @endforeach
+                            </select>
                         </div>
 
-                        <div id="aumentar1">
+                        <div >
                         </div>
                         <button type="button" onclick="agregar1()"> agregar </button>
                         <br>
@@ -385,20 +389,21 @@
     var i = 0;
     function agregar() {
         if (i<3) {
-            $("#aumentar").append(' <label for="email" class="cols-sm-2 control-label">Nombre</label>\n' +
-                '                        <div class="cols-sm-10">\n' +
-                '                            <div class="input-group">\n' +
-                '                                <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->\n' +
-                '                                <input type="text" class="form-control" name="nombre[]" id="nombre" pattern="[A-Za-z]+" title="Ingrese nombre válido"  placeholder="Ingrese el nombre del estudiante"/>\n' +
+            $("#aumentar").append('<label for="nombre" class="cols-sm-2 control-label">Nombre</label>\n' +
+                '                            <div class="cols-sm-10">\n' +
+                '                                <div class="input-group">\n' +
+                '                                    <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->\n' +
+                '                                    <input type="text" class="form-control" name="nombre[]" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\\s]*)+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del estudiante"/>\n' +
+                '                                </div>\n' +
                 '                            </div>\n' +
-                '                        </div>');
-            $("#aumentar2").append(' <label for="email" class="cols-sm-2 control-label">Ingrese rut</label>\n' +
-                '                        <div class="cols-sm-10">\n' +
-                '                            <div class="input-group">\n' +
-                '                                <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->\n' +
-                '                              <input type="text" class="form-control" name="rut[]" pattern="^\\d{1,2}\\.\\d{3}\\.\\d{3}[-][0-9kK]{1}$" title="Ingrese rut válido" placeholder="Ingrese el rut del estudiante"/>\n' +
-                '                            </div>\n' +
-                '                        </div>');
+                '\n' +
+                '                            <label for="rut" class="cols-sm-2 control-label">Rut</label>\n' +
+                '                            <div class="cols-sm-10">\n' +
+                '                                <div class="input-group">\n' +
+                '                                    <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->\n' +
+                '                                    <input type="text" class="form-control" name="rut[]" pattern="^\\d{1,2}\\.\\d{3}\\.\\d{3}[-][0-9kK]{1}$" title="Ingrese rut válido" placeholder="Ingrese el rut del estudiante"/>\n' +
+                '                                </div>\n' +
+                '                            </div>');
             i++;
         }
 
@@ -408,13 +413,13 @@
     var j = 0;
     function agregar1() {
         if (j<1) {
-            $("#aumentar1").append(' <label for="email" class="cols-sm-2 control-label">Nombre profesor guia</label>\n' +
-                '                        <div class="cols-sm-10">\n' +
-                '                            <div class="input-group">\n' +
-                '                                <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->\n' +
-                '                               <input type="text" class="form-control" name="profesor[]" id="profesor" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del profesor"/>\n' +
-                '                            </div>\n' +
-                '                        </div>');
+            $("#aumentar1").append('<label for="email" class="cols-sm-2 control-label">Nombre profesor guia</label>\n' +
+                '                            <select class="form-control" name="profesor[]"  placeholder="Registrar profesor">\n' +
+                '                                <option disabled selected value> -- Selecione un profesor -- </option>\n' +
+                '                                @foreach($profesores as $p)\n' +
+                '                                    <option value={{$p->id}}>{{$p->nombre}}</option>\n' +
+                '                                @endforeach\n' +
+                '                            </select>');
             j++;
         }
     };

@@ -158,6 +158,17 @@ class AtcAprendizajeMasServController extends Controller
         unset($valor1);
         $path=$request->file('evidencia')->store('upload');
         $aprendizaje=atc_aprendizaje_mas_serv::find($id);
+
+        //resta de cantidad anterior
+        $registro=Registro::find('1');
+        $registro->cantidad_de_atc_AprServ=atc_aprendizaje_mas_serv::all()->count();
+        if($registro->cantidad_de_estudiantes!=$request->input('cantidad_estudiantes')){
+            //cantidad actual-cantidad del editado antes+cantidad nueva
+            $total=$registro->cantidad_de_estudiantes-$aprendizaje->cantidad_estudiantes+$request->input('cantidad_estudiantes');
+            $registro->cantidad_de_estudiantes=$total;
+            $registro->save();
+        }
+
         $aprendizaje->nombre_profesor=$nombreProfe;
         $aprendizaje->cantidad_estudiantes=$request->input('cantidad_estudiantes');
         $aprendizaje->nombre_socio=$nombreSocio;
@@ -165,10 +176,13 @@ class AtcAprendizajeMasServController extends Controller
         $aprendizaje->asignaturaid=$request->input('asignaturaid');
         $aprendizaje->save();
 
+
         $archivo = evidencia::where('atc_aprendizaje_mas_serv_id','=',$id)->first();
         $archivo->archivo=$path;
         $archivo->save();
 
+
+        $this->loadData(2,1);
         return redirect('/act_aprendizaje_servicio')->with('success','Se ha actualizado correctamente.');
     }
 
@@ -181,7 +195,15 @@ class AtcAprendizajeMasServController extends Controller
     public function destroy($id)
     {
         $aprendizaje=atc_aprendizaje_mas_serv::find($id);
+        //resta de la cantidad
+        $registro=Registro::find('1');
+
+        $total=$registro->cantidad_de_estudiantes-$aprendizaje->cantidad_estudiantes;
+        $registro->cantidad_de_estudiantes=$total;
         $aprendizaje->delete();
+        $registro->cantidad_de_atc_AprServ=atc_aprendizaje_mas_serv::all()->count();
+        $registro->save();
+        $this->loadData(2,1);
         return redirect('/act_aprendizaje_servicio')->with('success','Se ha eliminado correctamente.');
     }
 }

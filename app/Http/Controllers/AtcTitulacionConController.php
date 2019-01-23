@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\atc_titulacion_con;
 use App\Indicadores;
+use App\Profesore;
 use App\Registro;
 use App\evidencia;
 use Illuminate\Http\Request;
@@ -19,9 +20,9 @@ class AtcTitulacionConController extends Controller
      */
     public function index()
     {
-
+        $profesores=Profesore::all();
         $titulacions=atc_titulacion_con::all();
-        return view("/act_titulacion_con", compact("titulacions","indicadores"));
+        return view("/act_titulacion_con", compact("titulacions","indicadores","profesores"));
 
         /*$titulados=Titulado::all();
         return view('titulado')->with('titulados',$titulados);*/
@@ -63,11 +64,11 @@ class AtcTitulacionConController extends Controller
             $nombre1 = $valor . ',' . $nombre1;
         }
         unset($valor);
-        $arreglo=$request->nombre_profesor;
-        $nombreProfe="";
-        foreach ($arreglo as $valor) {
-            $nombreProfe = $valor . ',' . $nombreProfe;
-        }
+//        $arreglo=$request->profesor;
+//        $nombreProfe="";
+//        foreach ($arreglo as $valor) {
+//            $nombreProfe = $valor . ',' . $nombreProfe;
+//        }
         unset($valor1);
         $arreglo2=$request->rut;
         $rut1="";
@@ -84,7 +85,13 @@ class AtcTitulacionConController extends Controller
         $titulacion->carrera=$request->input('carrera');
         $titulacion->fecha_inicio=$request->input('fecha_inicio');
         $titulacion->fecha_termino=$request->input('fecha_termino');
-        $titulacion->nombre_profesor=$nombreProfe;
+
+        $arreglo=$request->profesor;
+        $titulacion->profesor_id1 = $arreglo[0];
+        if(count($arreglo)==2){
+            $titulacion->profesor_id2 = $arreglo[1];
+        }
+
         $titulacion->empresa=$request->input('empresa');
 
         $indicador->atc_titulacionCon()->save($titulacion);
@@ -92,10 +99,8 @@ class AtcTitulacionConController extends Controller
 
         $registro=Registro::find(1);
 
-        $registro->cantidad_de_atc_titulacion_con=atc_titulacion_con::all()->count();
-
+        $registro->cantidad_de_atc_titulacionCon=atc_titulacion_con::all()->count();
         $registro->save();
-
 
         $archivo = new \App\evidencia(['archivo'=>$path]);
 
@@ -198,7 +203,12 @@ class AtcTitulacionConController extends Controller
     public function destroy($id)
     {
         $titulacion=atc_titulacion_con::find($id);
+        $registro=Registro::find(1);
         $titulacion->delete();
+        $registro->cantidad_de_atc_titulacionCon=atc_titulacion_con::all()->count();
+        $registro->save();
+        $this->loadData(3,1);
         return redirect('/act_titulacion_con')->with('success','Se ha eliminado correctamente.');
     }
 }
+

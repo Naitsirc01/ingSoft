@@ -10,7 +10,7 @@
 </head>
 <style>
     .margentabla {
-        margin: 3%;
+        margin: 2%;
     }
     .column {
         float: left;
@@ -422,10 +422,18 @@
                     </div>
                 </th>
                 {{--<th class="hidden">{{$i->tipo_de_calculo}}</th>--}}
-                <td>{{$parametros[$i->tipo1]}}: {{$i->parametro1}}</td>
-                <td>{{$parametros[$i->tipo2]}}: {{$i->parametro2}}</td>
-                <td>{{$i->meta1}}</td>
-                <td>{{$i->meta2}}</td>
+                @if($i->tipo_de_calculo==2)
+                    <td>{{$parametros[$i->tipo1]}}: {{$i->parametro1}}</td>
+                    <td>{{$parametros[$i->tipo2]}}: {{$i->parametro2}}</td>
+                    <td>{{$i->meta1}}</td>
+                    <td>{{$i->meta2}}</td>
+                @else
+                    <td>Porcentanje: {{$i->parametro1}} %</td>
+                    <td>{{$parametros[$i->tipo1]}}: {{$i->parametro1}}/{{$parametros[$i->tipo2]}}: {{$i->parametro2}}</td>
+                    <td>{{$i->meta1}}</td>
+                    <td></td>
+                @endif
+
                 <td>{{$i->año_meta}}</td>
                 <td>
 
