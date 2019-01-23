@@ -60,7 +60,7 @@ trait preload {
                 break;
         }
         if($data->tipo_de_calculo!=2){
-            $par=$data->parametro1*100;
+            $par=$data->parametro1;
             switch ($data->tipo2){
                 case 0:
                     if($reg->total_de_actividades!=0)

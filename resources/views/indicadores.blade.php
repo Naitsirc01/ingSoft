@@ -66,14 +66,6 @@
                             </div>
                         </div>
 
-                        <label class="cols-sm-2 control-label">Objetivo</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" name="objetivo" placeholder="describa el objetivo"/>
-                            </div>
-                        </div>
-
                         <label class="cols-sm-2 control-label">descripcion de la meta</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
@@ -87,7 +79,6 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <select name="tipoCal" id="calculo">
-                                        <option disabled selected value> -- Selecione actividad -- </option>
                                         <option value=1>Porcentual</option>
                                         <option value=2>Cantidad/Cantidad</option>
                                     </select>
@@ -218,14 +209,6 @@
                             </div>
                         </div>
 
-                        <label class="cols-sm-2 control-label">Objetivo</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input id="obj" type="text" class="form-control" name="objetivo" placeholder="describa el objetivo"/>
-                            </div>
-                        </div>
-
                         <label class="cols-sm-2 control-label">descripcion de la meta</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
@@ -239,7 +222,6 @@
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <select name="tipoCal" id="calculoed" onchange="hide()">
-                                        <option disabled selected value> -- Selecione actividad -- </option>
                                         <option value=1>Porcentual</option>
                                         <option value=2>Cantidad/Cantidad</option>
                                     </select>
@@ -428,9 +410,13 @@
                     <td>{{$i->meta1}}</td>
                     <td>{{$i->meta2}}</td>
                 @else
-                    <td>Porcentanje: {{$i->parametro1}} %</td>
+                    @if($i->parametro2!=0)
+                        <td>Porcentanje: {{$i->parametro1*100}}%</td>
+                    @else
+                        <td>Porcentanje: 0%</td>
+                    @endif
                     <td>{{$parametros[$i->tipo1]}}: {{$i->parametro1}}/{{$parametros[$i->tipo2]}}: {{$i->parametro2}}</td>
-                    <td>{{$i->meta1}}</td>
+                    <td>{{$i->meta1}} %</td>
                     <td></td>
                 @endif
 
@@ -485,14 +471,13 @@
             var data = table.row($tr).data();
             console.log(data);
             $('#nombre').val(data[1]);
-            $('#objetivo').val(data[2]);
-            $('#mdes').val(data[3]);
-            $('#tipoCal').val(data[4]);
-            $('#param1').val(data[5]);
-            $('#param2').val(data[6]);
-            $('#meta1').val(data[7]);
-            $('#meta2').val(data[8]);
-            $('#meta').val(data[9]);
+            $('#mdes').val(data[2]);
+            $('#tipoCal').val(data[3]);
+            $('#param1').val(data[4]);
+            $('#param2').val(data[5]);
+            $('#meta1').val(data[6]);
+            $('#meta2').val(data[7]);
+            $('#meta').val(data[8]);
 
             $('#editForm').attr('action','/indicadores/'+data[0]);
             $('#editModal').modal('show');

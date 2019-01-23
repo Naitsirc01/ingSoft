@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Registro;
 use Illuminate\Http\Request;
 use App\Titulado;
-use App\Indicadores;
+use App\Traits\preload;
+
 class RegistroTituladosController extends Controller
 {
+    use preload;
     /**
      * Display a listing of the resource.
      *
@@ -14,9 +17,8 @@ class RegistroTituladosController extends Controller
      */
     public function index()
     {
-        $indicadores=Indicadores::all();
         $titulados=Titulado::all();
-        return view('registro_titulados',compact('titulados','indicadores'));
+        return view('registro_titulados',compact('titulados'));
     }
 
     /**
@@ -37,7 +39,6 @@ class RegistroTituladosController extends Controller
      */
     public function store(Request $request)
     {
-        $idindicador=$request->input('idIndicador');
         $this->validate($request,[
             'nombre'=>'required',
             'rut'=>'required',
@@ -54,9 +55,13 @@ class RegistroTituladosController extends Controller
         $titulado->lugar_trabajo=$request->input('lugar_trabajo');
         $titulado->anio_titulacion=$request->input('anio_titulacion');
         $titulado->carrera=$request->input('carrera');
-        $titulado->indicadorid=1;
+        $titulado->indicadorid=3;
         $titulado->save();
 
+        $registro=Registro::find(1);
+        $registro->cantidad_de_titulados=Titulado::all()->count();
+        $registro->save();
+        $this->loadData(3,1);
         return redirect('/regitro_titulados')->with('success','Se ha registrado correctamente.');
     }
 

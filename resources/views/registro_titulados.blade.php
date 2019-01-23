@@ -108,15 +108,6 @@
                         <option>IC</option>
                     </select>
 
-                    <div class="form-group">
-                        <label for="idIndicador" class="cols-sm-2 control-label">Seleccionar un Indicador</label>
-                        <select name="idIndicador"  class="form-control">
-                            <option disabled selected value> -- Selecione actividad -- </option>
-                            @foreach($indicadores as $in)
-                                <option value={{$in->id}}>{{$in->nombre}}</option>
-                            @endforeach
-                        </SELECT>
-                    </div>
                 </div>
                 <!-- termina formulario agregar -->
                 <div class="modal-footer">
@@ -227,17 +218,6 @@
                         <option>ICQ</option>
                         <option>IC</option>
                     </select>
-
-                    <div class="form-group">
-                        <label for="idIndicador" class="cols-sm-2 control-label">Seleccionar un Indicador</label>
-                        <select name="idIndicador"  class="form-control">
-                            <option disabled selected value> -- Selecione actividad -- </option>
-                            @foreach($indicadores as $in)
-                                <option value={{$in->id}}>{{$in->nombre}}</option>
-                            @endforeach
-                        </SELECT>
-                    </div>
-
                 </div>
                 <!-- termina formulario agregar -->
 

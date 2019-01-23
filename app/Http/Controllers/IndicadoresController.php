@@ -79,8 +79,6 @@ class IndicadoresController extends Controller
         $indicador->usuario_id=1;
         $indicador->save();
 
-
-
         $registro=new Registro;
         $registro->departamento='no definido';
         $registro->año=Carbon::now();
