@@ -44,7 +44,6 @@ class AtcTitulacionConController extends Controller
     public function store(Request $request)
     {
         //dd($request);
-        $idindicador=$request->input('idIndicador');
         $path=$request->file('evidencia')->store('upload');
         $this->validate($request,[
             'titulo'=>'required',
@@ -55,7 +54,7 @@ class AtcTitulacionConController extends Controller
             'profesor'=>'required',
             'empresa'=>'required'
         ]);
-        $indicador = Indicadores::find($idindicador);
+        $indicador = Indicadores::find(3);
         $arreglo=$request->nombre;
         $nombre1="";
         foreach ($arreglo as $valor) {
@@ -88,13 +87,11 @@ class AtcTitulacionConController extends Controller
 
         $indicador->atc_titulacionCon()->save($titulacion);
 
-        $registro=Registro::find($idindicador);
+        $registro=Registro::find(1);
 
         //cuando se pueda implementar total de actividades de titulacion
-        $registro->cantidad_alcanzada1=atc_titulacion_con::all()->count();
+        $registro->cantidad_de_atc_titulacionCon=atc_titulacion_con::all()->count();
         $registro->save();
-
-        $indicador->parametro1=atc_titulacion_con::all()->count();
 
 
         $registro2 = new \App\evidencia(['archivo'=>$path]);

@@ -60,6 +60,34 @@ trait preload {
                     $data->parametro2=$reg->cantidad_de_titulados;
                     break;
             }
+        }else{
+            $par=$data->parametro1;
+            switch ($data->tipo2){
+                case 0:
+                    $data->parametro2=$par/$reg->total_de_actividades;
+                    break;
+                case 1:
+                    $data->parametro2=$par/$reg->cantidad_de_atc_AprServ;
+                    break;
+                case 2:
+                    $data->parametro2=$par/$reg->cantidad_de_atc_extension;
+                    break;
+                case 3:
+                    $data->parametro2=$par/$reg->cantidad_de_atc_titulacionCon;
+                    break;
+                case 4:
+                    $data->parametro2=$par/$reg->cantidad_de_atc_registroCon;
+                    break;
+                case 5:
+                    $data->parametro2=$par/$reg->cantidad_de_estudiantes;
+                    break;
+                case 6:
+                    $data->parametro2=$par/$reg->cantidad_de_asistentes;
+                    break;
+                case 7:
+                    $data->parametro2=$par/$reg->cantidad_de_titulados;
+                    break;
+            }
         }
         $data->save();
     }

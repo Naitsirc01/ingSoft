@@ -74,7 +74,7 @@ class DatabaseSeeder extends Seeder
         DB::table('indicadores')->insert([
             'nombre' => 'N° de convenios de colaboracion activos',
             'meta_descripcion' =>'Alcanzar al año 2020 un total de 208 cibvebuis activos con 271 actividades',
-            'tipo_de_calculo'=>'1',
+            'tipo_de_calculo'=>'2',
             'parametro1'=>0,
             'parametro2'=>0,
             'tipo1'=>4,
@@ -124,6 +124,29 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('asignaturas')->insert([
             'nombre' => 'Ingenieria Software',
+        ]);
+
+
+        DB::table('profesores')->insert([
+            'nombre' => 'Aldo quelopana',
+        ]);
+        DB::table('profesores')->insert([
+            'nombre' => 'German morales',
+        ]);
+        DB::table('profesores')->insert([
+            'nombre' => 'Brian Keith',
+        ]);
+        DB::table('profesores')->insert([
+            'nombre' => 'Vianca Vega',
+        ]);
+        DB::table('profesores')->insert([
+            'nombre' => 'Juan Bekios',
+        ]);
+        DB::table('profesores')->insert([
+            'nombre' => 'Carlos Pon',
+        ]);
+        DB::table('profesores')->insert([
+            'nombre' => 'Manuel Olivares',
         ]);
 
         // $this->call(UsersTableSeeder::class);
