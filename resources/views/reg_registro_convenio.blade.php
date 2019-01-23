@@ -7,6 +7,12 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
 </head>
+<style>
+    .margentabla {
+        margin: 2%;
+    }
+</style>
+
 <body>
 <br><br>
 <!-- Agregar modal -->
@@ -206,32 +212,31 @@
 </div>
 <!-- Fin ELIMINAR modal -->
 
-<div class="container">
+<div class="margentabla">
 
-  @if(count($errors)>0)
-    <div class="alert alert-danger">
-      <ul>
-        @foreach($errors->all() as $error)
-          <li>{{$error}}</li>
-        @endforeach
-      </ul>
-    </div>
-  @endif
-  @if(\Session::has('success'))
-    <div class="alert alert-success">
-      <p>{{\Session::get('success')}}</p>
-    </div>
+    @if(count($errors)>0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    @if(\Session::has('success'))
+        <div class="alert alert-success">
+            <p>{{\Session::get('success')}}</p>
+        </div>
 @endif
 
-<!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Registrar
-  </button>
+    <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            Registrar
+        </button>
 
   <br><br>
 
-
-  <table id="datatable" class="table table-striped table-dark">
+    <table id="datatable" class="table table-hover table-bordered">
     <thead>
     <tr>
       <th scope="col">ID</th>
@@ -251,8 +256,8 @@
         <td>{{$c->fecha_comienzo}}</td>
         <td>{{$c->duracion}}</td>
         <td>
-          <a href="#" class="btn btn-success edit">ACTUALIZAR</a>
-          <a href="#" class="btn btn-danger delete">ELIMINAR</a>
+            <a href="#" class="btn btn-default edit"><i class="fa fa-edit" style="font-size:24px"></i></a>
+            <a href="#" class="btn btn-default delete"><i class="fa fa-times" style="font-size:24px"></i></a>
         </td>
 
       </tr>
