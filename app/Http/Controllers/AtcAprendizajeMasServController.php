@@ -180,6 +180,9 @@ class AtcAprendizajeMasServController extends Controller
         if(count($arreglo)==2){
             $aprendizaje->profesor_id2 = $arreglo[1];
         }
+        if(count($arreglo)==1){
+            $aprendizaje->profesor_id2 = null;
+        }
         $aprendizaje->cantidad_estudiantes=$request->input('cantidad_estudiantes');
         $aprendizaje->nombre_socio=$nombreSocio;
         $aprendizaje->semestreaño=$request->input('semestreaño');

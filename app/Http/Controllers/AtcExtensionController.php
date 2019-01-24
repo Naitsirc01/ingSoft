@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\atc_extension;
 use App\Indicadores;
 use App\Registro;
+use App\Profesore;
 use App\evidencia;
 use Illuminate\Http\Request;
 use App\Traits\preload;
@@ -25,7 +26,8 @@ class AtcExtensionController extends Controller
     {
         $indicadores=Indicadores::all();
         $extensiones=atc_extension::all();
-        return view("/act_registro_extension", compact("extensiones","indicadores"));
+        $profesores=Profesore::all();
+        return view("/act_registro_extension", compact("extensiones","indicadores","profesores"));
     }
 
     /**
@@ -74,12 +76,12 @@ class AtcExtensionController extends Controller
             $expositor1 = $valor . ',' . $expositor1;
         }
         unset($valor);
-        $arreglo1=$request->organizador;
+        /*$arreglo1=$request->organizador;
         $organizador1="";
         foreach ($arreglo1 as $valor1) {
             $organizador1 = $valor1 . ',' . $organizador1;
         }
-        unset($valor1);
+        unset($valor1);*/
 
         $indicador = Indicadores::find(1);
 
@@ -89,7 +91,12 @@ class AtcExtensionController extends Controller
         $extension->fecha=$request->fecha;
         $extension->ubicacion=$request->ubicacion;
         $extension->cantidad_asistentes=$request->cantidad_asistentes;
-        $extension->organizador=$organizador1;
+
+        $arreglo=$request->organizador;
+        $extension->profesor_id1 = $arreglo[0];
+        if(count($arreglo)==2){
+            $extension->profesor_id2 = $arreglo[1];
+        }
         $extension->tipo_extension=$request->tipo_extension;
 
         $indicador->atc_extensiones()->save($extension);
@@ -162,12 +169,7 @@ class AtcExtensionController extends Controller
             $expositor1 = $valor . ',' . $expositor1;
         }
         unset($valor);
-        $arreglo1=$request->organizador;
-        $organizador1="";
-        foreach ($arreglo1 as $valor1) {
-            $organizador1 = $valor1 . ',' . $organizador1;
-        }
-        unset($valor1);
+
         $path=$request->file('evidencia')->store('upload');
         $extension=atc_extension::find($id);
         $extension->titulo=$request->titulo;
@@ -175,7 +177,15 @@ class AtcExtensionController extends Controller
         $extension->fecha=$request->fecha;
         $extension->ubicacion=$request->ubicacion;
         $extension->cantidad_asistentes=$request->cantidad_asistentes;
-        $extension->organizador=$organizador1;
+
+        $arreglo=$request->organizador;
+        $extension->profesor_id1 = $arreglo[0];
+        if(count($arreglo)==2){
+            $extension->profesor_id2 = $arreglo[1];
+        }
+        if(count($arreglo)==1){
+            $extension->profesor_id2 = null;
+        }
         $extension->tipo_extension=$request->tipo_extension;
         $extension->save();
 

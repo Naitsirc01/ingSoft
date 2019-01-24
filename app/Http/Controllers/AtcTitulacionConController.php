@@ -192,6 +192,9 @@ class AtcTitulacionConController extends Controller
         if(count($arreglo)==2){
             $titulacion->profesor_id2 = $arreglo[1];
         }
+        if(count($arreglo)==1){
+            $titulacion->profesor_id2 = null;
+        }
         $titulacion->empresa=$request->input('empresa');
         $titulacion->save();
 

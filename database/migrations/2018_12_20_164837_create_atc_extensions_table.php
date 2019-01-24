@@ -20,12 +20,17 @@ class CreateAtcExtensionsTable extends Migration
             $table->date('fecha');
             $table->string('ubicacion');
             $table->integer('cantidad_asistentes');
-            $table->string('organizador');
+            $table->integer('profesor_id1')->unsigned()->nullable();
+            $table->integer('profesor_id2')->unsigned()->nullable();
             $table->string('tipo_extension');
             $table->integer('Indicadores_id')->unsigned()->nullable();
             $table->foreign('Indicadores_id')->references('id')
                 ->on('indicadores')->onDelete('cascade');
             $table->timestamps();
+            $table->foreign('profesor_id1')->references('id')
+                ->on('profesores')->onDelete('cascade');
+            $table->foreign('profesor_id2')->references('id')
+                ->on('profesores')->onDelete('cascade');
         });
     }
 

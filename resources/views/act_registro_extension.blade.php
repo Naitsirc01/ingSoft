@@ -83,15 +83,14 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="confirm" class="cols-sm-2 control-label">Organizador de la actividad</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="organizador[]" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del organizador"/>
-                            </div>
-                        </div>
-                    </div>
                     <div id="aumentar1">
+                        <label for="email" class="cols-sm-2 control-label">Organizador de la actividad</label>
+                        <select class="form-control" name="organizador[]" placeholder="Registrar Organizador">
+                            <option disabled selected value> -- Selecione un profesor -- </option>
+                            @foreach($profesores as $p)
+                                <option value={{$p->id}}>{{$p->nombre}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <button type="button" onclick="agregar1()"> agregar </button>
                     <br>
@@ -193,15 +192,14 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="confirm" class="cols-sm-2 control-label">Organizador de la actividad</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <input type="text" class="form-control" name="organizador[]" id="organizador" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido"  placeholder="Ingrese el nombre del organizador"/>
-                            </div>
-                        </div>
-                    </div>
                     <div id="aumentar3">
+                        <label for="email" class="cols-sm-2 control-label">Organizador de la actividad</label>
+                        <select class="form-control" name="organizador[]" id="organizador" placeholder="Registrar Organizador">
+                            <option disabled selected value> -- Selecione un profesor -- </option>
+                            @foreach($profesores as $p)
+                                <option value={{$p->id}}>{{$p->nombre}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <button type="button" onclick="agregar3()"> agregar </button>
                     <br>
@@ -311,7 +309,11 @@
                         <td>{{$tdata->fecha}}</td>
                         <td>{{$tdata->ubicacion}}</td>
                         <td>{{$tdata->cantidad_asistentes}}</td>
-                        <th>{{$tdata->organizador}}</th>
+                        @if($tdata->profesor2 == null)
+                            <td>{{$tdata->profesor1->nombre}}</td>
+                        @else
+                            <td>{{$tdata->profesor1->nombre}}<p></p>{{$tdata->profesor2->nombre}}</td>
+                        @endif
                         <td>{{$tdata->tipo_extension}}</td>
                         <td>
                             <a href="#" class="btn btn-default edit"><i class="fa fa-edit" style="font-size:24px"></i></a>
@@ -393,12 +395,13 @@
     var i = 0;
     function agregar1() {
         if (i<1) {
-            $("#aumentar1").append(' <label for="confirm" class="cols-sm-2 control-label">Organizador de la actividad</label>\n' +
-                '                        <div class="cols-sm-10">\n' +
-                '                            <div class="input-group">\n' +
-                '                                <input type="text" class="form-control" name="organizador[]" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\\s]*)+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del organizador"/>\n' +
-                '                            </div>\n' +
-                '                        </div>');
+            $("#aumentar1").append('<label for="email" class="cols-sm-2 control-label">Organizador de la actividad</label>\n' +
+                '                        <select class="form-control" name="organizador[]" placeholder="Registrar Organizador">\n' +
+                '                            <option disabled selected value> -- Selecione un profesor -- </option>\n' +
+                '                            @foreach($profesores as $p)\n' +
+                '                                <option value={{$p->id}}>{{$p->nombre}}</option>\n' +
+                '                            @endforeach\n' +
+                '                        </select>');
             i++;
         }
     }
@@ -421,12 +424,13 @@
     var k = 0;
     function agregar3() {
         if (k<1) {
-            $("#aumentar3").append('<label for="confirm" class="cols-sm-2 control-label">Organizador de la actividad</label>\n' +
-                '                        <div class="cols-sm-10">\n' +
-                '                            <div class="input-group">\n' +
-                '                                <input type="text" class="form-control" name="organizador[]" id="organizador" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\\s]*)+" title="Ingrese nombre válido"  placeholder="Ingrese el nombre del organizador"/>\n' +
-                '                            </div>\n' +
-                '                        </div>');
+            $("#aumentar3").append('<label for="email" class="cols-sm-2 control-label">Organizador de la actividad</label>\n' +
+                '                        <select class="form-control" name="organizador[]" id="organizador" placeholder="Registrar Organizador">\n' +
+                '                            <option disabled selected value> -- Selecione un profesor -- </option>\n' +
+                '                            @foreach($profesores as $p)\n' +
+                '                                <option value={{$p->id}}>{{$p->nombre}}</option>\n' +
+                '                            @endforeach\n' +
+                '                        </select>');
             k++;
         }
     }
