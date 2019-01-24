@@ -15,7 +15,8 @@ class CreateAtcAprendizajeMasServsTable extends Migration
     {
         Schema::create('atc_aprendizaje_mas_servs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre_profesor');
+            $table->integer('profesor_id1')->unsigned()->nullable();
+            $table->integer('profesor_id2')->unsigned()->nullable();
             $table->integer('cantidad_estudiantes');
             $table->string('nombre_socio');
             $table->string('semestreaño');
@@ -24,6 +25,10 @@ class CreateAtcAprendizajeMasServsTable extends Migration
             $table->foreign('Indicadores_id')->references('id')
                 ->on('indicadores')->onDelete('cascade');
             $table->timestamps();
+            $table->foreign('profesor_id1')->references('id')
+                ->on('profesores')->onDelete('cascade');
+            $table->foreign('profesor_id2')->references('id')
+                ->on('profesores')->onDelete('cascade');
         });
     }
 

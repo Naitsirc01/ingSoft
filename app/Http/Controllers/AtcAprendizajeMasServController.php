@@ -6,6 +6,7 @@ use App\atc_aprendizaje_mas_serv;
 use App\Indicadores;
 use App\Registro;
 use App\evidencia;
+use App\Profesore;
 use Illuminate\Http\Request;
 use App\Traits\preload;
 
@@ -25,7 +26,8 @@ class AtcAprendizajeMasServController extends Controller
     public function index()
     {
         $aprendizajes=atc_aprendizaje_mas_serv::all();
-        return view("/act_aprendizaje_servicio", compact("aprendizajes"));
+        $profesores=Profesore::all();
+        return view("/act_aprendizaje_servicio", compact("aprendizajes","profesores"));
     }
 
     /**
@@ -55,12 +57,12 @@ class AtcAprendizajeMasServController extends Controller
 //            'asignaturaid'=>'required',
 //            'idIndicador'=>'requiered',
 //        ]);
-        $arreglo=$request->nombre_profesor;
+       /* $arreglo=$request->nombre_profesor;
         $nombreProfe="";
         foreach ($arreglo as $valor) {
             $nombreProfe = $valor . ',' . $nombreProfe;
         }
-        unset($valor);
+        unset($valor);*/
         $arreglo1=$request->nombre_socio;
         $nombreSocio="";
         foreach ($arreglo1 as $valor1) {
@@ -74,7 +76,13 @@ class AtcAprendizajeMasServController extends Controller
 
         //creacion de la actividad
         $aprendizaje=new atc_aprendizaje_mas_serv;
-        $aprendizaje->nombre_profesor=$nombreProfe;
+       // $aprendizaje->nombre_profesor=$nombreProfe;
+        //dd($request->nombre_profesor);
+        $arreglo=$request->nombre_profesor;
+        $aprendizaje->profesor_id1 = $arreglo[0];
+        if(count($arreglo)==2){
+            $aprendizaje->profesor_id2 = $arreglo[1];
+        }
         $aprendizaje->cantidad_estudiantes=$request->input('cantidad_estudiantes');
         $aprendizaje->nombre_socio=$nombreSocio;
         $aprendizaje->semestreaño=$request->input('semestreaño');
@@ -144,12 +152,6 @@ class AtcAprendizajeMasServController extends Controller
             'semestreaño'=>'required',
             'asignaturaid'=>'required'
         ]);
-        $arreglo=$request->nombre_profesor;
-        $nombreProfe="";
-        foreach ($arreglo as $valor) {
-            $nombreProfe = $valor . ',' . $nombreProfe;
-        }
-        unset($valor);
         $arreglo1=$request->nombre_socio;
         $nombreSocio="";
         foreach ($arreglo1 as $valor1) {
@@ -169,7 +171,11 @@ class AtcAprendizajeMasServController extends Controller
             $registro->save();
         }
 
-        $aprendizaje->nombre_profesor=$nombreProfe;
+        $arreglo=$request->nombre_profesor;
+        $aprendizaje->profesor_id1 = $arreglo[0];
+        if(count($arreglo)==2){
+            $aprendizaje->profesor_id2 = $arreglo[1];
+        }
         $aprendizaje->cantidad_estudiantes=$request->input('cantidad_estudiantes');
         $aprendizaje->nombre_socio=$nombreSocio;
         $aprendizaje->semestreaño=$request->input('semestreaño');

@@ -143,33 +143,37 @@ class AtcTitulacionConController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'titulo'=>'required',
-            'nombre'=>'required',
-            'rut'=>'required',
-            'carrera'=>'required',
-            'fecha_inicio'=>'required',
-            'profesor'=>'required',
-            'empresa'=>'required'
+        $this->validate($request, [
+            'titulo' => 'required',
+            'nombre' => 'required',
+            'rut' => 'required',
+            'carrera' => 'required',
+            'fecha_inicio' => 'required',
+            'profesor' => 'required',
+            'empresa' => 'required'
         ]);
-        $arreglo=$request->nombre;
-        $nombre1="";
+        $arreglo = $request->nombre;
+        $nombre1 = "";
         foreach ($arreglo as $valor) {
             $nombre1 = $valor . ',' . $nombre1;
         }
         unset($valor);
-        $arreglo=$request->nombre_profesor;
-        $nombreProfe="";
-        foreach ($arreglo as $valor) {
-            $nombreProfe = $valor . ',' . $nombreProfe;
-        }
-        unset($valor1);
-        $arreglo2=$request->rut;
-        $rut1="";
-        foreach ($arreglo2 as $valor2){
-            $rut1 = $valor2. ',' .$rut1;
+
+        $arreglo2 = $request->rut;
+        $rut1 = "";
+        foreach ($arreglo2 as $valor2) {
+            $rut1 = $valor2 . ',' . $rut1;
         }
         unset($valor2);
+
+       /* $termino=$request->fecha_termino;
+        $inicio=$request->fecha_inicio;
+        if($termino<=$inicio)
+            $this->validate($request[
+                'fecha_termino' =>'required']);
+        endif*/
+
+
         $path=$request->file('evidencia')->store('upload');
         /*$titulacion=Titulacion::findOrFail($id);*/
         $titulacion=atc_titulacion_con::find($id);
@@ -179,9 +183,15 @@ class AtcTitulacionConController extends Controller
         $titulacion->carrera=$request->input('carrera');
         $titulacion->fecha_inicio=$request->input('fecha_inicio');
         $titulacion->fecha_termino=$request->input('fecha_termino');
-        $titulacion->nombre_profesor=$nombreProfe;
+        $arreglo=$request->profesor;
+        $titulacion->profesor_id1 = $arreglo[0];
+        if(count($arreglo)==2){
+            $titulacion->profesor_id2 = $arreglo[1];
+        }
         $titulacion->empresa=$request->input('empresa');
         $titulacion->save();
+
+
 
         $archivo = evidencia::where('atc_titulacion_con_id','=',$id)->first();
 //        $archivo = evidencia::find($id);

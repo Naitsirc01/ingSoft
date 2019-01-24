@@ -81,6 +81,8 @@
                         <input type="date" class="form-control"  name="fecha_termino">
 
 
+
+
                         <div id="aumentar1" class="cols-sm-10">
                             <label for="email" class="cols-sm-2 control-label">Nombre profesor guia</label>
                             <select class="form-control" name="profesor[]"  placeholder="Registrar profesor">
@@ -196,14 +198,14 @@
                         <label for="exampleInputdate">Fecha de termino</label>
                         <input type="date" class="form-control" id="fecha_termino" name="fecha_termino">
 
-                        <label for="email" class="cols-sm-2 control-label">Nombre profesor guia</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" name="profesor[]" id="profesor" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del profesor"/>
-                            </div>
-                        </div>
                         <div id="aumentar5">
+                            <label for="email" class="cols-sm-2 control-label">Nombre profesor guia</label>
+                            <select class="form-control" name="profesor[]" id="profesor" placeholder="Registrar profesor">
+                                <option disabled selected value> -- Selecione un profesor -- </option>
+                                @foreach($profesores as $p)
+                                    <option value={{$p->id}}>{{$p->nombre}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <button type="button" onclick="agregar5()"> agregar </button>
                         <br>
@@ -323,7 +325,11 @@
                         <td>{{$tdata->carrera}}</td>
                         <td>{{$tdata->fecha_inicio}}</td>
                         <td>{{$tdata->fecha_termino}}</td>
-                        <td>{{$tdata->profesor}}</td>
+                        @if($tdata->profesor2 == null)
+                        <td>{{$tdata->profesor1->nombre}}</td>
+                        @else
+                            <td>{{$tdata->profesor1->nombre}}<p></p>{{$tdata->profesor2->nombre}}</td>
+                        @endif
                         <td>{{$tdata->empresa}}</td>
                         <td>
                             <a href="#" class="btn btn-default edit"><i class="fa fa-edit" style="font-size:24px"></i></a>
@@ -456,12 +462,12 @@
     function agregar5() {
         if (j1<1) {
             $("#aumentar5").append('<label for="email" class="cols-sm-2 control-label">Nombre profesor guia</label>\n' +
-                '                        <div class="cols-sm-10">\n' +
-                '                            <div class="input-group">\n' +
-                '                                <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->\n' +
-                '                                <input type="text" class="form-control" name="profesor[]" id="profesor" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del profesor"/>\n' +
-                '                            </div>\n' +
-                '                        </div>');
+                '                            <select class="form-control" name="profesor[]" id="profesor" placeholder="Registrar profesor">\n' +
+                '                                <option disabled selected value> -- Selecione un profesor -- </option>\n' +
+                '                                @foreach($profesores as $p)\n' +
+                '                                    <option value={{$p->id}}>{{$p->nombre}}</option>\n' +
+                '                                @endforeach\n' +
+                '                            </select>');
             j1++;
         }
     }

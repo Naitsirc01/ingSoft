@@ -39,16 +39,14 @@
                         </select>
                     </div>
 
-                    <div class="form-group">
-                        <label for="profesor" class="cols-sm-2 control-label">Nombre profesor</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-
-                                <input type="text" class="form-control" name="nombre_profesor[]" pattern="[A-Za-z]+" title="Ingrese nombre válido"  placeholder="Ingrese profesor"/>
-                            </div>
-                        </div>
-                    </div>
                     <div id="aumentar">
+                        <label for="email" class="cols-sm-2 control-label">Nombre profesor</label>
+                        <select class="form-control" name="nombre_profesor[]" placeholder="Registrar profesor">
+                            <option disabled selected value> -- Selecione un profesor -- </option>
+                            @foreach($profesores as $p)
+                                <option value={{$p->id}}>{{$p->nombre}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <button type="button" onclick="agregar()"> agregar </button>
                     <br>
@@ -141,16 +139,14 @@
                         </select>
                     </div>
 
-                    <div class="form-group">
-                        <label for="profesor" class="cols-sm-2 control-label">Nombre profesor</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-
-                                <input type="text" class="form-control" name="nombre_profesor[]" id="nombre_profesor" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese profesor"/>
-                            </div>
-                        </div>
-                    </div>
                     <div id="aumentar2">
+                        <label for="email" class="cols-sm-2 control-label">Nombre profesor</label>
+                        <select class="form-control" name="nombre_profesor[]" id="nombre_profesor" placeholder="Registrar profesor">
+                            <option disabled selected value> -- Selecione un profesor -- </option>
+                            @foreach($profesores as $p)
+                                <option value={{$p->id}}>{{$p->nombre}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <button type="button" onclick="agregar2()"> agregar </button>
                     <br>
@@ -278,7 +274,7 @@
             <thead>
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">NOMBRE</th>
+                <th scope="col">NOMBRE PROFESOR</th>
                 <th scope="col">CANTIDAD</th>
                 <th scope="col">SOCIO</th>
                 <th scope="col">SEMESTRE AÑO</th>
@@ -291,7 +287,11 @@
                 @foreach($aprendizajes as $tdata)
                     <tr>
                         <th>{{$tdata->id}}</th>
-                        <th>{{$tdata->nombre_profesor}}</th>
+                        @if($tdata->profesor2 == null)
+                            <td>{{$tdata->profesor1->nombre}}</td>
+                        @else
+                            <td>{{$tdata->profesor1->nombre}}<p></p>{{$tdata->profesor2->nombre}}</td>
+                        @endif
                         <td>{{$tdata->cantidad_estudiantes}}</td>
                         <td>{{$tdata->nombre_socio}}</td>
                         <td>{{$tdata->semestreaño}}</td>
@@ -361,13 +361,13 @@
     var i = 0;
     function agregar() {
         if (i<1) {
-            $("#aumentar").append('<label for="profesor" class="cols-sm-2 control-label">Nombre profesor</label>\n' +
-                '                        <div class="cols-sm-10">\n' +
-                '                            <div class="input-group">\n' +
-                '\n' +
-                '                                <input type="text" class="form-control" name="nombre_profesor[]" pattern="[A-Za-z]+" title="Ingrese nombre válido"  placeholder="Ingrese profesor"/>\n' +
-                '                            </div>\n' +
-                '                        </div>');
+            $("#aumentar").append(' <label for="email" class="cols-sm-2 control-label">Nombre profesor</label>\n' +
+                '                        <select class="form-control" name="nombre_profesor[]" placeholder="Registrar profesor">\n' +
+                '                            <option disabled selected value> -- Selecione un profesor -- </option>\n' +
+                '                            @foreach($profesores as $p)\n' +
+                '                                <option value={{$p->id}}>{{$p->nombre}}</option>\n' +
+                '                            @endforeach\n' +
+                '                        </select>');
             i++;
         }
     }
@@ -391,13 +391,13 @@
     var k = 0;
     function agregar2() {
         if (k<1) {
-            $("#aumentar2").append('<label for="profesor" class="cols-sm-2 control-label">Nombre profesor</label>\n' +
-                '                        <div class="cols-sm-10">\n' +
-                '                            <div class="input-group">\n' +
-                '\n' +
-                '                                <input type="text" class="form-control" name="nombre_profesor[]" id="nombre_profesor" pattern="[A-Za-z]+" title="Ingrese nombre válido" placeholder="Ingrese profesor"/>\n' +
-                '                            </div>\n' +
-                '                        </div>');
+            $("#aumentar2").append(' <label for="email" class="cols-sm-2 control-label">Nombre profesor</label>\n' +
+                '                        <select class="form-control" name="nombre_profesor[]" id="nombre_profesor" placeholder="Registrar profesor">\n' +
+                '                            <option disabled selected value> -- Selecione un profesor -- </option>\n' +
+                '                            @foreach($profesores as $p)\n' +
+                '                                <option value={{$p->id}}>{{$p->nombre}}</option>\n' +
+                '                            @endforeach\n' +
+                '                        </select>');
             k++;
         }
     }

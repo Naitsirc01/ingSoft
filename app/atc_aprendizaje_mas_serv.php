@@ -16,6 +16,13 @@ class atc_aprendizaje_mas_serv extends Model
     public function asignatura(){
         return $this->belongsTo('App\asignatura','asignaturaid');
     }
+    public function profesor1(){
+        return $this->belongsTo('App\Profesore','profesor_id1');
+    }
+
+    public function profesor2(){
+        return $this->belongsTo('App\Profesore','profesor_id2');
+    }
 
     public function evidencia(){
         return $this->hasOne('App\evidencia');
