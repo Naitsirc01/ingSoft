@@ -51,7 +51,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="telefono" class="cols-sm-2 control-label">Telefono de contacto</label>
+                        <label for="telefono" class="cols-sm-2 control-label">Telefono de contacto  (opcional)</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
 
@@ -61,7 +61,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="email" class="cols-sm-2 control-label">Correo electronico</label>
+                        <label for="email" class="cols-sm-2 control-label">Correo electronico (opcional)</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
 
@@ -71,7 +71,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="empresa" class="cols-sm-2 control-label">Nombre de la empresa de trabajo</label>
+                        <label for="empresa" class="cols-sm-2 control-label">Nombre de la empresa de trabajo (opcional)</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
 

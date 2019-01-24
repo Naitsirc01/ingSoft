@@ -51,7 +51,7 @@
                                 </div>
                             </div>
 
-                            <label for="rut" class="cols-sm-2 control-label">Rut</label>
+                            <label for="rut" class="cols-sm-2 control-label">Rut (utilice puntos y guion)  </label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
@@ -77,7 +77,7 @@
                         <label for="exampleInputdate">Fecha de inicio</label>
                         <input type="date" class="form-control"  name="fecha_inicio">
 
-                        <label for="exampleInputdate">Fecha de termino</label>
+                        <label for="exampleInputdate">Fecha de termino (opcional)</label>
                         <input type="date" class="form-control"  name="fecha_termino">
 
 
@@ -195,11 +195,11 @@
                         <label for="exampleInputdate">Fecha de inicio</label>
                         <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio">
 
-                        <label for="exampleInputdate">Fecha de termino</label>
+                        <label for="exampleInputdate">Fecha de termino (opcional)</label>
                         <input type="date" class="form-control" id="fecha_termino" name="fecha_termino">
 
                         <div id="aumentar5">
-                            <label for="email" class="cols-sm-2 control-label">Nombre profesor guia</label>
+                            <label for="email" class="cols-sm-2 control-label">Nombre profesor guia (Max:2)</label>
                             <select class="form-control" name="profesor[]" id="profesor" placeholder="Registrar profesor">
                                 <option disabled selected value> -- Selecione un profesor -- </option>
                                 @foreach($profesores as $p)

@@ -20,7 +20,7 @@ class CreateAtcTitulacionConsTable extends Migration
             $table->string('rut');
             $table->string('carrera');
             $table->date('fecha_inicio');
-            $table->date('fecha_termino');
+            $table->date('fecha_termino')->nullable();
             $table->integer('profesor_id1')->unsigned()->nullable();
             $table->integer('profesor_id2')->unsigned()->nullable();
             $table->string('empresa');
