@@ -49,6 +49,8 @@ class AtcExtensionController extends Controller
      */
     public function store(Request $request)
     {
+        //ocupar
+        $filename=$request->file('evidencia')->getClientOriginalName();
         $this->validate($request,[
             'titulo'=>'required',
             'expositor'=>'required',
@@ -60,7 +62,6 @@ class AtcExtensionController extends Controller
 
         ]);
 
-        $idindicador=$request->input('idIndicador');
         $path=$request->file('evidencia')->store('upload');
 //        $extension = new \App\atc_extension(['titulo'=>$request->titulo,
 //            'expositor'=>$request->expositor,

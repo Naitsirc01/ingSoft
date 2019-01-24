@@ -363,7 +363,7 @@
 </script>
 <script>
     var dept={!!$departamentos!!};
-    var priv={!! $privilegios !!}
+    var priv={!! $privilegios !!};
     function findDepto($name) {
         var $i;
         for($i=0;$i<window.dept.length;$i++){
@@ -376,7 +376,7 @@
         var $i;
         for($i=0;$i<window.priv.length;$i++){
             if(priv[$i].name == $name){
-                return dept[$i].id;
+                return priv[$i].id;
             }
         }
     }

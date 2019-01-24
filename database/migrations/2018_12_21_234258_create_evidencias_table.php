@@ -15,6 +15,7 @@ class CreateEvidenciasTable extends Migration
     {
         Schema::create('evidencias', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nombre');
             $table->string('archivo');
             $table->integer('Registroconvenio_id')->unsigned()->nullable();
             $table->integer('atc_extension_id')->unsigned()->nullable();
