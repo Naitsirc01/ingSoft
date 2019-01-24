@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\actividad_definida;
+use App\departamento;
 use Illuminate\Http\Request;
 
-class ActividadDefinidaController extends Controller
+class DepartamentoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class ActividadDefinidaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\actividad_definida  $actividad_definida
+     * @param  \App\departamento  $departamento
      * @return \Illuminate\Http\Response
      */
-    public function show(actividad_definida $actividad_definida)
+    public function show(departamento $departamento)
     {
         //
     }
@@ -52,10 +52,10 @@ class ActividadDefinidaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\actividad_definida  $actividad_definida
+     * @param  \App\departamento  $departamento
      * @return \Illuminate\Http\Response
      */
-    public function edit(actividad_definida $actividad_definida)
+    public function edit(departamento $departamento)
     {
         //
     }
@@ -64,10 +64,10 @@ class ActividadDefinidaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\actividad_definida  $actividad_definida
+     * @param  \App\departamento  $departamento
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, actividad_definida $actividad_definida)
+    public function update(Request $request, departamento $departamento)
     {
         //
     }
@@ -75,10 +75,10 @@ class ActividadDefinidaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\actividad_definida  $actividad_definida
+     * @param  \App\departamento  $departamento
      * @return \Illuminate\Http\Response
      */
-    public function destroy(actividad_definida $actividad_definida)
+    public function destroy(departamento $departamento)
     {
         //
     }

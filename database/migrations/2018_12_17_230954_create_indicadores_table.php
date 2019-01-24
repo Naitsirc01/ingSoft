@@ -16,6 +16,7 @@ class CreateIndicadoresTable extends Migration
         Schema::create('indicadores', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
+            $table->integer('departamento_id')->unsigned()->nullable();
             $table->string('meta_descripcion')->nullable();
             $table->string('tipo_de_calculo')->nullable();
             $table->integer('parametro1')->nullable();
@@ -28,6 +29,8 @@ class CreateIndicadoresTable extends Migration
             $table->integer('usuario_id')->unsigned()->nullable();
             $table->foreign('usuario_id')->references('id')
                 ->on('users')->onDelete('cascade');
+            $table->foreign('departamento_id')->references('id')
+                ->on('departamentos')->onDelete('cascade');
             $table->timestamps();
         });
     }

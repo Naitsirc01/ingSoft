@@ -12,6 +12,10 @@ use App\Traits\preload;
 
 class AtcTitulacionConController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     use preload;
     /**
      * Display a listing of the resource.

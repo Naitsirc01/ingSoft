@@ -46,6 +46,8 @@ Route::post('actividad_aprendizaje_servicio','ActividadAprendizajeServicioContro
 ///Esto para no asignar a cada una de las rutas
 
 */
+Route::resource('/menu', 'HomeController');
+
 Route::resource('/act_regitro_extension', 'AtcExtensionController');
 
 Route::resource('/act_titulacion_con', 'AtcTitulacionConController');

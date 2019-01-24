@@ -12,6 +12,10 @@ use App\Traits\preload;
 
 class AtcAprendizajeMasServController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     use preload;
 
 //    public function __construct()

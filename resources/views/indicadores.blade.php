@@ -66,6 +66,15 @@
                             </div>
                         </div>
 
+                        {{--<label class="cols-sm-2 control-label">departamento</label>--}}
+                        {{--<div class="cols-sm-10">--}}
+                            {{--<select class="form-control" name="departamento">--}}
+                                {{--@foreach($departamentos as $d)--}}
+                                    {{--<option value={{$d->id}}>{{$d->nombre}}</option>--}}
+                                {{--@endforeach--}}
+                            {{--</select>--}}
+                        {{--</div>--}}
+
                         <label class="cols-sm-2 control-label">descripcion de la meta</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
@@ -107,7 +116,7 @@
                             <label for="rut" class="cols-sm-2 control-label">Parametro 1</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <select onclick="swap('parametro1',this.options[this.selectedIndex].innerHTML)">
+                                    <select name="param1" onclick="swap('parametro1',this.options[this.selectedIndex].innerHTML)">
                                         <option value="0">Total de actividades</option>
                                         <option value="1">Total de actividades A+S</option>
                                         <option value="2">Total de actividades de extencion</option>
@@ -125,7 +134,7 @@
                             <label for="rut" class="cols-sm-2 control-label">Parametro 2</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <select onclick="swap('parametro2',this.options[this.selectedIndex].innerHTML)">
+                                    <select name="param2" onclick="swap('parametro2',this.options[this.selectedIndex].innerHTML)">
                                         <option value="0">Total de actividades</option>
                                         <option value="1">Total de actividades A+S</option>
                                         <option value="2">Total de actividades de extencion</option>
@@ -209,6 +218,15 @@
                             </div>
                         </div>
 
+                        {{--<label class="cols-sm-2 control-label">departamento</label>--}}
+                        {{--<div class="cols-sm-10">--}}
+                            {{--<select class="form-control" name="departamento">--}}
+                                {{--@foreach($departamentos as $d)--}}
+                                    {{--<option value={{$d->id}}>{{$d->nombre}}</option>--}}
+                                {{--@endforeach--}}
+                            {{--</select>--}}
+                        {{--</div>--}}
+
                         <label class="cols-sm-2 control-label">descripcion de la meta</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
@@ -250,7 +268,7 @@
                             <label for="rut" class="cols-sm-2 control-label">Parametro 1</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <select onclick="swap('parametro3',this.options[this.selectedIndex].innerHTML)">
+                                    <select name="param1" onclick="swap('parametro3',this.options[this.selectedIndex].innerHTML)">
                                         <option value="0">Total de actividades</option>
                                         <option value="1">Total de actividades A+S</option>
                                         <option value="2">Total de actividades de extencion</option>
@@ -268,7 +286,7 @@
                             <label for="rut" class="cols-sm-2 control-label">Parametro 1</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <select onclick="swap('parametro4',this.options[this.selectedIndex].innerHTML)">
+                                    <select name="param2" onclick="swap('parametro4',this.options[this.selectedIndex].innerHTML)">
                                         <option value="0">Total de actividades</option>
                                         <option value="1">Total de actividades A+S</option>
                                         <option value="2">Total de actividades de extencion</option>
@@ -396,37 +414,38 @@
         </thead>
         <tbody>
         @foreach($indicadores as $i)
-            <tr>
-                <th>{{$i->id}}</th>
-                <th>{{$i->nombre}}</th>
-                <th><div style="height:80px;width:100%;border:1px solid #fbfffd;font:14px/26px Georgia, Garamond, Serif;overflow:auto;">
-                        {{$i->meta_descripcion}}
-                    </div>
-                </th>
-                {{--<th class="hidden">{{$i->tipo_de_calculo}}</th>--}}
-                @if($i->tipo_de_calculo==2)
-                    <td>{{$parametros[$i->tipo1]}}: {{$i->parametro1}}</td>
-                    <td>{{$parametros[$i->tipo2]}}: {{$i->parametro2}}</td>
-                    <td>{{$i->meta1}}</td>
-                    <td>{{$i->meta2}}</td>
-                @else
-                    @if($i->parametro2!=0)
-                        <td>Porcentanje: {{$i->parametro1*100}}%</td>
+            @if($i->departamento_id==$user->departamento_id)
+                <tr>
+                    <th>{{$i->id}}</th>
+                    <th>{{$i->nombre}}</th>
+                    <th><div style="height:80px;width:100%;border:1px solid #fbfffd;font:14px/26px Georgia, Garamond, Serif;overflow:auto;">
+                            {{$i->meta_descripcion}}
+                        </div>
+                    </th>
+                    {{--<th class="hidden">{{$i->tipo_de_calculo}}</th>--}}
+                    @if($i->tipo_de_calculo==2)
+                        <td>{{$parametros[$i->tipo1]}}: {{$i->parametro1}}</td>
+                        <td>{{$parametros[$i->tipo2]}}: {{$i->parametro2}}</td>
+                        <td>{{$i->meta1}}</td>
+                        <td>{{$i->meta2}}</td>
                     @else
-                        <td>Porcentanje: 0%</td>
+                        @if($i->parametro2!=0)
+                            <td>Porcentanje: {{$i->parametro1*100}}%</td>
+                        @else
+                            <td>Porcentanje: 0%</td>
+                        @endif
+                        <td>{{$parametros[$i->tipo1]}}: {{$i->parametro1}}/{{$parametros[$i->tipo2]}}: {{$i->parametro2}}</td>
+                        <td>{{$i->meta1}} %</td>
+                        <td></td>
                     @endif
-                    <td>{{$parametros[$i->tipo1]}}: {{$i->parametro1}}/{{$parametros[$i->tipo2]}}: {{$i->parametro2}}</td>
-                    <td>{{$i->meta1}} %</td>
-                    <td></td>
-                @endif
 
-                <td>{{$i->año_meta}}</td>
-                <td>
-
-                    <a href="#" class="btn btn-default edit"><i class="fa fa-edit" style="font-size:24px"></i></a>
-                    <a href="#" class="btn btn-default delete"><i class="fa fa-times" style="font-size:24px"></i></a>
-                </td>
-            </tr>
+                    <td>{{$i->año_meta}}</td>
+                    <td>
+                        <a href="#" class="btn btn-default edit"><i class="fa fa-edit" style="font-size:24px"></i></a>
+                        <a href="#" class="btn btn-default delete"><i class="fa fa-times" style="font-size:24px"></i></a>
+                    </td>
+                </tr>
+            @endif
         @endforeach
         </tbody>
     </table>
@@ -471,6 +490,7 @@
             var data = table.row($tr).data();
             console.log(data);
             $('#nombre').val(data[1]);
+            // $('#departamento').val(data[2]);
             $('#mdes').val(data[2]);
             $('#tipoCal').val(data[3]);
             $('#param1').val(data[4]);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\departamento;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\usuario;
@@ -30,6 +31,12 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = '/login';
+
+    public function showRegistrationForm()
+    {
+        $departamentos=departamento::all();
+        return view("auth.register",compact('departamentos'));
+    }
 
     /**
      * Create a new controller instance.
@@ -68,8 +75,10 @@ class RegisterController extends Controller
         return User::create([
             'nombre' => $data['name'],
             'rut' => $data['rut'],
+            'departamento_id'=>$data['departamento'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'tipo_usuarioid'=>7,
         ]);
     }
 }

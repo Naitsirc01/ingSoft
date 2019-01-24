@@ -12,9 +12,52 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('departamentos')->insert([
+            'nombre' => 'Departamento De Ingeniería De Sistemas Y Computación',
+        ]);
+        DB::table('departamentos')->insert([
+            'nombre' => 'Departamento de Ingeniería Industrial',
+        ]);
+        DB::table('departamentos')->insert([
+            'nombre' => 'Departamento De Ingeniería Civil',
+        ]);
+        DB::table('departamentos')->insert([
+            'nombre' => 'Departamento De Ingenieria Metalurgia y Minas',
+        ]);
+        DB::table('departamentos')->insert([
+            'nombre' => 'Departamento de Ingeniería Química',
+        ]);
+
+        //1
         DB::table('tipo_usuarios')->insert([
             'nombre' => 'Admin',
         ]);
+        //2
+        DB::table('tipo_usuarios')->insert([
+            'nombre' => 'Encargado',
+        ]);
+
+        //3
+        DB::table('tipo_usuarios')->insert([
+            'nombre' => 'Secretaria',
+        ]);
+
+        //4
+        DB::table('tipo_usuarios')->insert([
+            'nombre' => 'Academico',
+        ]);
+
+        //5
+        DB::table('tipo_usuarios')->insert([
+            'nombre' => 'director',
+        ]);
+
+        //6
+        DB::table('tipo_usuarios')->insert([
+            'nombre' => 'jefe de carrera',
+        ]);
+
+        //7
         DB::table('tipo_usuarios')->insert([
             'nombre' => 'Usuario',
         ]);
@@ -22,15 +65,27 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->insert([
             'nombre' => 'testerUser',
             'email' => 'test@hotmail.com',
-            'rut'=>'0000000-0',
-            'password'=>'159357',
-            'tipo_usuarioid'=>'2',
+            'rut'=>'123456789',
+            'departamento_id'=>1,
+            'password'=>Hash::make('159357'),
+            'tipo_usuarioid'=>1,
         ]);
+
+        DB::table('users')->insert([
+            'nombre' => 'locoVictor',
+            'email' => 'test2@hotmail.com',
+            'rut'=>'987654321',
+            'departamento_id'=>2,
+            'password'=>Hash::make('159357'),
+            'tipo_usuarioid'=>1,
+        ]);
+
         DB::table('indicadores')->insert([
             'nombre' => 'Extension',
+            'departamento_id' => 1,
             'meta_descripcion' =>'N° de actividades de extension -artisticas, culturales y otras - oranizadas por 
             cada unidad y el numero total de participantes en las actividades de extension',
-            'tipo_de_calculo'=>'2',
+            'tipo_de_calculo'=>2,
             'parametro1'=>0,
             'parametro2'=>0,
             'tipo1'=>2,
@@ -43,6 +98,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('indicadores')->insert([
             'nombre' => 'Aprendizaje más servicio',
+            'departamento_id' => 1,
             'meta_descripcion' =>'Numero actividades de Aprendizaje más Servicios, N° estudiantes que participaron en
             estas actividades.',
             'tipo_de_calculo'=>'2',
@@ -58,6 +114,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('indicadores')->insert([
             'nombre' => 'Actividades de titulacion por convenio',
+            'departamento_id' => 1,
             'meta_descripcion' =>'Número de actividades de titulacion -tesis, memorias, "capstone porject", entre otras-
             avaladas por convenio activo/Números total de actividades de titulación*100',
             'tipo_de_calculo'=>'1',
@@ -73,8 +130,9 @@ class DatabaseSeeder extends Seeder
 
         DB::table('indicadores')->insert([
             'nombre' => 'N° de convenios de colaboracion activos',
+            'departamento_id' => 1,
             'meta_descripcion' =>'Alcanzar al año 2020 un total de 208 cibvebuis activos con 271 actividades',
-            'tipo_de_calculo'=>'2',
+            'tipo_de_calculo'=>2,
             'parametro1'=>0,
             'parametro2'=>0,
             'tipo1'=>4,
@@ -86,7 +144,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('registros')->insert([
-            'departamento' => 'Ingenieria Sistemas y Computación',
+            'departamento_id' => 1,
             'año'=>Carbon::now(),
             'total_de_actividades' =>0,
             'cantidad_de_titulados' =>0,

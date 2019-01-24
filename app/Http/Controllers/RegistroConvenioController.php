@@ -15,6 +15,10 @@ use App\Traits\preload;
 
 class RegistroConvenioController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     use preload;
     /**
      * Display a listing of the resource.

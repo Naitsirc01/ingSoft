@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\atc_extension;
-use App\atc_titulacion_con;
+use App\departamento;
 use App\Extension;
 use App\Registro;
 use App\Indicadores;
-use App\atc_aprendizaje_mas_serv;
-use App\Registroconvenio;
-use App\Titulado;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Auth;
 
 class IndicadoresController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('CheckAdmin')->only('show');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -32,9 +34,9 @@ class IndicadoresController extends Controller
             'cantidad de asistentes extension',
             'cantidad de titulados'];
         $indicadores=Indicadores::all();
-
-
-        return view("/indicadores",compact('indicadores','parametros'));
+        $departamentos=departamento::all();
+        $user=User::find(Auth::user()->id);
+        return view("/indicadores",compact('indicadores','parametros','departamentos','user'));
     }
 
     /**
@@ -65,8 +67,11 @@ class IndicadoresController extends Controller
             'meta'=>'required',
         ]);
 
+        $depId=Auth::user()->departamento_id;
+
         $indicador=new Indicadores;
         $indicador->nombre=$request->input('nombre');
+        $indicador->departamento_id=$depId;
         $indicador->meta_descripcion=$request->input('mdes');
         $indicador->tipo_de_calculo=$request->input('tipoCal');
         $indicador->parametro1=0;
@@ -76,15 +81,31 @@ class IndicadoresController extends Controller
         $indicador->meta1=$request->input('meta1');
         $indicador->meta2=$request->input('meta2');
         $indicador->año_meta=$request->input('meta');
-        $indicador->usuario_id=1;
+        $indicador->usuario_id=Auth::user()->id;
         $indicador->save();
 
-        $registro=new Registro;
-        $registro->departamento='no definido';
-        $registro->año=Carbon::now();
-        $registro->cantidad_alcanzada1=0;
-        $registro->cantidad_alcanzada2=0;
-        $indicador->registros()->save($registro);
+        $existe=false;
+        $regs=Registro::all();
+        foreach ($regs as $d) {
+            if($d->departamento_id==$depId){
+                $existe=true;
+                break;
+            }
+        }
+        if(!$existe){
+            $registro=new Registro;
+            $registro->departamento_id=$depId;
+            $registro->año=Carbon::now();
+            $registro->total_de_actividades=0;
+            $registro->cantidad_de_titulados=0;
+            $registro->cantidad_de_asistentes=0;
+            $registro->cantidad_de_estudiantes=0;
+            $registro->cantidad_de_atc_AprServ=0;
+            $registro->cantidad_de_atc_extension=0;
+            $registro->cantidad_de_atc_registroCon=0;
+            $registro->cantidad_de_atc_titulacionCon=0;
+            $registro->save();
+        }
 
         return redirect('/indicadores')->with('success','Registrado');
     }
@@ -138,9 +159,8 @@ class IndicadoresController extends Controller
         $indicador->meta1=$request->input('meta1');
         $indicador->meta2=$request->input('meta2');
         $indicador->año_meta=$request->input('meta');
-        $indicador->usuario_id=1;
+        $indicador->usuario_id=Auth::user()->id;
         $indicador->save();
-
         return redirect('/indicadores')->with('success','Actualizado');
     }
 

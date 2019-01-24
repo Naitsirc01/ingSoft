@@ -15,7 +15,7 @@ class CreateRegistrosTable extends Migration
     {
         Schema::create('registros', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('departamento');
+            $table->integer('departamento_id')->unsigned()->nullable();
             $table->date('año');
             $table->integer('total_de_actividades');
             $table->integer('cantidad_de_titulados');
@@ -25,6 +25,8 @@ class CreateRegistrosTable extends Migration
             $table->integer('cantidad_de_atc_extension');
             $table->integer('cantidad_de_atc_registroCon');
             $table->integer('cantidad_de_atc_titulacionCon');
+            $table->foreign('departamento_id')->references('id')
+                ->on('departamentos')->onDelete('cascade');
             $table->timestamps();
         });
     }
