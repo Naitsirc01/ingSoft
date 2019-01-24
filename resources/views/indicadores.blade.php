@@ -390,10 +390,11 @@
 @endif
 
 <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        Registrar
-    </button>
-
+    @if(Auth::user()->hasRole('admin') || Auth::user()->hasRole('encargado'))
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Registrar
+            </button>
+    @endif
     <br><br>
 
 
@@ -441,8 +442,10 @@
 
                     <td>{{$i->año_meta}}</td>
                     <td>
-                        <a href="#" class="btn btn-default edit"><i class="fa fa-edit" style="font-size:24px"></i></a>
-                        <a href="#" class="btn btn-default delete"><i class="fa fa-times" style="font-size:24px"></i></a>
+                        @if(Auth::user()->hasRole('admin') || Auth::user()->hasRole('encargado'))
+                            <a href="#" class="btn btn-default edit"><i class="fa fa-edit" style="font-size:24px"></i></a>
+                            <a href="#" class="btn btn-default delete"><i class="fa fa-times" style="font-size:24px"></i></a>
+                        @endif
                     </td>
                 </tr>
             @endif

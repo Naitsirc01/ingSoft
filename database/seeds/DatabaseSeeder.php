@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
         DB::table('departamentos')->insert([
             'nombre' => 'Departamento De Ingeniería De Sistemas Y Computación',
         ]);
@@ -28,57 +29,11 @@ class DatabaseSeeder extends Seeder
             'nombre' => 'Departamento de Ingeniería Química',
         ]);
 
-        //1
-        DB::table('tipo_usuarios')->insert([
-            'nombre' => 'Admin',
-        ]);
-        //2
-        DB::table('tipo_usuarios')->insert([
-            'nombre' => 'Encargado',
-        ]);
+        // La creación de datos de roles debe ejecutarse primero
+        $this->call(RoleTableSeeder::class);
 
-        //3
-        DB::table('tipo_usuarios')->insert([
-            'nombre' => 'Secretaria',
-        ]);
-
-        //4
-        DB::table('tipo_usuarios')->insert([
-            'nombre' => 'Academico',
-        ]);
-
-        //5
-        DB::table('tipo_usuarios')->insert([
-            'nombre' => 'director',
-        ]);
-
-        //6
-        DB::table('tipo_usuarios')->insert([
-            'nombre' => 'jefe de carrera',
-        ]);
-
-        //7
-        DB::table('tipo_usuarios')->insert([
-            'nombre' => 'Usuario',
-        ]);
-
-        DB::table('users')->insert([
-            'nombre' => 'testerUser',
-            'email' => 'test@hotmail.com',
-            'rut'=>'123456789',
-            'departamento_id'=>1,
-            'password'=>Hash::make('159357'),
-            'tipo_usuarioid'=>1,
-        ]);
-
-        DB::table('users')->insert([
-            'nombre' => 'locoVictor',
-            'email' => 'test2@hotmail.com',
-            'rut'=>'987654321',
-            'departamento_id'=>2,
-            'password'=>Hash::make('159357'),
-            'tipo_usuarioid'=>1,
-        ]);
+        // Los usuarios necesitarán los roles previamente generados
+        $this->call(UserTableSeeder::class);
 
         DB::table('indicadores')->insert([
             'nombre' => 'Extension',

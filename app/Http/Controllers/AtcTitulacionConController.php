@@ -22,14 +22,12 @@ class AtcTitulacionConController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $profesores=Profesore::all();
         $titulacions=atc_titulacion_con::all();
+        $request->user()->authorizeRoles(['secretaria','encargado', 'admin']);
         return view("/act_titulacion_con", compact("titulacions","indicadores","profesores"));
-
-        /*$titulados=Titulado::all();
-        return view('titulado')->with('titulados',$titulados);*/
     }
 
     /**

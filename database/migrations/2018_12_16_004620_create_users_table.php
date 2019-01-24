@@ -21,11 +21,11 @@ class CreateUsersTable extends Migration
             $table->integer('departamento_id')->unsigned()->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->integer('tipo_usuarioid')->unsigned()->nullable();
+//            $table->integer('tipo_usuarioid')->unsigned()->nullable();
             $table->foreign('departamento_id')->references('id')
                 ->on('departamentos')->onDelete('cascade');
-            $table->foreign('tipo_usuarioid')->references('id')
-                ->on('tipo_usuarios')->onDelete('cascade');
+//            $table->foreign('tipo_usuarioid')->references('id')
+//                ->on('tipo_usuarios')->onDelete('cascade');
             $table->timestamps();
         });
     }

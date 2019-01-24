@@ -2,8 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\atc_aprendizaje_mas_serv;
+use App\departamento;
+use App\Profesore;
+use App\User;
 use App\usuario;
 use Illuminate\Http\Request;
+use App\Role;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class UsuarioController extends Controller
 {
@@ -12,9 +20,13 @@ class UsuarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $usuarios=User::all();
+        $departamentos=departamento::all();
+        $privilegios=Role::all();
+        $request->user()->authorizeRoles(['admin']);
+        return view('/menuAdmin',compact('usuarios','departamentos','privilegios'));
     }
 
     /**
@@ -35,7 +47,19 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $role_user = Role::where('name', $request->privilegio)->first();
+
+        $user = new User();
+        $user->nombre = $request->name;
+        $user->email = $request->email;
+        $user->rut = $request->rut;
+        $user->departamento_id = $request->departamento;
+        $user->password = bcrypt($request->password);
+        $user->save();
+        $user->roles()->attach($role_user);
+
+        return redirect('/menuAdmin')->with('success','Se ha registrado correctamente.');
     }
 
     /**
@@ -67,9 +91,18 @@ class UsuarioController extends Controller
      * @param  \App\usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, usuario $usuario)
+    public function update(Request $request,$id)
     {
-        //
+//        $role_user = Role::where('name', $request->privilegio)->first();
+//        dd($role_user);
+        $user=User::find($id);
+        $user->nombre=$request->name;
+        $user->email=$request->email;
+        $user->rut=$request->rut;
+        $user->departamento_id=$request->departamento;
+        $user->roles()->sync([$request->input('privilegio')]);
+        $user->save();
+        return redirect('/menuAdmin')->with('success','Se ha actualizado correctamente.');
     }
 
     /**
@@ -78,8 +111,11 @@ class UsuarioController extends Controller
      * @param  \App\usuario  $usuario
      * @return \Illuminate\Http\Response
      */
-    public function destroy(usuario $usuario)
+    public function destroy($id)
     {
-        //
+        $usuario=User::find($id);
+        $usuario->delete();
+
+        return redirect('/menuAdmin')->with('success','Se ha eliminado correctamente.');
     }
 }

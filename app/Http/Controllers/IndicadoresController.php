@@ -16,14 +16,13 @@ class IndicadoresController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('CheckAdmin')->only('show');
     }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $parametros=['Total de actividades',
             'cantidad de actividades A+S',
@@ -36,6 +35,7 @@ class IndicadoresController extends Controller
         $indicadores=Indicadores::all();
         $departamentos=departamento::all();
         $user=User::find(Auth::user()->id);
+        $request->user()->authorizeRoles(['jefeDeCarrera','encargado', 'admin']);
         return view("/indicadores",compact('indicadores','parametros','departamentos','user'));
     }
 

@@ -27,10 +27,11 @@ class AtcAprendizajeMasServController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $aprendizajes=atc_aprendizaje_mas_serv::all();
         $profesores=Profesore::all();
+        $request->user()->authorizeRoles(['secretaria','encargado', 'admin']);
         return view("/act_aprendizaje_servicio", compact("aprendizajes","profesores"));
     }
 

@@ -25,11 +25,12 @@ class RegistroConvenioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $indicadores=Indicadores::all();
         $conv = Registroconvenio::all();
         $tipoCon= convenio::all();
+        $request->user()->authorizeRoles(['academico','secretaria','encargado', 'admin']);
         return view('/reg_registro_convenio',compact('conv','tipoCon','indicadores'));
     }
 

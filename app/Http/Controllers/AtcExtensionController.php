@@ -22,11 +22,12 @@ class AtcExtensionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $indicadores=Indicadores::all();
         $extensiones=atc_extension::all();
         $profesores=Profesore::all();
+        $request->user()->authorizeRoles(['academico','secretaria','encargado', 'admin']);
         return view("/act_registro_extension", compact("extensiones","indicadores","profesores"));
     }
 

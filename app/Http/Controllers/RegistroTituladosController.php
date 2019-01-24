@@ -19,9 +19,10 @@ class RegistroTituladosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $titulados=Titulado::all();
+        $request->user()->authorizeRoles(['secretaria', 'admin']);
         return view('registro_titulados',compact('titulados'));
     }
 

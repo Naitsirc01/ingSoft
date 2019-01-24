@@ -19,7 +19,6 @@
           font-size: 20px;
       }
   </style>
-
   
   <div>
     <div class="container">
@@ -29,7 +28,8 @@
 
     <ul>
         {{--Admin--}}
-        @if($tipoUsuario==1)
+        @if(Auth::user()->hasRole('admin'))
+            <a href="/menuAdmin" class="button">Administrar permisos</a>
             <a href="/indicadores" class="button">Consultar indicadores</a>
             <a href="/reg_registro_convenio" class="button">Registrar Convenios de Colaboración</a>
             <a href="/act_aprendizaje_servicio" class="button">Registrar actividad de Aprendizaje + Servicio (A+S)</a>
@@ -40,19 +40,17 @@
                {{ __('Logout') }} class="button">Cerrar Sesión</a>
         @endif
 
-        {{--Encargado--}}
-        @if($tipoUsuario==2)
+        @if(Auth::user()->hasRole('encargado'))
             <a href="/indicadores" class="button">Consultar indicadores</a>
             <a href="/reg_registro_convenio" class="button">Registrar Convenios de Colaboración</a>
             <a href="/act_aprendizaje_servicio" class="button">Registrar actividad de Aprendizaje + Servicio (A+S)</a>
             <a href="/act_regitro_extension" class="button">Registrar actividad de extensión</a>
-                <a href="/act_titulacion_con" class="button">Registrar actividad de titulación por convenio</a>
+            <a href="/act_titulacion_con" class="button">Registrar actividad de titulación por convenio</a>
             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                {{ __('Logout') }} class="button">Cerrar Sesión</a>
         @endif
 
-        {{--Secretaria--}}
-        @if($tipoUsuario==3)
+        @if(Auth::user()->hasRole('secretaria'))
             <a href="/reg_registro_convenio" class="button">Registrar Convenios de Colaboración</a>
             <a href="/act_aprendizaje_servicio" class="button">Registrar actividad de Aprendizaje + Servicio (A+S)</a>
             <a href="/act_regitro_extension" class="button">Registrar actividad de extensión</a>
@@ -62,33 +60,24 @@
                {{ __('Logout') }} class="button">Cerrar Sesión</a>
         @endif
 
-        {{--Academico--}}
-        @if($tipoUsuario==4)
+        @if(Auth::user()->hasRole('academico'))
             <a href="/reg_registro_convenio" class="button">Registrar Convenios de Colaboración</a>
             <a href="/act_regitro_extension" class="button">Registrar actividad de extensión</a>
             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-               {{ __('Logout') }} class="button">Cerrar Sesión</a>
+            {{ __('Logout') }} class="button">Cerrar Sesión</a>
         @endif
 
-        {{--Director--}}
-        @if($tipoUsuario==5)
+        @if(Auth::user()->hasRole('jefeDeCarrera'))
             <a href="/indicadores" class="button">Consultar indicadores</a>
             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-               {{ __('Logout') }} class="button">Cerrar Sesión</a>
+            {{ __('Logout') }} class="button">Cerrar Sesión</a>
         @endif
 
-        {{--Jefe de carrera--}}
-        @if($tipoUsuario==6)
-            <a href="/indicadores" class="button">Consultar indicadores</a>
+        @if(Auth::user()->hasRole('user'))
             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-               {{ __('Logout') }} class="button">Cerrar Sesión</a>
+            {{ __('Logout') }} class="button">Cerrar Sesión</a>
         @endif
 
-        {{--Usuario .-.--}}
-        @if($tipoUsuario==7)
-            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-               {{ __('Logout') }} class="button">Cerrar Sesión</a>
-        @endif
 
       <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
         @csrf

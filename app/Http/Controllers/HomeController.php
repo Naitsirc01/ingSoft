@@ -22,9 +22,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $tipoUsuario=Auth::user()->tipo_usuarioid;
-        return view('/menu',compact('tipoUsuario'));
+        $request->user()->authorizeRoles(['user','encargado','secretaria','academico','jefeDeCarrera', 'admin']);
+        return view('/menu');
     }
 }

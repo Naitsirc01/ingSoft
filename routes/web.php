@@ -48,6 +48,8 @@ Route::post('actividad_aprendizaje_servicio','ActividadAprendizajeServicioContro
 */
 Route::resource('/menu', 'HomeController');
 
+Route::resource('/menuAdmin', 'UsuarioController');
+
 Route::resource('/act_regitro_extension', 'AtcExtensionController');
 
 Route::resource('/act_titulacion_con', 'AtcTitulacionConController');
@@ -59,8 +61,6 @@ Route::resource('/act_aprendizaje_servicio', 'AtcAprendizajeMasServController');
 Route::resource('/reg_registro_convenio', 'RegistroConvenioController');
 
 Route::resource('/indicadores', 'IndicadoresController');
-
-
 
 Auth::routes();
 
