@@ -112,7 +112,7 @@ class AtcExtensionController extends Controller
        $registro->cantidad_de_asistentes=$total;
        $registro->save();
 
-        $registro2 = new \App\evidencia(['archivo'=>$path]);
+        $registro2 = new \App\evidencia(['nombre'=>$request->file('evidencia')->getClientOriginalName(),'archivo'=>$path]);
 
         $extension->evidencia()->save($registro2);
 
@@ -193,6 +193,7 @@ class AtcExtensionController extends Controller
 
         $archivo = evidencia::where('atc_extension_id','=',$id)->first();
         $archivo->archivo=$path;
+        $archivo->nombre=$request->evidencia->getClientOriginalName();
         $archivo->save();
 
         $registro=Registro::find(1);
