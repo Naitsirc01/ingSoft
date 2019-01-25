@@ -55,7 +55,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
 
-                                <input type="number" class="form-control" name="cantidad_estudiantes"   placeholder="Ingrese cantidad de estudiantes"/>
+                                <input type="number" class="form-control" name="cantidad_estudiantes" pattern="[1-9]?[0-9]*"   placeholder="Ingrese cantidad de estudiantes"/>
                             </div>
                         </div>
                     </div>
@@ -155,7 +155,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
 
-                                <input type="number" class="form-control" name="cantidad_estudiantes" id="cantidad_estudiantes"  placeholder="Ingrese cantidad de estudiantes"/>
+                                <input type="number" class="form-control" name="cantidad_estudiantes" id="cantidad_estudiantes" pattern="[1-9]?[0-9]*" placeholder="Ingrese cantidad de estudiantes"/>
                             </div>
                         </div>
                     </div>
@@ -190,14 +190,9 @@
 
                     </div>
 
-                    <div class="form-group">
-                        <label for="evidencia" class="cols-sm-2 control-label">Evidencia</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-
-                                <input type="file" class="form-control" name="evidencia" id="evidencia" >
-                            </div>
-                        </div>
+                    <div class="input-group">
+                        <input type="file" class="custom-file-input" name="evidencia" id="evidencia" >
+                        <label id="fileNameEd" class="custom-file-label"></label>
                     </div>
                 </div>
                 <!-- termina formulario agregar -->
@@ -274,12 +269,13 @@
             <thead>
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">NOMBRE PROFESOR</th>
-                <th scope="col">CANTIDAD</th>
-                <th scope="col">SOCIO</th>
-                <th scope="col">SEMESTRE AÑO</th>
-                <th scope="col">ASIGNATURA</th>
-                <th scope="col">ACCION</th>
+                <th scope="col">Nombre Profesor</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Socio</th>
+                <th scope="col">Semestre Año</th>
+                <th scope="col">Asignatura</th>
+                <th scope="col">Evidencia</th>
+                <th scope="col">Accion</th>
 
             </tr>
             </thead>
@@ -296,6 +292,8 @@
                         <td>{{$tdata->nombre_socio}}</td>
                         <td>{{$tdata->semestreaño}}</td>
                         <td>{{$tdata->asignatura->nombre}}</td>
+                        <td><a href="{{route('downloadfile', $tdata->evidencia->id)}}"
+                               class="btn btn-default"><i class="fa fa-download" style="font-size:24px"></i></a></td>
                         <td>
                             <a href="#" class="btn btn-default edit"><i class="fa fa-edit" style="font-size:24px"></i></a>
                             <a href="#" class="btn btn-default delete"><i class="fa fa-times" style="font-size:24px"></i></a>
@@ -336,7 +334,7 @@
             $('#nombre_socio').val(data[3]);
             $('#semestreaño').val(data[4]);
             $('#asignaturaid').val(data[5]);
-
+            $('#fileNameEd').text(buscarArchivo(data[0]));
             $('#editForm').attr('action','/act_aprendizaje_servicio/'+data[0]);
             $('#editModal').modal('show');
         });
@@ -356,6 +354,21 @@
         });
         //END delete
     });
+</script>
+<script>
+    var evi={!! $evidencias !!};
+    function buscarArchivo($id) {
+
+        var $i;
+        debugger;
+        for($i=0;$i<window.evi.length;$i++){
+            if(evi[$i].atc_aprendizaje_mas_serv_id == $id){
+                var aux=evi[$i].nombre;
+                return evi[$i].nombre;
+            }
+        }
+
+    }
 </script>
 <script>
     var i = 0;

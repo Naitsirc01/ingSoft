@@ -28,12 +28,13 @@
             <form action="{{action('AtcExtensionController@store')}}" method="POST" enctype="multipart/form-data" onsubmit="return confirm('¿Esta seguro que desea agregar este nuevo registro?');">
             {{csrf_field()}}
             <!-- aca se pegaria el formulario agregar -->
+
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="name" class="cols-sm-2 control-label">Titulo</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <input type="title" class="form-control" name="titulo" pattern="[A-Za-z]+[0-9]*" title="Ingrese nombre válido" placeholder="Ingrese el titulo de la actividad"/>
+                                <input type="title" class="form-control" name="titulo" pattern="([A-Za-z]+[\s]?[0-9]*[\s]?)+" title="Ingrese nombre válido" placeholder="Ingrese el titulo de la actividad"/>
                             </div>
                         </div>
                     </div>
@@ -203,17 +204,27 @@
                     </div>
                     <button type="button" onclick="agregar3()"> agregar </button>
                     <br>
+                    <div class="input-group">
+                        <div class="custom-file" id=$extensiones->id >
 
+                            <input type="file" class="custom-file-input" name="evidencia" id="evidencia" >
+                            <label id="fileNameEd" class="custom-file-label"></label>
+
+                        </div>
+                    </div>
+                    {{--
                     <div class="form-group">
+                        <div id="nArchivo"></div>
                         <label for="evidencia" class="cols-sm-2 control-label">Subir lista asistencia</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
 
-                                <input type="file" class="form-control" name="evidencia" id="evidencia" >
+                                <input type="file" class="form-control" name="evidencia" id="evidencia">
+
                             </div>
                         </div>
                     </div>
-
+                    --}}
 
                 </div>
                 <!-- termina formulario agregar -->
@@ -283,50 +294,52 @@
     </button>
 
 
-<br><br>
+    <br><br>
 
 
-        <table id="datatable" class="table table-hover table-bordered">
-            <thead>
+    <table id="datatable" class="table table-hover table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Titulo</th>
+            <th scope="col">Expositor</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Ubicacion</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Organizador</th>
+            <th scope="col">Tipo</th>
+s
+            <th scope="col">Accion</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach($extensiones as $tdata)
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">TITULO</th>
-                <th scope="col">EXPOSITOR</th>
-                <th scope="col">FECHA</th>
-                <th scope="col">UBICACION</th>
-                <th scope="col">CANTIDAD</th>
-                <th scope="col">ORGANIZADOR</th>
-                <th scope="col">TIPO</th>
-                <th scope="col">ACCION</th>
+                <th>{{$tdata->id}}</th>
+                <th>{{$tdata->titulo}}</th>
+                <td>{{$tdata->expositor}}</td>
+                <td>{{$tdata->fecha}}</td>
+                <td>{{$tdata->ubicacion}}</td>
+                <td>{{$tdata->cantidad_asistentes}}</td>
+                @if($tdata->profesor2 == null)
+                    <td>{{$tdata->profesor1->nombre}}</td>
+                @else
+                    <td>{{$tdata->profesor1->nombre}}<p></p>{{$tdata->profesor2->nombre}}</td>
+                @endif
+                <td>{{$tdata->tipo_extension}}</td>
+
+                <td>
+                    <a href="#" class="btn btn-default edit"><i class="fa fa-edit" style="font-size:24px"></i></a>
+                    <a href="#" class="btn btn-default delete"><i class="fa fa-times" style="font-size:24px"></i></a>
+                </td>
+
             </tr>
-            </thead>
-            <tbody>
-                @foreach($extensiones as $tdata)
-                    <tr>
-                        <th>{{$tdata->id}}</th>
-                        <th>{{$tdata->titulo}}</th>
-                        <td>{{$tdata->expositor}}</td>
-                        <td>{{$tdata->fecha}}</td>
-                        <td>{{$tdata->ubicacion}}</td>
-                        <td>{{$tdata->cantidad_asistentes}}</td>
-                        @if($tdata->profesor2 == null)
-                            <td>{{$tdata->profesor1->nombre}}</td>
-                        @else
-                            <td>{{$tdata->profesor1->nombre}}<p></p>{{$tdata->profesor2->nombre}}</td>
-                        @endif
-                        <td>{{$tdata->tipo_extension}}</td>
-                        <td>
-                            <a href="#" class="btn btn-default edit"><i class="fa fa-edit" style="font-size:24px"></i></a>
-                            <a href="#" class="btn btn-default delete"><i class="fa fa-times" style="font-size:24px"></i></a>
-                        </td>
-
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+        @endforeach
+        </tbody>
+    </table>
 
 
-    </div>
+</div>
 
 
 
@@ -343,8 +356,8 @@
         var table = $('#datatable').DataTable();
         //start edit
         table.on('click','.edit',function(){
-           $tr = $(this).closest('tr');
-           if ($($tr).hasClass('child')){
+            $tr = $(this).closest('tr');
+            if ($($tr).hasClass('child')){
                 $tr=$tr.prev('.parent');
             }
             var data = table.row($tr).data();
@@ -357,6 +370,7 @@
             $('#cantidad_asistentes').val(data[5]);
             $('#organizador').val(data[6]);
             $('#tipo_extension').val(data[7]);
+            $('#fileNameEd').text(buscarArchivo(data[0]));
             $('#editForm').attr('action','/act_regitro_extension/'+data[0]);
             $('#editModal').modal('show');
         });
@@ -377,6 +391,21 @@
         //END delte
     });
 </script>
+<script>
+    var evi={!! $evidencias !!};
+    function buscarArchivo($id) {
+        var $i;
+        debugger;
+        for($i=0;$i<window.evi.length;$i++){
+            if(evi[$i].atc_extension_id == $id){
+                var aux=evi[$i].nombre;
+                return evi[$i].nombre;
+            }
+        }
+
+    }
+</script>
+
 <script>
     var l = 0;
     function agregar() {

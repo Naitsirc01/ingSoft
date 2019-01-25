@@ -24,11 +24,12 @@ class AtcExtensionController extends Controller
      */
     public function index(Request $request)
     {
+        $evidencias=evidencia::all();
         $indicadores=Indicadores::all();
         $extensiones=atc_extension::all();
         $profesores=Profesore::all();
         $request->user()->authorizeRoles(['academico','secretaria','encargado', 'admin']);
-        return view("/act_registro_extension", compact("extensiones","indicadores","profesores"));
+        return view("/act_registro_extension", compact("extensiones","indicadores","profesores",'evidencias'));
     }
 
     /**
@@ -49,8 +50,7 @@ class AtcExtensionController extends Controller
      */
     public function store(Request $request)
     {
-        //ocupar
-        $filename=$request->file('evidencia')->getClientOriginalName();
+
         $this->validate($request,[
             'titulo'=>'required',
             'expositor'=>'required',
@@ -58,9 +58,11 @@ class AtcExtensionController extends Controller
             'ubicacion'=>'required',
             'cantidad_asistentes'=>'required',
             'organizador'=>'required',
-            'tipo_extension'=>'required'
+            'tipo_extension'=>'required',
+            'evidencia' => 'image|required'
 
         ]);
+        $filename=$request->file('evidencia')->getClientOriginalName();
 
         $path=$request->file('evidencia')->store('upload');
 //        $extension = new \App\atc_extension(['titulo'=>$request->titulo,
@@ -71,7 +73,7 @@ class AtcExtensionController extends Controller
 //            'organizador'=>$request->organizador,
 //            'tipo_extension'=>$request->tipo_extension,
 //            'Indicadores_id'=>1]);
-//        $extension->save();
+//        $extension->save();2
         $arreglo=$request->expositor;
         $expositor1="";
         foreach ($arreglo as $valor) {
@@ -107,13 +109,13 @@ class AtcExtensionController extends Controller
         $registro=Registro::find(1);
 
 
-       $registro->cantidad_de_atc_extension=atc_extension::all()->count();
-       $total=$registro->cantidad_de_asistentes+$request->cantidad_asistentes;
-       $registro->cantidad_de_asistentes=$total;
-       $registro->save();
+        $registro->cantidad_de_atc_extension=atc_extension::all()->count();
+        $total=$registro->cantidad_de_asistentes+$request->cantidad_asistentes;
+        $registro->cantidad_de_asistentes=$total;
+        $registro->save();
 
-        $registro2 = new \App\evidencia(['nombre'=>$request->file('evidencia')->getClientOriginalName(),'archivo'=>$path]);
-
+        $registro2 = new \App\evidencia(['archivo'=>$path]);
+        $registro2->nombre=$filename;
         $extension->evidencia()->save($registro2);
 
 
@@ -156,6 +158,7 @@ class AtcExtensionController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $this->validate($request,[
             'titulo'=>'required',
             'expositor'=>'required',
@@ -163,8 +166,10 @@ class AtcExtensionController extends Controller
             'ubicacion'=>'required',
             'cantidad_asistentes'=>'required',
             'organizador'=>'required',
-            'tipo_extension'=>'required'
+            'tipo_extension'=>'required',
+            'evidencia' => 'image|required'
         ]);
+        $filename=$request->file('evidencia')->getClientOriginalName();
         $arreglo=$request->expositor;
         $expositor1="";
         foreach ($arreglo as $valor) {
@@ -189,11 +194,11 @@ class AtcExtensionController extends Controller
             $extension->profesor_id2 = null;
         }
         $extension->tipo_extension=$request->tipo_extension;
+
         $extension->save();
 
         $archivo = evidencia::where('atc_extension_id','=',$id)->first();
         $archivo->archivo=$path;
-        $archivo->nombre=$request->evidencia->getClientOriginalName();
         $archivo->save();
 
         $registro=Registro::find(1);

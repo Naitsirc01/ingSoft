@@ -29,10 +29,11 @@ class AtcAprendizajeMasServController extends Controller
      */
     public function index(Request $request)
     {
+        $evidencias=evidencia::all();
         $aprendizajes=atc_aprendizaje_mas_serv::all();
         $profesores=Profesore::all();
         $request->user()->authorizeRoles(['secretaria','encargado', 'admin']);
-        return view("/act_aprendizaje_servicio", compact("aprendizajes","profesores"));
+        return view("/act_aprendizaje_servicio", compact("aprendizajes","profesores", "evidencias"));
     }
 
     /**
@@ -54,14 +55,12 @@ class AtcAprendizajeMasServController extends Controller
     public function store(Request $request)
     {
         //no es necesario
-//        $this->validate($request,[
-//            'nombre_profesor'=>'required',
-//            'cantidad_estudiantes'=>'required',
-//            'nombre_socio'=>'required',
-//            'semestreaño'=>'required',
-//            'asignaturaid'=>'required',
-//            'idIndicador'=>'requiered',
-//        ]);
+      $this->validate($request,[
+          'cantidad_estudiantes'=>'required',
+          'nombre_socio'=>'required',
+          'evidencia' => 'required'
+        ]);
+        $filename=$request->file('evidencia')->getClientOriginalName();
        /* $arreglo=$request->nombre_profesor;
         $nombreProfe="";
         foreach ($arreglo as $valor) {
@@ -91,7 +90,7 @@ class AtcAprendizajeMasServController extends Controller
         $aprendizaje->cantidad_estudiantes=$request->input('cantidad_estudiantes');
         $aprendizaje->nombre_socio=$nombreSocio;
         $aprendizaje->semestreaño=$request->input('semestreaño');
-        $aprendizaje->asignaturaid=$request->input('asignaturaid');;
+        $aprendizaje->asignaturaid=$request->input('asignaturaid');
 
         $indicador->atc_aprendizajeServ()->save($aprendizaje);
 
@@ -104,8 +103,7 @@ class AtcAprendizajeMasServController extends Controller
         $registro->save();
 
         $archivo = new \App\evidencia(['nombre'=>$request->file('evidencia')->getClientOriginalName(),'archivo'=>$path]);
-//        $registro2=new evidencia;
-//        $registro2->archivo=$request->input('evidencia');
+
 
         $aprendizaje->evidencia()->save($archivo);
 
@@ -151,12 +149,11 @@ class AtcAprendizajeMasServController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'nombre_profesor'=>'required',
             'cantidad_estudiantes'=>'required',
             'nombre_socio'=>'required',
-            'semestreaño'=>'required',
-            'asignaturaid'=>'required'
+            'evidencia' => 'required'
         ]);
+        $filename=$request->file('evidencia')->getClientOriginalName();
         $arreglo1=$request->nombre_socio;
         $nombreSocio="";
         foreach ($arreglo1 as $valor1) {
