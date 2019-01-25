@@ -163,15 +163,14 @@
                         <input type="date" class="form-control" id="fecha" name="fecha">
                     </div>
 
-                    <div class="form-group">
+
+                    <div id="aumentar2">
                         <label for="username" class="cols-sm-2 control-label">Expositor</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <input type="text" class="form-control" name="expositor[]" id="expositor" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del expositor"/>
                             </div>
                         </div>
-                    </div>
-                    <div id="aumentar2">
                     </div>
                     <button type="button" onclick="agregar2()"> agregar </button>
                     <br>
@@ -317,7 +316,14 @@
             <tr>
                 <th>{{$tdata->id}}</th>
                 <th>{{$tdata->titulo}}</th>
-                <td>{{$tdata->expositor}}</td>
+
+
+                @if($tdata->expositor2 == null)
+                    <td>{{$tdata->expositor1}}</td>
+                @else
+                    <td>{{$tdata->expositor1}}<hl></hl>{{$tdata->expositor2}}</td>
+                @endif
+
                 <td>{{$tdata->fecha}}</td>
                 <td>{{$tdata->ubicacion}}</td>
                 <td>{{$tdata->cantidad_asistentes}}</td>
@@ -371,11 +377,16 @@
             console.log(data);
 
             $('#titulo').val(data[1]);
-            $('#expositor').val(data[2]);
+
+
+
+            $('#expositor').val(findDatas(data[0],1));
+            $('#expositor0').val(findDatas(data[0],2));
+
             $('#fecha').val(data[3]);
             $('#ubicacion').val(data[4]);
             $('#cantidad_asistentes').val(data[5]);
-            $('#organizador').val(data[6]);
+            $('#organizador').val(findOrganizadpr(data[6]));
             $('#tipo_extension').val(data[7]);
             $('#fileNameEd').text(buscarArchivo(data[0]));
             $('#editForm').attr('action','/act_regitro_extension/'+data[0]);
@@ -397,6 +408,53 @@
         });
         //END delte
     });
+
+</script>
+<script>
+    var ext={!! $extensiones !!};
+
+    function findDatas($id,$op) {
+        var $i;
+        var $pos;
+        debugger;
+        for ($i = 0; $i < window.ext.length; $i++) {
+            agregar2();
+            if (ext[$i].id == $id) {
+                $pos = $i;
+                break;
+            }
+        }
+
+        switch ($op) {
+            case 1:
+                return ext[$pos].expositor1;
+
+
+            case 2:
+                return ext[$pos].expositor2;
+
+        }
+    }
+    function findOrganizadpr($name) {
+        switch ($name) {
+            case 'Aldo quelopana':
+                return 1;
+            case 'German morales':
+                return 2;
+            case 'Brian Keith':
+                return 3;
+            case 'Vianca Vega':
+                return 4;
+            case 'Juan Bekios':
+                return 5;
+            case 'Carlos Pon':
+                return 6;
+            case 'Manuel Olivares':
+                return 7;
+
+        }
+
+    }
 </script>
 <script>
     var evi={!! $evidencias !!};
@@ -449,7 +507,7 @@
             $("#aumentar2").append('<label for="username" class="cols-sm-2 control-label">Expositor</label>\n' +
                 '                        <div class="cols-sm-10">\n' +
                 '                            <div class="input-group">\n' +
-                '                                <input type="text" class="form-control" name="expositor[]" id="expositor" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\\s]*)+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del expositor"/>\n' +
+                '                                <input id="expositor"'+j+'  type="text" class="form-control" name="expositor[]" id="expositor" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\\s]*)+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del expositor"/>\n' +
                 '                            </div>\n' +
                 '                        </div>');
             j++;

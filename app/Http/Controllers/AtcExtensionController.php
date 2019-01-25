@@ -91,7 +91,14 @@ class AtcExtensionController extends Controller
 
         $extension=new atc_extension;
         $extension->titulo=$request->titulo;
-        $extension->expositor=$expositor1;
+
+
+        $arreglo1=$request->expositor;
+        $extension->expositor1 = $arreglo1[0];
+        if(count($arreglo1)==2){
+            $extension->expositor2 = $arreglo1[1];
+        }
+
         $extension->fecha=$request->fecha;
         $extension->ubicacion=$request->ubicacion;
         $extension->cantidad_asistentes=$request->cantidad_asistentes;
@@ -180,7 +187,16 @@ class AtcExtensionController extends Controller
         $path=$request->file('evidencia')->store('upload');
         $extension=atc_extension::find($id);
         $extension->titulo=$request->titulo;
-        $extension->expositor=$expositor1;
+
+        $arreglo1=$request->expositor;
+        $extension->expositor1 = $arreglo1[0];
+        if(count($arreglo1)==2){
+            $extension->expositor2 = $arreglo1[1];
+        }
+        if(count($arreglo1)==1){
+            $extension->expositor2 = null;
+        }
+
         $extension->fecha=$request->fecha;
         $extension->ubicacion=$request->ubicacion;
         $extension->cantidad_asistentes=$request->cantidad_asistentes;

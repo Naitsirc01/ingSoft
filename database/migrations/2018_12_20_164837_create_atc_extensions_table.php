@@ -16,7 +16,8 @@ class CreateAtcExtensionsTable extends Migration
         Schema::create('atc_extensions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('titulo');
-            $table->string('expositor');
+            $table->string('expositor1');
+            $table->string('expositor2')->nullable();
             $table->date('fecha');
             $table->string('ubicacion');
             $table->integer('cantidad_asistentes');
