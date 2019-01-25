@@ -154,8 +154,8 @@ class IndicadoresController extends Controller
         $indicador->nombre=$request->input('nombre');
         $indicador->meta_descripcion=$request->input('mdes');
         $indicador->tipo_de_calculo=$request->input('tipoCal');
-        $indicador->parametro1=$request->input('param1');
-        $indicador->parametro2=$request->input('param2');
+        $indicador->tipo1=$request->input('param1');
+        $indicador->tipo2=$request->input('param2');
         $indicador->meta1=$request->input('meta1');
         $indicador->meta2=$request->input('meta2');
         $indicador->año_meta=$request->input('meta');

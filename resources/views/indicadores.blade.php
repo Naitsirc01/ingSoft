@@ -62,7 +62,7 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" name="nombre" pattern="[A-Za-z]+[0-9]*" title="Ingrese nombre válido" placeholder="Ingrese el nombre del indicador"/>
+                                <input type="text" class="form-control" name="nombre" pattern="([A-Za-z\s?]|°)+[0-9]*" title="Ingrese nombre válido" placeholder="Ingrese el nombre del indicador"/>
                             </div>
                         </div>
 
@@ -79,7 +79,8 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" name="mdes" placeholder="describa la meta del indicador"/>
+                                <textarea name="mdes" rows="3" cols="50"></textarea>
+                                {{--<input type="text" class="form-control" name="mdes" placeholder="describa la meta del indicador"/>--}}
                             </div>
                         </div>
 
@@ -214,24 +215,15 @@
                         <div class="cols-sm-10">
                             <div class="input-group">
                                 <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" id="nombre" name="nombre" pattern="[A-Za-z]+[0-9]*" title="Ingrese nombre válido"  placeholder="Ingrese el nombre del indicador"/>
+                                <input type="text" class="form-control" id="nombreEd" name="nombre" pattern="([A-Za-z\s?]|°)+[0-9]*" title="Ingrese nombre válido"  placeholder="Ingrese el nombre del indicador"/>
                             </div>
                         </div>
-
-                        {{--<label class="cols-sm-2 control-label">departamento</label>--}}
-                        {{--<div class="cols-sm-10">--}}
-                            {{--<select class="form-control" name="departamento">--}}
-                                {{--@foreach($departamentos as $d)--}}
-                                    {{--<option value={{$d->id}}>{{$d->nombre}}</option>--}}
-                                {{--@endforeach--}}
-                            {{--</select>--}}
-                        {{--</div>--}}
 
                         <label class="cols-sm-2 control-label">descripcion de la meta</label>
                         <div class="cols-sm-10">
                             <div class="input-group">
-                                <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input id="des" type="text" class="form-control" name="mdes" placeholder="describa la meta del indicador"/>
+                                <textarea id="mdesEd" name="mdes" rows="3" cols="50"></textarea>
+                                {{--<input id="des" type="text" class="form-control" name="mdes" placeholder="describa la meta del indicador"/>--}}
                             </div>
                         </div>
 
@@ -268,7 +260,7 @@
                             <label for="rut" class="cols-sm-2 control-label">Parametro 1</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <select name="param1" onclick="swap('parametro3',this.options[this.selectedIndex].innerHTML)">
+                                    <select id="param1Ed" name="param1" onclick="swap('parametro3',this.options[this.selectedIndex].innerHTML)">
                                         <option value="0">Total de actividades</option>
                                         <option value="1">Total de actividades A+S</option>
                                         <option value="2">Total de actividades de extencion</option>
@@ -286,7 +278,7 @@
                             <label for="rut" class="cols-sm-2 control-label">Parametro 1</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
-                                    <select name="param2" onclick="swap('parametro4',this.options[this.selectedIndex].innerHTML)">
+                                    <select id="param2Ed" name="param2" onclick="swap('parametro4',this.options[this.selectedIndex].innerHTML)">
                                         <option value="0">Total de actividades</option>
                                         <option value="1">Total de actividades A+S</option>
                                         <option value="2">Total de actividades de extencion</option>
@@ -302,22 +294,22 @@
 
 
                         <div class="form-group">
-                            <label for="cestudiantes" class="cols-sm-2 control-label">Meta o porcentaje para el parametro 1</label>
+                            <label class="cols-sm-2 control-label">Meta o porcentaje para el parametro 1</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fa fa-building fa" aria-hidden="true"></i></span>
-                                    <input id="meta1ed" type="number" class="form-control" name="meta1"  placeholder="Ingrese cantidad de estudiantes"/>
+                                    <input id="meta1ed" type="number" class="form-control" name="meta1"/>
                                 </div>
                             </div>
                         </div>
 
                         <div id="inMeta2ed">
                             <div class="form-group">
-                                <label for="cestudiantes" class="cols-sm-2 control-label">Meta para el parametro 2</label>
+                                <label class="cols-sm-2 control-label">Meta para el parametro 2</label>
                                 <div class="cols-sm-10">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-building fa" aria-hidden="true"></i></span>
-                                        <input id="meta2ed" type="number" class="form-control" name="meta2"   placeholder="Ingrese cantidad de estudiantes"/>
+                                        <input id="meta2ed" type="number" class="form-control" name="meta2"/>
                                     </div>
                                 </div>
                             </div>
@@ -458,33 +450,11 @@
 
 
 
-
-
-{{--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>--}}
-{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>--}}
-{{--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>--}}
-{{--<script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>--}}
-{{--<script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>--}}
-
 <script type="text/javascript">
     $(document).ready(function(){
         var table = $('#datatable').DataTable();
         //start edit
         table.on('click','.edit',function(){
-
-            // var edName=$(table).parents('tr').find('td:nth-child(2)').html();
-            // var edObj=$(table).parents('tr').find('td:nth-child(3)').html();
-            // var edDes=$(table).parents('tr').find('td:nth-child(4)').html();
-            // var meta1=$(table).parents('tr').find('td:nth-child(7)').html();
-            // var meta2=$(table).parents('tr').find('td:nth-child(8)').html();
-            // var meta=$(table).parents('tr').find('td:nth-child(9)').html();
-            //
-            // $('#editModal').val($('#nombre').val(edName));
-            // $('#editModal').val($('#obj').val(edObj));
-            // $('#editModal').val($('#des').val(edDes));
-            // $('#editModal').val($('#meta1ed').val(meta1));
-            // $('#editModal').val($('#meta2ed').val(meta2));
-            // $('#editModal').val($('#metaed').val(meta));
 
             $tr = $(this).closest('tr');
             if ($($tr).hasClass('child')){
@@ -492,15 +462,21 @@
             }
             var data = table.row($tr).data();
             console.log(data);
-            $('#nombre').val(data[1]);
+            $('#nombreEd').val(data[1]);
             // $('#departamento').val(data[2]);
-            $('#mdes').val(data[2]);
-            $('#tipoCal').val(data[3]);
-            $('#param1').val(data[4]);
-            $('#param2').val(data[5]);
-            $('#meta1').val(data[6]);
-            $('#meta2').val(data[7]);
-            $('#meta').val(data[8]);
+            var html = data[2];
+            var div = document.createElement("div");
+            div.innerHTML = html;
+            swap("parametro3",selectParam(findParam(data[0],1)));
+            swap("parametro4",selectParam(findParam(data[0],2)));
+            $('#mdesEd').val(div.innerText.trim());
+            $('#calculoed').val(findCal(data[6]));
+            $('#param1Ed').val(findParam(data[0],1));
+            $('#param2Ed').val(findParam(data[0],2));
+            $('#meta1ed').val(data[5].match(/\d+/g).map(Number));
+            $('#meta2ed').val(data[6]);
+            $('#metaed').val(data[7]);
+            hide();
 
             $('#editForm').attr('action','/indicadores/'+data[0]);
             $('#editModal').modal('show');
@@ -526,6 +502,51 @@
 <script>
     function swap($id,$value) {
         document.getElementById($id).innerHTML=$value;
+    }
+    function findCal($m2) {
+        if($m2==""){
+            return 1;
+        }else{
+            return 2;
+        }
+    }
+    var indi={!! $indicadores !!};
+    function findParam($paramid,$op) {
+        var $i;
+        if($op==1){
+            for($i=0;$i<window.indi.length;$i++){
+                if(indi[$i].id == $paramid){
+                    return indi[$i].tipo1;
+                }
+            }
+        }else{
+            for($i=0;$i<window.indi.length;$i++){
+                if(indi[$i].id == $paramid){
+                    return indi[$i].tipo2;
+                }
+            }
+        }
+
+    }
+    function selectParam($id) {
+        switch ($id) {
+            case 0:
+                return "Total de actividades";
+            case 1:
+                return "Total de actividades A+S";
+            case 2:
+                return "Total de actividades de extencion";
+            case 3:
+                return "Total de titualcion por convenio";
+            case 4:
+                return "Total de registro de convenios";
+            case 5:
+                return "cantidad de estudiantes A+S";
+            case 6:
+                return "cantidad de asistentes extension";
+            case 7:
+                return "cantidad de titulados registrados";
+        }
     }
 </script>
 

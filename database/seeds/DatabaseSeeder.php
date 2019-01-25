@@ -38,8 +38,7 @@ class DatabaseSeeder extends Seeder
         DB::table('indicadores')->insert([
             'nombre' => 'Extension',
             'departamento_id' => 1,
-            'meta_descripcion' =>'N° de actividades de extension -artisticas, culturales y otras - oranizadas por 
-            cada unidad y el numero total de participantes en las actividades de extension',
+            'meta_descripcion' =>'N° de actividades de extension -artisticas, culturales y otras - oranizadas por cada unidad y el numero total de participantes en las actividades de extension',
             'tipo_de_calculo'=>2,
             'parametro1'=>0,
             'parametro2'=>0,
@@ -52,10 +51,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('indicadores')->insert([
-            'nombre' => 'Aprendizaje más servicio',
+            'nombre' => 'Aprendizaje mas servicio',
             'departamento_id' => 1,
-            'meta_descripcion' =>'Numero actividades de Aprendizaje más Servicios, N° estudiantes que participaron en
-            estas actividades.',
+            'meta_descripcion' =>'Numero actividades de Aprendizaje mas Servicios, N° estudiantes que participaron en estas actividades.',
             'tipo_de_calculo'=>'2',
             'parametro1'=>0,
             'parametro2'=>0,
@@ -70,8 +68,7 @@ class DatabaseSeeder extends Seeder
         DB::table('indicadores')->insert([
             'nombre' => 'Actividades de titulacion por convenio',
             'departamento_id' => 1,
-            'meta_descripcion' =>'Número de actividades de titulacion -tesis, memorias, "capstone porject", entre otras-
-            avaladas por convenio activo/Números total de actividades de titulación*100',
+            'meta_descripcion' =>'Número de actividades de titulacion -tesis, memorias, "capstone porject", entre otras -avaladas por convenio activo/Números total de actividades de titulación*100',
             'tipo_de_calculo'=>'1',
             'parametro1'=>0,
             'parametro2'=>0,
@@ -86,7 +83,7 @@ class DatabaseSeeder extends Seeder
         DB::table('indicadores')->insert([
             'nombre' => 'N° de convenios de colaboracion activos',
             'departamento_id' => 1,
-            'meta_descripcion' =>'Alcanzar al año 2020 un total de 208 cibvebuis activos con 271 actividades',
+            'meta_descripcion' =>'Alcanzar al año 2020 un total de 208 convenios activos con 271 actividades',
             'tipo_de_calculo'=>2,
             'parametro1'=>0,
             'parametro2'=>0,
