@@ -46,6 +46,9 @@ Route::post('actividad_aprendizaje_servicio','ActividadAprendizajeServicioContro
 ///Esto para no asignar a cada una de las rutas
 
 */
+
+Route::get('/file/download/{id}', 'FileController@show')->name('downloadfile');
+
 Route::resource('/menu', 'HomeController');
 
 Route::resource('/menuAdmin', 'UsuarioController');

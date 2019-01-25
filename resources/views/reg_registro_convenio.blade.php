@@ -25,7 +25,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      
+
       <form action="{{action('RegistroConvenioController@store')}}" method="POST" enctype="multipart/form-data" onsubmit="return confirm('¿Esta seguro que desea agregar este nuevo registro?');">
       {{csrf_field()}}
       <!-- aca se pegaria el formulario agregar -->

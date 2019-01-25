@@ -303,16 +303,17 @@
         <table id="datatable" class="table table-hover table-bordered">
             <thead>
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">TITULO</th>
-                <th scope="col">NOMBRE</th>
-                <th scope="col">RUT</th>
-                <th scope="col">CARRERA</th>
-                <th scope="col">FECHA INICIO</th>
-                <th scope="col">FECHA TERMINO</th>
-                <th scope="col">PROFESOR</th>
-                <th scope="col">EMPRESA</th>
-                <th scope="col">ACCION</th>
+                <th scope="col">Id</th>
+                <th scope="col">Titulo</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Rut</th>
+                <th scope="col">Carrera</th>
+                <th scope="col">Fecha inicio</th>
+                <th scope="col">Fecha termino</th>
+                <th scope="col">Profesor</th>
+                <th scope="col">Empresa</th>
+                <th scope="col">Evidencia</th>
+                <th scope="col">Accion</th>
             </tr>
             </thead>
             <tbody>
@@ -331,6 +332,8 @@
                             <td>{{$tdata->profesor1->nombre}}<p></p>{{$tdata->profesor2->nombre}}</td>
                         @endif
                         <td>{{$tdata->empresa}}</td>
+                        <td><a href="{{route('downloadfile', $tdata->evidencia->id)}}"
+                               class="btn btn-default"><i class="fa fa-download" style="font-size:24px"></i></a></td>
                         <td>
                             <a href="#" class="btn btn-default edit"><i class="fa fa-edit" style="font-size:24px"></i></a>
                             <a href="#" class="btn btn-default delete"><i class="fa fa-times" style="font-size:24px"></i></a>
