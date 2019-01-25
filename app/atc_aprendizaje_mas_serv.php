@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class atc_aprendizaje_mas_serv extends Model
 {
     protected $fillable = [
-        'nombre_profesor','cantidad_estudiantes','nombre_socio','semestreaño','asignaturaid','Indicadores_id'];
+        'nombre_profesor','cantidad_estudiantes','nombre_socio1','nombre_socio2','semestreaño','asignaturaid','Indicadores_id'];
 
 
     public function indicador(){

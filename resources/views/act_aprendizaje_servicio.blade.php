@@ -289,7 +289,11 @@
                             <td>{{$tdata->profesor1->nombre}}<p></p>{{$tdata->profesor2->nombre}}</td>
                         @endif
                         <td>{{$tdata->cantidad_estudiantes}}</td>
-                        <td>{{$tdata->nombre_socio}}</td>
+                        @if($tdata->nombre_socio2 == null)
+                            <td>{{$tdata->nombre_socio1}}</td>
+                        @else
+                            <td>{{$tdata->nombre_socio1}}<p></p>{{$tdata->nombre_socio2}}</td>
+                        @endif
                         <td>{{$tdata->semestreaño}}</td>
                         <td>{{$tdata->asignatura->nombre}}</td>
                         <td><a href="{{route('downloadfile', $tdata->evidencia->id)}}"
@@ -329,11 +333,19 @@
             var data = table.row($tr).data();
             console.log(data);
 
-            $('#nombre_profesor').val(data[1]);
+            debugger;
+            var aux=data[1];
+            $('#nombre_profesor').val(findId(data[0],1));
+            $('#nombre_profesor0').val(findId(data[0],2));
             $('#cantidad_estudiantes').val(data[2]);
-            $('#nombre_socio').val(data[3]);
+
+
+            $('#nombre_socio').val(findDatas(data[0],1));
+            $('#nombre_socio0').val(findDatas(data[0],2));
+
+
             $('#semestreaño').val(data[4]);
-            $('#asignaturaid').val(data[5]);
+            $('#asignaturaid').val(asignatura(data[5]));
             $('#fileNameEd').text(buscarArchivo(data[0]));
             $('#editForm').attr('action','/act_aprendizaje_servicio/'+data[0]);
             $('#editModal').modal('show');
@@ -355,6 +367,53 @@
         //END delete
     });
 </script>
+
+<script>
+    var apr={!! $aprendizajes !!};
+    var prof={!! $profesores !!};
+    function findDatas($id,$op) {
+        var $i;
+        var $pos;
+        for ($i = 0; $i < window.apr.length; $i++) {
+            agregar3();
+            if (apr[$i].id == $id) {
+                $pos = $i;
+                break;
+            }
+        }
+        switch ($op) {
+            case 1:
+               return apr[$pos].nombre_socio1;
+
+
+            case 2:
+                return apr[$pos].nombre_socio2;
+
+        }
+    }
+    function findId($name,$op) {
+        var $i;
+        agregar2();
+        switch ($op) {
+            case 1:
+                for ($i = 0; $i < window.apr.length; $i++) {
+                    if (apr[$i].id == $name) {
+                        return apr[$i].profesor_id1;
+                    }
+                }
+
+
+            case 2:
+                for ($i = 0; $i < window.apr.length; $i++) {
+                    if (apr[$i].id == $name) {
+                        return apr[$i].profesor_id2;
+                    }
+                }
+
+        }
+
+    }
+</script>
 <script>
     var evi={!! $evidencias !!};
     function buscarArchivo($id) {
@@ -366,6 +425,19 @@
                 var aux=evi[$i].nombre;
                 return evi[$i].nombre;
             }
+        }
+
+    }
+    function asignatura($name) {
+        switch ($name) {
+            case 'Programacion':
+                return 1;
+            case 'Lenguaje de programacion':
+                return 2;
+            case 'Base de datos':
+                return 3;
+            case 'Ing software':
+                return 4;
         }
 
     }
@@ -393,7 +465,7 @@
                 '                        <div class="cols-sm-10">\n' +
                 '                            <div class="input-group">\n' +
                 '\n' +
-                '                                <input type="text" class="form-control" name="nombre_socio[]" id="nombre_socio" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\\s]*)+" title="Ingrese nombre válido"  placeholder="Ingrese nombre socio comunitario"/>\n' +
+                '                                <input id= '+j+' type="text" class="form-control" name="nombre_socio[]" id="nombre_socio" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\\s]*)+" title="Ingrese nombre válido"  placeholder="Ingrese nombre socio comunitario"/>\n' +
                 '                            </div>\n' +
                 '                        </div>');
             j++;
@@ -405,7 +477,7 @@
     function agregar2() {
         if (k<1) {
             $("#aumentar2").append(' <label for="email" class="cols-sm-2 control-label">Nombre profesor</label>\n' +
-                '                        <select class="form-control" name="nombre_profesor[]" id="nombre_profesor" placeholder="Registrar profesor">\n' +
+                '                        <select class="form-control" name="nombre_profesor[]" id="nombre_profesor0" placeholder="Registrar profesor">\n' +
                 '                            <option disabled selected value> -- Selecione un profesor -- </option>\n' +
                 '                            @foreach($profesores as $p)\n' +
                 '                                <option value={{$p->id}}>{{$p->nombre}}</option>\n' +
@@ -416,17 +488,17 @@
     }
 </script>
 <script>
-    var j1 = 0;
+    var x = 0;
     function agregar3() {
-        if (j1<1) {
-            $("#aumentar3").append('<label for="sociocomunitario" class="cols-sm-2 control-label">Nombre socio comunitario</label>\n' +
+        if (x<1) {
+            $("#aumentar3").append(' <label for="sociocomunitario" class="cols-sm-2 control-label">Nombre socio comunitario</label>\n' +
                 '                        <div class="cols-sm-10">\n' +
                 '                            <div class="input-group">\n' +
                 '\n' +
-                '                                <input type="text" class="form-control" name="nombre_socio[]" id="nombre_socio" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\\s]*)+" title="Ingrese nombre válido"  placeholder="Ingrese nombre socio comunitario"/>\n' +
+                '                                <input id="nombre_socio"'+x+' type="text" class="form-control" name="nombre_socio[]" id="nombre_socio" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\\s]*)+" title="Ingrese nombre válido"  placeholder="Ingrese nombre socio comunitario"/>\n' +
                 '                            </div>\n' +
                 '                        </div>');
-            j1++;
+            x++;
         }
     }
 </script>

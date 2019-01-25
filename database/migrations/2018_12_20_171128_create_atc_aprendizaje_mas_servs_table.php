@@ -18,7 +18,8 @@ class CreateAtcAprendizajeMasServsTable extends Migration
             $table->integer('profesor_id1')->unsigned()->nullable();
             $table->integer('profesor_id2')->unsigned()->nullable();
             $table->integer('cantidad_estudiantes');
-            $table->string('nombre_socio');
+            $table->string('nombre_socio1');
+            $table->string('nombre_socio2')->nullable();
             $table->string('semestreaño');
             $table->integer('asignaturaid');
             $table->integer('Indicadores_id')->unsigned()->nullable();

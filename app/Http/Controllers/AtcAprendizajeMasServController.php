@@ -67,12 +67,12 @@ class AtcAprendizajeMasServController extends Controller
             $nombreProfe = $valor . ',' . $nombreProfe;
         }
         unset($valor);*/
-        $arreglo1=$request->nombre_socio;
-        $nombreSocio="";
-        foreach ($arreglo1 as $valor1) {
-            $nombreSocio = $valor1 . ',' . $nombreSocio;
-        }
-        unset($valor1);
+       // $arreglo1=$request->nombre_socio;
+        //$nombreSocio="";
+        //foreach ($arreglo1 as $valor1) {
+         //   $nombreSocio = $valor1 . ',' . $nombreSocio;
+        //}
+        //unset($valor1);
         $path=$request->file('evidencia')->store('upload');
 
         //se busca el indicador asociado
@@ -88,7 +88,17 @@ class AtcAprendizajeMasServController extends Controller
             $aprendizaje->profesor_id2 = $arreglo[1];
         }
         $aprendizaje->cantidad_estudiantes=$request->input('cantidad_estudiantes');
-        $aprendizaje->nombre_socio=$nombreSocio;
+
+
+
+        $arreglo1=$request->nombre_socio;
+        $aprendizaje->nombre_socio1= $arreglo1[0];
+        if(count($arreglo1)==2){
+            $aprendizaje->nombre_socio2 = $arreglo1[1];
+        }
+
+
+
         $aprendizaje->semestreaño=$request->input('semestreaño');
         $aprendizaje->asignaturaid=$request->input('asignaturaid');
 
@@ -154,12 +164,12 @@ class AtcAprendizajeMasServController extends Controller
             'evidencia' => 'required'
         ]);
         $filename=$request->file('evidencia')->getClientOriginalName();
-        $arreglo1=$request->nombre_socio;
-        $nombreSocio="";
-        foreach ($arreglo1 as $valor1) {
-            $nombreSocio = $valor1 . ',' . $nombreSocio;
-        }
-        unset($valor1);
+      //  $arreglo1=$request->nombre_socio;
+        //$nombreSocio="";
+        //foreach ($arreglo1 as $valor1) {
+          //  $nombreSocio = $valor1 . ',' . $nombreSocio;
+        //}
+       // unset($valor1);
         $path=$request->file('evidencia')->store('upload');
         $aprendizaje=atc_aprendizaje_mas_serv::find($id);
 
@@ -182,7 +192,13 @@ class AtcAprendizajeMasServController extends Controller
             $aprendizaje->profesor_id2 = null;
         }
         $aprendizaje->cantidad_estudiantes=$request->input('cantidad_estudiantes');
-        $aprendizaje->nombre_socio=$nombreSocio;
+
+        $arreglo1=$request->nombre_socio;
+        $aprendizaje->nombre_socio1= $arreglo1[0];
+        if(count($arreglo1)==2){
+            $aprendizaje->nombre_socio2 = null;
+        }
+
         $aprendizaje->semestreaño=$request->input('semestreaño');
         $aprendizaje->asignaturaid=$request->input('asignaturaid');
         $aprendizaje->save();
