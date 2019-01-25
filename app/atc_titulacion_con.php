@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class atc_titulacion_con extends Model
 {
     protected $fillable = [
-        'titulo','nombre','rut','carrera', 'fecha_inicio','fecha_termino',
+        'titulo','nombre1','nombre2','nombre3','nombre4','rut1','rut2','rut3','rut4','carrera', 'fecha_inicio','fecha_termino',
         'profesor_id1','profesor_id2','empresa', 'Indicadores_id'];
 
     public function indicador(){
