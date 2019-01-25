@@ -308,7 +308,7 @@
             <th scope="col">Cantidad</th>
             <th scope="col">Organizador</th>
             <th scope="col">Tipo</th>
-s
+            <th scope="col">Evidencia</th>
             <th scope="col">Accion</th>
         </tr>
         </thead>
@@ -327,6 +327,13 @@ s
                     <td>{{$tdata->profesor1->nombre}}<p></p>{{$tdata->profesor2->nombre}}</td>
                 @endif
                 <td>{{$tdata->tipo_extension}}</td>
+
+                    <td>
+                        @foreach($tdata->evidencia as $ext)
+                            <a href="{{route('downloadfile', $ext->id)}}"
+                            class="btn btn-default"><i class="fa fa-download" style="font-size:24px"></i></a>
+                        @endforeach
+                    </td>
 
                 <td>
                     <a href="#" class="btn btn-default edit"><i class="fa fa-edit" style="font-size:24px"></i></a>

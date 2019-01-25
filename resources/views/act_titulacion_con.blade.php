@@ -109,11 +109,11 @@
 
 
                         <div class="form-group">
-                            <label for="evidencia" class="cols-sm-2 control-label">Evidencia</label>
+                            <label for="evidencia" class="cols-sm-2 control-label">Subir evidencia</label>
                             <div class="cols-sm-10">
                                 <div class="input-group">
 
-                                    <input type="file" class="form-control" name="evidencia" id="evidencia" >
+                                    <input type="file" class="form-control" name="evidencia"  >
                                 </div>
                             </div>
                         </div>
@@ -513,7 +513,20 @@
     {{--}--}}
 </script>
 
+<script>
+    var evi={!! $evidencias !!};
+    function buscarArchivo($id) {
+        var $i;
+        debugger;
+        for($i=0;$i<window.evi.length;$i++){
+            if(evi[$i].atc_titulacion_con_id == $id){
+                var aux=evi[$i].nombre;
+                return evi[$i].nombre;
+            }
+        }
 
+    }
+</script>
 
 <script>
     var i = 0;

@@ -24,10 +24,11 @@ class AtcTitulacionConController extends Controller
      */
     public function index(Request $request)
     {
+        $evidencias=evidencia::all();
         $profesores=Profesore::all();
         $titulacions=atc_titulacion_con::all();
         $request->user()->authorizeRoles(['secretaria','encargado', 'admin']);
-        return view("/act_titulacion_con", compact("titulacions","indicadores","profesores"));
+        return view("/act_titulacion_con", compact("titulacions","indicadores","profesores", "evidencias"));
     }
 
     /**
@@ -49,7 +50,6 @@ class AtcTitulacionConController extends Controller
     public function store(Request $request)
     {
 
-        $path=$request->file('evidencia')->store('upload');
         $this->validate($request,[
             'titulo'=>'required',
             'nombre'=>'required',
@@ -57,8 +57,10 @@ class AtcTitulacionConController extends Controller
             'carrera'=>'required',
             'fecha_inicio'=>'required',
             'profesor'=>'required',
-            'empresa'=>'required'
+            'empresa'=>'required',
+            'evidencia' => 'required'
         ]);
+        $path=$request->file('evidencia')->store('upload');
         $indicador = Indicadores::find(1);
         /*$arreglo=$request->nombre;
         $nombre1="";
