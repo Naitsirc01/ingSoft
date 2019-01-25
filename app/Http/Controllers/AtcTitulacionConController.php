@@ -60,17 +60,12 @@ class AtcTitulacionConController extends Controller
             'empresa'=>'required'
         ]);
         $indicador = Indicadores::find(1);
-        $arreglo=$request->nombre;
+        /*$arreglo=$request->nombre;
         $nombre1="";
         foreach ($arreglo as $valor) {
             $nombre1 = $valor . ',' . $nombre1;
         }
-        unset($valor);
-//        $arreglo=$request->profesor;
-//        $nombreProfe="";
-//        foreach ($arreglo as $valor) {
-//            $nombreProfe = $valor . ',' . $nombreProfe;
-//        }
+      */
         unset($valor1);
         $arreglo2=$request->rut;
         $rut1="";
@@ -78,13 +73,57 @@ class AtcTitulacionConController extends Controller
             $rut1 = $valor2. ',' .$rut1;
         }
         unset($valor2);
-        //$nombre1 =$nombre1+ $request->nombre[i].',';
-        //$nombre1 = $request->nombre[0].','.$request->nombre[1].','.$request->nombre[2].','.$request->nombre[3];
+
         $titulacion=new atc_titulacion_con;
         $titulacion->titulo=$request->titulo;
-        $titulacion->nombre=$nombre1;
-        $titulacion->rut=$rut1;
-        $titulacion->carrera=$request->input('carrera');
+
+        $arreglo1=$request->nombre;
+        $titulacion->nombre1 = $arreglo1[0];
+        if(count($arreglo1)==2){
+            $titulacion->nombre2 = $arreglo1[1];
+        }
+        if (count($arreglo1)==3){
+            $titulacion->nombre2 = $arreglo1[1];
+            $titulacion->nombre3 = $arreglo1[2];
+        }
+        if (count($arreglo1)==4){
+            $titulacion->nombre2 = $arreglo1[1];
+            $titulacion->nombre3 = $arreglo1[2];
+            $titulacion->nombre4 = $arreglo1[3];
+        }
+
+
+        $arreglo2=$request->rut;
+        $titulacion->rut1 = $arreglo2[0];
+        if(count($arreglo2)==2){
+            $titulacion->rut2 = $arreglo2[1];
+        }
+        if (count($arreglo2)==3){
+            $titulacion->rut2 = $arreglo2[1];
+            $titulacion->rut3 = $arreglo2[2];
+        }
+        if (count($arreglo2)==4){
+            $titulacion->rut2 = $arreglo2[1];
+            $titulacion->rut3 = $arreglo2[2];
+            $titulacion->rut4 = $arreglo2[3];
+        }
+
+
+        $arreglo3=$request->carrera;
+        $titulacion->carrera1 = $arreglo3[0];
+        if(count($arreglo3)==2){
+            $titulacion->carrera2 = $arreglo3[1];
+        }
+        if (count($arreglo3)==3){
+            $titulacion->carrera2 = $arreglo3[1];
+            $titulacion->carrera3 = $arreglo3[2];
+        }
+        if (count($arreglo3)==4){
+            $titulacion->carrera2 = $arreglo3[1];
+            $titulacion->carrera3 = $arreglo3[2];
+            $titulacion->carrera4 = $arreglo3[3];
+        }
+
         $titulacion->fecha_inicio=$request->input('fecha_inicio');
         $titulacion->fecha_termino=$request->input('fecha_termino');
 
@@ -157,19 +196,7 @@ class AtcTitulacionConController extends Controller
             'profesor' => 'required',
             'empresa' => 'required'
         ]);
-        $arreglo = $request->nombre;
-        $nombre1 = "";
-        foreach ($arreglo as $valor) {
-            $nombre1 = $valor . ',' . $nombre1;
-        }
-        unset($valor);
 
-        $arreglo2 = $request->rut;
-        $rut1 = "";
-        foreach ($arreglo2 as $valor2) {
-            $rut1 = $valor2 . ',' . $rut1;
-        }
-        unset($valor2);
 
        /* $termino=$request->fecha_termino;
         $inicio=$request->fecha_inicio;
@@ -183,9 +210,76 @@ class AtcTitulacionConController extends Controller
         /*$titulacion=Titulacion::findOrFail($id);*/
         $titulacion=atc_titulacion_con::find($id);
         $titulacion->titulo=$request->titulo;
-        $titulacion->nombre=$nombre1;
-        $titulacion->rut=$rut1;
-        $titulacion->carrera=$request->input('carrera');
+        $arreglo1=$request->nombre;
+        $titulacion->nombre1 = $arreglo1[0];
+        if(count($arreglo1)==2){
+            $titulacion->nombre2 = $arreglo1[1];
+            $titulacion->nombre3 = null;
+            $titulacion->nombre4 = null;
+        }
+        if (count($arreglo1)==3){
+            $titulacion->nombre2 = $arreglo1[1];
+            $titulacion->nombre3 = $arreglo1[2];
+            $titulacion->nombre4 = null;
+        }
+        if (count($arreglo1)==4){
+            $titulacion->nombre2 = $arreglo1[1];
+            $titulacion->nombre3 = $arreglo1[2];
+            $titulacion->nombre4 = $arreglo1[3];
+        }
+        if (count($arreglo1)==1){
+            $titulacion->nombre2 = null;
+            $titulacion->nombre3 = null;
+            $titulacion->nombre4 = null;
+        }
+
+
+        $arreglo2=$request->rut;
+        $titulacion->rut1 = $arreglo2[0];
+        if(count($arreglo2)==2){
+            $titulacion->rut2 = $arreglo2[1];
+            $titulacion->rut3 = null;
+            $titulacion->rut4 = null;
+        }
+        if (count($arreglo2)==3){
+            $titulacion->rut2 = $arreglo2[1];
+            $titulacion->rut3 = $arreglo2[2];
+            $titulacion->rut4 = null;
+        }
+        if (count($arreglo2)==4){
+            $titulacion->rut2 = $arreglo2[1];
+            $titulacion->rut3 = $arreglo2[2];
+            $titulacion->rut4 = $arreglo2[3];
+        }
+        if (count($arreglo2)==1){
+            $titulacion->rut2 = null;
+            $titulacion->rut3 = null;
+            $titulacion->rut4 = null;
+        }
+
+
+        $arreglo3=$request->carrera;
+        $titulacion->carrera1 = $arreglo3[0];
+        if(count($arreglo3)==2){
+            $titulacion->carrera2 = $arreglo3[1];
+            $titulacion->carrera3 = null;
+            $titulacion->carrera4 = null;
+        }
+        if (count($arreglo3)==3){
+            $titulacion->carrera2 = $arreglo3[1];
+            $titulacion->carrera3 = $arreglo3[2];
+            $titulacion->carrera4 = null;
+        }
+        if (count($arreglo3)==4){
+            $titulacion->carrera2 = $arreglo3[1];
+            $titulacion->carrera3 = $arreglo3[2];
+            $titulacion->carrera4 = $arreglo3[3];
+        }
+        if (count($arreglo3)==1){
+            $titulacion->carrera2 = null;
+            $titulacion->carrera3 = null;
+            $titulacion->carrera4 = null;
+        }
         $titulacion->fecha_inicio=$request->input('fecha_inicio');
         $titulacion->fecha_termino=$request->input('fecha_termino');
         $arreglo=$request->profesor;

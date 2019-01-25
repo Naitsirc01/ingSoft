@@ -16,9 +16,18 @@ class CreateAtcTitulacionConsTable extends Migration
         Schema::create('atc_titulacion_cons', function (Blueprint $table) {
             $table->increments('id');
             $table->string('titulo');
-            $table->string('nombre');
-            $table->string('rut');
-            $table->string('carrera');
+            $table->string('nombre1');
+            $table->string('nombre2')->nullable();
+            $table->string('nombre3')->nullable();
+            $table->string('nombre4')->nullable();
+            $table->string('rut1');
+            $table->string('rut2')->nullable();
+            $table->string('rut3')->nullable();
+            $table->string('rut4')->nullable();
+            $table->string('carrera1');
+            $table->string('carrera2')->nullable();
+            $table->string('carrera3')->nullable();
+            $table->string('carrera4')->nullable();
             $table->date('fecha_inicio');
             $table->date('fecha_termino')->nullable();
             $table->integer('profesor_id1')->unsigned()->nullable();

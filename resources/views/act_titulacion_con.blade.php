@@ -58,21 +58,22 @@
                                     <input type="text" class="form-control" name="rut[]" pattern="^\d{1,2}\.\d{3}\.\d{3}[-][0-9kK]{1}$" title="Ingrese rut válido" placeholder="Ingrese el rut del estudiante"/>
                                 </div>
                             </div>
+                            <label for="name" class="cols-sm-2 control-label">Seleccione la Carrera</label>
+                            <select class="form-control" name="carrera[]"  placeholder="Registrar cositos">
+                                <option>ICCI</option>
+                                <option>ICI</option>
+                                <option>ICA</option>
+                                <option>ICdM</option>
+                                <option>ICM</option>
+                                <option>ICPC</option>
+                                <option>ICQ</option>
+                                <option>IC</option>
+                            </select>
                         </div>
 
                         <button type="button" onclick="agregar()"> agregar </button>
                         <br>
-                        <label for="name" class="cols-sm-2 control-label">Seleccione la Carrera</label>
-                        <select class="form-control" name="carrera"  placeholder="Registrar cositos">
-                            <option>ICCI</option>
-                            <option>ICI</option>
-                            <option>ICA</option>
-                            <option>ICdM</option>
-                            <option>ICM</option>
-                            <option>ICPC</option>
-                            <option>ICQ</option>
-                            <option>IC</option>
-                        </select>
+
 
                         <label for="exampleInputdate">Fecha de inicio</label>
                         <input type="date" class="form-control"  name="fecha_inicio">
@@ -157,40 +158,39 @@
                             </div>
                         </div>
 
-                        <label for="email" class="cols-sm-2 control-label">Nombre</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" name="nombre[]" id="nombre" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido"  placeholder="Ingrese el nombre del estudiante"/>
-                            </div>
-                        </div>
 
                         <div id="aumentar3">
+                            <label for="email" class="cols-sm-2 control-label">Nombre</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
+                                    <input type="text" class="form-control" name="nombre[]" id="nombre" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\s]*)+" title="Ingrese nombre válido"  placeholder="Ingrese el nombre del estudiante"/>
+                                </div>
+                            </div>
+
+                            <label for="email" class="cols-sm-2 control-label">Rut</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
+                                    <input type="text" class="form-control" name="rut[]" id="rut" pattern="^\d{1,2}\.\d{3}\.\d{3}[-][0-9kK]{1}$" title="Ingrese rut válido" placeholder="Ingrese el rut del estudiante"/>
+                                </div>
+                            </div>
+
+                            <label for="name" class="cols-sm-2 control-label">Seleccione la Carrera</label>
+                            <select class="form-control" name="carrera[]" id="carrera" placeholder="Registrar cositos">
+                                <option>ICCI</option>
+                                <option>ICI</option>
+                                <option>ICA</option>
+                                <option>ICdM</option>
+                                <option>ICM</option>
+                                <option>ICPC</option>
+                                <option>ICQ</option>
+                                <option>IC</option>
+                            </select>
                         </div>
                         <button type="button" onclick="agregar3()"> agregar </button>
                         <br>
-                        <label for="email" class="cols-sm-2 control-label">Rut</label>
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->
-                                <input type="text" class="form-control" name="rut[]" id="rut" pattern="^\d{1,2}\.\d{3}\.\d{3}[-][0-9kK]{1}$" title="Ingrese rut válido" placeholder="Ingrese el rut del estudiante"/>
-                            </div>
-                        </div>
-                        <div id="aumentar4">
-                        </div>
                         <!--button type="button" onclick="agregar2()"> agregar </button-->
-                        <br>
-                        <label for="name" class="cols-sm-2 control-label">Seleccione la Carrera</label>
-                        <select class="form-control" name="carrera" id="carrera" placeholder="Registrar cositos">
-                            <option>ICCI</option>
-                            <option>ICI</option>
-                            <option>ICA</option>
-                            <option>ICdM</option>
-                            <option>ICM</option>
-                            <option>ICPC</option>
-                            <option>ICQ</option>
-                            <option>IC</option>
-                        </select>
 
                         <label for="exampleInputdate">Fecha de inicio</label>
                         <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio">
@@ -321,9 +321,42 @@
                     <tr>
                         <th>{{$tdata->id}}</th>
                         <th>{{$tdata->titulo}}</th>
-                        <th>{{$tdata->nombre}}</th>
-                        <td>{{$tdata->rut}}</td>
-                        <td>{{$tdata->carrera}}</td>
+
+                        {{--<td>{{$tdata->nombre1}}<br>{{$tdata->nombre2}}<br>{{$tdata->nombre3}}<br>{{$tdata->nombre4}}</td>--}}
+
+                        @if($tdata->nombre2 == null && $tdata->nombre3 == null && $tdata->nombre4 == null)
+                            <td>{{$tdata->nombre1}}</td>
+                        @elseif( $tdata->nombre3 == null && $tdata->nombre4 == null)
+                            <td>{{$tdata->nombre1}}<h1></h1>{{$tdata->nombre2}}</td>
+                        @elseif( $tdata->nombre4 == null)
+                            <td>{{$tdata->nombre1}}<h1></h1>{{$tdata->nombre2}}<h1></h1>{{$tdata->nombre3}}</td>
+                        @else
+                            <td>{{$tdata->nombre1}}<h1></h1>{{$tdata->nombre2}}<h1></h1>{{$tdata->nombre3}}}<h1></h1>{{$tdata->nombre4}}</td>
+                        @endif
+
+
+                        @if($tdata->rut2 == null && $tdata->rut3 == null && $tdata->rut4 == null)
+                            <td>{{$tdata->rut1}}</td>
+                        @elseif( $tdata->rut3 == null && $tdata->rut4 == null)
+                            <td>{{$tdata->rut1}}<h1></h1>{{$tdata->rut2}}</td>
+                        @elseif( $tdata->rut4 == null)
+                            <td>{{$tdata->rut1}}<h1></h1>{{$tdata->rut2}}<h1></h1>{{$tdata->rut3}}</td>
+                        @else
+                            <td>{{$tdata->rut1}}<h1></h1>{{$tdata->rut2}}<h1></h1>{{$tdata->rut3}}}<h1></h1>{{$tdata->rut4}}</td>
+                        @endif
+
+
+                        @if($tdata->carrera2 == null && $tdata->carrera3 == null && $tdata->carrera4 == null)
+                            <td>{{$tdata->carrera1}}</td>
+                        @elseif( $tdata->carrera3 == null && $tdata->carrera4 == null)
+                            <td>{{$tdata->carrera1}}<h1></h1>{{$tdata->carrera2}}</td>
+                        @elseif( $tdata->carrera4 == null)
+                            <td>{{$tdata->carrera1}}<h1></h1>{{$tdata->carrera2}}<h1></h1>{{$tdata->carrera3}}</td>
+                        @else
+                            <td>{{$tdata->carrera1}}<h1></h1>{{$tdata->carrera2}}<h1></h1>{{$tdata->carrera3}}}<h1></h1>{{$tdata->carrera4}}</td>
+                        @endif
+
+
                         <td>{{$tdata->fecha_inicio}}</td>
                         <td>{{$tdata->fecha_termino}}</td>
                         @if($tdata->profesor2 == null)
@@ -369,9 +402,30 @@
             var data = table.row($tr).data();
             console.log(data);
             $('#titulo').val(data[1]);
-            $('#nombre').val(data[2]);
-            $('#rut').val(data[3]);
-            $('#carrera').val(data[4]);
+            var datos1=[];
+            var datos2=[];
+            var datos3=[];
+            var datos4=[];
+            datos1=findDatas(data[0],1)
+            datos2=findDatas(data[0],2)
+            datos3=findDatas(data[0],3)
+            datos4=findDatas(data[0],4)
+            $('#nombre').val(datos1[0]);
+            $('#rut').val(datos1[1]);
+            $('#carrera').val(datos1[2]);
+
+            $('#nombre0').val(datos2[0]);
+            $('#rut0').val(datos2[1]);
+            $('#carrera0').val(datos2[2]);
+
+            $('#nombre1').val(datos3[0]);
+            $('#rut1').val(datos3[1]);
+            $('#carrera1').val(datos3[2]);
+
+            $('#nombre2').val(datos4[0]);
+            $('#rut2').val(datos4[2]);
+            $('#carrera2').val(datos4[3]);
+
             $('#fecha_inicio').val(data[5]);
             $('#fecha_termino').val(data[6]);
             $('#profesor').val(data[7]);
@@ -398,6 +452,68 @@
         //END delete
     });
 </script>
+<script>
+    var titu={!! $titulacions !!};
+    function findDatas($id,$op) {
+        var $i;
+        var $pos;
+        for($i=0;$i<window.titu.length;$i++){
+            agregar3();
+            if(titu[$i].id == $id){
+                $pos=$i;
+                break;
+            }
+        }
+        debugger;
+        var datos=[];
+        switch ($op) {
+            case 1:
+                datos.push(titu[$pos].nombre1);
+                datos.push(titu[$pos].rut1);
+                datos.push(titu[$pos].carrera1);
+                return datos;
+            case 2:
+                datos.push(titu[$pos].nombre2);
+                datos.push(titu[$pos].rut2);
+                datos.push(titu[$pos].carrera2);
+                return datos;
+            case 3:
+                datos.push(titu[$pos].nombre3);
+                datos.push(titu[$pos].rut3);
+                datos.push(titu[$pos].carrera3);
+                return datos;
+            case 4:
+                datos.push(titu[$pos].nombre4);
+                datos.push(titu[$pos].rut4);
+                datos.push(titu[$pos].carrera4);
+                return datos;
+        }
+    }
+    {{--function findRut($id,$op) {--}}
+        {{--var titu={!! $titulacions !!};--}}
+        {{--var $i;--}}
+        {{--var $pos;--}}
+        {{--for($i=0;$i<window.titu.length;$i++){--}}
+
+            {{--if(titu[$i].id == $id){--}}
+                {{--$pos=$i;--}}
+                {{--break;--}}
+            {{--}--}}
+        {{--}--}}
+        {{--switch ($op) {--}}
+            {{--case 1:--}}
+                {{--return titu[$pos].rut1;--}}
+            {{--case 2:--}}
+                {{--return titu[$pos].rut2;--}}
+            {{--case 3:--}}
+                {{--return titu[$pos].rut3;--}}
+            {{--case 4:--}}
+                {{--return titu[$pos].rut4;--}}
+        {{--}--}}
+    {{--}--}}
+</script>
+
+
 
 <script>
     var i = 0;
@@ -407,7 +523,7 @@
                 '                            <div class="cols-sm-10">\n' +
                 '                                <div class="input-group">\n' +
                 '                                    <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->\n' +
-                '                                    <input type="text" class="form-control" name="nombre[]" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\\s]*)+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del estudiante"/>\n' +
+                '                                    <input id="nombre" type="text" class="form-control" name="nombre[]" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\\s]*)+" title="Ingrese nombre válido" placeholder="Ingrese el nombre del estudiante"/>\n' +
                 '                                </div>\n' +
                 '                            </div>\n' +
                 '\n' +
@@ -417,7 +533,19 @@
                 '                                    <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->\n' +
                 '                                    <input type="text" class="form-control" name="rut[]" pattern="^\\d{1,2}\\.\\d{3}\\.\\d{3}[-][0-9kK]{1}$" title="Ingrese rut válido" placeholder="Ingrese el rut del estudiante"/>\n' +
                 '                                </div>\n' +
-                '                            </div>');
+                '                            </div>' +
+                '' +
+                '<label for="name" class="cols-sm-2 control-label">Seleccione la Carrera</label>\n' +
+                '                        <select class="form-control" name="carrera[]"  placeholder="Registrar cositos">\n' +
+                '                            <option>ICCI</option>\n' +
+                '                            <option>ICI</option>\n' +
+                '                            <option>ICA</option>\n' +
+                '                            <option>ICdM</option>\n' +
+                '                            <option>ICM</option>\n' +
+                '                            <option>ICPC</option>\n' +
+                '                            <option>ICQ</option>\n' +
+                '                            <option>IC</option>\n' +
+                '                        </select>');
             i++;
         }
 
@@ -443,19 +571,32 @@
     function agregar3() {
         if (k<3) {
             $("#aumentar3").append('<label for="email" class="cols-sm-2 control-label">Nombre</label>\n' +
-                '                        <div class="cols-sm-10">\n' +
-                '                            <div class="input-group">\n' +
-                '                                <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->\n' +
-                '                                <input type="text" class="form-control" name="nombre[]" id="nombre" pattern="[A-Za-z]+" title="Ingrese nombre válido"  placeholder="Ingrese el nombre del estudiante"/>\n' +
+                '                            <div class="cols-sm-10">\n' +
+                '                                <div class="input-group">\n' +
+                '                                    <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->\n' +
+                '                                    <input id=nombre'+k+' type="text" class="form-control" name="nombre[]" id="nombre" pattern="([A-ZÁÉÍÓÚÑ]{1}[a-zñáéíóú]{1,24}[\\s]*)+" title="Ingrese nombre válido"  placeholder="Ingrese el nombre del estudiante"/>\n' +
+                '                                </div>\n' +
                 '                            </div>\n' +
-                '                        </div>');
-            $("#aumentar4").append('<label for="email" class="cols-sm-2 control-label">Rut</label>\n' +
-                '                        <div class="cols-sm-10">\n' +
-                '                            <div class="input-group">\n' +
-                '                                <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->\n' +
-                '                                <input type="text" class="form-control" name="rut[]" id="rut" pattern="^\\d{1,2}\\.\\d{3}\\.\\d{3}[-][0-9kK]{1}$" title="Ingrese rut válido" placeholder="Ingrese el rut del estudiante"/>\n' +
+                '\n' +
+                '                            <label for="email" class="cols-sm-2 control-label">Rut</label>\n' +
+                '                            <div class="cols-sm-10">\n' +
+                '                                <div class="input-group">\n' +
+                '                                    <!--<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>-->\n' +
+                '                                    <input id =rut'+k+' type="text" class="form-control" name="rut[]" id="rut" pattern="^\\d{1,2}\\.\\d{3}\\.\\d{3}[-][0-9kK]{1}$" title="Ingrese rut válido" placeholder="Ingrese el rut del estudiante"/>\n' +
+                '                                </div>\n' +
                 '                            </div>\n' +
-                '                        </div>');
+                '\n' +
+                '                            <label for="name" class="cols-sm-2 control-label">Seleccione la Carrera</label>\n' +
+                '                            <select class="form-control" name="carrera[]" id="carrera" placeholder="Registrar carrera">\n' +
+                '                                <option>ICCI</option>\n' +
+                '                                <option>ICI</option>\n' +
+                '                                <option>ICA</option>\n' +
+                '                                <option>ICdM</option>\n' +
+                '                                <option>ICM</option>\n' +
+                '                                <option>ICPC</option>\n' +
+                '                                <option>ICQ</option>\n' +
+                '                                <option>IC</option>\n' +
+                '                            </select>');
             k++;
         }
     };
