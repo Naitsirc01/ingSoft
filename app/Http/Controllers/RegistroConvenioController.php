@@ -76,6 +76,7 @@ class RegistroConvenioController extends Controller
                 'actividad_convenioid' => $registro->id]);
         $registroCon->evidencia()->save($archivo);
 
+
         $registro->cantidad_de_atc_registroCon=Registroconvenio::all()->count();
         $registro->save();
 
