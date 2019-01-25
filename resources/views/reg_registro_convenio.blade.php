@@ -253,7 +253,7 @@
       <tr>
         <th>{{$c->id}}</th>
         <th>{{$c->empresa}}</th>
-        <td>{{$c->convenioid}}</td>
+        <td>{{$c->convenio->nombre}}</td>
         <td>{{$c->fecha_comienzo}}</td>
         <td>{{$c->duracion}}</td>
         <td>

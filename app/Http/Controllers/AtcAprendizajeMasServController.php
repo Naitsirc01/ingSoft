@@ -103,7 +103,7 @@ class AtcAprendizajeMasServController extends Controller
         $registro->cantidad_de_estudiantes=$total;
         $registro->save();
 
-        $archivo = new \App\evidencia(['archivo'=>$path]);
+        $archivo = new \App\evidencia(['nombre'=>$request->file('evidencia')->getClientOriginalName(),'archivo'=>$path]);
 //        $registro2=new evidencia;
 //        $registro2->archivo=$request->input('evidencia');
 
@@ -193,6 +193,7 @@ class AtcAprendizajeMasServController extends Controller
 
         $archivo = evidencia::where('atc_aprendizaje_mas_serv_id','=',$id)->first();
         $archivo->archivo=$path;
+        $archivo->nombre=$request->evidencia->getClientOriginalName();
         $archivo->save();
 
 

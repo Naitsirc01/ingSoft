@@ -72,7 +72,7 @@ class RegistroConvenioController extends Controller
 
 
         $archivo = \App\evidencia::create(
-            ['archivo' => $path,
+            ['nombre'=>$request->file('evidencia')->getClientOriginalName(),'archivo' => $path,
                 'actividad_convenioid' => $registro->id]);
         $registroCon->evidencia()->save($archivo);
 
@@ -140,6 +140,7 @@ class RegistroConvenioController extends Controller
 
         $archivo = evidencia::where('Registroconvenio_id','=',$id)->first();
         $archivo->archivo=$path;
+        $archivo->nombre=$request->evidencia->getClientOriginalName();
         $archivo->save();
 
         /*

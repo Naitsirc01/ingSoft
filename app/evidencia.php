@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class evidencia extends Model
 {
     protected $fillable = [
-         'archivo','aprendizaje_id','atc_titulacion_con_id','atc_extension_id'];
+         'nombre','archivo','aprendizaje_id','atc_titulacion_con_id','atc_extension_id'];
 
 
     public function actividadays(){

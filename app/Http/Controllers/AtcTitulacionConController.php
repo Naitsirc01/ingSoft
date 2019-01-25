@@ -48,7 +48,7 @@ class AtcTitulacionConController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request);
+
         $path=$request->file('evidencia')->store('upload');
         $this->validate($request,[
             'titulo'=>'required',
@@ -104,7 +104,9 @@ class AtcTitulacionConController extends Controller
         $registro->cantidad_de_atc_titulacionCon=atc_titulacion_con::all()->count();
         $registro->save();
 
-        $archivo = new \App\evidencia(['archivo'=>$path]);
+        $archivo = new \App\evidencia(['nombre'=>$request->file('evidencia')->getClientOriginalName(),
+            'archivo'=>$path]);
+
 
         $titulacion->evidencia()->save($archivo);
 
@@ -145,6 +147,7 @@ class AtcTitulacionConController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $this->validate($request, [
             'titulo' => 'required',
             'nombre' => 'required',
@@ -201,6 +204,7 @@ class AtcTitulacionConController extends Controller
         $archivo = evidencia::where('atc_titulacion_con_id','=',$id)->first();
 //        $archivo = evidencia::find($id);
         $archivo->archivo=$path;
+        $archivo->nombre=$request->evidencia->getClientOriginalName();
         $archivo->save();
 
 
